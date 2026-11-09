@@ -4,7 +4,7 @@
  * a w tle pobranie nowej wersji na następne otwarcie.
  * Podbij VERSION przy każdej zmianie plików.
  */
-var VERSION = 'husa-2026-v8';
+var VERSION = 'husa-2026-v9';
 // Zdjęcia butelek i logo (img/wina, img/logo) trafiają do pamięci przy pierwszym obejrzeniu.
 var FILES = [
   './', 'index.html', 'css/style.css', 'js/data.js', 'js/wines.js', 'js/wine-media.js', 'js/venue-media.js', 'js/routes.js', 'js/route-maps.js', 'js/app.js', 'manifest.webmanifest',

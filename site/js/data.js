@@ -134,18 +134,19 @@
           },
           {
             time: 'Około 18:00', at: '18:00', status: 'tbc', highlight: true,
-            title: 'Hospůdka MaxWilliam', venue: 'maxwilliam',
-            place: 'U Brány 435/1, Znojmo',
-            text: 'Pierwszy wybór na obiadokolację dla 4 dorosłych i dziecka. Golonka i żeberka. <strong>Stół do uzgodnienia.</strong>',
-            contacts: { tel: ['+420 603 892 962'], email: ['info@maxwilliam.cz'] },
-            links: [map('Mapy', M.maxwilliam), web('Kontakt lokalu', 'https://maxwilliam.cz/kontakt/')],
+            title: 'Mikuláš Bistro', venue: 'mikulas',
+            place: 'Staré Město 109/1, Znojmo',
+            text: 'Pierwszy wybór na obiadokolację dla 4 dorosłych i dziecka. Regionalne bistro w nowoczesnym wydaniu. Na 11 XI gęsie udko z kapustą i knedlikami za 650 Kč lub czterodaniowe menu za 990 Kč. <strong>Stół i gęsinę zarezerwujcie co najmniej dzień wcześniej.</strong>',
+            note: 'Lokal nie łączy stolików, więc przy rezerwacji zapytajcie o stół dla 4 dorosłych i dziecka.',
+            contacts: { tel: ['+420 773 722 884'], email: ['info@mikulasznojmo.cz'] },
+            links: [map('Mapy', M.mikulas), pdf('Menu świętomarcińskie', 'https://www.mikulasznojmo.cz/wp-content/uploads/2026/10/mikulas-menu-husa-2026.pdf')],
             alt: {
               label: 'W rezerwie',
-              title: 'Mikuláš Bistro', venue: 'mikulas',
-              place: 'Staré Město 109/1, Znojmo',
-              text: 'Na 11 XI gęsie udko z kapustą i knedlikami za 650 Kč lub menu za 990 Kč. O stół i gęsinę zapytajcie co najmniej dzień wcześniej. Lokal nie łączy stolików.',
-              contacts: { tel: ['+420 773 722 884'] },
-              links: [map('Mapy', M.mikulas), pdf('Menu', 'https://www.mikulasznojmo.cz/wp-content/uploads/2026/10/mikulas-menu-husa-2026.pdf')]
+              title: 'Hospůdka MaxWilliam', venue: 'maxwilliam',
+              place: 'U Brány 435/1, Znojmo',
+              text: 'Piwiarniana gospoda w surowym, drewnianym wnętrzu. Golonka i żeberka. Stół do uzgodnienia.',
+              contacts: { tel: ['+420 603 892 962'], email: ['info@maxwilliam.cz'] },
+              links: [map('Mapy', M.maxwilliam), web('Kontakt lokalu', 'https://maxwilliam.cz/kontakt/')]
             }
           }
         ],
@@ -358,19 +359,19 @@
           title: 'Główne rekomendacje w centrum',
           items: [
             {
-              name: 'Hospůdka MaxWilliam', venue: 'maxwilliam', rating: '4,7', reviews: '1 022', when: 'Środa · pierwszy wybór',
-              address: 'U Brány 435/1, Znojmo',
-              text: 'Najwyższa ocena wśród sprawdzonych gospód z pasującym menu. Specjalności to pieczona golonka i marynowane żeberka.',
-              hours: 'Śr.–czw. 13:00–23:00, pt. 13:00–24:00',
-              contacts: { tel: ['+420 603 892 962'], email: ['info@maxwilliam.cz'] },
-              links: [map('Mapy', M.maxwilliam), web('Specjalności', 'https://maxwilliam.cz/'), web('Godziny i rezerwacje', 'https://maxwilliam.cz/kontakt/')]
-            },
-            {
-              name: 'Mikuláš Bistro', venue: 'mikulas', rating: '4,6', reviews: '840', when: 'Środa · rezerwa',
+              name: 'Mikuláš Bistro', venue: 'mikulas', rating: '4,6', reviews: '840', when: 'Środa · pierwszy wybór',
               address: 'Staré Město 109/1, Znojmo',
               text: 'Regionalne bistro w nowoczesnym wydaniu. Na 11, 13 i 14 XI gęsie udko z kapustą i knedlikami za 650 Kč, czterodaniowe menu 990 Kč. Rezerwacja co najmniej dzień wcześniej. Lokal nie łączy stolików.',
               contacts: { tel: ['+420 773 722 884'], email: ['info@mikulasznojmo.cz'] },
               links: [map('Mapy', M.mikulas), web('Zasady rezerwacji', 'https://www.mikulasznojmo.cz/'), pdf('Menu świętomarcińskie', 'https://www.mikulasznojmo.cz/wp-content/uploads/2026/10/mikulas-menu-husa-2026.pdf')]
+            },
+            {
+              name: 'Hospůdka MaxWilliam', venue: 'maxwilliam', rating: '4,7', reviews: '1 022', when: 'Środa · rezerwa',
+              address: 'U Brány 435/1, Znojmo',
+              text: 'Piwiarniana gospoda z surowym, drewnianym wnętrzem. Najwyższa ocena wśród sprawdzonych gospód z pasującym menu. Specjalności to pieczona golonka i marynowane żeberka.',
+              hours: 'Śr.–czw. 13:00–23:00, pt. 13:00–24:00',
+              contacts: { tel: ['+420 603 892 962'], email: ['info@maxwilliam.cz'] },
+              links: [map('Mapy', M.maxwilliam), web('Specjalności', 'https://maxwilliam.cz/'), web('Galeria', 'https://maxwilliam.cz/galerie/'), web('Godziny i rezerwacje', 'https://maxwilliam.cz/kontakt/')]
             },
             {
               name: 'Restaurace U Divadla', venue: 'divadlo', rating: '4,5', reviews: '136', when: 'Piątek · gęsina',
