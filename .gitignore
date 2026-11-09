@@ -1,0 +1,20 @@
+# Oryginał zdjęcia z widoczną tablicą rejestracyjną (na stronie jest wersja zamazana: site/img/parking.webp)
+docs/parking.jpg
+docs/**/desktop.ini
+desktop.ini
+node_modules/
+
+# Pełnowymiarowe zdjęcia ze stron Family City (na stronie są zmniejszone kopie w site/img/fc-*.webp)
+docs/zdjecia-dzieci/
+
+# Oryginały zdjęć butelek i logo pobrane przez tools/build-wine-media.py
+docs/wina-zrodla/
+
+# Kafelki OSM pobrane przez tools/build-route-maps.py (pamięć podręczna)
+docs/trasy-kafelki/
+
+# Wersja dla Apps Script jest generowana: node tools/build-gas.mjs
+gas/index.html
+
+# Pamięć podręczna Pythona
+__pycache__/

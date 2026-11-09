@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+
+<html lang="pl"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Husa · Znojmo 2026 — Mobilny Przewodnik Wyjazdowy</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            wine: {
+              50: "#fdf3f4",
+              100: "#fbe6e9",
+              200: "#f6cfd6",
+              300: "#eeaab7",
+              400: "#e2788e",
+              500: "#d14b69",
+              600: "#b93452",
+              700: "#9b2540",
+              800: "#7c1c32",
+              850: "#6e1529",
+              900: "#5a1122",
+              950: "#3d0814",
+            },
+            surface: "#ffffff",
+            "surface-subtle": "#fdf9f9",
+            "surface-dim": "#f8f1f2",
+            "surface-card": "#ffffff",
+            ink: "#22191b",
+            "ink-muted": "#685255",
+            accent: "#c2410c"
+          },
+          fontFamily: {
+            sans: ['"Hanken Grotesk"', '"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['"Space Grotesk"', '"Hanken Grotesk"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    html {
+      -webkit-tap-highlight-color: transparent;
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #f7f0f1;
+      color: #22191b;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    .tap-target {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    .glass-bar {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .nav-btn.active {
+      background-color: #7c1c32;
+      color: #ffffff !important;
+      border-color: #7c1c32;
+      box-shadow: 0 4px 14px -2px rgba(124, 28, 50, 0.35);
+    }
+    .day-tab-btn.active {
+      background-color: #5a1122;
+      color: #ffffff !important;
+      border-color: #5a1122;
+      box-shadow: 0 4px 12px -2px rgba(90, 17, 34, 0.32);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-ink antialiased selection:bg-wine-200 selection:text-wine-950 pb-16">
+<!-- Responsive Wrapper: Centered container up to 4xl for desktop/tablet, smooth flex on mobile -->
+<main class="w-full max-w-4xl mx-auto bg-surface min-h-screen shadow-xl sm:my-5 sm:rounded-3xl sm:border sm:border-wine-200/70 overflow-hidden flex flex-col" style="border: 1px solid rgba(212, 175, 55, 0.35); box-shadow: 0 10px 30px -5px rgba(90, 17, 34, 0.15), 0 0 0 1px rgba(212, 175, 55, 0.2);">
+<!-- ========================================================
+       HERO / HEADER (Moravian Wine Palette)
+       ======================================================== -->
+<header class="relative bg-gradient-to-b from-wine-950 via-wine-900 to-wine-800 text-white pt-6 pb-6 px-4 sm:px-8 border-b border-wine-850" style="border-bottom: 2px solid rgba(212, 175, 55, 0.4); background: linear-gradient(180deg, #380712 0%, #520f1e 55%, #691528 100%);">
+<div class="flex items-center justify-between gap-3 mb-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-white/15 text-wine-100 border border-white/20" style="background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.5); color: #fceed1;">
+<span class="">🪿</span> Husa · Znojmo 2026
+      </span>
+<span class="text-xs font-semibold text-wine-100 bg-black/25 px-3 py-1 rounded-full border border-white/10" style="background: rgba(20, 3, 7, 0.45); border: 1px solid rgba(212, 175, 55, 0.35); color: #f7e7c4;">
+        11–15 listopada 2026
+      </span>
+</div>
+<h1 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white mt-1">Husa 2026 - Znojmo</h1>
+<div class="mt-2.5 flex items-center gap-2 text-sm sm:text-base text-wine-100 font-medium">
+<span class="text-base sm:text-lg">🚗</span>
+<span class="">Trasa: <strong>Wrocław</strong> → <strong>Znojmo (Czechy)</strong></span>
+</div>
+<!-- Szybkie Skróty (min 44px tap target) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-5">
+<a class="tap-target flex items-center justify-center gap-2 px-4 py-3 bg-white text-wine-950 font-bold text-[16px] rounded-xl shadow-md hover:bg-wine-50 active:scale-[0.98] transition-all border border-wine-200" href="https://www.google.com/maps/search/?api=1&amp;query=Apartm%C3%A1ny+Marienhof%2C+Studentsk%C3%A1+948%2F9%2C+Znojmo" rel="noopener noreferrer" style="border: 1px solid #d4af37; box-shadow: 0 3px 10px rgba(212, 175, 55, 0.2);" target="_blank">
+<span class="text-lg">📍</span>
+<span class="">Nocleg w Mapach ↗</span>
+</a>
+<a class="tap-target flex items-center justify-center gap-2 px-4 py-3 bg-wine-950/80 text-wine-100 hover:text-white font-bold text-[16px] rounded-xl border border-wine-400/40 hover:bg-wine-900 active:scale-[0.98] transition-all" href="https://www.google.com/maps/search/?api=1&amp;query=48.855118%2C16.05358" rel="noopener noreferrer" style="border: 1px solid rgba(212, 175, 55, 0.35);" target="_blank">
+<span class="text-lg">🅿️</span>
+<span class="">Płatny parking ↗</span>
+</a>
+</div>
+</header>
+<!-- ========================================================
+       SEKCJA ROZWIJANA: NOCLEG I ORGANIZACJA (Accordion)
+       ======================================================== -->
+<section class="bg-wine-50/70 border-b border-wine-200/80 px-4 sm:px-8 py-3.5" id="sec-organizacja">
+<button class="tap-target w-full flex items-center justify-between py-2 text-left font-bold text-[15px] sm:text-[16px] text-wine-900 group cursor-pointer" id="org-toggle-btn" onclick="toggleOrgAccordion()">
+<span class="flex items-center gap-2.5">
+<span class="text-xl">📋</span>
+<span class="font-display font-bold text-wine-950 text-base sm:text-lg tracking-tight">Nocleg i informacje organizacyjne</span>
+</span>
+<span class="text-xs px-2.5 py-1 rounded-md font-bold transition-all border shadow-xs" id="org-chevron" style="background: #fbf3db; border-color: rgba(212, 175, 55, 0.45); color: #784f09;">
+      Zwiń ▲
+    </span>
+</button>
+<div class="pb-3 pt-3 text-[15px] space-y-3 border-t border-wine-200/60 mt-1" id="org-content">
+<!-- 1: Dojazd & Winiety Card -->
+<div class="bg-white p-4 sm:p-5 rounded-2xl border border-wine-200 shadow-xs space-y-2.5" style="border-left: 4px solid #7c1c32;">
+<div class="flex items-center justify-between gap-2">
+<div class="font-bold text-wine-950 flex items-center gap-2 text-base sm:text-lg">
+<span class="text-xl">🚗</span> Trasa i opłaty drogowe
+        </div>
+<span class="text-xs font-bold uppercase tracking-wider text-wine-900 bg-wine-100 px-2.5 py-0.5 rounded border border-wine-200">
+          Dojazd
+        </span>
+</div>
+<div class="space-y-1.5 text-sm sm:text-base text-ink leading-relaxed">
+<p class="flex items-start gap-2">
+<span class="font-semibold text-wine-900">• Dojazd:</span> Z Wrocławia jedzie się około 4,5 godziny.
+        </p>
+<p class="flex items-start gap-2"><span class="font-semibold text-wine-900">• Winiety:</span> Najprawdopodobniej będą potrzebne winiety — <a class="font-bold text-wine-900 underline hover:text-wine-700" href="https://edalnice.cz/pl/" rel="noopener noreferrer" target="_blank">oficjalny sklep edalnice.cz ↗</a></p>
+</div>
+</div>
+<!-- ZDJĘCIE PARKINGU / WSKAZÓWKA DOJAZDU (ZGODNIE Z PUNKTEM 1) -->
+<div class="bg-white p-4 sm:p-5 rounded-2xl border border-wine-200 shadow-xs space-y-3" style="border-left: 4px solid #7c1c32;">
+<div class="flex items-center justify-between gap-2">
+<div class="font-bold text-wine-950 flex items-center gap-2 text-base sm:text-lg">
+<span class="text-xl">🅿️</span> Wjazd na parking i szlaban
+        </div>
+<span class="text-xs font-bold uppercase tracking-wider text-wine-900 bg-wine-100 px-2.5 py-0.5 rounded border border-wine-200">
+          Wskazówka
+        </span>
+</div>
+<div class="overflow-hidden rounded-xl border border-wine-200/90 shadow-inner bg-stone-100">
+<img alt="Wjazd na parking przez szlaban pod budynkiem - Apartmány Marienhof" class="w-full h-auto max-h-80 object-cover object-center" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI3oi_52LKpQ1x256W82NlqL1eAZQrpCUnNp-BZmnIj-gkh64fYTdHpbPIhjw20sVqK0dGMUuiEy-ZdJ6of7xLYlzicuGdG2e7hwnNy66gtUYgNqSHoIrPo860nSHkUNjKUMEFtXEcksa4EU68fyxFcmL4a0eEHLZ39Z12Axjx6SqztoyHBcGfLMrJpgGiil7d1GGdepbHXhpFau-_wSUp17M9782-lMI3H5VLoD-vX62VlA5ijb3KJg"/>
+</div>
+<p class="text-sm sm:text-base font-semibold text-wine-950 flex items-center gap-2 bg-wine-50/90 p-3 rounded-xl border border-wine-200/60">
+<span class="text-lg">🔑</span>
+<span>Wskazówka dojazdu: wjazd przez szlaban pod budynkiem (tabliczka Marienhof na ścianie).</span>
+</p>
+</div>
+<!-- 2: Śniadanie & Wyżywienie Card (Gold accent) -->
+<div class="bg-white p-4 sm:p-5 rounded-2xl border border-amber-300/80 shadow-xs space-y-2" style="border: 1px solid rgba(212, 175, 55, 0.55); border-left: 4px solid #d4af37; background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);">
+<div class="flex items-center justify-between gap-2">
+<div class="font-bold text-wine-950 flex items-center gap-2 text-base sm:text-lg">
+<span class="text-xl">🥐</span> Śniadanie &amp; Wyżywienie
+        </div>
+<span class="text-xs font-bold uppercase tracking-wider text-amber-900 bg-amber-100 px-2.5 py-0.5 rounded border border-amber-200" style="background: #fef7e2; border-color: #d4af37; color: #734c00;">
+          Ważne info
+        </span>
+</div>
+<p class="text-ink text-sm sm:text-base leading-relaxed">
+<strong>Śniadanie:</strong> Apartamenty bez restauracji (brak restauracji w budynku). Można zamówić koszyk śniadaniowy lub dostać bon do jednej z dwóch okolicznych śniadaniowni. Dostępność stolików do sprawdzenia.
+      </p>
+</div>
+<!-- 3: Ręczniki Card (Bordeaux accent) -->
+<div class="bg-wine-50/80 p-4 sm:p-5 rounded-2xl border border-wine-200 shadow-xs flex items-start gap-3.5" style="border-left: 4px solid #7c1c32;">
+<span class="text-2xl leading-none pt-0.5">🛁</span>
+<div class="space-y-0.5 text-sm sm:text-base">
+<div class="font-bold text-wine-950 text-base sm:text-lg">Ręczniki</div>
+<p class="text-wine-900 leading-snug">
+          Michał musi zabrać własne 😉
+        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================
+       PRIMARY 5 TABS NAVIGATION (Plan, Winoteki, Restauracje, Trekkingi, Dla dzieci)
+       ======================================================== -->
+<nav class="px-3 sm:px-6 pt-4 pb-2 border-b border-wine-100 bg-surface">
+<div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+<button class="nav-btn active tap-target flex items-center justify-center gap-2 px-3 py-3 rounded-xl border border-wine-200 bg-white text-ink font-extrabold text-[15px] sm:text-base transition-all shadow-sm" id="nav-plan" onclick="switchMainSection('plan')" style="border: 1px solid rgba(212, 175, 55, 0.65); box-shadow: 0 4px 14px -2px rgba(124, 28, 50, 0.35), inset 0 -2px 0 #d4af37;">
+<span>📅</span> Plan wyjazdu
+    </button>
+<button class="nav-btn tap-target flex items-center justify-center gap-2 px-3 py-3 rounded-xl border border-wine-200 bg-white text-ink font-extrabold text-[15px] sm:text-base transition-all shadow-sm" id="nav-winoteki" onclick="switchMainSection('winoteki')">
+<span>🍷</span> Wino
+    </button>
+<button class="nav-btn tap-target flex items-center justify-center gap-2 px-3 py-3 rounded-xl border border-wine-200 bg-white text-ink font-extrabold text-[15px] sm:text-base transition-all shadow-sm" id="nav-restauracje" onclick="switchMainSection('restauracje')">
+<span>🍽️</span> Restauracje
+    </button>
+<button class="nav-btn tap-target flex items-center justify-center gap-2 px-3 py-3 rounded-xl border border-wine-200 bg-white text-ink font-extrabold text-[15px] sm:text-base transition-all shadow-sm" id="nav-trekkingi" onclick="switchMainSection('trekkingi')">
+<span>🥾</span> Trekkingi
+    </button>
+<button class="nav-btn col-span-2 sm:col-span-1 tap-target flex items-center justify-center gap-2 px-3 py-3 rounded-xl border border-wine-200 bg-white text-ink font-extrabold text-[15px] sm:text-base transition-all shadow-sm" id="nav-atrakcje" onclick="switchMainSection('atrakcje')">
+<span>🏰</span> Dla dzieci
+    </button>
+</div>
+</nav>
+<!-- ========================================================
+       SEKCJA 1: PLAN WYJAZDU (Zaktualizowany wg DOCUMENT_6)
+       ======================================================== -->
+<section class="p-4 sm:p-7 flex-1" id="section-plan">
+<!-- Podział na dni (Nested Day Tabs) -->
+<div class="mb-5">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-bold uppercase tracking-wider text-wine-900">Wybierz dzień:</span>
+<span class="text-xs font-medium text-ink-muted">11–15 listopada 2026</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+<button class="day-tab-btn active tap-target flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border border-wine-200 bg-wine-50/70 text-ink text-left transition-all" id="day-tab-wed" onclick="switchDay('wed')" style="border: 1px solid rgba(212, 175, 55, 0.65); box-shadow: rgba(90, 17, 34, 0.32) 0px 4px 12px -2px, rgb(212, 175, 55) 0px 2px 0px inset;">
+<span class="font-extrabold text-base sm:text-[16px] tracking-tight">Środa 11.11</span>
+<span class="text-xs sm:text-[13px] opacity-85 font-semibold">Przyjazd</span>
+</button>
+<button class="day-tab-btn tap-target flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border border-wine-200 bg-wine-50/70 text-ink text-left transition-all" id="day-tab-thu" onclick="switchDay('thu')">
+<span class="font-extrabold text-base sm:text-[16px] tracking-tight">Czwartek 12.11</span>
+<span class="text-xs sm:text-[13px] opacity-85 font-semibold">Hardegg &amp; Košt</span>
+</button>
+<button class="day-tab-btn tap-target flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border border-wine-200 bg-wine-50/70 text-ink text-left transition-all" id="day-tab-fri" onclick="switchDay('fri')">
+<span class="font-extrabold text-base sm:text-[16px] tracking-tight">Piątek 13.11</span>
+<span class="text-xs sm:text-[13px] opacity-85 font-semibold">Święty Marcin</span>
+</button>
+<button class="day-tab-btn tap-target flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border border-wine-200 bg-wine-50/70 text-ink text-left transition-all" id="day-tab-sat" onclick="switchDay('sat')">
+<span class="font-extrabold text-base sm:text-[16px] tracking-tight">Sobota 14.11</span>
+<span class="text-xs sm:text-[13px] opacity-85 font-semibold">Winnice &amp; Obiad</span>
+</button>
+<button class="day-tab-btn col-span-2 sm:col-span-1 tap-target flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border border-wine-200 bg-wine-50/70 text-ink text-left transition-all" id="day-tab-sun" onclick="switchDay('sun')">
+<span class="font-extrabold text-base sm:text-[16px] tracking-tight">Niedziela 15.11</span>
+<span class="text-xs sm:text-[13px] opacity-85 font-semibold">Zakupy &amp; Powrót</span>
+</button>
+</div>
+</div>
+<!-- ==================== DZIEŃ 1: ŚRODA 11.11 ==================== -->
+<div class="day-pane space-y-4" id="day-content-wed">
+<div class="bg-gradient-to-r from-wine-100/80 via-wine-50/80 to-surface p-4 sm:p-5 rounded-2xl border border-wine-200/90" style="border: 1px solid rgba(212, 175, 55, 0.4); background: linear-gradient(90deg, #faedf0 0%, #fdf8eb 50%, #ffffff 100%);">
+<div class="text-xs uppercase font-extrabold text-wine-900 tracking-wide">Dzień 1 · Środa 11 listopada</div>
+<h2 class="font-display text-xl sm:text-2xl font-bold text-wine-950 mt-0.5">Przyjazd i powitanie w Znojmie</h2>
+<p class="text-ink-muted text-sm sm:text-base mt-1">Dojazd z Wrocławia (~4,5 h), zakwaterowanie, spacer murami i kolacja z golonką lub gęsiną.</p>
+</div>
+<div class="space-y-3">
+<!-- Punkt 1: Check-in -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-100 text-wine-900 tracking-wide">POPOŁUDNIE</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-stone-100 text-stone-800 border border-stone-200">Check-in</span>
+</div>
+<a class="text-lg font-bold text-wine-900 hover:text-wine-700 inline-flex items-center gap-1.5 pt-0.5" href="https://www.google.com/maps/search/?api=1&amp;query=Apartm%C3%A1ny+Marienhof%2C+Studentsk%C3%A1+948%2F9%2C+Znojmo" rel="noopener noreferrer" target="_blank">
+          Apartmány Marienhof <span class="text-sm">↗</span>
+</a>
+<p class="text-ink-muted text-[15px] sm:text-base">Dojazd autami z Wrocławia, wjazd przez szlaban pod budynkiem (tabliczka Marienhof) i zakwaterowanie w pokojach.</p>
+</div>
+<!-- Punkt 2: Spacer -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-100 text-wine-900 tracking-wide">PRZED ZMROKIEM</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-emerald-100 text-emerald-900 border border-emerald-200">Spacer</span>
+</div>
+<h3 class="text-lg font-bold text-ink">Spacer wzdłuż murów obronnych lub Karolíniny sady</h3>
+<p class="text-ink-muted text-[15px] sm:text-base">Przy sprzyjającej pogodzie krótki spacer widokowy wzdłuż tarasowych murów obronnych z panoramą doliny rzeki Dyje.</p>
+</div>
+<!-- Punkt 3: Kolacja MaxWilliam -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-2" style="border: 1px solid rgba(212, 175, 55, 0.4); border-left: 4px solid #d4af37;">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-900 text-white tracking-wide">OKOŁO 18:00</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-amber-100 text-amber-900 border border-amber-300 font-semibold">Główny wybór</span>
+</div>
+<a class="text-lg font-bold text-wine-900 hover:text-wine-700 inline-flex items-center gap-1.5" href="https://www.google.com/maps/search/?api=1&amp;query=Hosp%C5%AFdka%20MaxWilliam%2C%20U%20Br%C3%A1ny%20435%2F1%2C%20Znojmo" rel="noopener noreferrer" target="_blank">
+          Hospůdka MaxWilliam <span class="text-sm">↗</span>
+</a>
+<p class="text-ink text-[15px] sm:text-base">Legendarna pieczona golonka i marynowane żeberka (ocena 4,7 / 5 na ponad 1 000 opinii). Pierwszy wybór na powitalny wieczór.</p>
+<div class="bg-wine-50/80 border-l-4 border-wine-700 p-3.5 rounded-r-xl space-y-1 mt-1">
+<div class="text-xs font-bold uppercase tracking-wider text-wine-900">Rezerwa / Alternatywa na gęsinę</div>
+<a class="font-bold text-wine-900 hover:underline inline-flex items-center gap-1 text-[15px] sm:text-base" href="https://www.google.com/maps/search/?api=1&amp;query=Mikul%C3%A1%C5%A1%20Bistro%2C%20Star%C3%A9%20M%C4%9Bsto%20109%2F1%2C%20Znojmo" rel="noopener noreferrer" target="_blank">
+            Mikuláš Bistro ↗
+          </a>
+<p class="text-xs sm:text-sm text-ink-muted">Kameralne bistro ze świętomarcińskim udkiem z gęsi (wymóg potwierdzenia rezerwacji).</p>
+</div>
+</div>
+</div>
+</div>
+<!-- ==================== DZIEŃ 2: CZWARTEK 12.11 ==================== -->
+<div class="day-pane space-y-4 hidden" id="day-content-thu">
+<div class="bg-gradient-to-r from-wine-100/80 via-wine-50/80 to-surface p-4 sm:p-5 rounded-2xl border border-wine-200/90">
+<div class="text-xs uppercase font-extrabold text-wine-900 tracking-wide">Dzień 2 · Czwartek 12 listopada</div>
+<h2 class="font-display text-xl sm:text-2xl font-bold text-wine-950 mt-0.5">Hardegg i Vinárna Jezuitská</h2>
+<p class="text-ink-muted text-sm sm:text-base mt-1">Austriacki przełom rzeki Dyji, obiad w dolinie Thayatal i popołudniowa degustacja win.</p>
+</div>
+<div class="space-y-3">
+<!-- Rano Hardegg -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-100 text-wine-900 tracking-wide">PRZED POŁUDNIEM</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-emerald-100 text-emerald-900 border border-emerald-200">Przyroda &amp; Most</span>
+</div>
+<h3 class="text-lg font-bold text-ink">Hardegg po austriackiej stronie Dyji</h3>
+<p class="text-ink-muted text-[15px] sm:text-base">Spacer po najmniejszym miasteczku Austrii, przejście przez historyczny most graniczny nad rzeką Dyją i widok na zamek Burg Hardegg.</p>
+</div>
+<!-- Obiad Waschbach -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-2">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-100 text-wine-900 tracking-wide">OKOŁO 12:00</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-amber-100 text-amber-900 border border-amber-300">Obiad</span>
+</div>
+<a class="text-lg font-bold text-wine-900 hover:text-wine-700 inline-flex items-center gap-1.5" href="https://www.google.com/maps/search/?api=1&amp;query=Gasthaus+zum+Thayatal+Waschbach&amp;query_place_id=ChIJWyx9f9CuckcRFOxkdFtf7rs" rel="noopener noreferrer" target="_blank">
+          Gasthaus zum Thayatal (Pichler) w Waschbach <span class="text-sm">↗</span>
+</a>
+<p class="text-ink-muted text-[15px] sm:text-base">Tradycyjny austriacki obiad w dolinie Thayatal niedaleko Hardeggu.</p>
+</div>
+<!-- Opcjonalnie Retz -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-100 text-wine-900 tracking-wide">W DRODZE POWROTNEJ</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-stone-100 text-stone-800 border border-stone-200">Opcjonalnie</span>
+</div>
+<a class="text-lg font-bold text-wine-900 hover:text-wine-700 inline-flex items-center gap-1.5" href="https://www.google.com/maps/search/?api=1&amp;query=Vinothek%20Weinquartier%2C%20Hauptplatz%204-5%2C%20Retz" rel="noopener noreferrer" target="_blank">
+          Vinothek Weinquartier (Retz) <span class="text-sm">↗</span>
+</a>
+<p class="text-ink-muted text-[15px] sm:text-base">Krótki przystanek na malowniczym renesansowym rynku w Retz słynącym z podziemnych winiarni.</p>
+</div>
+<!-- 16:00 Degustacja Jezuitska -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-2" style="border: 1px solid rgba(212, 175, 55, 0.4); border-left: 4px solid #7c1c32;">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-900 text-white tracking-wide">16:00</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-wine-100 text-wine-900 border border-wine-200">Główny punkt dnia</span>
+</div>
+<a class="text-lg font-bold text-wine-900 hover:text-wine-700 inline-flex items-center gap-1.5" href="https://www.google.com/maps/search/?api=1&amp;query=Vin%C3%A1rna%20Jezuitsk%C3%A1%2C%20Jezuitsk%C3%A1%20176%2F10%2C%20Znojmo" rel="noopener noreferrer" target="_blank">
+          Vinárna Jezuitská <span class="text-sm">↗</span>
+</a>
+<p class="text-ink text-[15px] sm:text-base">Potwierdzona komentowana degustacja win w historycznych piwnicach jezuickich oraz zapiekany hermelín i lokalne pasty do przekąszenia.</p>
+</div>
+</div>
+<!-- Wariant na deszcz -->
+<div class="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-4 flex items-start gap-3 mt-4" style="border: 1px solid rgba(212, 175, 55, 0.45); background: #fdfbf3;">
+<span class="text-2xl leading-none">🌧️</span>
+<div>
+<div class="font-bold text-amber-950 text-[15px] sm:text-base">Wariant na deszcz</div>
+<p class="text-amber-900 text-sm sm:text-[15px] mt-0.5">
+          Zamiast spaceru w Hardeggu: klasyczna trasa podziemna <strong>Znojemské podzemí</strong> pod starym miastem (zwiedzanie całkowicie pod dachem).
+        </p>
+</div>
+</div>
+</div>
+<!-- ==================== DZIEŃ 3: PIĄTEK 13.11 ==================== -->
+<div class="day-pane space-y-4 hidden" id="day-content-fri">
+<div class="bg-gradient-to-r from-wine-100/80 via-wine-50/80 to-surface p-4 sm:p-5 rounded-2xl border border-wine-200/90">
+<div class="text-xs uppercase font-extrabold text-wine-900 tracking-wide">Dzień 3 · Piątek 13 listopada</div>
+<h2 class="font-display text-xl sm:text-2xl font-bold text-wine-950 mt-0.5">Święty Marcin w Znojmie!</h2>
+<p class="text-ink-muted text-sm sm:text-base mt-1">Błogosławieństwo młodego wina na rynku, widowiskowy pochód na białym koniu i wieczorne winiarnie.</p>
+</div>
+<div class="space-y-3">
+<!-- Rano spacer -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-100 text-wine-900 tracking-wide">RANO</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-emerald-100 text-emerald-900 border border-emerald-200">Spacer</span>
+</div>
+<h3 class="text-lg font-bold text-ink">Hardegger Warte lub Karolíniny sady i dolina Gránice</h3>
+<p class="text-ink-muted text-[15px] sm:text-base">Poranny orzeźwiający spacer widokowy przed tłumami na rynku.</p>
+</div>
+<!-- 11:00 Rynek -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-2" style="border: 1px solid rgba(212, 175, 55, 0.4); border-left: 4px solid #d4af37;">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-900 text-white tracking-wide">11:00</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-amber-100 text-amber-900 border border-amber-300">Oficjalny start</span>
+</div>
+<h3 class="text-lg font-bold text-wine-950">Masarykovo náměstí — Święto św. Marcina</h3>
+<p class="text-ink-muted text-[15px] sm:text-base">Uroczyste błogosławieństwo win, odkorkowanie pierwszych butelek z rocznika 2026 i stoiska winiarzy.</p>
+</div>
+<!-- Południe Obiad -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-2">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-100 text-wine-900 tracking-wide">POŁUDNIE</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-stone-100 text-stone-800 border border-stone-200">Obiad</span>
+</div>
+<div class="space-y-1">
+<p class="text-ink text-[15px] sm:text-base font-semibold">Szybki obiad na rynku lub klasyka:</p>
+<p class="text-sm text-ink-muted">• <strong>Bufet na Masarykovo náměstí 16</strong> (tradycyjny segedyn, zupy do 15:00)</p>
+<p class="text-sm text-ink-muted">• Lub sprawdzona <strong>Restaurace U Divadla</strong> (dania obiadowe i czeskie piwo)</p>
+</div>
+</div>
+<!-- 16:00 / 17:00 Pochód -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-900 text-white tracking-wide">16:00 / 17:00</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-amber-100 text-amber-900 border border-amber-300">Pochód</span>
+</div>
+<h3 class="text-lg font-bold text-ink">Pochód św. Marcina na białym koniu</h3>
+<p class="text-ink-muted text-[15px] sm:text-base">Widowiskowy korowód orszaku św. Marcina przez historyczne ulice Znojma.</p>
+</div>
+<!-- Wieczór Enoteka / Jezuitska -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-2" style="border: 1px solid rgba(212, 175, 55, 0.4); border-left: 4px solid #7c1c32;">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-100 text-wine-900 tracking-wide">WIECZOREM</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-wine-100 text-wine-900 border border-wine-200">Wino i kolacja</span>
+</div>
+<div class="space-y-1.5 text-sm sm:text-base">
+<p class="text-ink"><strong>Opcja A:</strong> <a class="font-bold text-wine-900 underline" href="https://www.google.com/maps/search/?api=1&amp;query=Enot%C3%A9ka%20znojemsk%C3%BDch%20v%C3%ADn%2C%20Hradn%C3%AD%2C%20Znojmo" target="_blank">Enotéka znojemských vín ↗</a> (degustomaty z kartą przedpłaconą na zamku).</p>
+<p class="text-ink"><strong>Opcja B:</strong> <a class="font-bold text-wine-900 underline" href="https://www.google.com/maps/search/?api=1&amp;query=Vin%C3%A1rna%20Jezuitsk%C3%A1%2C%20Jezuitsk%C3%A1%20176%2F10%2C%20Znojmo" target="_blank">Vinárna Jezuitská ↗</a> — košt winiarski z gęsiną i zestawem 20 próbek win za ok. 800 Kč.</p>
+<p class="text-ink"><strong>Kolacja:</strong> <a class="font-bold text-wine-900 underline" href="https://www.google.com/maps/search/?api=1&amp;query=Restaurace%20U%20Divadla%2C%20N%C3%A1m%C4%9Bst%C3%AD%20Republiky%2016%2C%20Znojmo" target="_blank">Restaurace U Divadla ↗</a> (gęś/kaczka z kapustą i knedlikami).</p>
+</div>
+</div>
+</div>
+</div>
+<!-- ==================== DZIEŃ 4: SOBOTA 14.11 ==================== -->
+<div class="day-pane space-y-4 hidden" id="day-content-sat">
+<div class="bg-gradient-to-r from-wine-100/80 via-wine-50/80 to-surface p-4 sm:p-5 rounded-2xl border border-wine-200/90">
+<div class="text-xs uppercase font-extrabold text-wine-900 tracking-wide">Dzień 4 · Sobota 14 listopada</div>
+<h2 class="font-display text-xl sm:text-2xl font-bold text-wine-950 mt-0.5">Winnice, Święto Wina i Obiad Grupowy</h2>
+<p class="text-ink-muted text-sm sm:text-base mt-1">Marsz przez winnice do Šatova lub Nový Šaldorf oraz wspólny obiad w Restaurace U Tří Jasanů.</p>
+</div>
+<div class="space-y-3">
+<!-- Marsz / Dojazd -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-100 text-wine-900 tracking-wide">RANO</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-emerald-100 text-emerald-900 border border-emerald-200">Szlak winiarski</span>
+</div>
+<h3 class="text-lg font-bold text-ink">Marsz: Konice → Popice → Havraníky → Šatov (lub przejazd)</h3>
+<p class="text-ink-muted text-[15px] sm:text-base">Malownicza trasa przez winnice i wrzosowiska Podyjí. W razie deszczu dojazd autobusem 818.</p>
+</div>
+<!-- Imprezy winiarskie -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-2">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-900 text-white tracking-wide">13:00 – 16:00</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-wine-100 text-wine-900 border border-wine-200">Folklor &amp; Wina</span>
+</div>
+<div class="space-y-2 text-sm sm:text-base text-ink">
+<p><strong>Wariant Šatov:</strong> 13:00 poświęcenie win w kościele św. Marcina, od 14:00 degustacja w Domu Kultury, od 15:00 tradycyjna muzyka cymbałowa.</p>
+<p><strong>Wariant Nový Šaldorf:</strong> 14:00 poświęcenie win, 15:00–19:00 otwarte piwniczki winiarskie i degustacje w piaskowych korytarzach.</p>
+</div>
+</div>
+<!-- Obiad U Tri Jasanu -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-2" style="border: 1px solid rgba(212, 175, 55, 0.45); border-left: 4px solid #d4af37;">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-900 text-white tracking-wide">16:30</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-amber-100 text-amber-900 border border-amber-300">Wspólny obiad</span>
+</div>
+<a class="text-lg font-bold text-wine-900 hover:text-wine-700 inline-flex items-center gap-1.5" href="https://www.google.com/maps/search/?api=1&amp;query=Restaurace%20%26%20Penzion%20U%20T%C5%99%C3%AD%20Jasan%C5%AF%2C%20Nov%C3%BD%20%C5%A0aldorf" rel="noopener noreferrer" target="_blank">
+          Restaurace &amp; Penzion U Tří Jasanů (Nový Šaldorf) <span class="text-sm">↗</span>
+</a>
+<p class="text-ink text-[15px] sm:text-base">Główny obiad dla całej grupy (9 dorosłych + 2 dzieci). Duża przestronna sala z wyśmienitą gęsiną, knedlikami i lokalnymi winami.</p>
+</div>
+<!-- Powrót -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/80 shadow-xs flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-wine-100 text-wine-900 tracking-wide">WIECZÓR</span>
+<span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase bg-stone-100 text-stone-800 border border-stone-200">Powrót</span>
+</div>
+<h3 class="text-lg font-bold text-ink">Powrót autobusem 818 lub taksówką do Marienhof</h3>
+<p class="text-ink-muted text-[15px] sm:text-base">Szybki powrót do bazy noclegowej w centrum Znojma.</p>
+</div>
+</div>
+</div>
+<!-- ==================== DZIEŃ 5: NIEDZIELA 15.11 ==================== -->
+<div class="day-pane space-y-4 hidden" id="day-content-sun">
+<div class="bg-gradient-to-r from-wine-100/80 via-wine-50/80 to-surface p-4 sm:p-5 rounded-2xl border border-wine-200/90">
+<div class="text-xs uppercase font-extrabold text-wine-900 tracking-wide">Dzień 5 · Niedziela 15 listopada</div>
+<h2 class="font-display text-xl sm:text-2xl font-bold text-wine-950 mt-0.5">Wykwaterowanie, Zakupy i Powrót</h2>
+<p class="text-ink-muted text-sm sm:text-base mt-1">Uzupełnienie zapasów morawskich win i bezpieczna podróż do Wrocławia.</p>
+</div>
+<div class="bg-white rounded-2xl p-5 border border-wine-200/80 shadow-xs space-y-4">
+<div class="flex items-start gap-3">
+<span class="text-3xl">🧳</span>
+<div>
+<h3 class="text-lg font-bold text-ink">Wykwaterowanie z Apartmány Marienhof</h3>
+<p class="text-ink-muted text-sm sm:text-base">Check-out do godziny <strong>10:30</strong>. Spakowanie bagaży i opuszczenie parkingu.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 border-t border-wine-100 pt-3">
+<span class="text-3xl">🍷</span>
+<div>
+<h3 class="text-lg font-bold text-ink">Zakupy winne: Sklep Znovínu przy Klasztorze Louka</h3>
+<p class="text-ink-muted text-sm sm:text-base">Znakomity punkt na zakup butelek na wynos przed wyjazdem w stronę granicy (Ryzlink Šobes, Sauvignon VOC, Grüner Veltlín).</p>
+</div>
+</div>
+<div class="flex items-start gap-3 border-t border-wine-100 pt-3">
+<span class="text-3xl">🚗</span>
+<div>
+<h3 class="text-lg font-bold text-ink">Powrót do Wrocławia</h3>
+<p class="text-ink-muted text-sm sm:text-base">Około 4,5 godziny spokojnej jazdy autami.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================
+       SEKCJA 2: ROZBUDOWANA ZAKŁADKA „WINO” (DOCUMENT_5)
+       ======================================================== -->
+<section class="p-4 sm:p-7 flex-1 hidden space-y-6" id="section-winoteki">
+<!-- Nagłówek -->
+<div class="bg-gradient-to-r from-wine-100/90 via-wine-50/80 to-surface p-4 sm:p-6 rounded-2xl border border-wine-200" style="border: 1px solid rgba(212, 175, 55, 0.45); background: linear-gradient(90deg, #faedf0 0%, #fdf8eb 55%, #ffffff 100%);">
+<div class="text-xs uppercase font-extrabold text-wine-900 tracking-wider">Przewodnik Degustacyjny · DOCUMENT_5</div>
+<h2 class="font-display text-2xl sm:text-3xl font-bold text-wine-950 mt-1">🍷 Znojmo w Kieliszku</h2>
+<p class="text-ink text-sm sm:text-base mt-1.5 leading-relaxed">
+      Kompletny przewodnik po Enotéce, rekomendowane butelki Top 7 z cenami w koronach oraz katalog najlepszych winiarzy regionu znojemskiego.
+    </p>
+</div>
+<!-- Część 1: Enotéka krok po kroku -->
+<div class="bg-white rounded-2xl p-5 border border-wine-200/90 shadow-sm space-y-3.5" style="border-left: 4px solid #7c1c32;">
+<div class="flex items-center justify-between gap-2">
+<div class="font-bold text-wine-950 flex items-center gap-2 text-lg sm:text-xl">
+<span class="text-2xl">🏛️</span> Enotéka krok po kroku
+      </div>
+<span class="text-xs font-bold uppercase tracking-wider text-wine-900 bg-wine-100 px-2.5 py-0.5 rounded border border-wine-200">
+        Hradní 2 · Zamek
+      </span>
+</div>
+<p class="text-sm sm:text-base text-ink leading-relaxed">
+      Enotéka znojemských vín działa w oparciu o nowoczesne karty chipowe do degustomatów. Wkładasz kartę do dyspensera, podstawiasz kieliszek i wybierasz jedną z <strong>3 wielkości porcji</strong>: próbkę degustacyjną (0,02 l), średnią (0,05 l) lub cały kieliszek (0,1 l).
+    </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+<div class="bg-wine-50/80 p-3.5 rounded-xl border border-wine-200/60">
+<div class="font-bold text-wine-950 text-sm sm:text-base">Kolejność degustacji</div>
+<p class="text-xs sm:text-sm text-ink-muted mt-1">Zacznij od rześkich <strong>1–3 Grüner Veltliner</strong> (Veltlínské zelené), a następnie przejdź do <strong>4–6 innych profili</strong>: aromatycznych Sauvignonów, mineralnych Rieslingów i beczkowego Chardonnay.</p>
+</div>
+<div class="bg-amber-50/70 p-3.5 rounded-xl border border-amber-200/80">
+<div class="font-bold text-amber-950 text-sm sm:text-base">Budżet &amp; Koszt</div>
+<p class="text-xs sm:text-sm text-amber-900 mt-1">Koszt degustacji jest bardzo przystępny — orientacyjnie <strong>~95 Kč</strong> za serię degustacyjną kilku próbek. Kartę doładowujesz dowolną kwotą w kasie.</p>
+</div>
+</div>
+<div class="pt-1">
+<a class="tap-target inline-flex items-center justify-center gap-2 px-4 py-2 bg-wine-800 text-white font-bold text-sm rounded-xl hover:bg-wine-900 transition-colors shadow-xs" href="https://www.google.com/maps/search/?api=1&amp;query=Enot%C3%A9ka%20znojemsk%C3%BDch%20v%C3%ADn%2C%20Hradn%C3%AD%2C%20Znojmo" rel="noopener noreferrer" target="_blank">
+        📍 Otwórz Enotéka na zamku w Mapach Google ↗
+      </a>
+</div>
+</div>
+<!-- Część 2: TOP 7 ZAKUPOWE / REKOMENDOWANE BUTELKI -->
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<h3 class="font-display text-xl sm:text-2xl font-bold text-wine-950 flex items-center gap-2">
+<span>🏆</span> Top 7 zakupowe / Rekomendowane butelki
+      </h3>
+<span class="text-xs font-semibold text-ink-muted">Ceny butelek</span>
+</div>
+<div class="grid grid-cols-1 gap-3.5">
+<!-- 1 -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm flex flex-col justify-between gap-2" style="border: 1px solid rgba(212, 175, 55, 0.4); border-left: 4px solid #d4af37;">
+<div class="flex items-start justify-between gap-2">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-amber-900 bg-amber-100 px-2 py-0.5 rounded border border-amber-300">#1 Legenda Šobes</span>
+<h4 class="text-base sm:text-lg font-bold text-wine-950 mt-1">Znovín · Ryzlink rýnský Šobes 2025</h4>
+<div class="text-xs text-ink-muted">Naše klenoty · partia 5390 · Podmolí / Šobes</div>
+</div>
+<span class="text-base sm:text-lg font-black text-wine-900 bg-wine-50 px-3 py-1 rounded-xl border border-wine-200">280 Kč</span>
+</div>
+<p class="text-sm sm:text-[15px] text-ink leading-relaxed">
+          Nuty mirabelki, suszonej moreli i dojrzałej nektarynki. Fenomenalna mineralność z pradawnych tarasów rzeki Dyji. Idealne wino do pieczonego drobiu i gęsiny.
+        </p>
+</div>
+<!-- 2 -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm flex flex-col justify-between gap-2">
+<div class="flex items-start justify-between gap-2">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-200">#2 Wielkie Złoto (93,33 pkt)</span>
+<h4 class="text-base sm:text-lg font-bold text-wine-950 mt-1">Vinice Hnanice · Ryzlink rýnský VOC 2025</h4>
+<div class="text-xs text-ink-muted">Havraníky / Staré vinice · partia 3394/25</div>
+</div>
+<span class="text-base sm:text-lg font-black text-wine-900 bg-wine-50 px-3 py-1 rounded-xl border border-wine-200">199 Kč</span>
+</div>
+<p class="text-sm sm:text-[15px] text-ink leading-relaxed">
+          Zwycięzca paneli degustacyjnych. Niezwykle czysty, krystaliczny riesling ze starych krzewów z rejonu Havraníky.
+        </p>
+</div>
+<!-- 3 -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm flex flex-col justify-between gap-2">
+<div class="flex items-start justify-between gap-2">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-wine-800 bg-wine-100 px-2 py-0.5 rounded border border-wine-200">#3 Sauvignon Roku</span>
+<h4 class="text-base sm:text-lg font-bold text-wine-950 mt-1">Piálek &amp; Jäger · Sauvignon VOC 2025</h4>
+<div class="text-xs text-ink-muted">Winnice: U Hájku &amp; Šác</div>
+</div>
+<span class="text-base sm:text-lg font-black text-wine-900 bg-wine-50 px-3 py-1 rounded-xl border border-wine-200">220 Kč</span>
+</div>
+<p class="text-sm sm:text-[15px] text-ink leading-relaxed">
+          Ekspresyjny aromat dojrzałej brzoskwini, agrestu i pełnego soczystego owocu na podniebieniu.
+        </p>
+</div>
+<!-- 4 -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm flex flex-col justify-between gap-2">
+<div class="flex items-start justify-between gap-2">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-amber-900 bg-amber-100 px-2 py-0.5 rounded border border-amber-300">#4 Złoto Salon vín 2026 · BIO</span>
+<h4 class="text-base sm:text-lg font-bold text-wine-950 mt-1">Špalek · Ryzlink rýnský Velký Sud BIO 2023</h4>
+<div class="text-xs text-ink-muted">Kraví hora · Nový Šaldorf</div>
+</div>
+<span class="text-base sm:text-lg font-black text-wine-900 bg-wine-50 px-3 py-1 rounded-xl border border-wine-200">330 Kč</span>
+</div>
+<p class="text-sm sm:text-[15px] text-ink leading-relaxed">
+          Wino dojrzewające przez rok w wielkiej dębowej beczce. Złożony bukiet miodu lipowego, kandyzowanych cytrusów i głębokiej mineralności.
+        </p>
+</div>
+<!-- 5 -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm flex flex-col justify-between gap-2">
+<div class="flex items-start justify-between gap-2">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-wine-800 bg-wine-100 px-2 py-0.5 rounded border border-wine-200">#5 Enotéka Hit na Wynos</span>
+<h4 class="text-base sm:text-lg font-bold text-wine-950 mt-1">Waldberg · Chardonnay Lampelberg 2022</h4>
+<div class="text-xs text-ink-muted">Vrbovec / Lampelberg · partia 22/152</div>
+</div>
+<span class="text-base sm:text-lg font-black text-wine-900 bg-wine-50 px-3 py-1 rounded-xl border border-wine-200">160 Kč</span>
+</div>
+<p class="text-sm sm:text-[15px] text-ink leading-relaxed">
+          15 miesięcy dojrzewania w dębowych beczkach. Eleganckie akcenty wanilii, masła orzechowego i szlachetnego tytoniu w bezkonkurencyjnej cenie.
+        </p>
+</div>
+<!-- 6 -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm flex flex-col justify-between gap-2">
+<div class="flex items-start justify-between gap-2">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-200">#6 Morawska Unikatowa Odmiana</span>
+<h4 class="text-base sm:text-lg font-bold text-wine-950 mt-1">Ampelos · Veritas 2024</h4>
+<div class="text-xs text-ink-muted">Nad sklepy · Vrbovec</div>
+</div>
+<span class="text-base sm:text-lg font-black text-wine-900 bg-wine-50 px-3 py-1 rounded-xl border border-wine-200">209 Kč</span>
+</div>
+<p class="text-sm sm:text-[15px] text-ink leading-relaxed">
+          Lokalna czeska krzyżówka ze stacji hodowlanej Ampelos. Niezwykły profil polnych kwiatów, akacji i miodu z rześkim finiszem.
+        </p>
+</div>
+<!-- 7 -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm flex flex-col justify-between gap-2" style="border: 1px solid rgba(212, 175, 55, 0.4); border-left: 4px solid #7c1c32;">
+<div class="flex items-start justify-between gap-2">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-wine-800 bg-wine-100 px-2 py-0.5 rounded border border-wine-200">#7 Do Gęsiny (Czerwone)</span>
+<h4 class="text-base sm:text-lg font-bold text-wine-950 mt-1">Oulehla · Frankovka Na Nivách 2022</h4>
+<div class="text-xs text-ink-muted">Dolní Kounice · partia 2250</div>
+</div>
+<span class="text-base sm:text-lg font-black text-wine-900 bg-wine-50 px-3 py-1 rounded-xl border border-wine-200">253 Kč</span>
+</div>
+<p class="text-sm sm:text-[15px] text-ink leading-relaxed">
+          18 miesięcy w dużej drewnianej beczce. Głęboki zapach dojrzałych ciemnych wiśni, goździków i korzeni. Idealny kompan do pieczonej świętomarcińskiej gęsi.
+        </p>
+</div>
+</div>
+</div>
+<!-- Część 3: Lista najlepszych winiarni w okolicach Znojma -->
+<div class="space-y-3 pt-2">
+<div class="flex items-center justify-between">
+<h3 class="font-display text-xl sm:text-2xl font-bold text-wine-950 flex items-center gap-2">
+<span>🍇</span> Najlepsze winiarnie w okolicach Znojma
+      </h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+<!-- 1: Vinice Hnanice -->
+<div class="bg-white rounded-2xl p-4 border border-wine-200/90 shadow-sm space-y-1.5">
+<h4 class="font-bold text-wine-950 text-base sm:text-lg">Vinice Hnanice (Hnanice / Šatov)</h4>
+<p class="text-xs sm:text-sm text-ink-muted">Nowoczesna winiarnia z rozległymi parcelami w rezerwacie. Lider jakości VOC.</p>
+<p class="text-xs font-semibold text-wine-900">Top wina: Grüner Veltlín VOC, Riesling VOC, Sauvignon VOC</p>
+</div>
+<!-- 2: Znovin -->
+<div class="bg-white rounded-2xl p-4 border border-wine-200/90 shadow-sm space-y-1.5">
+<h4 class="font-bold text-wine-950 text-base sm:text-lg">Znovín Znojmo (Šatov / Klasztor Louka)</h4>
+<p class="text-xs sm:text-sm text-ink-muted">Fundament morawskiego winiarstwa, gospodarz słynnej winnicy Šobes w Parku Narodowym.</p>
+<p class="text-xs font-semibold text-wine-900">Top wina: Šobes Riesling, Sauvignon Kokusove hory</p>
+</div>
+<!-- 3: Pialek & Jager -->
+<div class="bg-white rounded-2xl p-4 border border-wine-200/90 shadow-sm space-y-1.5">
+<h4 class="font-bold text-wine-950 text-base sm:text-lg">Piálek &amp; Jäger (Nový Šaldorf)</h4>
+<p class="text-xs sm:text-sm text-ink-muted">Uznana za najlepszą kolekcję win 2026. Arcymistrzowie świeżych i pełnych aromatów.</p>
+<p class="text-xs font-semibold text-wine-900">Top wina: Sauvignon VOC, Grüner Extra</p>
+</div>
+<!-- 4: Spalek -->
+<div class="bg-white rounded-2xl p-4 border border-wine-200/90 shadow-sm space-y-1.5">
+<h4 class="font-bold text-wine-950 text-base sm:text-lg">Špalek (Nový Šaldorf, Kraví hora)</h4>
+<p class="text-xs sm:text-sm text-ink-muted">Rodzinna winiarnia ekologiczna, pionierzy win biologicznych i dojrzewania w dębie.</p>
+<p class="text-xs font-semibold text-wine-900">Top wina: BIO wina, Velký Sud, Gryllus bílý</p>
+</div>
+<!-- 5: Thaya -->
+<div class="bg-white rounded-2xl p-4 border border-wine-200/90 shadow-sm space-y-1.5">
+<h4 class="font-bold text-wine-950 text-base sm:text-lg">Thaya (Havraníky)</h4>
+<p class="text-xs sm:text-sm text-ink-muted">Zdobywca prestiżowego tytułu Vinařství roku z ultranowoczesną architekturą i winiarnią.</p>
+<p class="text-xs font-semibold text-wine-900">Top wina: Apri Chardonnay, Zweigeltrebe</p>
+</div>
+<!-- 6: Waldberg -->
+<div class="bg-white rounded-2xl p-4 border border-wine-200/90 shadow-sm space-y-1.5">
+<h4 class="font-bold text-wine-950 text-base sm:text-lg">Waldberg (Vrbovec)</h4>
+<p class="text-xs sm:text-sm text-ink-muted">Winnice wokół historycznej altany Lampelberg z ciepłym mikroklimatem.</p>
+<p class="text-xs font-semibold text-wine-900">Top wina: Chardonnay Lampelberg, Ryzlink vlašský</p>
+</div>
+<!-- 7: Oulehla -->
+<div class="bg-white rounded-2xl p-4 border border-wine-200/90 shadow-sm space-y-1.5">
+<h4 class="font-bold text-wine-950 text-base sm:text-lg">Oulehla (Dolní Kounice)</h4>
+<p class="text-xs sm:text-sm text-ink-muted">Słynne czerwone gleby granitowe, dające bezkonkurencyjne wina czerwone i treściwe biele.</p>
+<p class="text-xs font-semibold text-wine-900">Top wina: Frankovka Na Nivách, Chardonnay Karlov</p>
+</div>
+<!-- 8: Lahofer -->
+<div class="bg-white rounded-2xl p-4 border border-wine-200/90 shadow-sm space-y-1.5">
+<h4 class="font-bold text-wine-950 text-base sm:text-lg">Lahofer (Dobšice)</h4>
+<p class="text-xs sm:text-sm text-ink-muted">Znana ze zjawiskowej falującej winiarni wtopionej w krajobraz winorośli.</p>
+<p class="text-xs font-semibold text-wine-900">Top wina: Frühroter Veltliner, Cuvée Rajská VOC, Veltlín Volné pole</p>
+</div>
+<!-- 9: Halkoci -->
+<div class="bg-white rounded-2xl p-4 border border-wine-200/90 shadow-sm space-y-1.5">
+<h4 class="font-bold text-wine-950 text-base sm:text-lg">Halkoci (Šatov)</h4>
+<p class="text-xs sm:text-sm text-ink-muted">Klimatyczna winiarnia rzemieślnicza w Šatovie słynąca z wyrazistego charakteru win.</p>
+<p class="text-xs font-semibold text-wine-900">Top wina: Ryzlink TYPIK, Veltlín², suchá Pálava SUPA</p>
+</div>
+<!-- 10: Rzemieślnicy & Naturalni -->
+<div class="bg-white rounded-2xl p-4 border border-wine-200/90 shadow-sm space-y-1.5">
+<h4 class="font-bold text-wine-950 text-base sm:text-lg">Ampelos, Simenon &amp; Dobrá Vinice</h4>
+<p class="text-xs sm:text-sm text-ink-muted"><strong>Ampelos</strong> (stacja badawcza Vrbovec - odmiana Veritas), <strong>Simenon</strong> (Chvalovice) oraz <strong>Dobrá Vinice</strong> (wina naturalne i gliniane amfory Qvevri).</p>
+</div>
+</div>
+</div>
+<!-- Część 4: Podpowiedź sommeliera na Święto Marcina -->
+<div class="bg-amber-50/80 border border-amber-300/90 rounded-2xl p-4 sm:p-5 flex items-start gap-3.5 shadow-xs" style="border: 1px solid rgba(212, 175, 55, 0.6); background: #fdfbf3;">
+<span class="text-3xl">💡</span>
+<div class="space-y-1">
+<div class="font-bold text-amber-950 text-base sm:text-lg">Podpowiedź sommeliera na Święto Marcina</div>
+<p class="text-sm sm:text-base text-amber-950 leading-relaxed">
+        Przy stoiskach i nalewakach nie pytaj jedynie o „młode wino”, lecz celuj w odmiany <strong>Müller Thurgau</strong> oraz <strong>Muškát moravský</strong> (wina białe o rześkiej owocowości) lub młodą <strong>Svatovavřinecké</strong> i <strong>Modrý Portugal</strong> (czerwone o niskich taninach, które wprost stworzono do tłustej gęsiny).
+      </p>
+</div>
+</div>
+</section>
+<!-- ========================================================
+       SEKCJA 3: ZAKTUALIZOWANA LISTA RESTAURACJI (DOCUMENT_4)
+       ======================================================== -->
+<section class="p-4 sm:p-7 flex-1 hidden space-y-6" id="section-restauracje">
+<div class="bg-gradient-to-r from-wine-100/90 via-wine-50/80 to-surface p-4 sm:p-6 rounded-2xl border border-wine-200" style="border: 1px solid rgba(212, 175, 55, 0.45); background: linear-gradient(90deg, #faedf0 0%, #fdf8eb 55%, #ffffff 100%);">
+<div class="text-xs uppercase font-extrabold text-wine-900 tracking-wider">Gastronomia Znojmo &amp; Šaldorf · DOCUMENT_4</div>
+<h2 class="font-display text-2xl sm:text-3xl font-bold text-wine-950 mt-1">🍽️ Lista Sprawdzonych Restauracji</h2>
+<p class="text-ink text-sm sm:text-base mt-1.5 leading-relaxed">
+      Aktualna lista lokali w centrum Znojma, propozycje na szybki obiad oraz restauracja w Novým Šaldorfie na sobotni obiad grupowy.
+    </p>
+</div>
+<!-- Kategoria 1: Główne rekomendacje w centrum -->
+<div class="space-y-4">
+<h3 class="font-display text-xl font-bold text-wine-950 flex items-center gap-2">
+<span>⭐</span> Główne rekomendacje w centrum Znojma
+    </h3>
+<!-- 1: Hospudka MaxWilliam -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm flex flex-col justify-between gap-3" style="border: 1px solid rgba(212, 175, 55, 0.45); border-left: 4px solid #d4af37;">
+<div>
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<span class="text-xs font-bold uppercase tracking-wider text-wine-800 bg-wine-100 px-2.5 py-0.5 rounded border border-wine-200">U Brány 435/1 · Znojmo</span>
+<span class="text-xs font-bold text-amber-900 bg-amber-100 px-2.5 py-0.5 rounded border border-amber-300">4,7 / 5 (1 022 opinii)</span>
+</div>
+<h4 class="text-lg sm:text-xl font-bold text-wine-950">Hospůdka MaxWilliam</h4>
+<p class="text-ink-muted text-[15px] sm:text-base mt-1 leading-relaxed">
+          Nasz <strong>pierwszy wybór na środę</strong>! Słynie z bezkonkurencyjnej pieczonej golonki i doskonale zamarynowanych, chrupiących żeberek. Świetna atmosfera tradycyjnej czeskiej gospody.
+        </p>
+</div>
+<a class="tap-target inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-wine-800 text-white font-bold text-sm sm:text-base rounded-xl hover:bg-wine-900 transition-colors shadow-xs" href="https://www.google.com/maps/search/?api=1&amp;query=Hosp%C5%AFdka%20MaxWilliam%2C%20U%20Br%C3%A1ny%20435%2F1%2C%20Znojmo" rel="noopener noreferrer" target="_blank">
+        📍 Nawiguj do MaxWilliam w Mapach Google ↗
+      </a>
+</div>
+<!-- 2: Mikulas Bistro -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm flex flex-col justify-between gap-3">
+<div>
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<span class="text-xs font-bold uppercase tracking-wider text-wine-800 bg-wine-100 px-2.5 py-0.5 rounded border border-wine-200">Staré Město 109/1</span>
+<span class="text-xs font-bold text-amber-900 bg-amber-100 px-2.5 py-0.5 rounded border border-amber-300">4,6 / 5 (840 opinii)</span>
+</div>
+<h4 class="text-lg sm:text-xl font-bold text-wine-950">Mikuláš Bistro</h4>
+<p class="text-ink-muted text-[15px] sm:text-base mt-1 leading-relaxed">
+          Wybitne regionalne bistro w zabytkowej dzielnicy. Słynie z tradycyjnego świętomarcińskiego udka z gęsi z kapustą i knedlikami (ok. 650 Kč) lub autorskiego 4-daniowego menu gęsiego (990 Kč). <em>Wymóg wcześniejszej rezerwacji stolika.</em>
+</p>
+</div>
+<a class="tap-target inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-wine-800 text-white font-bold text-sm sm:text-base rounded-xl hover:bg-wine-900 transition-colors shadow-xs" href="https://www.google.com/maps/search/?api=1&amp;query=Mikul%C3%A1%C5%A1%20Bistro%2C%20Star%C3%A9%20M%C4%9Bsto%20109%2F1%2C%20Znojmo" rel="noopener noreferrer" target="_blank">
+        📍 Nawiguj do Mikuláš Bistro w Mapach Google ↗
+      </a>
+</div>
+<!-- 3: U Divadla -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm flex flex-col justify-between gap-3">
+<div>
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<span class="text-xs font-bold uppercase tracking-wider text-wine-800 bg-wine-100 px-2.5 py-0.5 rounded border border-wine-200">Náměstí Republiky 878/16</span>
+<span class="text-xs font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded border border-emerald-200">4,5 / 5 (136 opinii)</span>
+</div>
+<h4 class="text-lg sm:text-xl font-bold text-wine-950">Restaurace U Divadla</h4>
+<p class="text-ink-muted text-[15px] sm:text-base mt-1 leading-relaxed">
+          Świetna opcja na piątek po pochodzie św. Marcina. Pieczona gęś/kaczka z kapustą i knedlikami (399 Kč porcja / 599 Kč pełna), świeże lane piwo z tanka i przestronna sala mogąca pomieścić większą ekipę.
+        </p>
+</div>
+<a class="tap-target inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-wine-800 text-white font-bold text-sm sm:text-base rounded-xl hover:bg-wine-900 transition-colors shadow-xs" href="https://www.google.com/maps/search/?api=1&amp;query=Restaurace%20U%20Divadla%2C%20N%C3%A1m%C4%9Bst%C3%AD%20Republiky%2016%2C%20Znojmo" rel="noopener noreferrer" target="_blank">
+        📍 Nawiguj do U Divadla w Mapach Google ↗
+      </a>
+</div>
+</div>
+<!-- Kategoria 2: Na obiad / w rezerwie -->
+<div class="space-y-4 pt-2">
+<h3 class="font-display text-xl font-bold text-wine-950 flex items-center gap-2">
+<span>🥣</span> Na obiad i czeskie klasyki w ciągu dnia
+    </h3>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<!-- Bufet -->
+<div class="bg-white rounded-2xl p-4 border border-wine-200/90 shadow-xs flex flex-col justify-between gap-2">
+<div>
+<div class="flex items-center justify-between gap-1 text-xs font-bold mb-1">
+<span class="text-amber-900 bg-amber-100 px-2 py-0.5 rounded border border-amber-200">4,7 / 5 (60)</span>
+<span class="text-ink-muted">Do 15:00</span>
+</div>
+<h4 class="font-bold text-wine-950 text-base">Bufet na rynku</h4>
+<p class="text-xs text-ink-muted mt-1 leading-snug">Masarykovo náměstí 16. Błyskawiczny, tradycyjny domowy obiad, wyborny segedyn i gulasze w niskiej cenie.</p>
+</div>
+<a class="text-xs font-bold text-wine-900 hover:underline pt-1" href="https://www.google.com/maps/search/?api=1&amp;query=Masarykovo%20n%C3%A1m%C4%9Bst%C3%AD%2016%2C%20Znojmo" target="_blank">Otwórz adres w Mapach ↗</a>
+</div>
+<!-- U Karla -->
+<div class="bg-white rounded-2xl p-4 border border-wine-200/90 shadow-xs flex flex-col justify-between gap-2">
+<div>
+<div class="flex items-center justify-between gap-1 text-xs font-bold mb-1">
+<span class="text-amber-900 bg-amber-100 px-2 py-0.5 rounded border border-amber-200">4,5 / 5 (587)</span>
+<span class="text-ink-muted">10:30–15:00</span>
+</div>
+<h4 class="font-bold text-wine-950 text-base">Restaurace U Karla</h4>
+<p class="text-xs text-ink-muted mt-1 leading-snug">Mikulášské nám. 48/6. Klasyczny czeski lokal obiadowy z menu dnia zlokalizowany obok kościoła św. Mikołaja.</p>
+</div>
+<a class="text-xs font-bold text-wine-900 hover:underline pt-1" href="https://www.google.com/maps/search/?api=1&amp;query=Restaurace%20U%20Karla%2C%20Mikul%C3%A1%C5%A1sk%C3%A9%20n%C3%A1m.%2048%2F6%2C%20Znojmo" target="_blank">Otwórz adres w Mapach ↗</a>
+</div>
+<!-- U Zlate Konve -->
+<div class="bg-white rounded-2xl p-4 border border-wine-200/90 shadow-xs flex flex-col justify-between gap-2">
+<div>
+<div class="flex items-center justify-between gap-1 text-xs font-bold mb-1">
+<span class="text-amber-900 bg-amber-100 px-2 py-0.5 rounded border border-amber-200">4,0 / 5 (664)</span>
+<span class="text-ink-muted">Do 16:00</span>
+</div>
+<h4 class="font-bold text-wine-950 text-base">U Zlaté Konve</h4>
+<p class="text-xs text-ink-muted mt-1 leading-snug">Masarykovo nám. 331/9. Legendarna svíčková na smetaně oraz znojemska pieczeń wołowa tuż przy głównym rynku.</p>
+</div>
+<a class="text-xs font-bold text-wine-900 hover:underline pt-1" href="https://www.google.com/maps/search/?api=1&amp;query=U%20Zlat%C3%A9%20Konve%2C%20Masarykovo%20n%C3%A1m%C4%9Bst%C3%AD%209%2C%20Znojmo" target="_blank">Otwórz adres w Mapach ↗</a>
+</div>
+</div>
+</div>
+<!-- Kategoria 3: Sobota 14 XI – Nový Šaldorf -->
+<div class="space-y-3 pt-2">
+<h3 class="font-display text-xl font-bold text-wine-950 flex items-center gap-2">
+<span>🥂</span> Sobota 14 XI – Nový Šaldorf
+    </h3>
+<div class="bg-white rounded-2xl p-5 border border-wine-200/90 shadow-sm flex flex-col justify-between gap-3" style="border: 1px solid rgba(212, 175, 55, 0.45); border-left: 4px solid #7c1c32;">
+<div>
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<span class="text-xs font-bold uppercase tracking-wider text-wine-800 bg-wine-100 px-2.5 py-0.5 rounded border border-wine-200">Vinařská 56/S · Nový Šaldorf</span>
+<span class="text-xs font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded border border-emerald-200">4,3 / 5 (1 131 opinii)</span>
+</div>
+<h4 class="text-lg sm:text-xl font-bold text-wine-950">Restaurace &amp; Penzion U Tří Jasanů</h4>
+<p class="text-ink text-[15px] sm:text-base mt-1 leading-relaxed">
+          Idealna baza na <strong>główny sobotni obiad dla całej grupy (9 dorosłych + 2 dzieci)</strong>. Duża, przestronna sala restauracyjna, pełne menu świętomarcińskie z pieczoną gęsiną, knedlikami i doskonałym wyborem win z sąsiadujących piwnic Šaldorfu.
+        </p>
+</div>
+<a class="tap-target inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-wine-800 text-white font-bold text-sm sm:text-base rounded-xl hover:bg-wine-900 transition-colors shadow-xs" href="https://www.google.com/maps/search/?api=1&amp;query=Restaurace%20%26%20Penzion%20U%20T%C5%99%C3%AD%20Jasan%C5%AF%2C%20Nov%C3%BD%20%C5%A0aldorf" rel="noopener noreferrer" target="_blank">
+        📍 Nawiguj do U Tří Jasanů w Mapach Google ↗
+      </a>
+</div>
+</div>
+</section>
+<!-- ========================================================
+       SEKCJA 4: TREKKINGI (Szlaki & Przyroda)
+       ======================================================== -->
+<section class="p-4 sm:p-7 flex-1 hidden space-y-4" id="section-trekkingi">
+<div class="bg-gradient-to-r from-wine-100/90 via-wine-50/80 to-surface p-4 sm:p-5 rounded-2xl border border-wine-200">
+<div class="text-xs uppercase font-extrabold text-wine-900 tracking-wider">Szlaki &amp; Przyroda</div>
+<h2 class="font-display text-2xl font-bold text-wine-950 mt-0.5">🥾 Trasy Piesze i Punkty Widokowe</h2>
+<p class="text-ink-muted text-sm sm:text-base mt-1">Najpiękniejsze ścieżki pośród morawskich winnic, przełomu rzeki Dyji i Parku Narodowego Podyjí.</p>
+</div>
+<div class="space-y-4">
+<!-- Trasa 1 -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm space-y-2">
+<div class="flex items-center justify-between gap-2">
+<span class="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded border border-emerald-200">Szlak winiarski</span>
+<span class="text-xs font-bold text-wine-800 bg-wine-100 px-2.5 py-0.5 rounded">Główna sobota</span>
+</div>
+<h3 class="text-lg sm:text-xl font-bold text-wine-950">Marsz przez Konice, Popice i Havraníky do Šatova</h3>
+<p class="text-ink-muted text-[15px] sm:text-base leading-relaxed">
+        Malowniczy marsz wijący się przez łagodne wzgórza, winnice i wrzosowiska regionu znojemskiego. Dla chętnych możliwość skrócenia trasy poprzez start bezpośrednio w Popicach. Meta przy kościele i winiarniach w Šatovie.
+      </p>
+<div class="pt-1 flex flex-wrap gap-2 text-xs font-medium text-wine-900">
+<span class="bg-wine-50 border border-wine-200 px-2.5 py-1 rounded-md">🚶 Trasa: 8–11 km (wersja skrócona ~5 km)</span>
+<span class="bg-wine-50 border border-wine-200 px-2.5 py-1 rounded-md">🍇 Krajobraz: Winnice i kapliczki</span>
+</div>
+</div>
+<!-- Trasa 2 -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm space-y-2">
+<div class="flex items-center justify-between gap-2">
+<span class="text-xs font-bold uppercase tracking-wider text-wine-800 bg-wine-100 px-2.5 py-0.5 rounded border border-wine-200">Granica &amp; Kanion</span>
+<span class="text-xs font-semibold text-ink-muted">Podyjí / Thayatal</span>
+</div>
+<h3 class="text-lg sm:text-xl font-bold text-wine-950">Hardegg nad Dyją &amp; Zabytkowy Most Pieszo-Rowerowy</h3>
+<p class="text-ink-muted text-[15px] sm:text-base leading-relaxed">
+        Przejście przez historyczny, drewniano-stalowy most łączący Czechy z Austrią na granicy Parków Narodowych Podyjí i Thayatal. Spacer w dół kanionu rzeki Dyji z widokiem na monumentalny zamek Burg Hardegg górujący nad najmniejszym miasteczkiem Austrii.
+      </p>
+<div class="pt-1 flex flex-wrap gap-2 text-xs font-medium text-wine-900">
+<span class="bg-wine-50 border border-wine-200 px-2.5 py-1 rounded-md">🌲 Park Narodowy</span>
+<span class="bg-wine-50 border border-wine-200 px-2.5 py-1 rounded-md">🌉 Granica państwowa</span>
+</div>
+</div>
+<!-- Trasa 3 -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm space-y-2">
+<div class="flex items-center justify-between gap-2">
+<span class="text-xs font-bold uppercase tracking-wider text-wine-800 bg-wine-100 px-2.5 py-0.5 rounded border border-wine-200">Starówka &amp; Tarasy</span>
+<span class="text-xs font-semibold text-ink-muted">Znojmo</span>
+</div>
+<h3 class="text-lg sm:text-xl font-bold text-wine-950">Mury obronne i Karolíniny sady</h3>
+<p class="text-ink-muted text-[15px] sm:text-base leading-relaxed">
+        Spacer widokowy poprowadzony po zabytkowych tarasach i południowych murach obronnych Znojma. Schodzące kaskadowo alejki oferują fenomenalny wgląd w dolinę rzeki Dyje, zaporę wodną oraz rozległe zbocza winnicy Rajská zahrada.
+      </p>
+<div class="pt-1 flex flex-wrap gap-2 text-xs font-medium text-wine-900">
+<span class="bg-wine-50 border border-wine-200 px-2.5 py-1 rounded-md">🏰 Historyczne fortyfikacje</span>
+<span class="bg-wine-50 border border-wine-200 px-2.5 py-1 rounded-md">📸 Świetny punkt fotograficzny</span>
+</div>
+</div>
+<!-- Trasa 4 -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm space-y-2">
+<div class="flex items-center justify-between gap-2">
+<span class="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded border border-amber-200">Skały &amp; Punkty widokowe</span>
+<span class="text-xs font-semibold text-ink-muted">Dolina Dyi</span>
+</div>
+<h3 class="text-lg sm:text-xl font-bold text-wine-950">Králův stolec oraz Polski Kamień</h3>
+<p class="text-ink-muted text-[15px] sm:text-base leading-relaxed">
+        Skalny punkt widokowy Králův stolec (Królewski Stół), z którego według legendy Jan III Sobieski doglądał przeprawy wojsk idących pod Wiedeń w 1683 r. Obok szlaku znajduje się również formacja Polski Kamień z zachwycającym widokiem na meandry Dyi i leśne ostępy.
+      </p>
+<div class="pt-1 flex flex-wrap gap-2 text-xs font-medium text-wine-900">
+<span class="bg-wine-50 border border-wine-200 px-2.5 py-1 rounded-md">👑 Historia Sobieskiego</span>
+<span class="bg-wine-50 border border-wine-200 px-2.5 py-1 rounded-md">🏞️ Panorama meandrów</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================
+       SEKCJA 5: DLA DZIECI
+       ======================================================== -->
+<section class="p-4 sm:p-7 flex-1 hidden space-y-4" id="section-atrakcje">
+<div class="bg-gradient-to-r from-wine-100/90 via-wine-50/80 to-surface p-4 sm:p-5 rounded-2xl border border-wine-200">
+<div class="text-xs uppercase font-extrabold text-wine-900 tracking-wider">Miejsca &amp; Rodzina</div>
+<h2 class="font-display text-2xl font-bold text-wine-950 mt-0.5">🏰 Dla dzieci</h2>
+<p class="text-ink-muted text-sm sm:text-base mt-1">Sprawdzone miejsca na spacery na pogodę oraz bezkonkurencyjne opcje na wypadek deszczu.</p>
+</div>
+<div class="space-y-4">
+<!-- 1: Karolininy sady -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm space-y-1.5">
+<div class="flex items-center justify-between gap-2 mb-1">
+<span class="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded border border-emerald-200">☀️ Na pogodę z dziećmi</span>
+<span class="text-xs font-semibold text-ink-muted">Teren miejski</span>
+</div>
+<h3 class="text-lg sm:text-xl font-bold text-ink">Karolíniny sady</h3>
+<p class="text-ink-muted text-[15px] sm:text-base leading-relaxed">
+        Malowniczy tarasowy park zieleni rozciągający się pod południowymi murami obronnymi Znojma. Idealne, bezpieczne alejki na spacer na świeżym powietrzu, dużo wolnej przestrzeni oraz piękna panorama meandrów Dyi.
+      </p>
+</div>
+<!-- 2: Znojemske podzemi -->
+<div class="bg-amber-50/50 rounded-2xl p-4 sm:p-5 border border-amber-200/90 shadow-sm space-y-1.5">
+<div class="flex items-center justify-between gap-2 mb-1">
+<span class="text-xs font-bold uppercase tracking-wider text-amber-900 bg-amber-100 px-2.5 py-0.5 rounded border border-amber-300">🌧️ Główna opcja na deszcz</span>
+<span class="text-xs font-bold text-wine-900 bg-wine-100 px-2 py-0.5 rounded">Zwróć uwagę</span>
+</div>
+<h3 class="text-lg sm:text-xl font-bold text-amber-950">Znojemské podzemí</h3>
+<p class="text-amber-950 text-[15px] sm:text-base leading-relaxed">
+        Jeden z największych podziemnych systemów korytarzy w Europie Środkowej (ponad 27 km tras). Klasyczna trasa jest przystosowana dla zwiedzających i doskonale chroni przed wiatrem i deszczem (warto zabrać cieplejsze bluzy dla dzieci).
+      </p>
+<div class="p-2.5 bg-white/80 rounded-xl border border-amber-300/80 text-xs sm:text-sm text-amber-950 mt-2 font-medium">
+        ℹ️ <strong>Wskazówka:</strong> Przed zakupem biletów warto sprawdzić aktualne zasady wejścia dla małych dzieci (limity wiekowe na poszczególne poziomy tras i zalecenia dotyczące wózków).
+      </div>
+</div>
+<!-- 3: Rotunda -->
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-wine-200/90 shadow-sm space-y-1.5">
+<div class="flex items-center justify-between gap-2 mb-1">
+<span class="text-xs font-bold uppercase tracking-wider text-wine-800 bg-wine-100 px-2.5 py-0.5 rounded border border-wine-200">Zabytek UNESCO candidate</span>
+<span class="text-xs font-semibold text-ink-muted">Wzgórze zamkowe</span>
+</div>
+<h3 class="text-lg sm:text-xl font-bold text-ink">Rotunda św. Katarzyny</h3>
+<p class="text-ink-muted text-[15px] sm:text-base leading-relaxed">
+        Romańska perła architektury z XI wieku usytuowana na wzgórzu zamkowym, skrywająca unikalne romańskie freski przedstawiające dynastię Przemyślidów. Wokół rozciąga się bezpieczny dziedziniec z tarasem widokowym na całe Znojmo.
+      </p>
+</div>
+</div>
+</section>
+<!-- ========================================================
+       FOOTER
+       ======================================================== -->
+<footer class="mt-auto border-t border-wine-200 bg-wine-50/50 px-4 py-6 text-center text-xs sm:text-sm text-ink-muted space-y-2" style="border-top: 1px solid rgba(212, 175, 55, 0.35);">
+<div class="flex items-center justify-center gap-2 font-bold text-wine-900 text-sm sm:text-base">
+<span>🪿</span> Husa · Znojmo 2026 · Ekipa Wrocław
+  </div>
+<p>Wszystkie punkty i pinezki otwierają się bezpośrednio w aplikacji Google Maps.</p>
+</footer>
+</main>
+<!-- ========================================================
+     INTERACTIVE JAVASCRIPT LOGIC
+     ======================================================== -->
+<script>
+  let activeMainSection = 'plan';
+  let activeDay = 'wed';
+
+  // Toggle Organization Accordion
+  function toggleOrgAccordion(forceOpen = false) {
+    const content = document.getElementById('org-content');
+    const chevron = document.getElementById('org-chevron');
+    
+    if (forceOpen || content.classList.contains('hidden')) {
+      content.classList.remove('hidden');
+      chevron.textContent = 'Zwiń ▲';
+      chevron.classList.add('bg-wine-300');
+      if (forceOpen) {
+        document.getElementById('org-toggle-btn').scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      content.classList.add('hidden');
+      chevron.textContent = 'Rozwiń ▼';
+      chevron.classList.remove('bg-wine-300');
+    }
+  }
+
+  // Switch between the 5 Primary Sections
+  function switchMainSection(sectionId) {
+    activeMainSection = sectionId;
+    const sections = ['plan', 'winoteki', 'restauracje', 'trekkingi', 'atrakcje'];
+    
+    sections.forEach(sec => {
+      const secEl = document.getElementById('section-' + sec);
+      const navBtn = document.getElementById('nav-' + sec);
+      if (secEl) {
+        if (sec === sectionId) {
+          secEl.classList.remove('hidden');
+        } else {
+          secEl.classList.add('hidden');
+        }
+      }
+      if (navBtn) {
+        if (sec === sectionId) {
+          navBtn.classList.add('active');
+          navBtn.style.border = '1px solid rgba(212, 175, 55, 0.65)';
+          navBtn.style.boxShadow = '0 4px 14px -2px rgba(124, 28, 50, 0.35), inset 0 -2px 0 #d4af37';
+        } else {
+          navBtn.classList.remove('active');
+          navBtn.style.border = '1px solid #f6cfd6';
+          navBtn.style.boxShadow = '';
+        }
+      }
+    });
+
+    const mainNav = document.querySelector('nav');
+    if (mainNav) {
+      mainNav.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  // Switch Day in Nested Plan
+  function switchDay(dayKey) {
+    activeDay = dayKey;
+    const days = ['wed', 'thu', 'fri', 'sat', 'sun'];
+
+    days.forEach(d => {
+      const tabBtn = document.getElementById('day-tab-' + d);
+      const paneEl = document.getElementById('day-content-' + d);
+
+      if (tabBtn) {
+        if (d === dayKey) {
+          tabBtn.classList.add('active');
+          tabBtn.style.border = '1px solid rgba(212, 175, 55, 0.65)';
+          tabBtn.style.boxShadow = 'rgba(90, 17, 34, 0.32) 0px 4px 12px -2px, rgb(212, 175, 55) 0px 2px 0px inset';
+        } else {
+          tabBtn.classList.remove('active');
+          tabBtn.style.border = '1px solid #f6cfd6';
+          tabBtn.style.boxShadow = '';
+        }
+      }
+
+      if (paneEl) {
+        if (d === dayKey) {
+          paneEl.classList.remove('hidden');
+        } else {
+          paneEl.classList.add('hidden');
+        }
+      }
+    });
+  }
+</script>
+</body></html>
