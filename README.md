@@ -12,7 +12,9 @@ site/            ← gotowa strona (to publikujemy)
   sw.js          ← tryb offline na GitHub Pages
 gas/             ← wersja dla Google Apps Script (jeden plik)
 tools/build-gas.mjs
+tools/salon-vin/ ← skrypty danych Salon vín (pobieranie, parsowanie, scalanie, audyt)
 docs/            ← materiały źródłowe i makieta
+  salon-vin/     ← wyniki Salon vín ČR 2024–2026 jako JSON (+ README z opisem pól)
 ```
 
 ## Podgląd lokalny
@@ -24,6 +26,8 @@ Wystarczy otworzyć `site/index.html` w przeglądarce. Tryb offline działa tylk
 Edytuj `site/js/data.js`.
 
 Wina: rejestr win, winiarni, Top 10, czempionów i katalogu jest w `site/js/wines.js`. Zdjęcia butelek i logo pobiera `python tools/build-wine-media.py` (źródła w słowniku `BOTTLES` i `LOGOS`). Skrypt zapisuje `site/img/wina/`, `site/img/logo/` i `site/js/wine-media.js` z podpisami źródeł. Wina bez zdjęcia dostają na stronie stylizowaną butelkę.
+
+Dane Salon vín ČR (krajowy konkurs win, Národní vinařské centrum, Valtice): w `docs/salon-vin/salon-vin-2024.json`, `-2025.json` i `-2026.json` są wszystkie złote wina z pełną kartą z katalogu i punktami, srebrne z punktami oraz profile producentów. Rok 2026 ma dodatkowo linki do kart, e-sklepu, zdjęć i GPS. Opis pól, zasady scalania i znane błędy źródeł: `docs/salon-vin/README.md`. Dopasowanie do win z naszej strony: `docs/Salon-vin-2024-2026-wina-ze-strony.md`. Dane są jeszcze **nie** podłączone do `site/`. Odtworzenie i kontrola jakości (`audit.py`, `audit2.py`, `audit3.py`): `tools/salon-vin/README.md`. Źródłowe PDF/XLSX (ok. 12 MB na rok) nie są w repozytorium, ich adresy są w polu `sources` każdego pliku.
 
 Podglądy map tras: `python tools/build-route-maps.py` składa kafelki OpenStreetMap ze śladem GPX w `site/img/trasy/<id>.webp` (+ `site/js/route-maps.js`). Kafelki są w pamięci podręcznej `docs/trasy-kafelki/`, więc ponowne uruchomienie ich nie pobiera.
 
