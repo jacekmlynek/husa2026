@@ -150,6 +150,28 @@
     return -1;
   }
 
+  /* Zdjęcia lokali (tools/build-venue-media.py): baner w karcie restauracji, miniatura w planie dnia. */
+  var VM = window.VENUE_MEDIA || {};
+  function venueCredit(id) {
+    var v = VM[id];
+    return v && v.img ? '<p class="vcredit">Zdjęcie: ' + ext(v.creditUrl, v.credit, 'credit') + '</p>' : '';
+  }
+  function venueBanner(id, name) {
+    var v = VM[id];
+    if (!v || !v.img) return '';
+    return '<figure class="vbanner"><img src="' + v.img + '" width="720" height="480" alt="' + attr('Wejście i szyld: ' + name) + '" loading="lazy" decoding="async">' +
+      (v.logo ? '<span class="vbanner__logo' + (v.logoDark ? ' vbanner__logo--dark' : '') + '"><img src="' + v.logo + '" alt="' + attr('Logo: ' + name) + '" loading="lazy"></span>' : '') +
+      '<figcaption>Zdjęcie: ' + ext(v.creditUrl, v.credit, 'credit') + '</figcaption></figure>';
+  }
+  function venueThumb(id, name) {
+    var v = VM[id];
+    return v && v.img ? '<img class="vthumb" src="' + v.img + '" width="720" height="480" alt="' + attr('Wejście: ' + name) + '" loading="lazy" decoding="async">' : '';
+  }
+  function titled(tag, title, place_, venue) {
+    var head = '<' + tag + '>' + title + '</' + tag + '>' + place(place_);
+    return venue && VM[venue] && VM[venue].img ? '<div class="vhead"><div class="vhead__txt">' + head + '</div>' + venueThumb(venue, title) + '</div>' : head;
+  }
+
   function renderItem(it, isNext) {
     var cls = 'item' + (it.highlight ? ' item--hl' : '') + (isNext ? ' item--next' : '');
     var alt = '';
@@ -157,18 +179,19 @@
       var a = it.alt;
       alt = '<div class="alt' + (a.status === 'rain' ? ' alt--rain' : '') + '">' +
         '<div class="alt__label">' + (a.status ? statusChip(a.status, a.label) : a.label) + '</div>' +
-        '<h4>' + a.title + '</h4>' + place(a.place) + '<p class="small">' + a.text + '</p>' + actions(a.links, a.contacts) +
-        (a.route ? routeLink(a.route) : '') + '</div>';
+        titled('h4', a.title, a.place, a.venue) + '<p class="small">' + a.text + '</p>' + actions(a.links, a.contacts) +
+        (a.route ? routeLink(a.route) : '') + (a.venue ? venueCredit(a.venue) : '') + '</div>';
     }
     return '<li class="' + cls + '">' +
       '<div class="item__top"><span class="time">' + it.time + '</span>' +
       (isNext ? '<span class="next-label">Następne</span>' : '') + statusChip(it.status, it.tag) + '</div>' +
-      '<h3>' + it.title + '</h3>' + place(it.place) +
+      titled('h3', it.title, it.place, it.venue) +
       (it.text ? '<p>' + it.text + '</p>' : '') +
       (it.note ? '<p class="item__note">' + it.note + '</p>' : '') +
       actions(it.links, it.contacts) +
       (it.route ? routeLink(it.route) : '') +
       (it.infoLink ? '<button type="button" class="tlink tlink--btn" data-open-info>' + icon('photo') + '<span>' + it.infoLink + '</span></button>' : '') +
+      (it.venue ? venueCredit(it.venue) : '') +
       alt + '</li>';
   }
 
@@ -197,7 +220,7 @@
   function renderRestaurant(r) {
     var rating = r.rating ? '<span class="rating"><span class="star" aria-hidden="true">★</span> ' + r.rating +
       (r.reviews ? ' <span class="muted">(' + r.reviews + ')</span>' : '') + '<span class="sr"> w Google</span></span>' : '';
-    return '<article class="card">' +
+    return '<article class="card">' + (r.venue ? venueBanner(r.venue, r.name) : '') +
       (r.when ? '<div class="when">' + r.when + '</div>' : '') +
       '<div class="rest__head"><h3>' + r.name + '</h3>' + rating + '</div>' +
       place(r.address) + '<p class="small">' + r.text + '</p>' +
@@ -447,7 +470,7 @@
 
     // Enotéka
     html += '<h2 class="section-title" id="w-enoteka">' + E.title + '</h2>' +
-      '<div class="card">' + place(E.place) + '<p class="small muted hours">' + icon('clock') + '<span>' + E.hours + '</span></p>' +
+      '<div class="card">' + (E.venue ? venueBanner(E.venue, 'Enotéka znojemských vín') : '') + place(E.place) + '<p class="small muted hours">' + icon('clock') + '<span>' + E.hours + '</span></p>' +
       acc('Jak działa karta i dyspenser', '', '<p class="small">' + E.how + '</p>') +
       '<h3 class="sub-h">Kolejność sześciu próbek</h3>' +
       WN.samples.map(function (g) {

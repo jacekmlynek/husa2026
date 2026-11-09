@@ -134,14 +134,14 @@
           },
           {
             time: 'Około 18:00', at: '18:00', status: 'tbc', highlight: true,
-            title: 'Hospůdka MaxWilliam',
+            title: 'Hospůdka MaxWilliam', venue: 'maxwilliam',
             place: 'U Brány 435/1, Znojmo',
             text: 'Pierwszy wybór na obiadokolację dla 4 dorosłych i dziecka. Golonka i żeberka. <strong>Stół do uzgodnienia.</strong>',
             contacts: { tel: ['+420 603 892 962'], email: ['info@maxwilliam.cz'] },
             links: [map('Mapy', M.maxwilliam), web('Kontakt lokalu', 'https://maxwilliam.cz/kontakt/')],
             alt: {
               label: 'W rezerwie',
-              title: 'Mikuláš Bistro',
+              title: 'Mikuláš Bistro', venue: 'mikulas',
               place: 'Staré Město 109/1, Znojmo',
               text: 'Na 11 XI gęsie udko z kapustą i knedlikami za 650 Kč lub menu za 990 Kč. O stół i gęsinę zapytajcie co najmniej dzień wcześniej. Lokal nie łączy stolików.',
               contacts: { tel: ['+420 773 722 884'] },
@@ -185,7 +185,7 @@
           },
           {
             time: 'Po drodze', status: 'optional',
-            title: 'Vinothek Weinquartier w Retz',
+            title: 'Vinothek Weinquartier w Retz', venue: 'weinquartier',
             place: 'Hauptplatz 4–5, Retz',
             text: 'Czynna w czwartek 10:00–18:00. Poproście o wytrawnego Grüner Veltlinera. Grupy od 10 osób zgłaszają się wcześniej.',
             contacts: { email: ['office@weinquartier.at'] },
@@ -199,7 +199,7 @@
           },
           {
             time: '16:00', at: '16:00', status: 'confirmed', highlight: true,
-            title: 'Vinárna Jezuitská',
+            title: 'Vinárna Jezuitská', venue: 'jezuitska',
             place: 'Jezuitská 176/10, Znojmo',
             text: '<strong>Degustacja wina od 16:00.</strong> W trakcie mogą pojawić się drobne przekąski. Do wina można też zamówić np. zapiekany hermelín, sery albo pastę ze skwarków. O młode wina rocznika 2026 zapytajcie obsługę.',
             note: 'Lokal działa w czwartek 16:00–23:00 i ma ponad 40 win na kieliszki.',
@@ -240,7 +240,7 @@
           },
           {
             time: 'Obiad', at: '13:00',
-            title: 'Szybki obiad przy rynku',
+            title: 'Szybki obiad przy rynku', venue: 'bufet',
             text: 'Bufet Masarykovo náměstí 16, czynny do 15:00. Na późniejszy posiłek lub kolację sprawdźcie U Divadla.',
             links: [map('Bufet', M.bufet), map('U Divadla', M.divadlo)]
           },
@@ -253,14 +253,14 @@
           },
           {
             time: 'Wieczorem', at: '19:00',
-            title: 'Enotéka znojemských vín',
+            title: 'Enotéka znojemských vín', venue: 'enoteka',
             place: 'Hradní 2, teren browaru',
             text: 'W piątek czynna do 24:00. Instrukcja i kolejność próbek są w zakładce <strong>Wino</strong>. Dla chętnych dyskoteka.',
             links: [web('Godziny i zasady', W.enoteka)]
           },
           {
             time: 'Kolacja', status: 'optional',
-            title: 'Restaurace U Divadla',
+            title: 'Restaurace U Divadla', venue: 'divadlo',
             place: 'Náměstí Republiky 878/16',
             text: 'Konfitowana gęś z kapustą i knedlikami za 399 Kč, pełne menu z gęsią za 599 Kč. Warto zarezerwować.',
             contacts: { email: ['recepce@udivadlahotel.cz'] },
@@ -268,7 +268,7 @@
           },
           {
             time: 'Wieczorem', status: 'alt',
-            title: 'Košt w Jezuitskiej',
+            title: 'Košt w Jezuitskiej', venue: 'jezuitska',
             text: 'Osobny wieczór świętomarciński za 800 Kč/os.: ponad 20 próbek młodych win i długo pieczona gęś bez kości z chlebem. Godzinę, miejsca i warunki dla dzieci potwierdźcie w lokalu.',
             contacts: { tel: ['+420 739 080 154'] },
             links: [web('Program koštu', 'https://www.vinoteka-jezuitska.cz/degustace-akce.html')]
@@ -306,7 +306,7 @@
           },
           {
             time: '16:30', at: '16:30', status: 'tbc', highlight: true,
-            title: 'Restaurace & Penzion U Tří Jasanů',
+            title: 'Restaurace & Penzion U Tří Jasanů', venue: 'jasanu',
             place: 'Vinařská 56/S, Nový Šaldorf',
             text: 'Obiad dla 9 dorosłych i 2 siedmiolatków. Sala ma 50 miejsc i osobny salonik. <strong>Wspólny stół i gęsina do potwierdzenia.</strong>',
             contacts: { tel: ['+420 777 808 385'], email: ['penzionutrijasanu@seznam.cz'] },
@@ -358,7 +358,7 @@
           title: 'Główne rekomendacje w centrum',
           items: [
             {
-              name: 'Hospůdka MaxWilliam', rating: '4,7', reviews: '1 022', when: 'Środa · pierwszy wybór',
+              name: 'Hospůdka MaxWilliam', venue: 'maxwilliam', rating: '4,7', reviews: '1 022', when: 'Środa · pierwszy wybór',
               address: 'U Brány 435/1, Znojmo',
               text: 'Najwyższa ocena wśród sprawdzonych gospód z pasującym menu. Specjalności to pieczona golonka i marynowane żeberka.',
               hours: 'Śr.–czw. 13:00–23:00, pt. 13:00–24:00',
@@ -366,14 +366,14 @@
               links: [map('Mapy', M.maxwilliam), web('Specjalności', 'https://maxwilliam.cz/'), web('Godziny i rezerwacje', 'https://maxwilliam.cz/kontakt/')]
             },
             {
-              name: 'Mikuláš Bistro', rating: '4,6', reviews: '840', when: 'Środa · rezerwa',
+              name: 'Mikuláš Bistro', venue: 'mikulas', rating: '4,6', reviews: '840', when: 'Środa · rezerwa',
               address: 'Staré Město 109/1, Znojmo',
               text: 'Regionalne bistro w nowoczesnym wydaniu. Na 11, 13 i 14 XI gęsie udko z kapustą i knedlikami za 650 Kč, czterodaniowe menu 990 Kč. Rezerwacja co najmniej dzień wcześniej. Lokal nie łączy stolików.',
               contacts: { tel: ['+420 773 722 884'], email: ['info@mikulasznojmo.cz'] },
               links: [map('Mapy', M.mikulas), web('Zasady rezerwacji', 'https://www.mikulasznojmo.cz/'), pdf('Menu świętomarcińskie', 'https://www.mikulasznojmo.cz/wp-content/uploads/2026/10/mikulas-menu-husa-2026.pdf')]
             },
             {
-              name: 'Restaurace U Divadla', rating: '4,5', reviews: '136', when: 'Piątek · gęsina',
+              name: 'Restaurace U Divadla', venue: 'divadlo', rating: '4,5', reviews: '136', when: 'Piątek · gęsina',
               address: 'Náměstí Republiky 878/16, Znojmo',
               text: 'Tradycyjna gęś lub kaczka z kapustą i knedlikami. Menu specjalne 5–15 XI: gęś 399 Kč, pełne menu z gęsią 599 Kč. Lokal zaleca wcześniejszą rezerwację.',
               hours: '7:00–24:00',
@@ -387,7 +387,7 @@
           compact: true,
           items: [
             {
-              name: 'Bufet Masarykovo náměstí 16', rating: '4,7', reviews: '60',
+              name: 'Bufet Masarykovo náměstí 16', venue: 'bufet', rating: '4,7', reviews: '60',
               address: 'Masarykovo náměstí 16',
               text: 'Prosty bufet, bywają czeskie dania dnia, np. segedyn z knedlikiem.',
               hours: 'Pon.–pt. 8:00–15:00',
@@ -395,7 +395,7 @@
               links: [map('Mapy', M.bufet), web('Godziny', 'https://www.firmy.cz/detail/12756461-bufet-masarykovo-namesti-16-znojmo.html')]
             },
             {
-              name: 'Restaurace U Karla', rating: '4,5', reviews: '587',
+              name: 'Restaurace U Karla', venue: 'karel', rating: '4,5', reviews: '587',
               address: 'Mikulášské náměstí 48/6',
               text: 'Czeski lokal obiadowy. Menu dnia do sprawdzenia telefonicznie.',
               hours: '11–14 XI 10:30–15:00',
@@ -403,7 +403,7 @@
               links: [map('Mapy', M.karel), web('Godziny', 'https://www.firmy.cz/detail/336380-restaurace-u-karla-znojmo.html')]
             },
             {
-              name: 'U Zlaté Konve', rating: '4,0', reviews: '664',
+              name: 'U Zlaté Konve', venue: 'konev', rating: '4,0', reviews: '664',
               address: 'Masarykovo náměstí 331/9',
               text: 'Zapas na obiad: svíčková i znojemska pieczeń.',
               hours: 'Śr.–nd. 9:00–16:00',
@@ -416,7 +416,7 @@
           title: 'Sobota · Nový Šaldorf',
           items: [
             {
-              name: 'Restaurace & Penzion U Tří Jasanů', rating: '4,3', reviews: '1 131', when: 'Sobota 16:30 · wspólny obiad',
+              name: 'Restaurace & Penzion U Tří Jasanů', venue: 'jasanu', rating: '4,3', reviews: '1 131', when: 'Sobota 16:30 · wspólny obiad',
               address: 'Vinařská 56/S, Nový Šaldorf',
               text: 'Plan dla 9 dorosłych i 2 siedmiolatków. Sala ma 50 miejsc i osobny salonik. Wspólny stół w środku i gęsina do potwierdzenia. Ocena Google to wspólna wizytówka pensjonatu i restauracji.',
               contacts: { tel: ['+420 777 808 385'], email: ['penzionutrijasanu@seznam.cz'] },
@@ -444,7 +444,7 @@
     wine: {
       stats: 'Top 10 ze Znojemska, spod Mikulova i z Valtic · 17 winiarni · ponad 40 butelek',
       enoteka: {
-        title: 'Enotéka krok po kroku',
+        title: 'Enotéka krok po kroku', venue: 'enoteka',
         place: 'Hradní 2, teren browaru w centrum Znojma',
         hours: 'Środa 10:00–21:00 · piątek 10:00–24:00',
         how: 'Przy wejściu kup i doładuj kartę, podejdź do dyspensera i wybierz jeden z trzech rozmiarów porcji. Karta obejmuje 70 pozycji stałych, 30 tematycznych i 20 bieżących. Do porównywania bierz najmniejszy nalew. W karcie <strong>s sebou</strong> oznacza butelkę na wynos, a <strong>otevřít</strong> cenę otwarcia całej butelki na miejscu. Numery przy winach mogą się zmieniać, więc szukaj też po nazwie i roczniku.',

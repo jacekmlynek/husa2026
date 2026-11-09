@@ -18,3 +18,6 @@ gas/index.html
 
 # Pamięć podręczna Pythona
 __pycache__/
+
+# Oryginały zdjęć lokali pobrane przez tools/build-venue-media.py
+docs/lokale-zrodla/

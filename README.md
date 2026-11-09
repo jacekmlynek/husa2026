@@ -29,6 +29,8 @@ Podglądy map tras: `python tools/build-route-maps.py` składa kafelki OpenStree
 
 Mapa ciekawostek: `python tools/build-facts-map.py` rysuje ponumerowane miejsca z zakładki Ciekawostki na kafelkach OSM (`site/img/historia/mapa-ciekawostek.webp`). Ilustracje do osi czasu pochodzą z Wikimedia Commons (wolne licencje, autorzy podani na stronie).
 
+Zdjęcia restauracji i winiarni: `python tools/build-venue-media.py` (źródła w słowniku `VENUES`: strony lokali, firmy.cz, Wikimedia Commons). Wynik: `site/img/lokale/` i `site/js/venue-media.js` z podpisami źródeł.
+
 Trasy: wrzuć plik GPX do `docs/trasy/`, dopisz go w `SOURCES` w `tools/build-routes.mjs`, uruchom `node tools/build-routes.mjs` i dodaj opis trasy w `walks.gpx` w `data.js`. Skrypt kopiuje GPX do `site/trasy/` i wylicza km, przewyższenia, kształt oraz profil trasy do `site/js/routes.js`. Przy publikacji na GitHub Pages podbij też `VERSION` w `site/sw.js`, żeby telefony pobrały nową wersję.
 
 ## Publikacja A: GitHub Pages (zalecana, darmowa)

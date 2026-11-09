@@ -735,3 +735,35 @@ button.wtile, button.wrow, button.wchamp { appearance: none; font: inherit; colo
 .fact__cap { color: var(--ink-2); font-size: 13px; }
 .fact__fig figcaption { line-height: 1.4; }
 @media (max-width: 360px) { .pins { grid-template-columns: 1fr; } }
+
+/* =====================================================================
+   Zdjęcia lokali: baner w karcie restauracji, miniatura w planie dnia
+   ===================================================================== */
+.vbanner { position: relative; margin: -16px -16px 12px; }
+.vbanner img { width: 100%; aspect-ratio: 3 / 2; max-height: 230px; object-fit: cover; border-radius: var(--radius-xl) var(--radius-xl) 0 0; display: block; }
+.vbanner figcaption { position: absolute; right: 8px; bottom: 8px; font-size: 11px; background: rgba(255, 255, 255, .88); border-radius: 6px; padding: 1px 6px; }
+.vbanner figcaption .credit { font-size: 11px; }
+.vbanner__logo {
+  position: absolute; left: 10px; bottom: 10px; display: inline-flex; align-items: center;
+  background: #fff; border-radius: 10px; padding: 6px 10px; box-shadow: 0 2px 10px rgba(31, 22, 24, .25);
+}
+.vbanner__logo img { height: 28px; width: auto; max-width: 140px; aspect-ratio: auto; max-height: none; border-radius: 0; object-fit: contain; }
+.vbanner__logo--dark { background: var(--wine-900); }
+.rest.grid-3 .vbanner img { max-height: 170px; }
+
+.vhead { display: grid; grid-template-columns: 1fr 92px; gap: 12px; align-items: start; }
+.vhead__txt > * + * { margin-top: 6px; }
+.vthumb { width: 92px; height: 62px; object-fit: cover; border-radius: 10px; border: 1px solid var(--rose-300); background: var(--rose-50); }
+.vcredit { font-size: 11.5px; color: var(--ink-3); }
+.vcredit .credit { font-size: 11.5px; }
+.alt .vhead { grid-template-columns: 1fr 76px; }
+.alt .vthumb { width: 76px; height: 51px; }
+
+@media (max-width: 360px) {
+  .vbanner { margin: -14px -13px 10px; }
+  .vhead { grid-template-columns: 1fr 72px; gap: 8px; }
+  .vthumb { width: 72px; height: 48px; }
+}
+@media (min-width: 720px) {
+  .vbanner img { max-height: 260px; }
+}
