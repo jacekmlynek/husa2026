@@ -17,8 +17,11 @@ URL = 'https://www.vinarskecentrum.cz/img/grafy/2026/Aromagrafy_2026-{}.jpg'
 CACHE = os.path.join(ROOT, 'docs', 'salon-vin', 'aroma-kontrola')
 
 # id wina na stronie -> numer w Salonie 2026
-WINES = {'waldberg-ch-2022': 16, 'cervinka-rv-2022': 24, 'spalek-velky-sud-2023': 33, 'gotberg-palava-2024': 48, 'valtice-fr-2023': 85}
-RED_WINES = {'valtice-fr-2023'}
+WINES = {'waldberg-ch-2022': 16, 'cervinka-rv-2022': 24, 'spalek-velky-sud-2023': 33, 'gotberg-palava-2024': 48, 'valtice-fr-2023': 85,
+         # Top 14 (listopad 2026): 7 ze Znojemska + 7 z reszty Moraw
+         'pialek-vz-extra-2023': 2, 'placek-fr-2023': 81, 'kubik-fr-2023': 82, 'stepanek-sz-2023': 11,
+         'skrobak-tc-2023': 49, 'bv-merlot-2018': 72, 'davinus-sommelier-2022': 55, 'zapletal-vz-2024': 1}
+RED_WINES = {'valtice-fr-2023', 'placek-fr-2023', 'kubik-fr-2023', 'bv-merlot-2018'}
 
 STRUCT = ['intensywność zapachu', 'intensywność smaku', 'ciało', 'złożoność', 'równowaga', 'potencjał dojrzewania']
 AROMA_WHITE = ['kwiatowe', 'owoce tropikalne', 'cytrusy', 'owoce ziarnkowe', 'owoce pestkowe', 'drobne owoce', 'owoce suszone i gotowane',

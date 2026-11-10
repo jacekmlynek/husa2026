@@ -191,6 +191,46 @@ window.WINE_MEDIA = {
    "credit": "Salon vín ČR 2026",
    "creditUrl": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26085"
   },
+  "pialek-vz-extra-2023": {
+   "img": "img/wina/pialek-vz-extra-2023.webp",
+   "credit": "Salon vín ČR 2026",
+   "creditUrl": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26002"
+  },
+  "placek-fr-2023": {
+   "img": "img/wina/placek-fr-2023.webp",
+   "credit": "Salon vín ČR 2026",
+   "creditUrl": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26081"
+  },
+  "kubik-fr-2023": {
+   "img": "img/wina/kubik-fr-2023.webp",
+   "credit": "Salon vín ČR 2026",
+   "creditUrl": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26082"
+  },
+  "stepanek-sz-2023": {
+   "img": "img/wina/stepanek-sz-2023.webp",
+   "credit": "Salon vín ČR 2026",
+   "creditUrl": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26011"
+  },
+  "skrobak-tc-2023": {
+   "img": "img/wina/skrobak-tc-2023.webp",
+   "credit": "Salon vín ČR 2026",
+   "creditUrl": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26049"
+  },
+  "bv-merlot-2018": {
+   "img": "img/wina/bv-merlot-2018.webp",
+   "credit": "Salon vín ČR 2026",
+   "creditUrl": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26072"
+  },
+  "davinus-sommelier-2022": {
+   "img": "img/wina/davinus-sommelier-2022.webp",
+   "credit": "Salon vín ČR 2026",
+   "creditUrl": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26055"
+  },
+  "zapletal-vz-2024": {
+   "img": "img/wina/zapletal-vz-2024.webp",
+   "credit": "Salon vín ČR 2026",
+   "creditUrl": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26001"
+  },
   "vinohort-kralovsky-2023": {
    "img": "img/wina/vinohort-kralovsky-2023.webp",
    "credit": "vinotrh.cz",

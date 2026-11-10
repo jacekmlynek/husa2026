@@ -12,6 +12,8 @@
   var web = function (label, url) { return { label: label, url: url, kind: 'web' }; };
   var pdf = function (label, url) { return { label: label, url: url, kind: 'pdf' }; };
   var REGIONAL = 'https://www.narodnisoutezvin.cz/media/459/download/Dle_zeme_prihlasovatele_bodu.pdf?v=1';
+  var REG = 'konkurs regionalny 2026', S26 = 'Salon vín 2026'; // pts: średnia komisji w skali 100 pkt (wyjaśnienie: data.js wine.scoring)
+  var NVC = function (slug) { return web('E-sklep Salonu vín', 'https://www.vinarskecentrum.cz/e-shop/produkt/' + slug); };
   var SALON = function (nr) { return 'https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/260' + (nr < 10 ? '0' : '') + nr; };
 
   var producers = {
@@ -33,22 +35,29 @@
     cervinka: { name: 'Vinařství Červinka', place: 'Horní Věstonice pod Pálavą', region: 'Mikulov' },
     valtice: { name: 'Château Valtice', place: 'Vinné sklepy Valtice', region: 'Valtice' },
     vinohort: { name: 'VINO HORT', place: 'Znojemsko', region: 'Znojmo' },
-    hanzel: { name: 'Hanzel', place: 'Znojemsko', region: 'Znojmo' }
+    hanzel: { name: 'Hanzel', place: 'Znojemsko', region: 'Znojmo' },
+    // Top 14: wina z Salonu vín 2026 (podoblast według parceli, nie siedziby firmy)
+    placek: { name: 'Plaček', place: 'Dolní Kounice', region: 'Znojmo' },
+    kubik: { name: 'Kubík', place: 'Velké Bílovice', region: 'Pavlovice', label: 'Velkopavlovicko' },
+    stepanek: { name: 'Štěpánek', place: 'Mutěnice', region: 'Slovacko', label: 'Slovácko' },
+    skrobak: { name: 'Škrobák', place: 'Čejkovice', region: 'Pavlovice', label: 'Velkopavlovicko' },
+    bv: { name: 'B\\V vinařství', place: 'Ratíškovice · winnica w Popicach', region: 'Mikulov' },
+    zapletal: { name: 'Zapletal', place: 'Velké Bílovice', region: 'Pavlovice', label: 'Velkopavlovicko' }
   };
 
   var wines = {
-    /* ---------- Top 10 ---------- */
+    /* ---------- dawne Top 10 (część w Top 14, reszta w katalogu) ---------- */
     'znovin-sobes-2025': {
       p: 'znovin', name: 'Ryzlink rýnský Šobes', year: 2025, style: 'białe · wytrawne', price: '280 Kč', sugar: 6.2, acid: 7.2,
-      origin: 'Naše klenoty · partia 5390 · Podmolí / Šobes', tags: ['owocowe', 'kwiatowe', 'slodsze'],
+      pick: 'Bez oceny w konkursie · wybór dla parceli Šobes', origin: 'Naše klenoty · partia 5390 · Podmolí / Šobes', tags: ['owocowe', 'kwiatowe', 'slodsze'],
       short: 'Mirabelka, suszona morela i lipa z najsłynniejszej parceli Podyjí.',
       text: 'Wytrawny Riesling z jednej rozpoznawalnej parceli Podyjí. Producent wymienia mirabelkę, suszoną morelę, lipę i nektarynkę. Spróbuj z pieczonym drobiem, potem wróć do kieliszka po kilku minutach. O partię 5390 zapytaj w sklepie przy klasztorze Louka.',
       links: [web('Karta wina / zakup', 'https://www.znovin.cz/e-shop/ryzlink-rynsky-pozdni-sber-2025-z-5390'), web('Sklep w Znojmie', 'https://www.znovin.cz/vydejni-mista/znojmo-prodejna-vin-loucky-klaster')]
     },
     'hnanice-rr-2025': {
       p: 'hnanice', name: 'Ryzlink rýnský VOC', year: 2025, style: 'białe · wytrawne', price: '199 Kč', sugar: 7.2, acid: 7.1, alc: 12,
-      award: 'Wielkie złoto · 93,33 pkt', origin: 'Havraníky / Staré vinice · partia 3394/25', tags: ['owocowe', 'kwiatowe', 'mineralne', 'slodsze'],
-      short: 'Cytryna i lipa, mineralny podton. Wielkie złoto regionalne 2026.',
+      award: 'Wielkie złoto', pts: 93.33, comp: REG, origin: 'Havraníky / Staré vinice · partia 3394/25', tags: ['owocowe', 'kwiatowe', 'mineralne', 'slodsze'],
+      short: 'Cytryna i lipa, mineralny podton.',
       text: 'Wielkie złoto w regionalnej edycji 2026. Karta winiarni wyświetla numer 3394/2, więc przy zakupie porównaj etykietę z protokołem. Najlepszy drugi zakup do porównania parceli Šobes ze Starými vinicami. Do porównania odmian z tej samej parceli dobierz Hnanice Veltlín VOC 2025.',
       links: [web('Karta wina', 'https://www.vinice-hnanice.cz/produkt/ryzlink-rynsky-voc-znojmo-2025/'), web('Vínovín · 3394/25', 'https://www.vinovin.cz/ryzlink-rynsky--voc--suche-vino--2025-vinice-hnanice/'), pdf('Wyniki regionalne, s. 4', REGIONAL)]
     },
@@ -61,14 +70,14 @@
     },
     'spalek-velky-sud-2023': {
       p: 'spalek', name: 'Ryzlink rýnský Velký Sud BIO', year: 2023, style: 'białe · wytrawne', price: '330 Kč', sugar: 4, acid: 7.7, alc: 13,
-      award: 'Złoto Salon vín 2026', origin: 'Kraví hora · Nový Šaldorf · partia 1723', tags: ['beczka', 'owocowe', 'mineralne'],
+      award: 'Złoto', pts: 91.6, comp: S26, origin: 'Kraví hora · Nový Šaldorf · partia 1723', tags: ['beczka', 'owocowe', 'mineralne'],
       short: 'Rok w dębie: miód, kandyzowane cytrusy i słony finisz.',
       text: 'Fermentował spontanicznie przez rok w dębowej beczce 2000 l. Miód, kandyzowane cytrusy i suszone morele, a słony ślad w smaku oddaje podłoże Kraví hory. Dobry, żeby zestawić rozwinięty aromat z młodszym Rieslingiem ze Šobesu.',
       links: [web('Karta wina / zakup', 'https://www.spalek.bio/product-page/ryzlink-r%C3%BDnsk%C3%BD-velk%C3%BD-sud'), web('Salon vín 2026', SALON(33))]
     },
     'waldberg-ch-2022': {
       p: 'waldberg', name: 'Chardonnay Lampelberg', year: 2022, style: 'białe · wytrawne', price: '160 Kč', sugar: 0.6, acid: 6, alc: 14,
-      award: 'Złoto Salon vín 2026', origin: 'Vrbovec / Lampelberg · partia 22/152', tags: ['beczka', 'mineralne', 'owocowe'],
+      award: 'Złoto', pts: 90, comp: S26, origin: 'Vrbovec / Lampelberg · partia 22/152', tags: ['beczka', 'mineralne', 'owocowe'],
       short: '15 miesięcy w dębie: wanilia, tytoń i kandyzowany ananas.',
       text: 'Wytrawne, 15 miesięcy w dębie. Salon opisuje wanilię, kandyzowanego ananasa, suszony tytoń i mineralną końcówkę. Za 160 Kč według karty Enotéki można zabrać do domu dojrzalszą, beczkową butelkę. Najpierw spróbuj małego nalewu.',
       links: [web('Karta Enotéki', 'https://enoteka.vinotrh.cz/detail/4'), web('Vínovín · 231 Kč', 'https://www.vinovin.cz/chardonnay--vyber-z-hroznu--suche-vino--2022---waldberg/'), web('Salon vín 2026', SALON(16))]
@@ -82,14 +91,14 @@
     },
     'oulehla-fr-2022': {
       p: 'oulehla', name: 'Frankovka Na Nivách', year: 2022, style: 'czerwone · wytrawne', price: '253 Kč', sugar: 0.2, acid: 5.3, alc: 12,
-      origin: 'Dolní Kounice / Na nivách · partia 2250', tags: ['czerwone', 'owocowe', 'korzenne'],
+      award: 'Srebro', pts: 87.2, comp: 'Salon vín 2025', origin: 'Dolní Kounice / Na nivách · partia 2250', tags: ['czerwone', 'owocowe', 'korzenne'],
       short: 'Wiśnia i korzenny finisz. Czerwone do gęsi.',
       text: 'Wytrawna czerwień o profilu wiśniowo-korzennym, 18 miesięcy w dużej beczce. Wybór do gęsi ze względu na profil i cenę. Partia 2250 ma 84,00 pkt w edycji regionalnej 2026.',
       links: [web('Karta wina / zakup', 'https://eshop.oulehlavinarstvi.cz/frankovka-2022-pozdni-sber/')]
     },
     'gotberg-palava-2024': {
       p: 'gotberg', name: 'Pálava', year: 2024, style: 'białe · wytrawne (pozdní sběr)', price: '', sugar: 6.5, acid: 5.9, alc: 12.5,
-      award: 'Złoto Salon vín 2026', origin: 'Popice · trať Unédy · partia G0224', tags: ['kwiatowe', 'owocowe', 'slodsze'],
+      award: 'Złoto', pts: 91.2, comp: S26, origin: 'Popice · trať Unédy · partia G0224', tags: ['kwiatowe', 'owocowe', 'slodsze'],
       short: 'Wytrawna Pálava: kwiaty, lukrecja i liczi.',
       text: 'Pálava z dojrzałych gron, z typowym charakterem odmiany. Kwiatowo-owocowy aromat z nutami lukrecji i liczi. W smaku pełna i owocowa, z harmonijną kwasowością, która dodaje świeżości na finiszu.',
       note: 'Rocznika 2024 nie ma już w e-sklepie Gotberga. Jest tam Pálava pozdní sběr 2025 za 290 Kč (3,8 g/l cukru, 6,5 g/l kwasów).',
@@ -97,7 +106,7 @@
     },
     'cervinka-rv-2022': {
       p: 'cervinka', name: 'Ryzlink vlašský VOC Pálava', year: 2022, style: 'białe · wytrawne', price: '', sugar: 4.2, acid: 5.2, alc: 13,
-      award: 'Złoto Salon vín 2026', origin: 'Horní Věstonice · trať Pod Martinkou · partia 30/22', tags: ['kwiatowe', 'owocowe', 'mineralne'],
+      award: 'Złoto', pts: 89.8, comp: S26, origin: 'Horní Věstonice · trať Pod Martinkou · partia 30/22', tags: ['kwiatowe', 'owocowe', 'mineralne'],
       short: 'Kwiaty spod Pálavy, cytrusy i mineralna struktura.',
       text: 'Z najstarszych winnic Červinki, z naciskiem na terroir Pálavy. W kieliszku pálavska flora razem z cytrusami i owocami pestkowymi, w smaku strukturalne i mineralne. Ryzlink vlašský to sztandarowa odmiana wzgórz Pálava.',
       note: 'Ceny w sprzedaży nie udało się potwierdzić. Pytaj u producenta w Horních Věstonicach.',
@@ -105,13 +114,79 @@
     },
     'valtice-fr-2023': {
       p: 'valtice', name: 'Frankovka barrique', year: 2023, style: 'czerwone · wytrawne (výběr z hroznů)', price: '', sugar: 0.5, acid: 5.3, alc: 13.5,
-      award: 'Złoto Salon vín 2026', origin: 'Dolní Dunajovice · trať Pod Slunným · partia 23229', tags: ['czerwone', 'beczka', 'owocowe'],
+      award: 'Złoto', pts: 90, comp: S26, origin: 'Dolní Dunajovice · trať Pod Slunným · partia 23229', tags: ['czerwone', 'beczka', 'owocowe'],
       short: 'Beczka barrique: jeżyny, wanilia i dojrzałe wiśnie.',
       text: 'Ciemnoczerwone, bardzo pełne i ekstraktywne, z przyjemną taniną. Leżakowanie w beczkach barrique daje w aromacie jeżyny, wanilię, dojrzałe wiśnie i dżem żurawinowy.',
       note: 'Ceny w sprzedaży nie udało się potwierdzić. Pytaj w Vinných sklepach Valtice.',
       links: [web('Salon vín 2026', SALON(85))]
     },
 
+    /* ---------- Top 14: nowe wina z Salonu vín 2026 (dane z katalogu, opisy przetłumaczone z kart Salonu) ---------- */
+    'pialek-vz-extra-2023': {
+      p: 'pialek', name: 'Veltlínské zelené Extra', year: 2023, style: 'białe · wytrawne (pozdní sběr)', price: '255 Kč', sugar: 2.3, acid: 5.4, alc: 12.5,
+      award: 'Złoto', pts: 91.8, comp: S26, origin: 'Načeratický kopec i Weinperky · partia 2307', tags: ['owocowe', 'korzenne'],
+      short: 'Najwyżej oceniony Veltlín Znojemska: dojrzała gruszka, tropiki i pieprz.',
+      text: 'Najwyżej ocenione wino ze Znojemska w Salonie vín 2026. Intensywny, czysty, dojrzały owoc w zapachu. W smaku pełne, soczyste i korzenne, z dojrzałą gruszką i owocami tropikalnymi. Długi finisz, typowy dla linii Extra.',
+      note: 'W Enotéce (#18) nalewany jest rocznik 2024: 19 Kč za próbkę, 240 Kč na wynos, bez medalu Salonu. Rocznik 2023 jest w e-sklepie Salonu za 255 Kč. Pytaj o niego w sklepie Piálka w Novém Šaldorfie.',
+      links: [web('Salon vín 2026', SALON(2)), NVC('2810-veltlinske-zelene-gruener-veltliner-2023-pozdni-sber-vinarstvi-pialek-jaeger-s-r-o'), web('Karta Enotéki', 'https://enoteka.vinotrh.cz/')]
+    },
+    'placek-fr-2023': {
+      p: 'placek', name: 'Frankovka', year: 2023, style: 'czerwone · wytrawne (výběr z hroznů)', price: '305 Kč', sugar: 0.1, acid: 5.1, alc: 13.5,
+      award: 'Złoto', pts: 91, comp: S26, origin: 'Mělčany / Veselá hora · partia 2342', tags: ['czerwone', 'owocowe', 'korzenne'],
+      short: 'Dojrzałe czereśnie, suszone śliwki i aksamitny finisz. Czerwone do gęsi.',
+      text: 'Frankovka z tradycyjnego terroir Dolních Kounic. Głęboka i elegancka. W zapachu dojrzałe czereśnie, suszone śliwki i delikatne przyprawy. W smaku złożona, z mocną strukturą, miękką taniną i długim, aksamitnym finiszem.',
+      note: 'Jest w karcie Enotéki (#69): 19 Kč za próbkę, 305 Kč na wynos. W e-sklepie Salonu kosztuje 345 Kč.',
+      links: [web('Salon vín 2026', SALON(81)), NVC('2889-frankovka-blaufraenkisch-2023-vyber-z-hroznu-vinarstvi-jan-placek-ing-jan-placek'), web('Karta Enotéki', 'https://enoteka.vinotrh.cz/')]
+    },
+    'skrobak-tc-2023': {
+      p: 'skrobak', name: 'Tramín červený Scarabeus', year: 2023, style: 'białe · wytrawne (výběr z hroznů)', price: '', sugar: 5.5, acid: 6.5, alc: 14.5,
+      award: 'Czempion Salonu', pts: 93.4, comp: S26, origin: 'Čejkovice / Niva hrbatá · partia 1923', tags: ['kwiatowe', 'owocowe', 'beczka'],
+      short: 'Zwycięzca całego Salonu 2026: likier pomarańczowy, grejpfrut, liczi.',
+      text: 'Czempion (po czesku šampion), czyli najlepsze wino całego Salonu vín 2026. Z najwyższej linii Scarabeus, z klonów wybranych ze starych winnic w Čejkovicach. Rok fermentacji i dojrzewania w dużej beczce z dębu z pobliskiego lasu. W zapachu likier pomarańczowy, czerwony grejpfrut, skórka mandarynki i liczi. W smaku bardzo pełne, z bardzo długim finiszem.',
+      note: 'Nie ma go w karcie Enotéki ani w e-sklepie Salonu. Pytaj w innych vinotékach w Znojmie albo u producenta w Čejkovicach.',
+      links: [web('Salon vín 2026', SALON(49))]
+    },
+    'kubik-fr-2023': {
+      p: 'kubik', name: 'Frankovka', year: 2023, style: 'czerwone · wytrawne (výběr z hroznů)', price: '565 Kč', sugar: 0.2, acid: 5, alc: 14.5,
+      award: 'Złoto, zwycięzca kategorii', pts: 93.6, comp: S26, origin: 'Velké Bílovice / Přední hora · partia OP2/23', tags: ['czerwone', 'beczka', 'owocowe'],
+      short: 'Krzewy ponad 40-letnie, 18 miesięcy w barrique: jeżyny i czerwone owoce.',
+      text: 'Z krzewów starszych niż 40 lat, 18 miesięcy w beczkach barrique. Ciemnorubinowa. W zapachu jeżyny, czerwone owoce pestkowe i ślad szlachetnego drewna. W smaku pełna, strukturalna i rozgrzewająca, z delikatnymi owocowymi taninami.',
+      note: 'Nie ma jej w karcie Enotéki. Pytaj w innych vinotékach w Znojmie. W e-sklepie Salonu kosztuje 565 Kč.',
+      links: [web('Salon vín 2026', SALON(82)), NVC('2890-frankovka-blaufraenkisch-2023-vyber-z-hroznu-vinarstvi-kubik')]
+    },
+    'stepanek-sz-2023': {
+      p: 'stepanek', name: 'Sylvánské zelené', year: 2023, style: 'białe · wytrawne (výběr z hroznů)', price: '', sugar: 6.7, acid: 6.6, alc: 13.5,
+      award: 'Złoto', pts: 93.6, comp: S26, origin: 'Mutěnice / Úlehle · partia 3923B', tags: ['kwiatowe', 'owocowe', 'beczka', 'slodsze'],
+      short: 'Kwiaty, odrobina drewna i nuta wanilii. Rzadziej spotykana odmiana.',
+      text: 'Silvaner, w Czechach rzadziej spotykany. Jasnozłoty. W zapachu przeważają kwiaty z delikatnym dotykiem szlachetnego drewna. W smaku czysty i soczysty, z owocem i elegancką nutą laski wanilii na końcu.',
+      note: 'Nie ma go w karcie Enotéki ani w e-sklepie Salonu. Pytaj w innych vinotékach w Znojmie albo u producenta w Mutěnicach.',
+      links: [web('Salon vín 2026', SALON(11))]
+    },
+    'bv-merlot-2018': {
+      p: 'bv', name: 'Merlot Rezerva', year: 2018, style: 'czerwone · wytrawne (výběr z hroznů)', price: '805 Kč', sugar: 0.5, acid: 5, alc: 14.5,
+      award: 'Złoto', pts: 93.2, comp: S26, origin: 'Popice / Unédy · partia 1845', tags: ['czerwone', 'owocowe', 'beczka'],
+      short: 'Dojrzały Merlot spod Pálavy: borówki i czarne czereśnie.',
+      text: 'Ciemny granat. Złożony zapach borówek z czarnymi czereśniami. W smaku potężny i harmonijny, z aksamitnym końcem i bardzo długim posmakiem. Wino do dalszego dojrzewania w butelce. Złote medale także w Brukseli, Madrycie i Mundus Vini.',
+      note: 'Nie ma go w karcie Enotéki. Pytaj w innych vinotékach w Znojmie. W e-sklepie Salonu kosztuje 805 Kč.',
+      links: [web('Salon vín 2026', SALON(72)), NVC('2880-merlot-rezerva-2018-vyber-z-hroznu-b-v-vinarstvi-a-s')]
+    },
+    'davinus-sommelier-2022': {
+      p: 'davinus', name: 'Ryzlink rýnský Sommelier Collection BIO', year: 2022, style: 'białe · półwytrawne (pozdní sběr)', price: '', sugar: 15.5, acid: 7.7, alc: 13.5,
+      award: 'Złoto', pts: 93, comp: S26, origin: 'Popice / Panenský kopec · partia D1422', tags: ['owocowe', 'mineralne'],
+      region: 'Mikulov',
+      short: 'Półwytrawny Riesling spod Pálavy: mango, melon i kompot morelowy.',
+      text: 'Ekologiczny Riesling z linii Sommelier Collection Bio, z winnicy pod Pálavą. Pełny i ekstraktywny, w zapachu owoce egzotyczne, melon i przejrzałe mango. W smaku lekko słodkawy, z kompotowym owocem i wyrównaną kwasowością. Na końcu kompot morelowy. Producent poleca go do pikantnej kuchni tajskiej.',
+      note: 'Nie ma go w karcie Enotéki, a e-sklep Salonu nie podaje ceny. Pytaj w innych vinotékach w Znojmie.',
+      links: [web('Salon vín 2026', SALON(55))]
+    },
+    'zapletal-vz-2024': {
+      p: 'zapletal', name: 'Veltlínské zelené', year: 2024, style: 'białe · wytrawne (pozdní sběr)', price: '235 Kč', sugar: 2.4, acid: 6.5, alc: 13,
+      award: 'Złoto', pts: 92.6, comp: S26, origin: 'Velké Bílovice / Úlehle · partia 1124', tags: ['owocowe', 'korzenne', 'mineralne'],
+      short: 'Veltlín ze starych krzewów: owoc i korzenno-mineralny finisz.',
+      text: 'Ze starych krzewów z winnicy Úlehle. Dojrzale żółty z zielonkawymi refleksami. W zapachu raczej owocowy. W smaku pełny, ekstraktywny i harmonijny, z długim korzennym, aż mineralnym posmakiem typowym dla dojrzałych veltlínów z Velkých Bílovic. Dobre porównanie z Veltlínami ze Znojemska.',
+      note: 'Nie ma go w karcie Enotéki. Pytaj w innych vinotékach w Znojmie. W e-sklepie Salonu kosztuje 235 Kč.',
+      links: [web('Salon vín 2026', SALON(1)), NVC('2809-veltlinske-zelene-gruener-veltliner-2024-pozdni-sber-vinne-sklepy-zapletal')]
+    },
     /* ---------- Czempioni ---------- */
     'davinus-rr-2022': {
       p: 'davinus', name: 'Ryzlink rýnský, kabinet', year: 2022, style: 'białe · wytrawne', price: '189 Kč', alc: 13,
@@ -123,10 +198,10 @@
     },
     'oulehla-fr-2023': {
       p: 'oulehla', name: 'Frankovka Na Nivách', year: 2023, style: 'czerwone · wytrawne', price: '',
-      award: 'Najlepsze wytrawne czerwone · 90,67 pkt', origin: 'Dolní Kounice / Na nivách · partia 2350', tags: [],
+      award: 'Najlepsze wytrawne czerwone', pts: 90.67, comp: REG, avail: 'W Enotéce (#71), sprawdź partię', origin: 'Dolní Kounice / Na nivách · partia 2350', tags: [],
       short: 'Zwycięzca kategorii wytrawnych czerwonych w konkursie regionalnym 2026.',
       text: 'Oulehla Frankovka Na nivách 2023, partia 2350, wygrała kategorię wytrawnych czerwonych z 90,67 pkt.',
-      note: 'Trudno dostępne. W e-sklepie Oulehli jest tylko rocznik 2022 (253 Kč). Na zdjęciu butelka rocznika 2022.',
+      note: 'W karcie Enotéki (#71, sekcja „Kandidáti do Salónu vín 2026”) jest Oulehla Frankovka 2023 za 230 Kč na wynos i 16 Kč za próbkę. Karta nie podaje partii, więc zapytaj, czy to partia 2350. W e-sklepie Oulehli jest tylko rocznik 2022. Na zdjęciu butelka rocznika 2022.',
       links: [web('Czerwone wina Oulehli', 'https://eshop.oulehlavinarstvi.cz/cervene-vino/'), pdf('Wyniki regionalne, s. 1–2', REGIONAL)]
     },
 
@@ -153,13 +228,13 @@
     'znovin-sobes-2024': {
       p: 'znovin', name: 'Ryzlink rýnský Šobes', year: 2024, style: 'białe · wytrawne', price: '', tags: ['owocowe', 'kwiatowe'],
       short: 'W Enotéce nalewany jest rocznik 2024.',
-      text: 'Ten rocznik jest w karcie Enotéki (#10). Do zakupu przewodnik poleca rocznik 2025 (w Top 10).',
+      text: 'Ten rocznik jest w karcie Enotéki (#10). Do zakupu przewodnik poleca rocznik 2025 (w Top 14).',
       links: [web('Karta Enotéki', 'https://enoteka.vinotrh.cz/')]
     },
 
     /* ---------- Katalog ---------- */
-    'hnanice-vz-2025': { p: 'hnanice', name: 'Veltlínské zelené VOC', year: 2025, style: 'białe · wytrawne', price: '179 Kč', award: 'Złoto · 89,33 pkt', origin: 'Staré vinice · partia 5432/25', tags: ['owocowe', 'korzenne'], short: 'Gruszka, pieprz i migdał.', text: 'Wytrawny Grüner ze Starých vinic w Havraníkach. Szukaj gruszki, pieprzu i migdału. 179 Kč w Enotéce lub Vinotrh.', links: [web('Karta wina / zakup', 'https://www.vinice-hnanice.cz/produkt/veltlinske-zelene-voc-znojmo-2025/')] },
-    'hnanice-sb-2025': { p: 'hnanice', name: 'Sauvignon VOC', year: 2025, style: 'białe · wytrawne', price: '199 Kč', award: 'Wielkie złoto · 92,00 pkt', origin: 'U Kapličky · partia 3426/25', tags: ['owocowe'], short: 'Agrest i liść porzeczki.', text: 'Wytrawny Sauvignon Blanc z U Kapličky w Hnanicach. Szukaj agrestu i liścia porzeczki.', links: [web('Karta wina / zakup', 'https://www.vinice-hnanice.cz/produkt/sauvignon-voc-znojmo-2025/')] },
+    'hnanice-vz-2025': { p: 'hnanice', name: 'Veltlínské zelené VOC', year: 2025, style: 'białe · wytrawne', price: '179 Kč', award: 'Złoto', pts: 89.33, comp: REG, origin: 'Staré vinice · partia 5432/25', tags: ['owocowe', 'korzenne'], short: 'Gruszka, pieprz i migdał.', text: 'Wytrawny Grüner ze Starých vinic w Havraníkach. Szukaj gruszki, pieprzu i migdału. 179 Kč w Enotéce lub Vinotrh.', links: [web('Karta wina / zakup', 'https://www.vinice-hnanice.cz/produkt/veltlinske-zelene-voc-znojmo-2025/')] },
+    'hnanice-sb-2025': { p: 'hnanice', name: 'Sauvignon VOC', year: 2025, style: 'białe · wytrawne', price: '199 Kč', award: 'Wielkie złoto', pts: 92.00, comp: REG, origin: 'U Kapličky · partia 3426/25', tags: ['owocowe'], short: 'Agrest i liść porzeczki.', text: 'Wytrawny Sauvignon Blanc z U Kapličky w Hnanicach. Szukaj agrestu i liścia porzeczki.', links: [web('Karta wina / zakup', 'https://www.vinice-hnanice.cz/produkt/sauvignon-voc-znojmo-2025/')] },
     'znovin-sb-2025': { p: 'znovin', name: 'Sauvignon VOC Znojmo', year: 2025, style: 'białe · wytrawne', price: '190 Kč', origin: 'Kokusovy hory · Dobelice · 5334', tags: ['owocowe'], short: 'Agrest, porzeczka, trawa, limonka.', text: 'Wytrawny Sauvignon Blanc z Kokusovych hor w Dobelicach. Agrest, porzeczka, trawa i limonka.', links: [web('Karta wina / zakup', 'https://www.znovin.cz/e-shop/sauvignon-voc-znojmo-2025-z5334')] },
     'znovin-vz-2025': { p: 'znovin', name: 'Veltlínské zelené VOC Znojmo', year: 2025, style: 'białe · wytrawne', price: '190 Kč', origin: 'Kokusovy hory · 5337', tags: ['owocowe', 'korzenne'], short: 'Jabłko, gruszka, pieprz.', text: 'Wytrawny Grüner Veltliner z tej samej parceli co Sauvignon. Jabłko, gruszka, pieprz.', links: [web('Karta wina / zakup', 'https://www.znovin.cz/e-shop/veltlinske-zelene-voc-znojmo-2025-z5337')] },
     'pialek-vz-extra-2024': { p: 'pialek', name: 'Veltlínské zelené Extra', year: 2024, style: 'białe · wytrawne', price: 'ok. 240 Kč', origin: 'Načeratický kopec · Znojmo', tags: ['owocowe', 'beczka'], short: 'Starsze krzewy, część w akacji.', text: 'Wytrawny Grüner ze starszych krzewów. Część dojrzewała w akacji. Pełniejsze, owocowe, długie.', links: [web('Karta wina / zakup', 'https://e-shop.pialek.cz/veltlinske-zelene-extra-2024/')] },
@@ -167,17 +242,17 @@
     'spalek-vz-2025': { p: 'spalek', name: 'Veltlínské zelené VOC Znojmo BIO', year: 2025, style: 'białe · wytrawne', price: '240 Kč', sugar: 1.4, origin: 'Kraví hora', tags: ['owocowe', 'korzenne'], short: 'Jabłko i biały pieprz.', text: 'Wytrawny Grüner z Kraví hory, 1,4 g/l cukru. Szukaj jabłka i białego pieprzu.', links: [web('Karta wina / zakup', 'https://www.spalek.bio/product-page/veltl%C3%ADnsk%C3%A9-zelen%C3%A9-bio-voc-znojmo-2024')] },
     'spalek-gryllus-2025': { p: 'spalek', name: 'Gryllus bílý VOC BIO', year: 2025, style: 'białe · wytrawne', price: '250 Kč', origin: 'Kraví hora · kupaż', tags: [], short: 'Kupaż Sauvignon, Rieslinga i Grünera.', text: 'Wytrawny kupaż Sauvignon, Rieslinga i Grünera z Kraví hory. Sprawdź, jak kwasowość łączy się z aromatem i pełnią.', links: [web('Karta wina / zakup', 'https://www.spalek.bio/product-page/cuv%C3%A9e-gryllus-voc-znojmo')] },
     'thaya-apri-2024': { p: 'thaya', name: 'Apri Chardonnay', year: 2024, style: 'białe · wytrawne', price: '575 Kč', origin: 'Znojemsko · beczki 400 l', tags: ['beczka', 'owocowe'], short: 'Ananas, żółty owoc, długi finisz.', text: 'Fermentacja i dojrzewanie w beczkach 400 l. Ananas, żółty owoc, długi finisz.', links: [web('Karta wina / zakup', 'https://eshop.vinarstvithaya.cz/apri-chardonnay-2024/')] },
-    'thaya-vz-2025': { p: 'thaya', name: 'Veltlínské zelené · Pozdravy z Národního parku', year: 2025, style: 'białe · wytrawne', price: '215 Kč', award: 'Wielkie złoto · 93,33 pkt', origin: 'pozdní sběr · partia VZ/2548', tags: [], short: 'Drugi punkt odniesienia do veltlína Hnanice.', text: 'Wytrawny Grüner, pozdní sběr, partia VZ/2548. Wielkie złoto regionalne 2026 (93,33 pkt).', links: [web('Karta wina', 'https://eshop.vinarstvithaya.cz/veltlinske-zelene-2025/')] },
+    'thaya-vz-2025': { p: 'thaya', name: 'Veltlínské zelené · Pozdravy z Národního parku', year: 2025, style: 'białe · wytrawne', price: '215 Kč', award: 'Wielkie złoto', pts: 93.33, comp: REG, origin: 'pozdní sběr · partia VZ/2548', tags: [], short: 'Drugi punkt odniesienia do veltlína Hnanice.', text: 'Wytrawny Grüner, pozdní sběr, partia VZ/2548. Wielkie złoto regionalne 2026 (93,33 pkt).', links: [web('Karta wina', 'https://eshop.vinarstvithaya.cz/veltlinske-zelene-2025/')] },
     'thaya-zw-2023': { p: 'thaya', name: 'Zweigeltrebe', year: 2023, style: 'czerwone · wytrawne', price: '365 Kč', origin: 'Fládnická · Hnanice', tags: ['czerwone', 'korzenne', 'beczka'], short: 'Owoce, przyprawy, lukrecja.', text: 'Wytrawne czerwone. Owoce, przyprawy i lukrecja. 16 miesięcy w beczce 400 l.', links: [web('Karta wina / zakup', 'https://eshop.vinarstvithaya.cz/zweigeltrebe-2023/')] },
     'waldberg-rv-2024': { p: 'waldberg', name: 'Ryzlink vlašský', year: 2024, style: 'białe · wytrawne', price: '160 Kč', origin: 'Waldberg', tags: ['owocowe'], short: 'Zielone jabłko, cytryna, zioła.', text: 'Wytrawny Welschriesling. Szukaj zielonego jabłka, cytryny i ziołowej końcówki. 160 Kč na wynos w Enotéce.', links: [web('Oferta Vinotrh', 'https://www.vinotrh.cz/waldberg/')] },
     'waldberg-rm-2021': { p: 'waldberg', name: 'Rulandské modré Volné pole', year: 2021, style: 'czerwone · wytrawne', price: '160 Kč', origin: 'Hostěradice', tags: ['czerwone', 'korzenne', 'beczka'], short: 'Tytoń, słodka papryka, wanilia.', text: 'Wytrawny Pinot Noir z Hostěradic. Tytoń, słodka papryka, waniliowy ślad beczki. 160 Kč na wynos w Enotéce.', links: [web('Karta wina / zakup', 'https://www.vinotrh.cz/rulandske-modre-volne-pole-2021-v-h--3/')] },
-    'oulehla-ch-2023': { p: 'oulehla', name: 'Chardonnay Karlov Staré keře', year: 2023, style: 'białe · wytrawne', price: '293 Kč', award: 'Wielkie złoto · 92,67 pkt', origin: 'Karlov · partia 2345', tags: [], short: 'Stare krzewy, wielkie złoto regionalne.', text: 'Wytrawne Chardonnay ze starych krzewów w Karlovie, partia 2345. Wielkie złoto regionalne 2026 (92,67 pkt).', links: [web('Karta wina / zakup', 'https://eshop.oulehlavinarstvi.cz/chardonnay-karlov-2023-moravske-zemske-stare-kere/')] },
-    'oulehla-merlot-2022': { p: 'oulehla', name: 'Merlot Grand Reserva', year: 2022, style: 'czerwone · wytrawne', price: '519 Kč', award: 'Złoto · 88,67 pkt', origin: 'Šibeniční hora · partia 2258', tags: ['czerwone', 'owocowe'], short: 'Owoc leśny, śliwka, kakao.', text: 'Wytrawny Merlot z Šibeniční hory. Owoc leśny, śliwka i kakao według producenta.', links: [web('Karta wina / zakup', 'https://eshop.oulehlavinarstvi.cz/merlot-grand-reserva-2022/')] },
+    'oulehla-ch-2023': { p: 'oulehla', name: 'Chardonnay Karlov Staré keře', year: 2023, style: 'białe · wytrawne', price: '293 Kč', award: 'Wielkie złoto', pts: 92.67, comp: REG, origin: 'Karlov · partia 2345', tags: [], short: 'Stare krzewy, wielkie złoto regionalne.', text: 'Wytrawne Chardonnay ze starych krzewów w Karlovie, partia 2345. Wielkie złoto regionalne 2026 (92,67 pkt).', links: [web('Karta wina / zakup', 'https://eshop.oulehlavinarstvi.cz/chardonnay-karlov-2023-moravske-zemske-stare-kere/')] },
+    'oulehla-merlot-2022': { p: 'oulehla', name: 'Merlot Grand Reserva', year: 2022, style: 'czerwone · wytrawne', price: '519 Kč', award: 'Złoto', pts: 88.67, comp: REG, origin: 'Šibeniční hora · partia 2258', tags: ['czerwone', 'owocowe'], short: 'Owoc leśny, śliwka, kakao.', text: 'Wytrawny Merlot z Šibeniční hory. Owoc leśny, śliwka i kakao według producenta.', links: [web('Karta wina / zakup', 'https://eshop.oulehlavinarstvi.cz/merlot-grand-reserva-2022/')] },
     'lahofer-vcr-2024': { p: 'lahofer', name: 'Veltlínské červené rané Volné pole', year: 2024, style: 'białe · półwytrawne', price: '119 Kč', origin: 'Hostěradice', tags: ['owocowe', 'korzenne'], short: 'Soczyste, przyprawy, czerwona pomarańcza.', text: 'Półwytrawny Frühroter Veltliner z Hostěradic. Soczyste, z przyprawami i czerwoną pomarańczą.', links: [web('Karta wina / zakup', 'https://www.vinotrh.cz/veltlinske-cervene-rane-volne-pole-2024-kab-/')] },
     'lahofer-rajska-2025': { p: 'lahofer', name: 'Cuvée Rajská VOC', year: 2025, style: 'białe · wytrawne', price: '250 Kč', origin: 'Rajská zahrada · Znojmo', tags: ['owocowe'], short: 'Kupaż z winnicy w samym Znojmie.', text: 'Wytrawny kupaż Sauvignon, Grünera i Rieslinga z Rajskiej zahrady w Znojmie. Szukaj aromatu Sauvignon i świeżości Rieslinga.', links: [web('Karta wina / zakup', 'https://www.vinotrh.cz/cuvee-rajska-rajska-vinice-2025-voc/')] },
     'lahofer-vz-2025': { p: 'lahofer', name: 'Veltlínské zelené Volné pole VOC', year: 2025, style: 'białe · wytrawne', price: '195 Kč', origin: 'Hostěradice', tags: ['owocowe', 'korzenne'], short: 'Letnie jabłko, biały pieprz, migdał.', text: 'Wytrawny Grüner z Hostěradic. Letnie jabłko, biały pieprz i migdał. 195 Kč na wynos w Enotéce.', links: [web('Karta wina / zakup', 'https://www.vinotrh.cz/veltlinske-zelene-volne-pole-2025-voc/')] },
     'halkoci-typik-2025': { p: 'halkoci', name: 'Ryzlink TYPIK', year: 2025, style: 'białe · wytrawne', price: '249 Kč', origin: 'Šatov', tags: ['owocowe'], short: 'Morela, soczysta kwasowość.', text: 'Wytrawny Riesling. Morela, soczysta kwasowość i dłuższy owocowy finisz.', links: [web('Karta wina / zakup', 'https://vinarstvihalkoci.cz/produkt/ryzlink-typik-2025/')] },
-    'halkoci-vz2-2024': { p: 'halkoci', name: 'Veltlín²', year: 2024, style: 'białe · wytrawne', price: '', sugar: 1.5, acid: 7.2, award: 'Złoto · 89,33 pkt', origin: 'beczka 1000 l · partia VZS24', tags: ['owocowe', 'korzenne', 'beczka'], short: 'Żółte owoce, pieprz, subtelne drewno.', text: 'Wytrawny Grüner z beczki 1000 l. Żółte owoce, pieprz i subtelne drewno. Cenę sprawdź u producenta.', links: [web('Karta wina / zakup', 'https://vinarstvihalkoci.cz/produkt/veltlin%C2%B2-2024/')] },
+    'halkoci-vz2-2024': { p: 'halkoci', name: 'Veltlín²', year: 2024, style: 'białe · wytrawne', price: '', sugar: 1.5, acid: 7.2, award: 'Złoto', pts: 89.33, comp: REG, origin: 'beczka 1000 l · partia VZS24', tags: ['owocowe', 'korzenne', 'beczka'], short: 'Żółte owoce, pieprz, subtelne drewno.', text: 'Wytrawny Grüner z beczki 1000 l. Żółte owoce, pieprz i subtelne drewno. Cenę sprawdź u producenta.', links: [web('Karta wina / zakup', 'https://vinarstvihalkoci.cz/produkt/veltlin%C2%B2-2024/')] },
     'halkoci-supa-2025': { p: 'halkoci', name: 'SUPA · suchá Pálava', year: 2025, style: 'białe · wytrawne', price: '249 Kč', origin: 'Šatov', tags: ['kwiatowe', 'korzenne', 'owocowe'], short: 'Wytrawna Pálava: kwiaty i przyprawy.', text: 'Wytrawna Pálava, pojedyncza odmiana. Kwiaty, delikatne przyprawy, dojrzały owoc.', links: [web('Karta wina / zakup', 'https://vinarstvihalkoci.cz/produkt/supa-25/')] },
     'korinek-vz-2023': { p: 'korinek', name: 'Veltlínské zelené VOC', year: 2023, style: 'białe · wytrawne', price: '205 Kč', origin: 'Knížecí vrch · partia VZ21/23', tags: ['owocowe', 'korzenne'], short: 'Jabłko i pieprz.', text: 'Wytrawny Grüner z Knížecího vrchu w Hnanicach. Jabłko i pieprz.', links: [web('Karta wina / zakup', 'https://www.vinovin.cz/veltlinske-zelene--voc--suche-vino--2023-josef-korinek/')] },
     'korinek-petnat-2025': { p: 'korinek', name: 'PET NAT Ryzlink rýnský', year: 2025, style: 'musujące', price: '155 Kč', origin: 'Hnanice', tags: ['babelki', 'owocowe'], short: 'Riesling z bąbelkami i cytrusami.', text: 'Riesling z bąbelkami. Szukaj cytrusów i sprawdź, czy drobne perlenie wzmacnia świeżość.', links: [web('Karta wina / zakup', 'https://eshop.vinarstvi-korinek.cz/vinarstvi-korinek-josef-pet-nat-ryzlink-rynsky-2025')] },
@@ -196,8 +271,10 @@
     producers: producers,
     wines: wines,
     champions: ['davinus-rr-2022', 'oulehla-fr-2023'],
-    top10: ['znovin-sobes-2025', 'hnanice-rr-2025', 'pialek-sb-2025', 'spalek-velky-sud-2023', 'waldberg-ch-2022',
-      'ampelos-veritas-2024', 'oulehla-fr-2022', 'gotberg-palava-2024', 'cervinka-rv-2022', 'valtice-fr-2023'],
+    // Top 14 (listopad 2026): 7 ze Znojemska do spróbowania w znojemskich vinotékach + 7 najwyżej ocenionych z reszty Moraw
+    topZnojmo: ['hnanice-rr-2025', 'pialek-vz-extra-2023', 'spalek-velky-sud-2023', 'placek-fr-2023', 'waldberg-ch-2022', 'hnanice-vz-2025', 'znovin-sobes-2025'],
+    alsoSalon: ['cervinka-rv-2022', 'valtice-fr-2023'],
+    topMorava: ['skrobak-tc-2023', 'kubik-fr-2023', 'stepanek-sz-2023', 'bv-merlot-2018', 'davinus-sommelier-2022', 'zapletal-vz-2024', 'gotberg-palava-2024'],
     bonus: 'vinohort-kralovsky-2023',
     quick: {
       title: 'Jeśli masz czas na jedną degustację',

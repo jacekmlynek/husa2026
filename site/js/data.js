@@ -443,7 +443,26 @@
 
     /* ------------------------------------------------------------------ */
     wine: {
-      stats: 'Top 10 ze Znojemska, spod Mikulova i z Valtic · 17 winiarni · ponad 40 butelek',
+      stats: 'Top 14: 7 ze Znojemska i 7 z reszty Moraw · 25 winiarni · ponad 50 butelek',
+
+      /* „Skąd te punkty?” pod nagłówkiem Top 14. Źródła: statut Salonu vín 2025 (pkt 8, 11–12),
+         statut Národní soutěž vín – Velkopavlovická podoblast 2024 (pkt 14), narodnisoutezvin.cz/o-soutezi. */
+      scoring: {
+        title: 'Skąd te punkty?',
+        sub: 'Jak liczą ocenę konkursy Salon vín i konkurs regionalny',
+        items: [
+          'Oba konkursy oceniają wino w skali do 100 punktów według standardu OIV (Międzynarodowej Organizacji Winorośli i Wina). Degustacja jest anonimowa: sędziowie nie wiedzą, czyje wino piją.',
+          'Każdy członek komisji daje własną ocenę. Organizator odrzuca najwyższą i najniższą, a z reszty liczy średnią. Komisja ma co najmniej pięciu sędziów. Przy pięciu po odrzuceniu skrajnych zostają trzy oceny, stąd wyniki typu <strong>93,33</strong> albo <strong>90,67</strong>.',
+          '<strong>Konkurs regionalny</strong> (Národní soutěž vín – Znojemská podoblast 2026) to pierwszy etap. Medale według strony konkursu: wielkie złoto od 92 pkt, złoto 88–91,99, srebro 86–87,99, brąz 84–85,99.',
+          '<strong>Salon vín</strong> to finał dla całych Czech. Najlepsze wina z konkursów regionalnych przechodzą do dwóch kolejnych rund. Złoty medal dostaje 100 najwyżej ocenionych win, z określoną pulą miejsc dla każdego podobszaru (np. 13 dla Znojemska).',
+          'Punktów z różnych konkursów nie da się wprost porównać, bo oceniają inne komisje inne zestawy win. Do Salonu trafiają tylko wina, które wcześniej wygrały selekcję w swoim regionie.'
+        ],
+        links: [
+          { label: 'O konkursie i progi medali', url: 'https://narodnisoutezvin.cz/o-soutezi', kind: 'web' },
+          { label: 'Statut Salonu vín 2025', url: 'https://vinarskecentrum.cz/news/files/statut-souteze.pdf', kind: 'pdf' },
+          { label: 'Statut konkursu regionalnego (Velkopavlovicko 2024)', url: 'https://www.hustopece.cz/file/109690/statut-nsv-velkopavlovicka-2024.pdf', kind: 'pdf' }
+        ]
+      },
 
       /* Ściąga „Jak czytać czeskie wino”. Progi: zákon č. 321/2004 Sb., § 17–19 (znění k 1. 7. 2025).
          Statystyki: Salon vín ČR 2024–2026, 1145 nagrodzonych win (złote i srebrne), docs/salon-vin/.
@@ -475,10 +494,10 @@
           { cz: 'polosladké', pl: 'półsłodkie', range: 'do 45 g/l', max: 45 },
           { cz: 'sladké', pl: 'słodkie', range: 'od 45 g/l', max: 60 }
         ],
-        sweetExample: 'Przykład z Top 10: Hnanice Ryzlink rýnský VOC ma 7,2 g/l cukru i 7,1 g/l kwasów. To więcej niż 4 g/l, ale kwasów jest tylko o 0,1 g/l mniej niż cukru, więc wino jest oficjalnie <strong>suché</strong>. Kwasowość równoważy cukier w smaku.',
+        sweetExample: 'Przykład z Top 14: Hnanice Ryzlink rýnský VOC ma 7,2 g/l cukru i 7,1 g/l kwasów. To więcej niż 4 g/l, ale kwasów jest tylko o 0,1 g/l mniej niż cukru, więc wino jest oficjalnie <strong>suché</strong>. Kwasowość równoważy cukier w smaku.',
         minerality: {
           text: '„Mineralne” to wrażenie degustatorów, a nie zawartość minerałów z gleby. Minerały są w winie w ilościach poniżej progu wyczuwalności, a skały nie mają smaku ani zapachu. Badania łączą to wrażenie z kwasowością, słonością, nutami krzemienia lub dymu (często od związków siarki) i z mniej owocowym profilem. Gleba może działać pośrednio, np. przez to, jak nagrzewa się winnica i ile wody ma krzew.',
-          scale: 'Degustatorzy Salonu vín oceniają „mineralne i inne” w skali 0–10 obok innych grup aromatów. Profil z ich wykresu zobaczysz w szczegółach pięciu win z Top 10 (oznaczenie „Profil Salonu”).',
+          scale: 'Degustatorzy Salonu vín oceniają „mineralne i inne” w skali 0–10 obok innych grup aromatów. Profil z ich wykresu zobaczysz w szczegółach 13 win, które były w finale Salonu 2026, w tym 11 z Top 14 (oznaczenie „Profil Salonu”).',
           links: [web('Parr i in., „Minerality in Wine: Towards the Reality behind the Myths” (Beverages, 2018)', 'https://hal.inrae.fr/hal-02624486')]
         },
         sources: [

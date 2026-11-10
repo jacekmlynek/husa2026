@@ -237,7 +237,7 @@
   }
 
   /* ---------------- Wino ---------------- */
-  var WN = window.WINES || { wines: {}, producers: {}, top10: [], champions: [], catalog: [], flavors: [], samples: [], grapeWines: {} };
+  var WN = window.WINES || { wines: {}, producers: {}, topZnojmo: [], topMorava: [], champions: [], catalog: [], flavors: [], samples: [], grapeWines: {} };
   var WM = window.WINE_MEDIA || { bottles: {}, logos: {} };
   var FLAV = {};
   WN.flavors.forEach(function (f) { FLAV[f.id] = f; });
@@ -245,6 +245,13 @@
   function wine(id) { return WN.wines[id]; }
   function producer(w) { return WN.producers[w.p] || { name: '', place: '', region: '' }; }
   function fmt(n) { return String(n).replace('.', ','); }
+  var TOP14 = (WN.topZnojmo || []).concat(WN.topMorava || []);
+  // Punkty konkursowe: regionalne z dwoma miejscami po przecinku (średnia z trzech ocen), Salon z jednym.
+  function ptsTxt(w) { return fmt(w.pts.toFixed(/regionalny/.test(w.comp) ? 2 : 1)); }
+  function scoreEl(w) {
+    if (!w.pts) return w.award ? '<span class="award">' + w.award + '</span>' : (w.pick ? '<span class="pick">' + w.pick + '</span>' : '');
+    return '<span class="score"><span class="score__n">' + ptsTxt(w) + '</span><span class="score__t"><b>pkt · ' + w.award + '</b>' + w.comp + '</span></span>';
+  }
   function wineTitle(w) { return producer(w).name + ' · ' + w.name + ' ' + w.year; }
 
   // Zdjęcie butelki albo — gdy źródła go nie mają — stylizowana butelka w kolorze wina.
@@ -267,7 +274,11 @@
     if (m) return '<span class="wlogo' + (m.dark ? ' wlogo--dark' : '') + '"><img src="' + m.img + '" alt="' + attr('Logo: ' + p.name) + '" loading="lazy"></span>';
     return '<span class="wlogo wlogo--text">' + p.name + '</span>';
   }
-  function regionChip(p) { return p.region ? '<span class="region region--' + p.region.toLowerCase() + '">' + p.region + '</span>' : ''; }
+  // Podobszar: z wina (gdy parcela leży gdzie indziej niż siedziba producenta) albo z producenta.
+  function regionChip(p, w) {
+    var r = (w && w.region) || p.region, label = (w && w.region) || p.label || p.region;
+    return r ? '<span class="region region--' + r.toLowerCase() + '">' + label + '</span>' : '';
+  }
   function flavorChips(w, max) {
     return (w.tags || []).slice(0, max || 8).map(function (t) {
       var f = FLAV[t];
@@ -289,7 +300,8 @@
     return '<button type="button" class="wtile' + (cls ? ' ' + cls : '') + '" data-wine="' + id + '">' +
       '<span class="wtile__img">' + bottleImg(id) + '</span>' +
       '<span class="wtile__body"><span class="wtile__prod">' + producer(w).name + '</span>' +
-      '<span class="wtile__name">' + w.name + ' ' + w.year + '</span>' + (extra || '') +
+      '<span class="wtile__name">' + w.name + ' ' + w.year + '</span>' +
+      (w.pts ? '<span class="wtile__pts">' + ptsTxt(w) + ' pkt · ' + w.comp + '</span>' : '') + (extra || '') +
       (w.price ? '<span class="wtile__price">' + w.price + '</span>' : '') + '</span></button>';
   }
   function wineRow(id, rank) {
@@ -298,10 +310,10 @@
       '<span class="wrow__rank">' + rank + '</span>' +
       '<span class="wrow__img">' + bottleImg(id) + '</span>' +
       '<span class="wrow__body">' +
-        '<span class="wrow__top">' + logoEl(w.p) + regionChip(p) + '</span>' +
+        '<span class="wrow__top">' + logoEl(w.p) + regionChip(p, w) + '</span>' +
         '<span class="wrow__name">' + w.name + ' ' + w.year + '</span>' +
         '<span class="wrow__prod">' + p.name + ' · ' + w.style + '</span>' +
-        (w.award ? '<span class="award">' + w.award + '</span>' : '') +
+        scoreEl(w) +
         ((window.AROMA || {})[id] ? '<span class="chip-salon">Profil Salonu</span>' : '') +
         '<span class="wrow__short">' + w.short + '</span>' + meters(w) +
         '<span class="wrow__foot"><span class="fchips">' + flavorChips(w, 3) + '</span>' +
@@ -312,10 +324,10 @@
     var w = wine(id), p = producer(w);
     return '<button type="button" class="wchamp" data-wine="' + id + '">' +
       '<span class="wchamp__img">' + bottleImg(id) + '</span>' +
-      '<span class="wchamp__body"><span class="award award--gold">' + w.award + '</span>' +
+      '<span class="wchamp__body">' + (w.pts ? scoreEl(w) : '<span class="award award--gold">' + w.award + '</span>') +
         '<span class="wrow__name">' + w.name + ' ' + w.year + '</span>' +
         '<span class="wrow__prod">' + p.name + ' · ' + w.origin + '</span>' +
-        '<span class="wchamp__warn">Trudno dostępne · szczegóły</span></span></button>';
+        '<span class="wchamp__warn">' + (w.avail || 'Trudno dostępne') + ' · szczegóły</span></span></button>';
   }
 
   /* Okno szczegółów wina (natywny <dialog>, na telefonie wysuwa się od dołu). */
@@ -327,7 +339,7 @@
       '<div class="sheet__info">' + logoEl(w.p) +
         '<h3 class="sheet__title" id="sheet-title">' + w.name + ' ' + w.year + '</h3>' +
         '<p class="muted small">' + p.name + (p.place ? ' · ' + p.place : '') + '</p>' +
-        '<div class="sheet__badges">' + regionChip(p) + '<span class="tag">' + w.style + '</span>' + (w.award ? '<span class="award">' + w.award + '</span>' : '') + '</div>' +
+        '<div class="sheet__badges">' + regionChip(p, w) + '<span class="tag">' + w.style + '</span>' + scoreEl(w) + '</div>' +
         (w.price ? '<p class="sheet__price">' + w.price + '</p>' : '') +
         meters(w) + (w.alc ? '<p class="small muted">Alkohol ' + fmt(w.alc) + '% obj.</p>' : '') +
         (w.tags && w.tags.length ? '<div class="fchips">' + flavorChips(w) + '</div>' : '') +
@@ -348,7 +360,7 @@
   }
   function aromaBlock(id) {
     var A = AR[id];
-    if (!A) return '<p class="aroma-none">Profil degustatorów Salonu w skali 0–10 jest tylko dla 5 win z Top 10. Salon vín publikuje wykresy aromatów wyłącznie dla 100 złotych win finału 2026, a tego wina wśród nich nie ma.</p>';
+    if (!A) return '<p class="aroma-none">Profil degustatorów Salonu w skali 0–10 jest tylko dla ' + Object.keys(AR).length + ' win. Salon vín publikuje wykresy aromatów wyłącznie dla 100 złotych win finału 2026, a tego wina wśród nich nie ma.</p>';
     var aromaKeys = Object.keys(A.aroma).sort(function (a, b) { return A.aroma[b] - A.aroma[a]; });
     var top = aromaKeys.filter(function (k) { return A.aroma[k] >= 2; }).slice(0, 7);
     var minKey = aromaKeys.filter(function (k) { return /mineraln/.test(k); })[0];
@@ -440,7 +452,7 @@
   function allWineIds() {
     var seen = {}, out = [];
     var add = function (id) { if (id && !seen[id] && WN.wines[id]) { seen[id] = 1; out.push(id); } };
-    WN.top10.forEach(add);
+    TOP14.forEach(add);
     WN.catalog.forEach(function (c) { c.wines.forEach(add); });
     add(WN.bonus);
     Object.keys(WN.wines).forEach(add);
@@ -467,7 +479,7 @@
   }
   function renderPicker() {
     return '<div class="card picker">' +
-      '<p class="small muted">Wybierz smak albo zakręć kołem. Pokażemy pasujące butelki z Top 10 i katalogu. Dotknij butelki, żeby zobaczyć szczegóły.</p>' +
+      '<p class="small muted">Wybierz smak albo zakręć kołem. Pokażemy pasujące butelki z Top 14 i katalogu. Dotknij butelki, żeby zobaczyć szczegóły.</p>' +
       '<div class="pchips" role="group" aria-label="Smaki">' + WN.flavors.map(function (f) {
         return '<button type="button" class="pchip" data-flavor="' + f.id + '" aria-pressed="false" style="--fc:' + f.color + '">' + f.label + '</button>';
       }).join('') + '</div>' +
@@ -509,7 +521,7 @@
 
   function renderWine() {
     var V = T.wine, E = V.enoteka;
-    var jump = [['w-sciaga', 'Etykieta i regiony'], ['w-czempioni', 'Czempioni'], ['w-top10', 'Top 10'], ['w-dobierz', 'Dobierz wino'], ['w-degustacja', 'Degustacja'],
+    var jump = [['w-sciaga', 'Etykieta i regiony'], ['w-czempioni', 'Czempioni'], ['w-top', 'Top 14'], ['w-dobierz', 'Dobierz wino'], ['w-degustacja', 'Degustacja'],
       ['w-enoteka', 'Enotéka'], ['w-katalog', 'Katalog'], ['w-odmiany', 'Odmiany']];
     var html = '';
     html += '<div class="card wine-hero"><h2>Znojmo w kieliszku</h2><p>' + V.stats + '</p></div>';
@@ -520,13 +532,21 @@
 
     // Czempioni — na samej górze, z uczciwą informacją o dostępności
     html += '<h2 class="section-title" id="w-czempioni">Czempioni konkursu 2026</h2>' +
-      '<p class="section-sub">Najwyżej ocenione partie regionalnego konkursu na Znojemsku. Trudno je kupić, więc warto pytać w sklepach i u producentów.</p>' +
+      '<p class="section-sub">Najwyżej ocenione partie regionalnego konkursu na Znojemsku. Ryzlinka DAVINUS trudno kupić. Frankovka Oulehli jest w karcie Enotéki, ale bez numeru partii.</p>' +
       '<div class="wchamps">' + WN.champions.map(champCard).join('') + '</div>';
 
-    // Top 10
-    html += '<h2 class="section-title" id="w-top10">Top 10 win: Znojmo, Mikulov i Valtice</h2>' +
-      '<p class="section-sub">Siedem butelek ze Znojemska z przewodnika i trzy złote wina Salonu vín 2026 spod Pálavy i z Valtic. Dotknij, żeby zobaczyć szczegóły.</p>' +
-      '<div class="wrows">' + WN.top10.map(function (id, i) { return wineRow(id, i + 1); }).join('') + '</div>';
+    // Top 14: 7 ze Znojemska + 7 z reszty Moraw, z punktami z konkursów
+    var SC = V.scoring;
+    html += '<h2 class="section-title" id="w-top">Top 14: co warto spróbować</h2>' +
+      '<p class="section-sub">Siedem win ze Znojemska i siedem najwyżej ocenionych z reszty Moraw. Przy każdym winie są punkty z konkursu. Dotknij wina, żeby zobaczyć szczegóły.</p>' +
+      (SC ? acc(SC.title, SC.sub, SC.items.map(function (t) { return '<p class="small">' + t + '</p>'; }).join('') + actions(SC.links), false, 'w-punkty') : '') +
+      '<h3 class="sub-h" id="w-top-znojmo">Ze Znojemska: do spróbowania w vinotékach w mieście</h3>' +
+      '<div class="wrows">' + WN.topZnojmo.map(function (id, i) { return wineRow(id, i + 1); }).join('') + '</div>' +
+      '<h3 class="sub-h" id="w-top-morava">Z reszty Moraw: najlepsze w Salonie vín 2026</h3>' +
+      '<p class="small muted">Nie ma ich w karcie Enotéki, więc pytaj w innych vinotékach w Znojmie. Ceny pochodzą z e-sklepu Salonu vín.</p>' +
+      '<div class="wrows">' + WN.topMorava.map(function (id, i) { return wineRow(id, i + 8); }).join('') + '</div>' +
+      (WN.alsoSalon && WN.alsoSalon.length ? '<p class="small muted">Też złote w Salonie 2026, spod Pálavy i z Valtic:</p><div class="wtiles wtiles--row">' +
+        WN.alsoSalon.map(function (id) { return wineTile(id); }).join('') + '</div>' : '');
     if (WN.bonus) {
       html += '<div class="card card--soft bonus"><h3>Trop od lokalnego sommeliera</h3>' + wineTile(WN.bonus, '<span class="wtile__note">' + wine(WN.bonus).short + '</span>', 'wtile--wide') + '</div>';
     }
@@ -581,7 +601,7 @@
       }).join('') + '</div>';
 
     html += '<div class="spaced">' + acc(V.about.title, 'Jak powstała selekcja, źródła i zdjęcia', '<p class="small">' + V.about.text + '</p>' +
-      '<p class="small">Top 10 uzupełniają trzy wina z katalogu Salonu vín ČR 2026 (sto najlepszych win w Czechach) z podoblasti mikulowskiej. Dane o cukrze i kwasach pochodzą z katalogu Salonu i stron producentów.</p>' +
+      '<p class="small">Siedem win spoza Znojemska w Top 14 to najwyżej ocenione wina wytrawne i półwytrawne Salonu vín ČR 2026 (sto najlepszych win w Czechach). Dane o cukrze, kwasach i punktach pochodzą z katalogu i arkusza medali Salonu, wyników konkursu regionalnego i stron producentów. Ceny w Enotéce według jej karty z 10 listopada 2026.</p>' +
       '<p class="small">Zdjęcia butelek i logo pochodzą ze sklepów i stron producentów oraz z Salonu vín ČR 2026. Źródło każdego zdjęcia jest podane w szczegółach wina. Gdy źródło nie miało zdjęcia, pokazujemy stylizowaną butelkę.</p>' +
       actions(V.about.links.concat([{ label: 'Salon vín ČR 2026', url: 'https://www.vinarskecentrum.cz/salon-vin/', kind: 'web' }]))) + '</div>';
     return html;
