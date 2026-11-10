@@ -4,10 +4,11 @@
  * a w tle pobranie nowej wersji na następne otwarcie.
  * Podbij VERSION przy każdej zmianie plików.
  */
-var VERSION = 'husa-2026-v11';
+var VERSION = 'husa-2026-v12';
 // Zdjęcia butelek i logo (img/wina, img/logo) trafiają do pamięci przy pierwszym obejrzeniu.
+// Tak samo js/wine-index.js (wina z Salonu vín do wyszukiwarki): pobierany przy pierwszym wejściu w pole wyszukiwania.
 var FILES = [
-  './', 'index.html', 'css/style.css', 'js/data.js', 'js/wines.js', 'js/wine-media.js', 'js/venue-media.js', 'js/wine-map.js', 'js/aroma.js', 'js/wine-notes.js', 'js/routes.js', 'js/route-maps.js', 'js/app.js', 'manifest.webmanifest',
+  './', 'index.html', 'css/style.css', 'js/data.js', 'js/wines.js', 'js/wine-media.js', 'js/venue-media.js', 'js/wine-map.js', 'js/aroma.js', 'js/wine-notes.js', 'js/routes.js', 'js/route-maps.js', 'vendor/minisearch/minisearch.min.js', 'js/wine-search.js', 'js/app.js', 'manifest.webmanifest',
   'trasy/zamek-park.gpx', 'trasy/kraluv-stolec.gpx', 'trasy/saldorf.gpx', 'trasy/cizov-hardegg.gpx',
   'img/icon.svg', 'img/icon-180.png', 'img/icon-192.png', 'img/icon-512.png', 'img/parking.webp', 'img/parking-mapa.webp',
   'img/kinderwelt-brama.webp', 'img/excalibur-smok.webp', 'img/fc-autka.webp', 'img/fc-osiolki.webp', 'img/fc-kucyk.webp', 'img/fc-nandu.webp'

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Testy wyszukiwarki win</title>
+<style>
+  body { font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; margin: 16px; color: #1f1618; }
+  h1 { font-size: 20px; } h2 { font-size: 16px; margin-top: 22px; }
+  .sum { font-weight: 700; padding: 8px 10px; border-radius: 8px; }
+  .sum.ok { background: #eaf4ec; color: #2f6b3a; } .sum.fail { background: #fbe9ea; color: #8a1c2b; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+  td { border-top: 1px solid #eee; padding: 4px 6px; vertical-align: top; }
+  .ok td:first-child { color: #2f6b3a; } .fail td:first-child { color: #b3261e; font-weight: 700; }
+  .muted { color: #6b5a5d; }
+</style>
+</head>
+<body>
+<h1>Testy wyszukiwarki win</h1>
+<p class="muted">Spec: <code>specs/wyszukiwanie-tekstowe/DEVELOPMENT-PLAN.md</code>, punkt 7. Ładuje pliki ze <code>site/</code>, więc testuje dokładnie ten kod, który działa na stronie.</p>
+<div id="out">Uruchamiam…</div>
+
+<script src="../../site/vendor/minisearch/minisearch.min.js"></script>
+<script src="../../site/js/wines.js"></script>
+<script src="../../site/js/wine-index.js"></script>
+<script src="../../site/js/wine-search.js"></script>
+<script src="testy.js"></script>
+<script>
+(function () {
+  var t0 = performance.now();
+  var r = WINE_SEARCH_TESTS.run({ WineSearch: window.WineSearch, WINES: window.WINES, WINE_INDEX: window.WINE_INDEX });
+  var ms = performance.now() - t0, fail = 0, html = '';
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  [['faza1', 'Faza 1: 56 win ze strony'], ['faza2', 'Faza 2: strona + Salon vín'], ['dane', 'Testy danych']].forEach(function (g) {
+    if (!r[g[0]]) return;
+    html += '<h2>' + g[1] + '</h2><table>' + r[g[0]].map(function (x) {
+      if (!x.ok) fail++;
+      return '<tr class="' + (x.ok ? 'ok' : 'fail') + '"><td>' + (x.ok ? 'ok' : 'BŁĄD') + '</td><td><code>' + esc(x.q) + '</code></td><td>' +
+        (x.n != null ? x.n + ' · ' + x.mode : '') + (x.cats && x.cats.length ? '<br><span class="muted">' + esc(x.cats.join(' | ')) + '</span>' : '') +
+        (x.ok ? '' : '<br>' + esc(x.errors.join('; '))) + '</td></tr>';
+    }).join('') + '</table>';
+  });
+  var info = r.salon ? 'Salon: ' + r.salon.wina + ' win, pominięte duplikaty ze strony: ' + r.salon.duplikaty + '. ' : '';
+  if (r.czas) info += 'Zapytania (pisanie litera po literze): ' + r.czas.n + ', średnio ' + r.czas.avg.toFixed(2) + ' ms, najgorsze ' + r.czas.worst + ' ms. ';
+  info += 'Cały przebieg z budową indeksów: ' + Math.round(ms) + ' ms.';
+  document.getElementById('out').innerHTML = '<p class="sum ' + (fail ? 'fail' : 'ok') + '">' + (fail ? fail + ' błędów' : 'Wszystkie testy przeszły') + '</p><p class="muted">' + info + '</p>' + html;
+})();
+</script>
+</body>
+</html>

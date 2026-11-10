@@ -16,9 +16,11 @@ tools/salon-vin/ ← skrypty danych Salon vín (pobieranie, parsowanie, scalanie
 tools/wina-opisy/ ← zbieranie opisów smakowych win ze stron producentów i sklepów
 tools/build-wine-map.py, tools/read-aroma-charts.py ← mapa regionów i profile aromatów (opis niżej)
 tools/build-wine-notes.py ← opisy smakowe z docs/wina-opisy/ do site/js/wine-notes.js
+tools/build-wine-index.py ← wina z Salonu vín do wyszukiwarki (site/js/wine-index.js); wyszukiwarka: site/js/wine-search.js + site/vendor/minisearch/
 docs/            ← materiały źródłowe i makieta
   salon-vin/     ← wyniki Salon vín ČR 2024–2026 jako JSON (+ README z opisem pól)
   wina-opisy/    ← opisy smakowe win ze strony bez profilu Salonu (+ README z metodą i pokryciem)
+specs/           ← plany i specyfikacje, każda w osobnym katalogu (spis: specs/README.md)
 ```
 
 ## Podgląd lokalny

@@ -888,3 +888,68 @@ button.wtile, button.wrow, button.wchamp { appearance: none; font: inherit; colo
 .score-why { font-size: 12.5px; line-height: 1.4; color: var(--ink-3); margin-top: 6px; }
 .wrow__sugar { font-size: 12.5px; color: var(--ink-3); }
 #w-punkty { margin: 8px 0 4px; }
+
+/* =====================================================================
+   Znajdź wino (specs/wyszukiwanie-tekstowe/DEVELOPMENT-PLAN.md)
+   ===================================================================== */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.wine-hero .wsearch { margin-top: 14px; }
+.wsearch__field { position: relative; display: flex; align-items: center; background: #fff; border-radius: 14px; box-shadow: 0 2px 10px rgba(0, 0, 0, .18); }
+.wsearch__field:focus-within { box-shadow: 0 0 0 3px rgba(255, 255, 255, .5), 0 2px 10px rgba(0, 0, 0, .18); }
+.wsearch__icon { position: absolute; left: 14px; width: 20px; height: 20px; color: var(--wine-700); pointer-events: none; }
+.wsearch__input {
+  flex: 1; min-width: 0; height: 50px; padding: 0 46px; border: 0; border-radius: 14px; background: transparent;
+  -webkit-appearance: none; appearance: none; font: inherit; font-size: 17px; color: var(--ink);
+}
+.wsearch__input::placeholder { color: var(--ink-3); opacity: 1; }
+.wsearch__input:focus { outline: none; }
+.wsearch__input::-webkit-search-cancel-button, .wsearch__input::-webkit-search-decoration { -webkit-appearance: none; display: none; }
+.wsearch__clear {
+  position: absolute; right: 3px; width: 44px; height: 44px; border: 0; border-radius: 10px; background: none;
+  font-size: 16px; color: var(--ink-3); cursor: pointer;
+}
+.panel > .wsout { margin-top: 10px; }
+.wsout__hint, .wsout__empty { font-size: 14.5px; color: var(--ink-2); padding: 2px 4px; }
+.wsout__label { font-size: 13px; font-weight: 700; color: var(--ink-3); margin: 10px 4px 6px; }
+
+/* podpowiedzi */
+.wsug { list-style: none; margin: 0; padding: 0; background: #fff; border: 1px solid var(--rose-200); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-1); }
+.wsug__opt { display: flex; align-items: center; gap: 10px; padding: 0 12px; border-top: 1px solid var(--rose-100); cursor: pointer; }
+.wsug__opt:first-child { border-top: 0; }
+.wsug__opt.is-active, .wsug__opt:active { background: var(--rose-50); }
+@media (hover: hover) { .wsug__opt:hover { background: var(--rose-50); } }
+.wsug__cat { min-height: 44px; }
+.wsug__ic { flex: none; display: flex; }
+.wsug__ic .icon { width: 18px; height: 18px; color: var(--wine-700); }
+.wsug__t { flex: 1; min-width: 0; font-size: 15px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wsug__type { color: var(--ink-3); font-weight: 600; }
+.wsug__t b { font-weight: 800; }
+.wsug__dot { display: inline-block; width: 9px; height: 9px; padding: 0; border-radius: 50%; margin-right: 5px; vertical-align: 1px; }
+.wsug__n { flex: none; font-size: 13px; font-weight: 700; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.wsug__go { flex: none; font-size: 20px; line-height: 1; color: var(--ink-3); }
+.wsug__wine { min-height: 56px; padding-top: 2px; padding-bottom: 2px; }
+.wsug__img { flex: none; width: 32px; height: 52px; }
+.wsug__body { flex: 1; min-width: 0; display: grid; }
+.wsug__prod { font-size: 11.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--wine-700); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wsug__name { font-size: 15px; font-weight: 700; line-height: 1.25; color: var(--ink); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.wsug mark { background: none; color: var(--wine-800); font-weight: 800; }
+.wsug__price { flex: none; font-size: 13px; font-weight: 800; color: var(--wine-900); white-space: nowrap; }
+.wsug__badge { flex: none; font-size: 11px; font-weight: 800; color: var(--gold-ink); background: var(--gold-bg); border: 1px solid var(--gold-line); border-radius: 999px; padding: 1px 7px; white-space: nowrap; }
+.wsug__all {
+  display: block; width: 100%; min-height: 44px; margin-top: 4px; border: 0; background: none; cursor: pointer;
+  font: inherit; font-size: 15px; font-weight: 700; color: var(--wine-800); text-decoration: underline; text-underline-offset: 3px;
+}
+
+/* lista wyników */
+.wres__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.wres__title { font-size: 18px; font-weight: 800; color: var(--wine-900); line-height: 1.3; }
+.wres__n { font-weight: 600; color: var(--ink-3); }
+.wres__close { flex: none; width: 44px; height: 44px; border: 1px solid var(--rose-300); border-radius: 12px; background: #fff; color: var(--ink-2); font-size: 15px; cursor: pointer; }
+.wres__sort { font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+.wres__group { font-size: 15px; font-weight: 800; color: var(--ink-2); margin: 16px 2px 8px; }
+.wres__note { font-size: 13px; color: var(--ink-3); margin: -4px 2px 8px; }
+.wres__more { display: flex; width: 100%; justify-content: center; margin-top: 12px; font-family: inherit; cursor: pointer; }
+.region--other { background: var(--ink-3); }
+
+/* na telefonie pasek zakładek nie zabiera miejsca nad klawiaturą */
+@media (max-width: 899px) { body.is-searching .tabs { display: none; } }
