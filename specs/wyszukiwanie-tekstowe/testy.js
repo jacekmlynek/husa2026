@@ -140,7 +140,7 @@
       var zap = byProd(/František Zapletal/);
       res.faza2.push({ q: 'dane: wino Maňáka z partią 2250 nie jest brane za duplikat Oulehli', ok: manak.length === 1, errors: manak.length ? [] : ['brak w indeksie'], n: manak.length, mode: '' });
       res.faza2.push({ q: 'dane: „Ing. František Zapletal” to osobna winiarnia', ok: zap.length > 0 && zap.every(function (d) { return d.pid.indexOf('salon:') === 0; }), errors: zap.map(function (d) { return d.pid; }), n: zap.length, mode: '' });
-      res.faza2.push({ q: 'dane: napis „ponad 400 medalistów Salonu” jest prawdziwy', ok: sal.length > 400, errors: ['jest ' + sal.length], n: sal.length, mode: '' });
+      res.faza2.push({ q: 'dane: napis „ponad 450 win … ponad 400 medalistów Salonu” jest prawdziwy', ok: sal.length > 400 && site.length + sal.length > 450, errors: ['Salon ' + sal.length + ', razem ' + (site.length + sal.length)], n: site.length + sal.length, mode: '' });
       res.faza2.push({ q: 'dane: duplikaty strona–Salon to dokładnie 14 win', ok: sal.dup === 14, errors: ['jest ' + sal.dup], n: sal.dup, mode: '' });
       res.czas = timing(e2, ['znojmo', 'ryzlink rynsky', 'veltlinske zelene', 'frankovka 2022', 'kravi hora', 'spalek', 'cabernet']);
     }

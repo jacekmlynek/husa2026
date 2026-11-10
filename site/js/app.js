@@ -540,10 +540,14 @@
     var np = Object.keys(prods).length;
     return ids.length + ' ' + plural(ids.length) + ' z ' + np + ' winiarni w przewodniku';
   }
-  // Pod polem: to, czego nie ma w napisie nad nim. Dokładna liczba win z Salonu (bez duplikatów ze strony) jest znana
-  // dopiero po wczytaniu indeksu; wcześniej „ponad 400” (pilnuje tego test w specs/wyszukiwanie-tekstowe/testy.js).
+  // Pod polem: ile konkretnych win (producent + nazwa + rocznik) obejmuje wyszukiwarka. Dokładna liczba win z Salonu
+  // (bez duplikatów ze strony) jest znana dopiero po wczytaniu indeksu; wcześniej „ponad 450” i „ponad 400”
+  // (pilnuje tego test w specs/wyszukiwanie-tekstowe/testy.js).
   function scopeText(salonCount) {
-    return 'Wyszukiwarka obejmuje też ' + (salonCount || 'ponad 400') + ' medalistów Salonu vín 2024–2026.';
+    var n = Object.keys(WN.wines).length;
+    if (!salonCount) return 'W wyszukiwarce ponad 450 win: ' + n + ' z przewodnika i ponad 400 medalistów Salonu vín 2024–2026.';
+    var total = n + salonCount;
+    return 'W wyszukiwarce ' + total + ' ' + plural(total) + ': ' + n + ' z przewodnika i ' + salonCount + ' medalistów Salonu vín 2024–2026.';
   }
   function isPhone() { return window.innerWidth < 900; }
   function plural(n) { return n === 1 ? 'wino' : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'wina' : 'win'); }
