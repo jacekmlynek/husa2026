@@ -348,7 +348,7 @@
   }
   function aromaBlock(id) {
     var A = AR[id];
-    if (!A) return '';
+    if (!A) return '<p class="aroma-none">Profil degustatorów Salonu w skali 0–10 jest tylko dla 5 win z Top 10. Salon vín publikuje wykresy aromatów wyłącznie dla 100 złotych win finału 2026, a tego wina wśród nich nie ma.</p>';
     var aromaKeys = Object.keys(A.aroma).sort(function (a, b) { return A.aroma[b] - A.aroma[a]; });
     var top = aromaKeys.filter(function (k) { return A.aroma[k] >= 2; }).slice(0, 7);
     var minKey = aromaKeys.filter(function (k) { return /mineraln/.test(k); })[0];
