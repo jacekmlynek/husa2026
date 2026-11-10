@@ -13,6 +13,7 @@ site/            ← gotowa strona (to publikujemy)
 gas/             ← wersja dla Google Apps Script (jeden plik)
 tools/build-gas.mjs
 tools/salon-vin/ ← skrypty danych Salon vín (pobieranie, parsowanie, scalanie, audyt)
+tools/build-wine-map.py, tools/read-aroma-charts.py ← mapa regionów i profile aromatów (opis niżej)
 docs/            ← materiały źródłowe i makieta
   salon-vin/     ← wyniki Salon vín ČR 2024–2026 jako JSON (+ README z opisem pól)
 ```
@@ -27,7 +28,13 @@ Edytuj `site/js/data.js`.
 
 Wina: rejestr win, winiarni, Top 10, czempionów i katalogu jest w `site/js/wines.js`. Zdjęcia butelek i logo pobiera `python tools/build-wine-media.py` (źródła w słowniku `BOTTLES` i `LOGOS`). Skrypt zapisuje `site/img/wina/`, `site/img/logo/` i `site/js/wine-media.js` z podpisami źródeł. Wina bez zdjęcia dostają na stronie stylizowaną butelkę.
 
-Dane Salon vín ČR (krajowy konkurs win, Národní vinařské centrum, Valtice): w `docs/salon-vin/salon-vin-2024.json`, `-2025.json` i `-2026.json` są wszystkie złote wina z pełną kartą z katalogu i punktami, srebrne z punktami oraz profile producentów. Rok 2026 ma dodatkowo linki do kart, e-sklepu, zdjęć i GPS. Opis pól, zasady scalania i znane błędy źródeł: `docs/salon-vin/README.md`. Dopasowanie do win z naszej strony: `docs/Salon-vin-2024-2026-wina-ze-strony.md`. Dane są jeszcze **nie** podłączone do `site/`. Odtworzenie i kontrola jakości (`audit.py`, `audit2.py`, `audit3.py`): `tools/salon-vin/README.md`. Źródłowe PDF/XLSX (ok. 12 MB na rok) nie są w repozytorium, ich adresy są w polu `sources` każdego pliku.
+Dane Salon vín ČR (krajowy konkurs win, Národní vinařské centrum, Valtice): w `docs/salon-vin/salon-vin-2024.json`, `-2025.json` i `-2026.json` są wszystkie złote wina z pełną kartą z katalogu i punktami, srebrne z punktami oraz profile producentów. Rok 2026 ma dodatkowo linki do kart, e-sklepu, zdjęć i GPS. Opis pól, zasady scalania i znane błędy źródeł: `docs/salon-vin/README.md`. Dopasowanie do win z naszej strony: `docs/Salon-vin-2024-2026-wina-ze-strony.md`. Strona korzysta z tych danych w trzech miejscach:
+
+- **Ściąga „Jak czytać czeskie wino”** (`wine.guide` w `data.js`). Liczby przy kategoriach (średnia punktów, udział win do 9 g/l, liczba win) policzono raz z 1145 złotych i srebrnych win 2024–2026 i wpisano na stałe. Progi °NM pochodzą z ustawy 321/2004 Sb. § 17–19, a progi słodyczy z rozporządzenia UE 2019/33 (zał. III B). Źródła są w `wine.guide.sources`.
+- **Mapa regionów**: `python tools/build-wine-map.py` rysuje na kafelkach OSM podobszary (kolorowe tło z punktów GPS złotych win 2026 i wsi z listy `VILLAGES`) oraz 14 apelacji VOC. Wynik zapisuje do `site/img/wino/mapa-regionow.webp` i `site/js/wine-map.js`. Skrypt sprawdza, czy każda wieś leży w swoim podobszarze. Tło jest poglądowe, a dokładne granice pokazuje mapa z Commons podlinkowana pod obrazkiem.
+- **Profil degustatorów** w oknie wina: `python tools/read-aroma-charts.py` odczytuje liczby 0–10 z wykresów radarowych (Aromagram) z kart Salonu 2026 dla 5 win. Wynik zapisuje do `site/js/aroma.js`, a obrazy kontrolne z naniesionymi odczytami do `docs/salon-vin/aroma-kontrola/` (tylko lokalnie, poza repozytorium). Dokładność odczytu to ok. ±0,3. Wykres dla win czerwonych nie ma osi „mineralne”.
+
+Odtworzenie i kontrola jakości (`audit.py`, `audit2.py`, `audit3.py`): `tools/salon-vin/README.md`. Źródłowe PDF/XLSX (ok. 12 MB na rok) nie są w repozytorium, ich adresy są w polu `sources` każdego pliku.
 
 Podglądy map tras: `python tools/build-route-maps.py` składa kafelki OpenStreetMap ze śladem GPX w `site/img/trasy/<id>.webp` (+ `site/js/route-maps.js`). Kafelki są w pamięci podręcznej `docs/trasy-kafelki/`, więc ponowne uruchomienie ich nie pobiera.
 

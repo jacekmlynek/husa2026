@@ -302,6 +302,7 @@
         '<span class="wrow__name">' + w.name + ' ' + w.year + '</span>' +
         '<span class="wrow__prod">' + p.name + ' · ' + w.style + '</span>' +
         (w.award ? '<span class="award">' + w.award + '</span>' : '') +
+        ((window.AROMA || {})[id] ? '<span class="chip-salon">Profil Salonu</span>' : '') +
         '<span class="wrow__short">' + w.short + '</span>' + meters(w) +
         '<span class="wrow__foot"><span class="fchips">' + flavorChips(w, 3) + '</span>' +
           (w.price ? '<span class="price">' + w.price + '</span>' : '<span class="price price--na">cena do sprawdzenia</span>') + '</span>' +
@@ -333,7 +334,80 @@
         (w.origin ? '<p class="origin">' + w.origin + '</p>' : '') +
         '<p class="small">' + w.text + '</p>' + (w.note ? '<p class="item__note">' + w.note + '</p>' : '') +
         actions(w.links) +
-      '</div></div>';
+      '</div></div>' + aromaBlock(id);
+  }
+
+  /* Profil degustatorów Salonu vín 2026: liczby odczytane z ich wykresów (tools/read-aroma-charts.py). */
+  var AR = window.AROMA || {};
+  function bars(obj, keys) {
+    return '<div class="abars">' + keys.map(function (k) {
+      var v = obj[k];
+      return '<div class="abar' + (/mineraln/.test(k) ? ' abar--min' : '') + '"><span class="abar__l">' + k + '</span>' +
+        '<span class="abar__bar"><i style="width:' + (v * 10) + '%"></i></span><span class="abar__v">' + fmt(v) + '</span></div>';
+    }).join('') + '</div>';
+  }
+  function aromaBlock(id) {
+    var A = AR[id];
+    if (!A) return '';
+    var aromaKeys = Object.keys(A.aroma).sort(function (a, b) { return A.aroma[b] - A.aroma[a]; });
+    var top = aromaKeys.filter(function (k) { return A.aroma[k] >= 2; }).slice(0, 7);
+    var minKey = aromaKeys.filter(function (k) { return /mineraln/.test(k); })[0];
+    if (minKey && top.indexOf(minKey) < 0) top.push(minKey); // mineralność pokazujemy zawsze, gdy jest na wykresie
+    return '<section class="aroma">' +
+      '<h4>Profil degustatorów Salonu vín 2026 <span class="muted">· skala 0–10</span></h4>' +
+      '<div class="aroma__cols"><div><p class="aroma__h">Struktura</p>' + bars(A.structure, Object.keys(A.structure)) + '</div>' +
+      '<div><p class="aroma__h">Najmocniejsze aromaty</p>' + bars(A.aroma, top) + '</div></div>' +
+      (minKey ? '' : '<p class="muted">Arkusz Salonu dla win czerwonych nie ma osi mineralności, jest za to „grzyby i ziemiste”.</p>') +
+      '<p class="credit-line">Odczyt z wykresu Salonu (dokładność ok. ±0,3) · ' + ext(A.chart, 'oryginalny wykres', 'credit') + '</p></section>';
+  }
+
+  /* Ściąga „Jak czytać czeskie wino”: kategorie, słodycz, regiony, mineralność. */
+  function renderGuide() {
+    var G = T.wine.guide, M = window.WINE_MAP;
+    if (!G) return '';
+    var NM_MIN = 12, NM_MAX = 34;
+    var ladder = '<div class="ladder">' + G.ladder.map(function (r, i) {
+      var head = (r.priv && !G.ladder[i - 1].priv) ? '<p class="ladder__group">Jakostní víno s přívlastkem, czyli z „przydomkiem”</p>' : '';
+      var w = Math.max(6, (r.nm - NM_MIN) / (NM_MAX - NM_MIN) * 100);
+      return head + '<div class="lad">' +
+        '<div class="lad__name"><strong lang="cs">' + r.cz + '</strong><span>' + r.pl + '</span></div>' +
+        '<div class="lad__bar"><i style="width:' + w + '%"></i><b>' + r.nm + ' °NM</b></div>' +
+        '<div class="lad__stat">' + (r.note ? r.note + ' · ' : '') + fmt(r.pts) + ' pkt · ' + r.dry9 + '% do 9 g/l · ' + r.n + ' win</div></div>';
+    }).join('') + '</div>' +
+      '<p class="lad__legend">Pasek: minimalna dojrzałość gron według ustawy. Pod paskiem: średnia ocena (pkt na 100), udział win do 9 g/l cukru i liczba nagrodzonych win w Salonie vín 2024–2026.</p>';
+    var panes = {
+      kategorie: '<p class="small">' + G.ladderIntro + '</p>' + ladder +
+        '<ul class="takeaways">' + G.takeaways.slice(0, 2).map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul>' +
+        '<details class="guide__more"><summary>Więcej: wino ziemskie, dosładzanie, VOC</summary><ul class="takeaways">' +
+        G.takeaways.slice(2).map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul></details>',
+      slodycz: '<div class="sweet">' + G.sweetness.map(function (s, i) {
+          return '<div class="sweet__row"><span class="sweet__sw sweet__sw--' + i + '"></span><div><strong lang="cs">' + s.cz + '</strong> · ' + s.pl +
+            ' <span class="sweet__range">' + s.range + '</span>' + (s.ext ? '<span class="sweet__ext">' + s.ext + '</span>' : '') + '</div></div>';
+        }).join('') + '</div>' +
+        '<div class="sweetbar" aria-hidden="true"><i class="sb0"></i><i class="sb1"></i><i class="sb2"></i><i class="sb3"></i></div>' +
+        '<div class="sweetbar__ticks" aria-hidden="true"><span>0</span><span>4–9</span><span>12–18</span><span>45 g/l</span></div>' +
+        '<p class="item__note">' + G.sweetExample + '</p>',
+      regiony: M ? '<figure class="wmap"><img src="' + M.img + '" width="' + M.w + '" height="' + M.h + '" alt="Mapa winiarskiej Moraw: cztery podoblasti, 14 apelacji VOC i winnice złotych win Salonu 2026" loading="lazy" decoding="async">' +
+          '<figcaption>Kropki: winnice ' + M.goldPoints + ' złotych win Salonu 2026. Barwne tło jest poglądowe, dokładne granice podoblasti: ' +
+          ext(G.sources[3].url, 'mapa w Commons', 'credit') + ' · © OpenStreetMap contributors</figcaption></figure>' +
+          '<p class="small">Morawy to jeden obszar winiarski (vinařská oblast Morava) z czterema podobszarami. Znojmo, Šatov i Nový Šaldorf leżą w <strong>znojemskiej</strong>, a Mikulov, Pálava i Valtice w <strong>mikulowskiej</strong>.</p>' +
+          '<div class="subs">' + M.subregions.map(function (s) {
+            var vocs = M.voc.filter(function (v) { return v.subregion === s.id; });
+            return '<div class="sub"><p class="sub__h"><span class="sub__dot" style="background:' + s.color + '"></span><strong lang="cs">' + s.id + '</strong>' +
+              '<span class="muted"> · ' + s.gold2026 + ' złotych win 2026</span></p><ol class="sub__voc">' + vocs.map(function (v) {
+                return '<li value="' + v.n + '">' + v.name + ' <span class="muted">(' + v.village + ')</span></li>';
+              }).join('') + '</ol></div>';
+          }).join('') + '</div>' +
+          '<p class="small muted">VOC (víno originální certifikace) to apelacje zakładane przez stowarzyszenia winiarzy z danego miejsca. Lista według broszury „Vína z Moravy, vína z Čech” 2021–2022 i win VOC w Salonie 2024–2026. W Czechach jest jeszcze VOC Mělník.</p>' : '',
+      mineralnosc: '<p class="small">' + G.minerality.text + '</p><p class="small">' + G.minerality.scale + '</p>' + actions(G.minerality.links)
+    };
+    var tabs = [['kategorie', 'Kategorie'], ['slodycz', 'Słodycz'], ['regiony', 'Regiony'], ['mineralnosc', 'Mineralność']];
+    return '<section class="card guide" id="w-sciaga"><h2 class="guide__title">' + G.title + '</h2>' +
+      '<div class="seg" role="group" aria-label="Ściąga">' + tabs.map(function (t, i) {
+        return '<button type="button" class="seg__b" data-guide="' + t[0] + '" aria-pressed="' + (i === 0) + '">' + t[1] + '</button>';
+      }).join('') + '</div>' +
+      tabs.map(function (t, i) { return '<div class="guide__pane" data-pane="' + t[0] + '"' + (i ? ' hidden' : '') + '>' + panes[t[0]] + '</div>'; }).join('') +
+      '<details class="guide__src"><summary>Źródła</summary>' + actions(G.sources) + '</details></section>';
   }
   function sheetEl() {
     var d = document.getElementById('wine-sheet');
@@ -435,13 +509,14 @@
 
   function renderWine() {
     var V = T.wine, E = V.enoteka;
-    var jump = [['w-czempioni', 'Czempioni'], ['w-top10', 'Top 10'], ['w-dobierz', 'Dobierz wino'], ['w-degustacja', 'Degustacja'],
-      ['w-enoteka', 'Enotéka'], ['w-katalog', 'Katalog'], ['w-odmiany', 'Ściąga']];
+    var jump = [['w-sciaga', 'Etykieta i regiony'], ['w-czempioni', 'Czempioni'], ['w-top10', 'Top 10'], ['w-dobierz', 'Dobierz wino'], ['w-degustacja', 'Degustacja'],
+      ['w-enoteka', 'Enotéka'], ['w-katalog', 'Katalog'], ['w-odmiany', 'Odmiany']];
     var html = '';
     html += '<div class="card wine-hero"><h2>Znojmo w kieliszku</h2><p>' + V.stats + '</p></div>';
     html += '<nav class="jump" aria-label="Na tej stronie">' + jump.map(function (j) {
       return '<a href="#' + j[0] + '" data-jump="' + j[0] + '">' + j[1] + '</a>';
     }).join('') + '</nav>';
+    html += renderGuide();
 
     // Czempioni — na samej górze, z uczciwą informacją o dostępności
     html += '<h2 class="section-title" id="w-czempioni">Czempioni konkursu 2026</h2>' +
@@ -775,6 +850,13 @@
       }
       var goTab = e.target.closest('[data-goto-tab]');
       if (goTab) { showTab(goTab.dataset.gotoTab, true); return; }
+      var guideBtn = e.target.closest('[data-guide]');
+      if (guideBtn) {
+        var g = guideBtn.closest('.guide');
+        $$('.seg__b', g).forEach(function (b) { b.setAttribute('aria-pressed', String(b === guideBtn)); });
+        $$('.guide__pane', g).forEach(function (p) { p.hidden = p.dataset.pane !== guideBtn.dataset.guide; });
+        return;
+      }
       var wineBtn = e.target.closest('[data-wine]');
       if (wineBtn) { openSheet(wineBtn.dataset.wine); return; }
       var flavor = e.target.closest('[data-flavor]');

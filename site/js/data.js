@@ -444,6 +444,50 @@
     /* ------------------------------------------------------------------ */
     wine: {
       stats: 'Top 10 ze Znojemska, spod Mikulova i z Valtic · 17 winiarni · ponad 40 butelek',
+
+      /* Ściąga „Jak czytać czeskie wino”. Progi: zákon č. 321/2004 Sb., § 17–19 (znění k 1. 7. 2025).
+         Statystyki: Salon vín ČR 2024–2026, 1145 nagrodzonych win (złote i srebrne), docs/salon-vin/.
+         Słodycz: rozporządzenie UE 2019/33, zał. III cz. B. */
+      guide: {
+        title: 'Jak czytać czeskie wino',
+        ladderIntro: 'Kategoria na etykiecie mówi, <strong>jak dojrzałe były grona</strong> w chwili zbioru. Mierzy się to cukrem w moszczu w °NM, czyli w kilogramach cukru na 100 litrów moszczu. Im wyżej na drabince, tym dojrzalsze grona. Nie oznacza to automatycznie słodszego ani lepszego wina.',
+        ladder: [
+          { cz: 'zemské víno', pl: 'wino ziemskie', nm: 14, n: 100, pts: 87.9, dry9: 89 },
+          { cz: 'jakostní víno', pl: 'wino jakościowe', nm: 15, n: 11, pts: 87.5, dry9: 100 },
+          { cz: 'kabinetní víno', pl: 'kabinetowe', nm: 19, n: 11, pts: 87.7, dry9: 91, priv: true },
+          { cz: 'pozdní sběr', pl: 'późny zbiór', nm: 21, n: 538, pts: 88.2, dry9: 87, priv: true },
+          { cz: 'výběr z hroznů', pl: 'wybór z gron', nm: 24, n: 321, pts: 88.5, dry9: 77, priv: true },
+          { cz: 'výběr z bobulí', pl: 'wybór z jagód', nm: 27, n: 43, pts: 88.6, dry9: 9, priv: true, note: 'wybrane jagody, zbiór ręczny' },
+          { cz: 'výběr z cibéb', pl: 'wybór z rodzynek', nm: 32, n: 13, pts: 90.4, dry9: 0, priv: true, note: 'jagody z szlachetną pleśnią lub przejrzałe' },
+          { cz: 'ledové víno', pl: 'wino lodowe', nm: 27, n: 4, pts: 89.6, dry9: 0, priv: true, note: 'zbiór przy −7 °C lub zimniej' },
+          { cz: 'slámové víno', pl: 'wino słomkowe', nm: 27, n: 4, pts: 89.5, dry9: 0, priv: true, note: 'grona suszone co najmniej 3 miesiące' }
+        ],
+        takeaways: [
+          '<strong>Přívlastek to nie słodycz.</strong> 87% nagrodzonych win „pozdní sběr” ma do 9 g/l cukru, więc zwykle są wytrawne. Słodycz sprawdzaj w słowie <em>suché / polosuché / polosladké / sladké</em>.',
+          '<strong>Wyższa kategoria to nie wyższa jakość.</strong> W Salonie 2024–2026 średnie oceny od wina ziemskiego (87,9 pkt) do „výběr z bobulí” (88,6 pkt) różnią się o mniej niż punkt na 100. Wyraźnie wyżej wypadają tylko wina z szlachetną pleśnią („výběr z cibéb”, 90,4 pkt).',
+          '<strong>Zemské víno bywa najwyższej klasy.</strong> Ma 17 złotych medali Salonu, a średnio dojrzałość moszczu 23 °NM, czyli wyższą niż typowy „pozdní sběr”. Część winiarzy celowo rezygnuje z formalnej klasyfikacji.',
+          '<strong>Wina z přívlastkiem nie mogą być dosładzane</strong> ani wzmacniane cukrem przy fermentacji (§ 13 ust. 3 i § 14 ust. 1 ustawy).',
+          '<strong>VOC to osobny system.</strong> „Víno originální certifikace” oznacza pochodzenie i typowy styl danego miejsca, zatwierdzane przez stowarzyszenie winiarzy, a nie dojrzałość gron.'
+        ],
+        sweetness: [
+          { cz: 'suché', pl: 'wytrawne', range: 'do 4 g/l', ext: 'albo do 9 g/l, gdy kwasów jest najwyżej o 2 g/l mniej niż cukru', max: 9 },
+          { cz: 'polosuché', pl: 'półwytrawne', range: 'do 12 g/l', ext: 'albo do 18 g/l, gdy kwasów jest najwyżej o 10 g/l mniej niż cukru', max: 18 },
+          { cz: 'polosladké', pl: 'półsłodkie', range: 'do 45 g/l', max: 45 },
+          { cz: 'sladké', pl: 'słodkie', range: 'od 45 g/l', max: 60 }
+        ],
+        sweetExample: 'Przykład z Top 10: Hnanice Ryzlink rýnský VOC ma 7,2 g/l cukru i 7,1 g/l kwasów. To więcej niż 4 g/l, ale kwasów jest tylko o 0,1 g/l mniej niż cukru, więc wino jest oficjalnie <strong>suché</strong>. Kwasowość równoważy cukier w smaku.',
+        minerality: {
+          text: '„Mineralne” to wrażenie degustatorów, a nie zawartość minerałów z gleby. Minerały są w winie w ilościach poniżej progu wyczuwalności, a skały nie mają smaku ani zapachu. Badania łączą to wrażenie z kwasowością, słonością, nutami krzemienia lub dymu (często od związków siarki) i z mniej owocowym profilem. Gleba może działać pośrednio, np. przez to, jak nagrzewa się winnica i ile wody ma krzew.',
+          scale: 'Degustatorzy Salonu vín oceniają „mineralne i inne” w skali 0–10 obok innych grup aromatów. Profil z ich wykresu zobaczysz w szczegółach pięciu win z Top 10 (oznaczenie „Profil Salonu”).',
+          links: [web('Parr i in., „Minerality in Wine: Towards the Reality behind the Myths” (Beverages, 2018)', 'https://hal.inrae.fr/hal-02624486')]
+        },
+        sources: [
+          web('Ustawa 321/2004 Sb., § 17–19 (zakonyprolidi.cz)', 'https://www.zakonyprolidi.cz/cs/2004-321'),
+          web('Rozporządzenie UE 2019/33, zał. III (oznaczenia słodyczy)', 'https://legislation.gov.uk/eur/2019/33/annex/III/2020-01-31'),
+          web('Salon vín ČR: wina w Salonie', 'https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu'),
+          web('Dokładna mapa podoblasti (Wikimedia Commons)', 'https://commons.wikimedia.org/wiki/File:Vina%C5%99sk%C3%A1_mapa_-_ji%C5%BEn%C3%AD_Morava.png')
+        ]
+      },
       enoteka: {
         title: 'Enotéka krok po kroku', venue: 'enoteka',
         place: 'Hradní 2, teren browaru w centrum Znojma',
