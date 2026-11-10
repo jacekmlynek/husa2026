@@ -15,6 +15,7 @@ tools/build-gas.mjs
 tools/salon-vin/ ← skrypty danych Salon vín (pobieranie, parsowanie, scalanie, audyt)
 tools/wina-opisy/ ← zbieranie opisów smakowych win ze stron producentów i sklepów
 tools/build-wine-map.py, tools/read-aroma-charts.py ← mapa regionów i profile aromatów (opis niżej)
+tools/build-wine-notes.py ← opisy smakowe z docs/wina-opisy/ do site/js/wine-notes.js
 docs/            ← materiały źródłowe i makieta
   salon-vin/     ← wyniki Salon vín ČR 2024–2026 jako JSON (+ README z opisem pól)
   wina-opisy/    ← opisy smakowe win ze strony bez profilu Salonu (+ README z metodą i pokryciem)
@@ -39,7 +40,7 @@ Dane Salon vín ČR (krajowy konkurs win, Národní vinařské centrum, Valtice)
 
 Odtworzenie i kontrola jakości (`audit.py`, `audit2.py`, `audit3.py`): `tools/salon-vin/README.md`. Źródłowe PDF/XLSX (ok. 12 MB na rok) nie są w repozytorium, ich adresy są w polu `sources` każdego pliku.
 
-Opisy smakowe dla win bez profilu degustatorów Salonu: `docs/wina-opisy/opisy-win.json` (skrypt `tools/wina-opisy/build.py`). Zawiera dosłowne opisy producentów i sklepów (Vinotrh/Enotéka, Vínovín) z linkami, a słowa z opisów są przypisane do grup aromatów Salonu. Grupy oznaczają tylko obecność słowa, nie natężenie 0–10. Szacunki Vínovín i szablony Vinotrh są oznaczone i nie liczą się do grup. Metoda, pokrycie i odrzucone dopasowania: `docs/wina-opisy/README.md`.
+Opisy smakowe dla win bez profilu degustatorów Salonu: `docs/wina-opisy/opisy-win.json` (skrypt `tools/wina-opisy/build.py`). Zawiera dosłowne opisy producentów i sklepów (Vinotrh/Enotéka, Vínovín) z linkami, a słowa z opisów są przypisane do grup aromatów Salonu. Grupy oznaczają tylko obecność słowa, nie natężenie 0–10. Szacunki Vínovín i szablony Vinotrh są oznaczone i nie liczą się do grup. Metoda, pokrycie i odrzucone dopasowania: `docs/wina-opisy/README.md`. Na stronę trafiają przez `python tools/build-wine-notes.py`, który zapisuje `site/js/wine-notes.js`. Dla każdego z 43 win bez wykresu Salonu okno wina pokazuje: grupy aromatów z opisów własnego rocznika, osobno grupy z samego szacunku Vínovín i z innego rocznika, a w zwiniętej sekcji do 2 cytatów po czesku ze źródłem. Szablony sklepów, zdania o podawaniu i potrawach oraz niepotwierdzone cytaty są pomijane.
 
 Podglądy map tras: `python tools/build-route-maps.py` składa kafelki OpenStreetMap ze śladem GPX w `site/img/trasy/<id>.webp` (+ `site/js/route-maps.js`). Kafelki są w pamięci podręcznej `docs/trasy-kafelki/`, więc ponowne uruchomienie ich nie pobiera.
 

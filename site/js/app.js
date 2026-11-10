@@ -367,9 +367,35 @@
         '<span class="abar__bar"><i style="width:' + (v * 10) + '%"></i></span><span class="abar__v">' + fmt(v) + '</span></div>';
     }).join('') + '</div>';
   }
+  /* Wina bez wykresu Salonu: grupy aromatów ze słownych opisów (tools/build-wine-notes.py). Bez skali: słowo pada albo nie. */
+  var WNOTES = window.WINE_NOTES || {};
+  function nchips(gs, cls) {
+    return '<div class="nchips">' + gs.map(function (g) {
+      return '<span class="nchip' + (/mineraln/.test(g) ? ' nchip--min' : '') + (cls || '') + '">' + g + '</span>';
+    }).join('') + '</div>';
+  }
+  function nquote(q, src) {
+    return '<blockquote class="nquote"><p lang="cs">„' + q + '”</p><footer>' + src + '</footer></blockquote>';
+  }
+  function notesBlock(id) {
+    var N = WNOTES[id] || { groups: [], quotes: [] };
+    var noChart = 'Profil degustatorów w skali 0–10 jest tylko dla ' + Object.keys(AR).length + ' win: Salon vín publikuje wykresy aromatów wyłącznie dla 100 złotych win finału 2026, a tego wina wśród nich nie ma.';
+    var quotes = N.quotes.map(function (q) {
+      return nquote(q.q, ext(q.url, q.src, 'credit') + (q.remark ? ' · ' + q.remark : ''));
+    });
+    if (N.other) quotes.push(nquote(N.other.q, 'Rocznik ' + N.other.year + ', nie ' + wine(id).year + ' · ' + ext(N.other.url, N.other.src, 'credit')));
+    var h = '<section class="aroma aroma--text"><h4>Co piszą o nim źródła <span class="muted">· bez skali</span></h4>';
+    if (N.groups.length) h += '<p class="aroma__h">Aromaty wymienione w opisach</p>' + nchips(N.groups);
+    else if (!N.est && !N.other) h += '<p class="small muted">Żadne sprawdzone źródło nie opisuje smaku tego rocznika.</p>';
+    if (N.other && N.other.groups.length) h += '<p class="aroma__h">Z opisu rocznika ' + N.other.year + '</p>' + nchips(N.other.groups, ' nchip--soft');
+    if (N.est) h += '<p class="aroma__h">Tylko w szacunku sklepu, nie z degustacji</p>' + nchips(N.est, ' nchip--soft') +
+      '<p class="credit-line">' + ext(N.estUrl, 'Vínovín', 'credit') + ' sam pisze, że opis to „odhad” z analizy, położenia i poprzednich roczników.</p>';
+    if (quotes.length) h += '<details class="nquotes"><summary>Opisy po czesku (' + quotes.length + ')</summary>' + quotes.join('') + '</details>';
+    return h + '<p class="credit-line">Grupy aromatów jak w arkuszu Salonu, ale oznaczają tylko, że słowo pada w opisie, a nie jego natężenie. ' + noChart + '</p></section>';
+  }
   function aromaBlock(id) {
     var A = AR[id];
-    if (!A) return '<p class="aroma-none">Profil degustatorów Salonu w skali 0–10 jest tylko dla ' + Object.keys(AR).length + ' win. Salon vín publikuje wykresy aromatów wyłącznie dla 100 złotych win finału 2026, a tego wina wśród nich nie ma.</p>';
+    if (!A) return notesBlock(id);
     var aromaKeys = Object.keys(A.aroma).sort(function (a, b) { return A.aroma[b] - A.aroma[a]; });
     var top = aromaKeys.filter(function (k) { return A.aroma[k] >= 2; }).slice(0, 7);
     var minKey = aromaKeys.filter(function (k) { return /mineraln/.test(k); })[0];

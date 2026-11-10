@@ -843,6 +843,17 @@ button.wtile, button.wrow, button.wchamp { appearance: none; font: inherit; colo
 .abar--min .abar__l { font-weight: 700; color: var(--slate); }
 .abar__v { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--ink); }
 
+/* wina bez wykresu Salonu: grupy aromatów ze słownych opisów (obecność słowa, bez skali) */
+.nchips { display: flex; flex-wrap: wrap; gap: 5px; }
+.nchip { font-size: 12.5px; font-weight: 700; color: var(--wine-900); background: var(--rose-50); border: 1px solid var(--rose-300); border-radius: 999px; padding: 2px 9px; }
+.nchip--min { color: #fff; background: var(--mineral); border-color: var(--mineral); }
+.nchip--soft { font-weight: 600; color: var(--ink-3); background: #fff; border-style: dashed; }
+.nchip--soft.nchip--min { color: var(--slate); border-color: var(--mineral); }
+.nquotes > summary { cursor: pointer; font-size: 14px; font-weight: 700; color: var(--wine-800); line-height: 20px; padding: 12px 0; }
+.nquote { margin: 0 0 10px; padding-left: 10px; border-left: 3px solid var(--rose-300); }
+.nquote p { font-size: 13.5px; line-height: 1.45; font-style: italic; color: var(--ink-2); }
+.nquote footer { font-size: 11.5px; line-height: 1.3; color: var(--ink-3); margin-top: 3px; }
+
 @media (min-width: 640px) {
   .aroma__cols { grid-template-columns: 1fr 1fr; }
   .lad { grid-template-columns: 180px 1fr; column-gap: 12px; }

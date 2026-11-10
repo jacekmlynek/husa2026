@@ -36,6 +36,7 @@ ${inlineImages(read('js/wine-media.js'))}
 </script>`);
 html = html.replace('<script src="js/wine-map.js"></script>', () => `<script>\n${inlineImages(read('js/wine-map.js'))}\n</script>`);
 html = html.replace('<script src="js/aroma.js"></script>', () => `<script>\n${read('js/aroma.js')}\n</script>`);
+html = html.replace('<script src="js/wine-notes.js"></script>', () => `<script>\n${read('js/wine-notes.js')}\n</script>`);
 html = html.replace('<script src="js/venue-media.js"></script>', () => `<script>\n${inlineImages(read('js/venue-media.js'))}\n</script>`);
 html = html.replace('<script src="js/routes.js"></script>', () => `<script>\n${inlineImages(read('js/routes.js'))}\n</script>`);
 html = html.replace('<script src="js/route-maps.js"></script>', () => `<script>
