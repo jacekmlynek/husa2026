@@ -9,7 +9,7 @@ Plik [opisy-win.json](opisy-win.json) zawiera wszystkie 56 win (klucz jak w `sit
 | Pole | Znaczenie |
 |---|---|
 | `has_salon_profile` | czy wino ma liczby 0–10 w `site/js/aroma.js` |
-| `sources[]` | `source`, `url`, `notes` (opis po czesku, dosłownie ze źródła), `values` (parametry podane przez źródło: cukier, kwasy, alkohol, trasa, okno picia, potrawy…), opcjonalnie `winemaking` (akapity o produkcji), `estimated` i `generic_sentences` |
+| `sources[]` | `source`, `url`, `notes` (opis po czesku, dosłownie ze źródła), `values` (parametry podane przez źródło: cukier, kwasy, alkohol, trasa, okno picia, potrawy…), opcjonalnie `winemaking` (akapity o produkcji), `estimated`, `generic_sentences`, a przy źródłach z dodatkowego researchu `kind` (producent / recenzent / sklep), `quote_confirmed` i `remark` |
 | `aroma_groups_from_text` | słowa z opisów przypisane do grup aromatów z metodyki Salonu vín (květnaté, tropické ovoce, citrusové, jádrové, peckové, drobné ovoce, sušené a vařené, karamelizované, bylinné, kořenité, dřevo/barrique, autolyzátové/mléčne, mineralne, zwierzęce/ziemiste) |
 | `aroma_groups_estimated_only` | grupy, które pojawiają się wyłącznie w szacunkowym opisie Vínovín |
 | `other_vintage` | opis tego samego wina z innego rocznika (`vintage`, `source`, `url`, `why`, `notes`, `aroma_groups`). Jest tylko tam, gdzie brak opisu własnego rocznika |
@@ -23,14 +23,16 @@ Plik [opisy-win.json](opisy-win.json) zawiera wszystkie 56 win (klucz jak w `sit
 2. **Vinotrh** (sklep Enotéki): wina z karty `enoteka.vinotrh.cz/output/wines.json` dopasowane po producencie, roczniku i nazwie, a strona produktu wyszukana po kodzie Vinotrh. Opis dla 20 win. **Uwaga:** krótkie karty VOC mają szablon „Suché bílé víno odrůdy X, 2025, VOC z vinařství Y.” i zdanie typowe dla odmiany. To samo zdanie występuje u różnych winiarni, np. „Aromatické víno s výrazným projevem angreštu, rybízu, broskví a černého bezu.” przy Sauvignonach Piálka i Znovínu. Takie zdania (6 win) są wpisane w `generic_sentences` i nie trafiają do grup.
 3. **Vínovín** (vinovin.cz): dopasowanie po odmianie, roczniku, producencie i kategorii jakości w adresie (VOC, kabinet, późny zbiór…). Opis dla 17 win. **Uwaga:** przy 10 z nich sklep sam pisze „Popis vína je odhadem na základě analytiky, polohy a charakteristiky stejného vína minulých ročníků”. To szacunek, nie degustacja, więc te opisy mają `estimated: true` i nie trafiają do `aroma_groups_from_text`.
 
+4. **Dodatkowy research** ([zrodla-dodatkowe.md](zrodla-dodatkowe.md)): osobne przeszukanie recenzji, mediów, konkursów i innych sklepów dla 13 win bez opisu właściwego rocznika. Cytaty są w liście `EXTRA` w `build.py`, a przy każdym budowaniu skrypt sprawdza, czy cytat nadal jest na stronie. Do grup liczą się tylko potwierdzone (`quote_confirmed: true`). Niepotwierdzone zostają zapisane: karta Ampelos AT klony i karta VELTLIN dla Qvevri zwracają dziś 404. W raporcie agenta dwa zdania Moravskiego Hrozenu (Špalek VZ) były sklejone, choć na stronie dzieli je trzecie, więc w danych są jako dwa osobne cytaty.
+
 Ze stron Shoptet (Vinotrh, Vínovín) brany jest tylko krótki i główny opis produktu. Fragmenty kart innych win z tej samej strony (ucięte na „...”) są pomijane, podobnie jak ogólny tekst Znovínu o VOC Znojmo.
 
 ## Inny rocznik
 
 Gdy wino nie ma opisu własnego rocznika, można użyć opisu tego samego wina z innego rocznika. Warunki: ten sam producent, ta sama linia lub trasa i ta sama kategoria. Taki opis jest w osobnym polu `other_vintage` z rokiem i uzasadnieniem. Rocznik zmienia głównie akcenty: chłodny rok daje więcej cytrusów, zielonego jabłka i ziół, a ciepły brzoskwinię, owoce tropikalne i miód. Charakter odmiany i trasy zostaje. Grupy z innego rocznika są więc orientacyjne. Parametry (cukier, kwasy, alkohol) zawsze pochodzą z właściwego rocznika.
 
-- Oulehla Frankovka Na Nivách 2023 ← rocznik 2022 (ta sama trasa, na naszej stronie).
-- Simenon Sauvignon VOC 2025 ← rocznik 2024 z Vinotrh (sklep nie podaje trasy).
+- Simenon Sauvignon VOC 2025 ← rocznik 2024 z Vinshopu (ta sama trasa Dívčí hora, VOC, suche).
+- Oulehla Frankovka Na Nivách 2023 nie potrzebuje już innego rocznika: jest recenzja partii 2350 z MojeLahve.
 - **Nie użyto** opisu Ampelos Veritas 2023 z Enotéki. To słodki výběr z bobulí, a na stronie jest wytrawny pozdní sběr 2024, czyli inne wino mimo tej samej odmiany.
 
 ## Odrzucone dopasowania
@@ -50,27 +52,23 @@ Rocznik jest sprawdzany w tytule strony, a nie w adresie. Špalek ma adres „�
 
 ## Pokrycie (43 wina bez profilu Salonu)
 
-36 ma jakikolwiek opis, a 30 ma grupy aromatów z opisu własnego rocznika (producent lub Vinotrh poza szablonami). Opis z innego rocznika mają 2.
+41 ma jakikolwiek opis, a 35 ma grupy aromatów z opisu własnego rocznika (producent, recenzent albo sklep, z pominięciem szacunków i szablonów). Bez nich jest 8 win:
 
-Bez opisu własnego rocznika lub tylko z szacunkiem albo szablonem:
-
-- Vinice Hnanice Ryzlink VOC, Veltlín VOC i Sauvignon VOC 2025, Simenon Sauvignon VOC 2025, Špalek Veltlín VOC i Gryllus 2025: tylko szablon Vinotrh i/lub szacunek Vínovín.
-- Ampelos Veritas 2024 i Trio 2024: strona producenta podaje tylko kategorię, trasę i pochodzenie odmiany.
-- Ampelos Veltlínské zelené AT klony 2024: jest tylko link do listy win Ampelos na Vinotrh.
-- Oulehla Frankovka Na Nivách 2023: e-sklep ma tylko kategorię win czerwonych (jest opis 2022 w `other_vintage`).
-- Kořínek Veltlínské zelené VOC 2023: Vínovín ma tylko ogólny tekst o VOC Znojmo.
-- Kořínek PET NAT Ryzlink rýnský 2025: strona e-sklepu nie ma opisu.
-- Dobrá Vinice Veltlínské zelené Qvevri 2019: jest tylko opis produkcji (9 miesięcy maceracji w qvevri, 12 miesięcy w beczkach 500 l, niefiltrowane, potencjał 18+ lat) w `winemaking` oraz potrawy w `values.food`.
+- Vinice Hnanice Ryzlink VOC, Veltlín VOC i Sauvignon VOC 2025: tylko szablon Vinotrh i/lub szacunek Vínovín. Cennik producenta i MojeLahve nie mają opisu.
+- Simenon Sauvignon VOC 2025: tylko szacunek Vínovín. Jest opis rocznika 2024 w `other_vintage`.
+- Ampelos Veritas 2024: Vinotéka u zámku opisuje wino po własnej degustacji (czerwiec 2026), ale bez słów aromatów. Na stronie są dwie partie (2419 i 2523).
+- Ampelos Veltlínské zelené AT klony 2024: cytat z karty producenta, która dziś daje 404.
+- Kořínek Veltlínské zelené VOC 2023 i PET NAT Ryzlink rýnský 2025: brak opisu w żadnym sprawdzonym źródle.
 
 | Wino | Źródła z opisem | Grupy aromatów z opisów | Tylko w szacunku Vínovín | Inny rocznik |
 |---|---|---|---|---|
 | Znovín Znojmo · Ryzlink rýnský Šobes 2025 | producent | květnaté, tropické ovoce, peckové ovoce, sušené a vařené ovoce, mineralne |  |  |
 | Vinice Hnanice · Ryzlink rýnský VOC 2025 | Vínovín (szacunek) | – | květnaté, citrusové ovoce, mineralne |  |
 | Piálek & Jäger · Sauvignon VOC 2025 | producent, Vinotrh (szablon), Vínovín (szacunek) | peckové ovoce | tropické ovoce, citrusové ovoce, drobné ovoce, bylinné, mineralne |  |
-| Ampelos · Veritas 2024 | – | – |  |  |
+| Ampelos · Veritas 2024 | inny sklep | – |  |  |
 | Oulehla · Frankovka Na Nivách 2022 | producent | peckové ovoce, drobné ovoce, karamelizované, kořenité, mineralne |  |  |
 | DAVINUS · Ryzlink rýnský, kabinet 2022 | producent | tropické ovoce, peckové ovoce, sušené a vařené ovoce |  |  |
-| Oulehla · Frankovka Na Nivách 2023 | – | – |  | 2022: peckové ovoce, drobné ovoce, karamelizované, kořenité, mineralne |
+| Oulehla · Frankovka Na Nivách 2023 | recenzent | mineralne |  |  |
 | VINO HORT · Královský Ryzlink rýnský VOC 2023 | producent, Vinotrh, Vínovín | citrusové ovoce, peckové ovoce, karamelizované, kořenité, mineralne |  |  |
 | Hanzel · Rotgipfler Volné pole 2025 | Vinotrh | květnaté, peckové ovoce, karamelizované, kořenité |  |  |
 | Znovín Znojmo · Neuburské z Pekla 2025 | producent, Vinotrh | tropické ovoce, peckové ovoce, sušené a vařené ovoce, karamelizované |  |  |
@@ -81,8 +79,8 @@ Bez opisu własnego rocznika lub tylko z szacunkiem albo szablonem:
 | Znovín Znojmo · Veltlínské zelené VOC Znojmo 2025 | producent, Vínovín (szacunek) | květnaté, jádrové ovoce, peckové ovoce, kořenité, autolyzátové / mléčne | karamelizované, mineralne |  |
 | Piálek & Jäger · Veltlínské zelené Extra 2024 | producent, Vinotrh, Vínovín | květnaté, kořenité, mineralne |  |  |
 | Piálek & Jäger · Hibernal 2025 | producent, Vinotrh, Vínovín | květnaté, tropické ovoce, citrusové ovoce, peckové ovoce, karamelizované, kořenité |  |  |
-| Špalek · Veltlínské zelené VOC Znojmo BIO 2025 | Vinotrh (szablon), Vínovín (szacunek) | – | citrusové ovoce, jádrové ovoce, peckové ovoce, bylinné, kořenité, mineralne |  |
-| Špalek · Gryllus bílý VOC BIO 2025 | Vinotrh (szablon), Vínovín (szacunek) | – | květnaté, citrusové ovoce, bylinné, mineralne |  |
+| Špalek · Veltlínské zelené VOC Znojmo BIO 2025 | Vinotrh (szablon), Vínovín (szacunek), inny sklep | karamelizované, kořenité, mineralne | citrusové ovoce, jádrové ovoce, peckové ovoce, bylinné |  |
+| Špalek · Gryllus bílý VOC BIO 2025 | Vinotrh (szablon), Vínovín (szacunek), inny sklep | tropické ovoce, citrusové ovoce, jádrové ovoce, mineralne | květnaté, bylinné |  |
 | Thaya · Apri Chardonnay 2024 | producent | květnaté, tropické ovoce, sušené a vařené ovoce, mineralne |  |  |
 | Thaya · Veltlínské zelené · Pozdravy z Národního parku 2025 | producent, Vinotrh | citrusové ovoce, kořenité |  |  |
 | Thaya · Zweigeltrebe 2023 | producent | kořenité, dřevo / barrique |  |  |
@@ -101,12 +99,12 @@ Bez opisu własnego rocznika lub tylko z szacunkiem albo szablonem:
 | Josef Kořínek · Muškát moravský Fresh 2026 | Vínovín | květnaté, citrusové ovoce |  |  |
 | Simenon · Veltlínské zelené VOC 2025 | producent, Vinotrh (szablon) | citrusové ovoce, jádrové ovoce, kořenité, mineralne |  |  |
 | Simenon · Ryzlink rýnský VOC 2025 | producent, Vínovín (szacunek) | peckové ovoce, mineralne | květnaté, citrusové ovoce, jádrové ovoce |  |
-| Simenon · Sauvignon VOC 2025 | Vínovín (szacunek) | – | citrusové ovoce, drobné ovoce, bylinné, mineralne | 2024: citrusové ovoce, peckové ovoce, drobné ovoce, mineralne |
-| Ampelos · Trio 2024 | – | – |  |  |
-| Ampelos · Veltlínské zelené AT klony 2024 | – | – |  |  |
+| Simenon · Sauvignon VOC 2025 | Vínovín (szacunek) | – | citrusové ovoce, drobné ovoce, bylinné, mineralne | 2024: drobné ovoce |
+| Ampelos · Trio 2024 | recenzent | kořenité, mineralne |  |  |
+| Ampelos · Veltlínské zelené AT klony 2024 | producent (niepotwierdzony) | – |  |  |
 | Dobrá Vinice · Crème de Kambrium 2022 | producent | karamelizované, autolyzátové / mléčne, mineralne |  |  |
 | Dobrá Vinice · Kambrium cuvée 2022 | producent | květnaté, dřevo / barrique, mineralne |  |  |
-| Dobrá Vinice · Veltlínské zelené Qvevri 2019 | – | – |  |  |
+| Dobrá Vinice · Veltlínské zelené Qvevri 2019 | recenzent, inny sklep (niepotwierdzony) | citrusové ovoce, karamelizované, autolyzátové / mléčne, zwierzęce / ziemiste |  |  |
 
 ## Jak odtworzyć
 

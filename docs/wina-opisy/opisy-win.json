@@ -324,7 +324,19 @@
    "wine": "Veritas",
    "year": 2024,
    "has_salon_profile": false,
-   "sources": [],
+   "sources": [
+    {
+     "source": "Vinotéka u zámku (degustacja sklepu, czerwiec 2026)",
+     "url": "https://www.vinotekauzamku.cz/veritas-2/",
+     "notes": [
+      "Víno je ovocité, vyvážené, dekladováno ještě jako suché, ale zbytkovým cukrem je spíše v kategorii polosuché."
+     ],
+     "values": {},
+     "kind": "sklep",
+     "quote_confirmed": true,
+     "remark": "na stronie dwie partie: 2419 w nagłówku, 2523 w opisie"
+    }
+   ],
    "aroma_groups_from_text": {}
   },
   "oulehla-fr-2022": {
@@ -790,33 +802,23 @@
    "wine": "Frankovka Na Nivách",
    "year": 2023,
    "has_salon_profile": false,
-   "sources": [],
-   "aroma_groups_from_text": {},
-   "other_vintage": {
-    "vintage": 2022,
-    "source": "strona producenta",
-    "url": "https://eshop.oulehlavinarstvi.cz/frankovka-2022-pozdni-sber/",
-    "why": "ta sama Frankovka z trasy Na Nivách (Dolní Kounice), rocznik 2022 jest na naszej stronie",
-    "notes": [
-     "Frankovka granátové barvy a vůně vyzrálých višní se v chuti prolíná do likéru z aronie, třešňové pecky a perníku. Hebké vrstevnaté víno s kořenitě minerálním závěrem s odrazem terroir Dolních Kounic."
-    ],
-    "aroma_groups": {
-     "peckové ovoce": [
-      "višní"
+   "sources": [
+    {
+     "source": "MojeLahve.sk, recenzja użytkownika (14.02.2026, degustacja w Bořeticích)",
+     "url": "https://mojelahve.sk/vino/frankovka-na-nivach-2023-zemske-vino-vinarstvi-oulehla-cervene-74852",
+     "notes": [
+      "Měkké, subtilní, nasládlé, krásně svěží a ovocitě navinulé víno z čipernou kyselinku bez nakyslostí a výrazným tříslem. Hebká minerální textura."
      ],
-     "drobné ovoce": [
-      "aronie"
-     ],
-     "karamelizované": [
-      "perníku"
-     ],
-     "kořenité": [
-      "kořenitě"
-     ],
-     "mineralne": [
-      "minerálním"
-     ]
+     "values": {},
+     "kind": "recenzent",
+     "quote_confirmed": true,
+     "remark": "partia 2350; „nasládlé” to wrażenie recenzenta, wino jest suche (0,3 g/l)"
     }
+   ],
+   "aroma_groups_from_text": {
+    "mineralne": [
+     "minerální"
+    ]
    }
   },
   "vinohort-kralovsky-2023": {
@@ -1503,9 +1505,44 @@
       "serving_temp": "10–12 °C"
      },
      "estimated": true
+    },
+    {
+     "source": "Moravský Hrozen",
+     "url": "https://www.moravskyhrozen.cz/vinarstvi-spalek-veltlinske-zelene-2025-voc-znojmo--kravi-hora--suche/",
+     "notes": [
+      "Chuť je suchá, přesná a šťavnatá, s pevnou kyselinou a velmi čistým minerálním projevem.",
+      "Dochuť je středně dlouhá, lehce slaná a příjemně kamenitá."
+     ],
+     "values": {},
+     "kind": "sklep",
+     "quote_confirmed": true,
+     "remark": "partia 1825; bez podpisu degustatora, możliwy tekst marketingowy"
+    },
+    {
+     "source": "JustWine",
+     "url": "https://www.justwine.cz/spalek-veltlinske-zelene-voc-2025/",
+     "notes": [
+      "Ve vůni se objevují typické tóny zeleného pepře, mandlových slupek a jemné muškátové nuance charakteristické pro moravský Veltlín."
+     ],
+     "values": {},
+     "kind": "sklep",
+     "quote_confirmed": true,
+     "remark": "bez podpisu degustatora, częściowo zbieżny z Moravským Hrozenem"
     }
    ],
-   "aroma_groups_from_text": {},
+   "aroma_groups_from_text": {
+    "karamelizované": [
+     "mandlových"
+    ],
+    "kořenité": [
+     "pepře"
+    ],
+    "mineralne": [
+     "minerálním",
+     "slaná",
+     "kamenitá"
+    ]
+   },
    "aroma_groups_estimated_only": {
     "citrusové ovoce": [
      "citrusů"
@@ -1518,14 +1555,6 @@
     ],
     "bylinné": [
      "bylinným"
-    ],
-    "kořenité": [
-     "pepřnatostí",
-     "kořenitosti"
-    ],
-    "mineralne": [
-     "mineralitou",
-     "minerálním"
     ]
    }
   },
@@ -1580,21 +1609,52 @@
       "serving_temp": "10–12 °C"
      },
      "estimated": true
+    },
+    {
+     "source": "Vinshop",
+     "url": "https://www.vinshop.cz/gryllus-bily-2025-bio-voc-spalek-bile-vino-suche/",
+     "notes": [
+      "Vůně ovocná, připomínající žlutý meloun a kdoule. Chuť plná, spíše však minerální než ovocná, se středně dlouhou, slanou dochutí."
+     ],
+     "values": {},
+     "kind": "sklep",
+     "quote_confirmed": true,
+     "remark": "partia 1625; bez podpisu degustatora"
+    },
+    {
+     "source": "Moravský Hrozen",
+     "url": "https://www.moravskyhrozen.cz/vinarstvi-spalek-gryllus-bily-bio-2025-voc-znojmo--kravi-hora--cuvee--suche/",
+     "notes": [
+      "Chuť je suchá, živá a krásně vyvážená. Dominují citrusy, zelené jablko a šťavnatá ovocnost, kterou doprovází typická znojemská kyselina."
+     ],
+     "values": {},
+     "kind": "sklep",
+     "quote_confirmed": true,
+     "remark": "partia 1625; bez podpisu degustatora, możliwy tekst marketingowy"
     }
    ],
-   "aroma_groups_from_text": {},
+   "aroma_groups_from_text": {
+    "tropické ovoce": [
+     "meloun"
+    ],
+    "citrusové ovoce": [
+     "citrusy"
+    ],
+    "jádrové ovoce": [
+     "kdoule",
+     "jablko"
+    ],
+    "mineralne": [
+     "minerální",
+     "slanou"
+    ]
+   },
    "aroma_groups_estimated_only": {
     "květnaté": [
      "květinových"
     ],
-    "citrusové ovoce": [
-     "citrusů"
-    ],
     "bylinné": [
      "bylinný"
-    ],
-    "mineralne": [
-     "mineralita"
     ]
    }
   },
@@ -2369,25 +2429,15 @@
    },
    "other_vintage": {
     "vintage": 2024,
-    "source": "Vinotrh",
-    "url": "https://www.vinotrh.cz/sauvignon-voc-112/",
-    "why": "Sauvignon VOC Znojmo Simenonu z poprzedniego rocznika; strona sklepu nie podaje trasy",
+    "source": "Vinshop",
+    "url": "https://www.vinshop.cz/sauvignon-blanc-2024-voc-simenon-bile-vino-suche/",
+    "why": "ten sam Sauvignon VOC Znojmo Simenonu z trasy Dívčí hora (potwierdzona na karcie), rocznik 2024, suche",
     "notes": [
-     "Typický znojemský Sauvignon má výrazný aromatický profil plný opulentních tónů černého rybízu, angreštu a broskví. Ovocné tóny přecházejí také do chuti, kde jsou doplněny tóny citrusů, které přecházejí v příjemně minerální závěr. Nezbytností je svěží kyselinka, která je pevnou páteří vína."
+     "Vůně černého bezu a zralého angreštu, chuť šťavnatá, lehká, s živou kyselinou a harmonickým ovocným projevem."
     ],
     "aroma_groups": {
-     "citrusové ovoce": [
-      "citrusů"
-     ],
-     "peckové ovoce": [
-      "broskví"
-     ],
      "drobné ovoce": [
-      "rybízu",
       "angreštu"
-     ],
-     "mineralne": [
-      "minerální"
      ]
     }
    }
@@ -2397,15 +2447,46 @@
    "wine": "Trio",
    "year": 2024,
    "has_salon_profile": false,
-   "sources": [],
-   "aroma_groups_from_text": {}
+   "sources": [
+    {
+     "source": "MojeLahve, recenzja użytkowniczki JanaP (28.09.2025)",
+     "url": "https://mojelahve.cz/vino/trio-2024-pozdni-sber-vinarstvi-ampelos-bile-65470",
+     "notes": [
+      "V chuti je plné, vyrovnané s jemnou ovocnou sladkostí a výraznou kořenitostí. Dochuť je dlouhá minerální."
+     ],
+     "values": {},
+     "kind": "recenzent",
+     "quote_confirmed": true,
+     "remark": "partia 2444"
+    }
+   ],
+   "aroma_groups_from_text": {
+    "kořenité": [
+     "kořenitostí"
+    ],
+    "mineralne": [
+     "minerální"
+    ]
+   }
   },
   "ampelos-at-2024": {
    "producer": "Ampelos",
    "wine": "Veltlínské zelené AT klony",
    "year": 2024,
    "has_salon_profile": false,
-   "sources": [],
+   "sources": [
+    {
+     "source": "Ampelos, karta wina (partia 2405 = AT klony wg cennika od 1.10.2025)",
+     "url": "https://ampelos.cz/veltlinske-zelene-2024-c260",
+     "notes": [
+      "Víno ovocité vůně žlutého melounu s kořenito-pepřovou chutí."
+     ],
+     "values": {},
+     "kind": "producent",
+     "quote_confirmed": false,
+     "remark": "karta produktu obecnie 404, cytat z odczytu agenta"
+    }
+   ],
    "aroma_groups_from_text": {}
   },
   "dobra-creme-2022": {
@@ -2509,9 +2590,53 @@
       "Víno kvasilo a zrálo v Qvevri Georgia - hliněných neglazovaných nádobách z červené terakotové hlíny o objemu 1 000 litrů.",
       "Nádoby jsou zakopané v zemi v našich pískovcových sklepích v Novém Šaldorfu. Macerace na slupkách v qvevri - 9 měsíců, následné zrání v dubových sudech 500 l po dobu 12 měsíců."
      ]
+    },
+    {
+     "source": "Jižní svah, Jan Čeřovský (26.05.2025)",
+     "url": "https://www.jizni-svah.cz/2025/05/dobra-vinice-novinky-archivy-navrat.html",
+     "notes": [
+      "Suché, čisté, s výraznější kyselinou, svíravé, florální a citrusová kůra, krémová linka, koncentrace, hodně dlouhé."
+     ],
+     "values": {},
+     "kind": "recenzent",
+     "quote_confirmed": true
+    },
+    {
+     "source": "MojeLahve, recenzja TomCh w artykule V. Hausknotza (20.12.2025)",
+     "url": "https://mojelahve.cz/clanek/dobra-vina-ktera-stoji-za-ochutnani-moravske-veltliny-ruznych-stylu-2060",
+     "notes": [
+      "Vůni dokresluje jakási noblesní forma zemitosti, medovost. Vliv kvevri cítím spíš až na jazyku a dodává původní noblese živost, jiskru."
+     ],
+     "values": {},
+     "kind": "recenzent",
+     "quote_confirmed": true
+    },
+    {
+     "source": "VELTLIN e-shop (odczyt archiwalny)",
+     "url": "https://eshop.veltlin.cz/eshop/veltlinske-zelene-qvevri-dobra-vinice",
+     "notes": [
+      "Výraznější, kořenité, herbální a šťavnaté víno s dlouhou elegantní dochutí."
+     ],
+     "values": {},
+     "kind": "sklep",
+     "quote_confirmed": false,
+     "remark": "strona produktu obecnie 404"
     }
    ],
-   "aroma_groups_from_text": {}
+   "aroma_groups_from_text": {
+    "citrusové ovoce": [
+     "citrusová"
+    ],
+    "karamelizované": [
+     "medovost"
+    ],
+    "autolyzátové / mléčne": [
+     "krémová"
+    ],
+    "zwierzęce / ziemiste": [
+     "zemitosti"
+    ]
+   }
   }
  }
 }

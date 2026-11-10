@@ -29,7 +29,11 @@ def get(url, timeout=90):
         try:
             req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0', 'Accept-Language': 'cs,en'})
             data = urllib.request.urlopen(req, timeout=timeout).read().decode('utf-8', 'replace')
-            f.write_text(data, encoding='utf-8'); time.sleep(0.4)
+            try:
+                f.write_text(data, encoding='utf-8')
+            except OSError as e:       # full disk etc.: the page is still usable, only not cached
+                print('  cache not written', url, str(e)[:40], file=sys.stderr)
+            time.sleep(0.4)
             return data
         except Exception as e:  # noqa
             err = e; time.sleep(3)
@@ -318,6 +322,69 @@ for wid, w in site['wines'].items():
     if rejected: result[wid]['rejected_sources'] = rejected
 
 
+def norm_text(s):
+    s = unicodedata.normalize('NFC', html.unescape(s))
+    return re.sub(r'\s+([,.;:!?])', r'\1', re.sub(r'\s+', ' ', s)).strip()
+
+
+def quote_on_page(url, quotes):
+    """True/False: every quote is on the page now; None: page not reachable."""
+    h = get(url)
+    if not h: return None
+    t = norm_text(re.sub(r'<[^>]+>', ' ', re.sub(r'<script.*?</script>|<style.*?</style>', '', h, flags=re.S)))
+    return all(norm_text(q) in t for q in quotes)
+
+
+# Found by a separate deep-research pass (docs/wina-opisy/zrodla-dodatkowe.md), identified there by batch / vineyard.
+# Each quote is re-checked on its page at build time; only confirmed quotes count for aroma groups.
+EXTRA = [
+    ('ampelos-trio-2024', 'MojeLahve, recenzja użytkowniczki JanaP (28.09.2025)', 'recenzent',
+     'https://mojelahve.cz/vino/trio-2024-pozdni-sber-vinarstvi-ampelos-bile-65470',
+     ['V chuti je plné, vyrovnané s jemnou ovocnou sladkostí a výraznou kořenitostí. Dochuť je dlouhá minerální.'], 'partia 2444'),
+    ('oulehla-fr-2023', 'MojeLahve.sk, recenzja użytkownika (14.02.2026, degustacja w Bořeticích)', 'recenzent',
+     'https://mojelahve.sk/vino/frankovka-na-nivach-2023-zemske-vino-vinarstvi-oulehla-cervene-74852',
+     ['Měkké, subtilní, nasládlé, krásně svěží a ovocitě navinulé víno z čipernou kyselinku bez nakyslostí a výrazným tříslem. Hebká minerální textura.'],
+     'partia 2350; „nasládlé” to wrażenie recenzenta, wino jest suche (0,3 g/l)'),
+    ('dobra-qvevri-2019', 'Jižní svah, Jan Čeřovský (26.05.2025)', 'recenzent',
+     'https://www.jizni-svah.cz/2025/05/dobra-vinice-novinky-archivy-navrat.html',
+     ['Suché, čisté, s výraznější kyselinou, svíravé, florální a citrusová kůra, krémová linka, koncentrace, hodně dlouhé.'], None),
+    ('dobra-qvevri-2019', 'MojeLahve, recenzja TomCh w artykule V. Hausknotza (20.12.2025)', 'recenzent',
+     'https://mojelahve.cz/clanek/dobra-vina-ktera-stoji-za-ochutnani-moravske-veltliny-ruznych-stylu-2060',
+     ['Vůni dokresluje jakási noblesní forma zemitosti, medovost. Vliv kvevri cítím spíš až na jazyku a dodává původní noblese živost, jiskru.'], None),
+    ('dobra-qvevri-2019', 'VELTLIN e-shop (odczyt archiwalny)', 'sklep',
+     'https://eshop.veltlin.cz/eshop/veltlinske-zelene-qvevri-dobra-vinice',
+     ['Výraznější, kořenité, herbální a šťavnaté víno s dlouhou elegantní dochutí.'], 'strona produktu obecnie 404'),
+    ('ampelos-veritas-2024', 'Vinotéka u zámku (degustacja sklepu, czerwiec 2026)', 'sklep',
+     'https://www.vinotekauzamku.cz/veritas-2/',
+     ['Víno je ovocité, vyvážené, dekladováno ještě jako suché, ale zbytkovým cukrem je spíše v kategorii polosuché.'],
+     'na stronie dwie partie: 2419 w nagłówku, 2523 w opisie'),
+    ('ampelos-at-2024', 'Ampelos, karta wina (partia 2405 = AT klony wg cennika od 1.10.2025)', 'producent',
+     'https://ampelos.cz/veltlinske-zelene-2024-c260',
+     ['Víno ovocité vůně žlutého melounu s kořenito-pepřovou chutí.'], 'karta produktu obecnie 404, cytat z odczytu agenta'),
+    ('spalek-vz-2025', 'Moravský Hrozen', 'sklep',
+     'https://www.moravskyhrozen.cz/vinarstvi-spalek-veltlinske-zelene-2025-voc-znojmo--kravi-hora--suche/',
+     ['Chuť je suchá, přesná a šťavnatá, s pevnou kyselinou a velmi čistým minerálním projevem.',
+      'Dochuť je středně dlouhá, lehce slaná a příjemně kamenitá.'],     # two sentences, not adjacent on the page
+     'partia 1825; bez podpisu degustatora, możliwy tekst marketingowy'),
+    ('spalek-vz-2025', 'JustWine', 'sklep', 'https://www.justwine.cz/spalek-veltlinske-zelene-voc-2025/',
+     ['Ve vůni se objevují typické tóny zeleného pepře, mandlových slupek a jemné muškátové nuance charakteristické pro moravský Veltlín.'],
+     'bez podpisu degustatora, częściowo zbieżny z Moravským Hrozenem'),
+    ('spalek-gryllus-2025', 'Vinshop', 'sklep', 'https://www.vinshop.cz/gryllus-bily-2025-bio-voc-spalek-bile-vino-suche/',
+     ['Vůně ovocná, připomínající žlutý meloun a kdoule. Chuť plná, spíše však minerální než ovocná, se středně dlouhou, slanou dochutí.'],
+     'partia 1625; bez podpisu degustatora'),
+    ('spalek-gryllus-2025', 'Moravský Hrozen', 'sklep',
+     'https://www.moravskyhrozen.cz/vinarstvi-spalek-gryllus-bily-bio-2025-voc-znojmo--kravi-hora--cuvee--suche/',
+     ['Chuť je suchá, živá a krásně vyvážená. Dominují citrusy, zelené jablko a šťavnatá ovocnost, kterou doprovází typická znojemská kyselina.'],
+     'partia 1625; bez podpisu degustatora, możliwy tekst marketingowy'),
+]
+for wid, label, kind, url, quotes, remark in EXTRA:
+    if wid not in result: continue
+    ok = quote_on_page(url, quotes)
+    e = {'source': label, 'url': url, 'notes': quotes, 'values': {}, 'kind': kind, 'quote_confirmed': bool(ok)}
+    if remark: e['remark'] = remark
+    result[wid]['sources'].append(e)
+
+
 def sentences(n):
     return [x.strip() for x in re.split(r'(?<=[.!?])\s+', n) if x.strip()]
 
@@ -343,6 +410,7 @@ for wid, r in result.items():
         gen = sorted({x for x in sn if x in GENERIC or x in tmpl})
         GENERIC.update(tmpl)
         if gen: s['generic_sentences'] = gen
+        if s.get('quote_confirmed') is False: continue          # quote not found on the page now: kept, not counted
         (est if s.get('estimated') else ver).append(' '.join(x for x in sn if x not in GENERIC))
     r['aroma_groups_from_text'] = aroma_groups(' '.join(ver))
     if any(est):
@@ -353,8 +421,9 @@ for wid, r in result.items():
 # Same producer, same line and category; picked by hand after checking the pages. Kept apart from the wine's own data.
 OTHER_VINTAGE = {
     'oulehla-fr-2023': {'from_wine': 'oulehla-fr-2022', 'why': 'ta sama Frankovka z trasy Na Nivách (Dolní Kounice), rocznik 2022 jest na naszej stronie'},
-    'simenon-sb-2025': {'url': 'https://www.vinotrh.cz/sauvignon-voc-112/', 'vintage': 2024, 'source': 'Vinotrh',
-                        'why': 'Sauvignon VOC Znojmo Simenonu z poprzedniego rocznika; strona sklepu nie podaje trasy'},
+    'simenon-sb-2025': {'url': 'https://www.vinshop.cz/sauvignon-blanc-2024-voc-simenon-bile-vino-suche/', 'vintage': 2024, 'source': 'Vinshop',
+                        'quotes': ['Vůně černého bezu a zralého angreštu, chuť šťavnatá, lehká, s živou kyselinou a harmonickým ovocným projevem.'],
+                        'why': 'ten sam Sauvignon VOC Znojmo Simenonu z trasy Dívčí hora (potwierdzona na karcie), rocznik 2024, suche'},
 }
 # Checked and NOT used: Ampelos Veritas 2023 in Enotéka is a sweet výběr z bobulí, our Veritas 2024 is a dry pozdní sběr.
 for wid, o in OTHER_VINTAGE.items():
@@ -364,6 +433,9 @@ for wid, o in OTHER_VINTAGE.items():
         notes = [n for s in src['sources'] if not s.get('estimated') for n in s['notes']]
         url = next(s['url'] for s in src['sources'] if s['notes'])
         vintage, source = src['year'], 'strona producenta'
+    elif 'quotes' in o:
+        notes = o['quotes'] if quote_on_page(o['url'], o['quotes']) else []
+        url, vintage, source = o['url'], o['vintage'], o['source']
     else:
         notes = [p for p in shoptet_notes(get(o['url'])) if TASTE.search(p)][:4]
         url, vintage, source = o['url'], o['vintage'], o['source']
