@@ -536,8 +536,7 @@
   // Zakres wyszukiwania pod polem: liczba win z Salonu dopiero po wczytaniu indeksu (bez duplikatów ze strony).
   function scopeText(salonCount) {
     var n = Object.keys(WN.wines).length;
-    return 'Szukasz w ' + n + ' winach z przewodnika i ' + (salonCount ? salonCount + ' ' : '') +
-      'medalistach Salonu vín 2024–2026 (złote wina i srebrne ze Znojemska).';
+    return 'Szukasz w ' + n + ' winach z przewodnika i ' + (salonCount ? salonCount + ' ' : '') + 'medalistach Salonu vín 2024–2026.';
   }
   function isPhone() { return window.innerWidth < 900; }
   function plural(n) { return n === 1 ? 'wino' : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'wina' : 'win'); }
@@ -595,6 +594,13 @@
       '<text x="150" y="335" text-anchor="middle" font-family="Georgia,serif" font-size="17" fill="#4a0014">' + attr(label) + '</text>' +
       '<text x="150" y="362" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#6b5a5d">' + attr(r.r) + '</text></svg>';
   }
+  // Nazwa producenta z Salonu na kafelkach i w podpowiedziach: jak na stronie, gdy to ta sama winiarnia
+  // („ZNOVÍN ZNOJMO, a.s.” → „Znovín Znojmo”), w przeciwnym razie bez formy prawnej. Pełna nazwa jest w oknie wina.
+  function salonProd(r) {
+    var d = SRCH.engine && SRCH.engine.doc(r.id);
+    if (d && /^site:/.test(d.pid)) return d.prodName;
+    return r.p.replace(/,?\s*(spol\.\s*s\s*r\.\s*o\.|s\.\s*r\.\s*o\.|a\.\s*s\.|v\.\s*o\.\s*s\.)\s*$/i, '').trim();
+  }
   // Najlepszy medal (najwięcej punktów): ten sam, według którego sortujemy listę wyników.
   function bestMedal(r) {
     return r.m.reduce(function (a, m) { return (m[2] || 0) > (a[2] || 0) ? m : a; }, r.m[0]);
@@ -606,7 +612,7 @@
   function salonTile(r) {
     return '<button type="button" class="wtile wtile--salon" data-wine="' + attr(r.id) + '">' +
       '<span class="wtile__img">' + salonBottle(r) + '</span>' +
-      '<span class="wtile__body"><span class="wtile__prod">' + attr(r.p) + '</span>' +
+      '<span class="wtile__body"><span class="wtile__prod">' + attr(salonProd(r)) + '</span>' +
       '<span class="wtile__name">' + attr(r.w || r.n) + ' ' + attr(r.r) + '</span>' + salonPts(r) +
       '<span class="wtile__note">' + attr([r.v, r.vy].filter(Boolean).join(' · ') || r.sub || '') + '</span></span></button>';
   }
@@ -615,7 +621,7 @@
     if (res.src === 'salon') {
       var r = SALON_BY_ID[id];
       if (!r) return '';
-      img = salonBottle(r); prod = r.p; name = hl(r.w || r.n, terms) + ' ' + attr(r.r);
+      img = salonBottle(r); prod = salonProd(r); name = hl(r.w || r.n, terms) + ' ' + attr(r.r);
       side = '<span class="wsug__badge">' + (bestMedal(r)[1] === 'G' ? 'złoto' : 'srebro') + ' Salon</span>';
     } else {
       var w = wine(id);
@@ -731,6 +737,7 @@
     if (inp) { inp.value = ''; if (keepFocus) inp.focus(); }
     var x = $('[data-wsearch-clear].wsearch__clear');
     if (x) x.hidden = true;
+    if ($('#wsearch')) $('#wsearch').classList.remove('has-q');
     if (out) { out.hidden = true; out.innerHTML = ''; }
     setExpanded(false);
   }
@@ -768,6 +775,7 @@
       ensureEngine();
       SRCH.q = e.target.value.replace(/[\r\n]+/g, ' ');
       $('.wsearch__clear').hidden = !SRCH.q;
+      $('#wsearch').classList.toggle('has-q', !!SRCH.q);
       if (!SRCH.q) { clearSearch(true); return; }
       renderSuggest();
     });
@@ -815,6 +823,7 @@
     if (!inp || !WSX) return;
     inp.value = q; SRCH.q = q;
     $('.wsearch__clear').hidden = false;
+    $('#wsearch').classList.add('has-q');
     ensureEngine();
     showList({ q: q });
   }

@@ -957,3 +957,11 @@ button.wtile, button.wrow, button.wchamp { appearance: none; font: inherit; colo
 .wsearch__clear, .wres__close { display: inline-flex; align-items: center; justify-content: center; }
 .wsearch__clear .icon { width: 18px; height: 18px; }
 .wres__close .icon { width: 18px; height: 18px; }
+/* podczas wpisywania podpis o zakresie znika: na telefonie liczy się każdy piksel nad klawiaturą */
+.wsearch.has-q .wsearch__scope { display: none; }
+/* kafelki Salonu: niższa butelka zastępcza (bez zdjęcia nie niesie informacji, a wydłuża listę) */
+.wtile--salon .wtile__img { height: 104px; }
+/* podczas wpisywania podpis o zakresie znika: na telefonie liczy się każdy piksel nad klawiaturą */
+.wsearch.has-q .wsearch__scope { display: none; }
+/* kafelki Salonu: niższa butelka zastępcza (bez zdjęcia nie niesie informacji, a wydłuża listę) */
+.wtile--salon .wtile__img { height: 104px; }
