@@ -59,7 +59,7 @@
       start: '2026-11-11',
       end: '2026-11-15',
       timeZone: 'Europe/Prague',
-      checked: 'Godziny, ceny i oceny według sprawdzenia z 7–8 XI 2026. Przed wyjściem warto zerknąć w link źródłowy.'
+      checked: 'Godziny, ceny i oceny według sprawdzenia z 7–10 XI 2026. Przed wyjściem warto zerknąć w link źródłowy.'
     },
 
     quick: [

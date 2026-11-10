@@ -248,9 +248,19 @@
   var TOP14 = (WN.topZnojmo || []).concat(WN.topMorava || []);
   // Punkty konkursowe: regionalne z dwoma miejscami po przecinku (średnia z trzech ocen), Salon z jednym.
   function ptsTxt(w) { return fmt(w.pts.toFixed(/regionalny/.test(w.comp) ? 2 : 1)); }
+  var COMP_SHORT = { 'konkurs regionalny 2026': 'regionalny 2026', 'Salon vín 2026': 'Salon 2026', 'Salon vín 2025': 'Salon 2025' };
   function scoreEl(w) {
-    if (!w.pts) return w.award ? '<span class="award">' + w.award + '</span>' : (w.pick ? '<span class="pick">' + w.pick + '</span>' : '');
-    return '<span class="score"><span class="score__n">' + ptsTxt(w) + '</span><span class="score__t"><b>pkt · ' + w.award + '</b>' + w.comp + '</span></span>';
+    if (w.pts) return '<span class="score"><b class="score__n">' + ptsTxt(w) + ' pkt</b><span class="score__t">' + w.award + ' · ' + (COMP_SHORT[w.comp] || w.comp) + '</span></span>';
+    if (w.award) return '<span class="score"><span class="score__t">' + w.award + '</span></span>';
+    return w.pick ? '<span class="pick">' + w.pick + '</span>' : '';
+  }
+  // Na liście sam kolor i słodycz; kategoria z nawiasu („výběr z hroznů”) jest w oknie wina.
+  function plainStyle(w) { return w.style.replace(/\s*\([^)]*\)/, ''); }
+  function sugarLine(w) {
+    var t = [];
+    if (w.sugar != null) t.push('cukier ' + fmt(w.sugar) + ' g/l');
+    if (w.acid != null) t.push('kwasy ' + fmt(w.acid) + ' g/l');
+    return t.length ? '<span class="wrow__sugar">' + t.join(' · ') + '</span>' : '';
   }
   function wineTitle(w) { return producer(w).name + ' · ' + w.name + ' ' + w.year; }
 
@@ -301,33 +311,32 @@
       '<span class="wtile__img">' + bottleImg(id) + '</span>' +
       '<span class="wtile__body"><span class="wtile__prod">' + producer(w).name + '</span>' +
       '<span class="wtile__name">' + w.name + ' ' + w.year + '</span>' +
-      (w.pts ? '<span class="wtile__pts">' + ptsTxt(w) + ' pkt · ' + w.comp + '</span>' : '') + (extra || '') +
+      (w.pts ? '<span class="wtile__pts">' + ptsTxt(w) + ' pkt</span>' : '') + (extra || '') +
       (w.price ? '<span class="wtile__price">' + w.price + '</span>' : '') + '</span></button>';
   }
-  function wineRow(id, rank) {
+  function wineRow(id, rank, showRegion) {
     var w = wine(id), p = producer(w);
     return '<button type="button" class="wrow" data-wine="' + id + '">' +
       '<span class="wrow__rank">' + rank + '</span>' +
       '<span class="wrow__img">' + bottleImg(id) + '</span>' +
       '<span class="wrow__body">' +
-        '<span class="wrow__top">' + logoEl(w.p) + regionChip(p, w) + '</span>' +
+        '<span class="wrow__top">' + logoEl(w.p) + (showRegion ? regionChip(p, w) : '') + '</span>' +
         '<span class="wrow__name">' + w.name + ' ' + w.year + '</span>' +
-        '<span class="wrow__prod">' + p.name + ' · ' + w.style + '</span>' +
+        '<span class="wrow__prod">' + p.name + ' · ' + plainStyle(w) + '</span>' +
         scoreEl(w) +
-        ((window.AROMA || {})[id] ? '<span class="chip-salon">Profil Salonu</span>' : '') +
-        '<span class="wrow__short">' + w.short + '</span>' + meters(w) +
-        '<span class="wrow__foot"><span class="fchips">' + flavorChips(w, 3) + '</span>' +
-          (w.price ? '<span class="price">' + w.price + '</span>' : '<span class="price price--na">cena do sprawdzenia</span>') + '</span>' +
+        '<span class="wrow__short">' + w.short + '</span>' + sugarLine(w) +
+        '<span class="wrow__foot">' +
+          (w.price ? '<span class="price">' + w.price + '</span>' : '<span class="price--na">cena do sprawdzenia</span>') + '</span>' +
       '</span></button>';
   }
   function champCard(id) {
     var w = wine(id), p = producer(w);
     return '<button type="button" class="wchamp" data-wine="' + id + '">' +
       '<span class="wchamp__img">' + bottleImg(id) + '</span>' +
-      '<span class="wchamp__body">' + (w.pts ? scoreEl(w) : '<span class="award award--gold">' + w.award + '</span>') +
+      '<span class="wchamp__body">' + scoreEl(w) +
         '<span class="wrow__name">' + w.name + ' ' + w.year + '</span>' +
         '<span class="wrow__prod">' + p.name + ' · ' + w.origin + '</span>' +
-        '<span class="wchamp__warn">' + (w.avail || 'Trudno dostępne') + ' · szczegóły</span></span></button>';
+        '<span class="wchamp__warn' + (w.avail ? ' wchamp__warn--ok' : '') + '">' + (w.avail || 'Trudno dostępne') + ' · szczegóły</span></span></button>';
   }
 
   /* Okno szczegółów wina (natywny <dialog>, na telefonie wysuwa się od dołu). */
@@ -541,10 +550,10 @@
       '<p class="section-sub">Siedem win ze Znojemska i siedem najwyżej ocenionych z reszty Moraw. Przy każdym winie są punkty z konkursu. Dotknij wina, żeby zobaczyć szczegóły.</p>' +
       (SC ? acc(SC.title, SC.sub, SC.items.map(function (t) { return '<p class="small">' + t + '</p>'; }).join('') + actions(SC.links), false, 'w-punkty') : '') +
       '<h3 class="sub-h" id="w-top-znojmo">Ze Znojemska: do spróbowania w vinotékach w mieście</h3>' +
-      '<div class="wrows">' + WN.topZnojmo.map(function (id, i) { return wineRow(id, i + 1); }).join('') + '</div>' +
+      '<div class="wrows">' + WN.topZnojmo.map(function (id, i) { return wineRow(id, i + 1, false); }).join('') + '</div>' +
       '<h3 class="sub-h" id="w-top-morava">Z reszty Moraw: najlepsze w Salonie vín 2026</h3>' +
       '<p class="small muted">Nie ma ich w karcie Enotéki, więc pytaj w innych vinotékach w Znojmie. Ceny pochodzą z e-sklepu Salonu vín.</p>' +
-      '<div class="wrows">' + WN.topMorava.map(function (id, i) { return wineRow(id, i + 8); }).join('') + '</div>' +
+      '<div class="wrows">' + WN.topMorava.map(function (id, i) { return wineRow(id, i + 8, true); }).join('') + '</div>' +
       (WN.alsoSalon && WN.alsoSalon.length ? '<p class="small muted">Też złote w Salonie 2026, spod Pálavy i z Valtic:</p><div class="wtiles wtiles--row">' +
         WN.alsoSalon.map(function (id) { return wineTile(id); }).join('') + '</div>' : '');
     if (WN.bonus) {
@@ -851,7 +860,7 @@
     $('#content').innerHTML = TABS.map(function (t) {
       return '<section class="panel" id="panel-' + t.id + '" aria-label="' + t.label + '" hidden>' + (t.render ? t.render() : '') + '</section>';
     }).join('');
-    $('#footer').innerHTML = '<p>' + T.meta.checked + '</p><p class="footer__sig"><strong>Husa · Znojmo 2026</strong> · Ekipa Wrocław</p>';
+    $('#footer').innerHTML = '<p>' + T.meta.checked + '</p><p class="footer__sig"><strong>Husa · Znojmo 2026</strong></p>';
     readHash();
     paintPlan();
 
