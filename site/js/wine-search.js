@@ -125,22 +125,34 @@
   }
   // Wina z Salonu (site/js/wine-index.js). Wina, które są też na stronie, pomijamy (punkt 8: jeden rekord, z id strony).
   // Producent z Salonu, który jest też na stronie („ZNOVÍN ZNOJMO, a.s.” = „Znovín Znojmo”), dostaje identyfikator ze strony,
-  // żeby kategoria winiarni była jedna: wszystkie słowa nazwy ze strony muszą wystąpić w nazwie z Salonu.
+  // żeby kategoria winiarni była jedna. Kolejność dowodów:
+  //   1. to samo wino jest na stronie i w Salonie → ten producent Salonu (producer_id) to producent ze strony,
+  //   2. bez takiego wina: wszystkie słowa nazwy ze strony muszą wystąpić w nazwie z Salonu.
+  // Reguła 2 nie działa dla producenta ze strony, który ma już dowód z reguły 1: „Ing. František Zapletal” to inna firma
+  // niż „Vinné sklepy Zapletal” (docs/salon-vin/README.md), choć oba mają w nazwie „Zapletal”.
   function fromSalon(WI, siteDocs, rankStart) {
-    var dup = 0, out = [], siteProd = {};
-    (siteDocs || []).forEach(function (d) { if (d.prodName) siteProd[d.pid] = { name: d.prodName, words: tokenize(d.prodName) }; });
-    function prodMatch(name) {
-      var ws = ' ' + tokenize(name).join(' ') + ' ';
+    var dup = 0, out = [], siteProd = {}, bySalonPid = {};
+    (siteDocs || []).forEach(function (d) { if (d.prodName) siteProd[d.pid] = { name: d.prodName, words: tokenize(d.prodName), salonPids: [] }; });
+    var recs = (WI && WI.wines) || [];
+    var isDup = recs.map(function (r) {
+      var d = siteDocs ? sameAsSite(r, siteDocs) : null;
+      if (d && siteProd[d.pid]) { siteProd[d.pid].salonPids.push(r.pid); bySalonPid[r.pid] = d.pid; }
+      return !!d;
+    });
+    function prodMatch(r) {
+      if (bySalonPid[r.pid]) return bySalonPid[r.pid];
+      var ws = ' ' + tokenize(r.p).join(' ') + ' ';
       for (var pid in siteProd) {
+        if (siteProd[pid].salonPids.length) continue; // ten producent ma już pewne dopasowanie
         if (siteProd[pid].words.every(function (w) { return ws.indexOf(' ' + w + ' ') >= 0; })) return pid;
       }
       return null;
     }
-    (WI && WI.wines || []).forEach(function (r) {
-      if (siteDocs && sameAsSite(r, siteDocs)) { dup++; return; }
+    recs.forEach(function (r, k) {
+      if (isDup[k]) { dup++; return; }
       var g = grapeFromName(r.n) || grapeFromName(r.w);
       var reg = SUBREGION[r.sub] || '';
-      var sp = prodMatch(r.p);
+      var sp = prodMatch(r);
       out.push({
         id: r.id, src: 'salon', rank: rankStart + out.length, pts: r.best || 0, qual: r.best ? 1000 + r.best : 0, grapeName: g, regionKey: reg,
         pid: sp || 'salon:' + r.pid, prodName: sp ? siteProd[sp].name : r.p,
@@ -153,7 +165,14 @@
     out.dup = dup;
     return out;
   }
-  // To samo wino na stronie: ten sam rocznik i albo link do karty Salonu 2026 (nr ev.), albo ta sama partia w opisie pochodzenia.
+  // To samo wino na stronie: ten sam rocznik i albo link do karty Salonu 2026 (nr ev.), albo ta sama partia w opisie pochodzenia
+  // u tego samego producenta. Partia jest unikalna tylko w obrębie producenta i rocznika (Maňák i Oulehla mają obaj partię 2250
+  // z 2022), więc przy partii musi się też zgadzać charakterystyczne słowo nazwy producenta.
+  var GENERIC = { vinarstvi: 1, vinice: 1, vinne: 1, sklepi: 1, chateau: 1, rodini: 1, spol: 1 };
+  function sameProducer(siteName, salonName) {
+    var s = ' ' + tokenize(salonName).join(' ') + ' ';
+    return tokenize(siteName).some(function (w) { return w.length >= 4 && !GENERIC[w] && s.indexOf(' ' + w + ' ') >= 0; });
+  }
   function sameAsSite(r, siteDocs) {
     var nr26 = null;
     r.m.forEach(function (m) { if (m[0] === 2026 && m[1] === 'G' && m[3]) nr26 = m[3]; });
@@ -161,10 +180,10 @@
     for (var i = 0; i < siteDocs.length; i++) {
       var d = siteDocs[i];
       if (d.year !== r.r) continue;
-      if (nr26 && d.links.indexOf('vina-v-salonu/26' + (nr26 < 10 ? '00' : (nr26 < 100 ? '0' : '')) + nr26) >= 0) return true;
-      if (batch && (' ' + d.origin.replace(/\s+/g, ' ') + ' ').indexOf('partia ' + batch + ' ') >= 0) return true;
+      if (nr26 && d.links.indexOf('vina-v-salonu/26' + (nr26 < 10 ? '00' : (nr26 < 100 ? '0' : '')) + nr26) >= 0) return d;
+      if (batch && (' ' + d.origin.replace(/\s+/g, ' ') + ' ').indexOf('partia ' + batch + ' ') >= 0 && sameProducer(d.prodName, r.p)) return d;
     }
-    return false;
+    return null;
   }
 
   /* ---------- 5.7 Kategorie ---------- */

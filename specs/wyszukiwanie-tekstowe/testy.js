@@ -134,6 +134,13 @@
       var e2 = WS.create(all);
       res.faza2 = FAZA2.map(function (t) { return check(e2, t); });
       res.salon = { wina: sal.length, duplikaty: sal.dup };
+      // Regresje z review 11 XI: partia jest unikalna tylko u producenta; „Ing. František Zapletal” ≠ „Vinné sklepy Zapletal”.
+      var byProd = function (re) { return sal.filter(function (d) { return re.test(env.WINE_INDEX.wines.filter(function (r) { return r.id === d.id; })[0].p); }); };
+      var manak = byProd(/Maňák/).filter(function (d) { return / 2250\b/.test(d.meta); });
+      var zap = byProd(/František Zapletal/);
+      res.faza2.push({ q: 'dane: wino Maňáka z partią 2250 nie jest brane za duplikat Oulehli', ok: manak.length === 1, errors: manak.length ? [] : ['brak w indeksie'], n: manak.length, mode: '' });
+      res.faza2.push({ q: 'dane: „Ing. František Zapletal” to osobna winiarnia', ok: zap.length > 0 && zap.every(function (d) { return d.pid.indexOf('salon:') === 0; }), errors: zap.map(function (d) { return d.pid; }), n: zap.length, mode: '' });
+      res.faza2.push({ q: 'dane: duplikaty strona–Salon to dokładnie 14 win', ok: sal.dup === 14, errors: ['jest ' + sal.dup], n: sal.dup, mode: '' });
       res.czas = timing(e2, ['znojmo', 'ryzlink rynsky', 'veltlinske zelene', 'frankovka 2022', 'kravi hora', 'spalek', 'cabernet']);
     }
     res.dane = dataTests(WS, env.WINES, all);

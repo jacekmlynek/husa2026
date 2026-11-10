@@ -953,3 +953,7 @@ button.wtile, button.wrow, button.wchamp { appearance: none; font: inherit; colo
 
 /* na telefonie pasek zakładek nie zabiera miejsca nad klawiaturą */
 @media (max-width: 899px) { body.is-searching .tabs { display: none; } }
+.wsearch__scope { margin-top: 8px; font-size: 13px; line-height: 1.4; color: #f6dde1; }
+.wsearch__clear, .wres__close { display: inline-flex; align-items: center; justify-content: center; }
+.wsearch__clear .icon { width: 18px; height: 18px; }
+.wres__close .icon { width: 18px; height: 18px; }

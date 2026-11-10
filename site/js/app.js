@@ -29,7 +29,8 @@
     book: '<path d="M3.5 5.5c3-1.3 5.8-1.3 8.5.5v13.5c-2.7-1.8-5.5-1.8-8.5-.5z"/><path d="M20.5 5.5c-3-1.3-5.8-1.3-8.5.5v13.5c2.7-1.8 5.5-1.8 8.5-.5z"/>',
     photo: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="10.5" r="1.8"/><path d="M21 16l-5-5-8 8"/>',
     search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5l5 5"/>',
-    house: '<path d="M3.5 11L12 4l8.5 7"/><path d="M6 9.5v10h12v-10M10 19.5v-5h4v5"/>'
+    house: '<path d="M3.5 11L12 4l8.5 7"/><path d="M6 9.5v10h12v-10M10 19.5v-5h4v5"/>',
+    close: '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>'
   };
   function icon(name, cls) {
     return '<svg class="icon' + (cls ? ' ' + cls : '') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[name] || '') + '</svg>';
@@ -513,8 +514,10 @@
    * Lista podpowiedzi: według dopasowania. Lista wyników (kategoria, „Pokaż wszystkie”): od najwyżej ocenionych, po 20. */
   var WSX = window.WineSearch;
   var SALON_BY_ID = {};
-  var SRCH = { engine: null, site: null, full: false, loading: false, q: '', view: '', list: null, page: 1, active: -1, live: 0, blurT: 0 };
-  var PAGE = 20;
+  var SRCH = { engine: null, site: null, full: false, loading: false, failed: false, q: '', view: '', list: null, pages: null, active: -1, live: 0, blurT: 0 };
+  // Lista wyników: każda grupa (przewodnik, Salon) zaczyna od 8 win, „Pokaż kolejne” dokłada po 20.
+  // Dzięki temu przy dużych kategoriach (Region Znojmo: 47 + 167) obie grupy są widoczne od razu.
+  var PAGE_FIRST = 8, PAGE = 20;
   var CAT_ICON = { region: 'pin', odmiana: 'wine', winiarnia: 'house', miejsce: 'pin' };
   var SALON_CAT = { A: 'białe · wytrawne', B: 'białe · półwytrawne lub półsłodkie', F: 'półwytrawne lub półsłodkie', C: 'słodkie', D: 'różowe lub klaret', E: 'czerwone · wytrawne', G: 'musujące' };
   var REGION_CLASS = { Znojmo: 'znojmo', Mikulov: 'mikulov', Pavlovice: 'pavlovice', Slovacko: 'slovacko', Valtice: 'valtice' };
@@ -526,26 +529,38 @@
       '<div class="wsearch__field">' + icon('search', 'wsearch__icon') +
         '<input id="wsearch-q" class="wsearch__input" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="wsug"' +
         ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" maxlength="80" placeholder="Wino, winiarnia, wieś…">' +
-        '<button type="button" class="wsearch__clear" data-wsearch-clear aria-label="Wyczyść wyszukiwanie" hidden>✕</button>' +
-      '</div><p class="sr-only" id="wsearch-live" aria-live="polite"></p></div>';
+        '<button type="button" class="wsearch__clear" data-wsearch-clear aria-label="Wyczyść wyszukiwanie" hidden>' + icon('close') + '</button>' +
+      '</div><p class="wsearch__scope" id="wsearch-scope">' + scopeText() + '</p>' +
+      '<p class="sr-only" id="wsearch-live" aria-live="polite"></p></div>';
+  }
+  // Zakres wyszukiwania pod polem: liczba win z Salonu dopiero po wczytaniu indeksu (bez duplikatów ze strony).
+  function scopeText(salonCount) {
+    var n = Object.keys(WN.wines).length;
+    return 'Szukasz w ' + n + ' winach z przewodnika i ' + (salonCount ? salonCount + ' ' : '') +
+      'medalistach Salonu vín 2024–2026 (złote wina i srebrne ze Znojemska).';
   }
   function isPhone() { return window.innerWidth < 900; }
   function plural(n) { return n === 1 ? 'wino' : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'wina' : 'win'); }
 
   /* Indeks: faza 1 od razu, faza 2 (Salon) w tle. */
-  function ensureEngine() {
+  // retry = true tylko przy wejściu w pole: bez internetu nie ponawiamy pobierania przy każdej literze.
+  function ensureEngine(retry) {
     if (!SRCH.engine) {
       SRCH.site = WSX.fromSite(WN);
       SRCH.engine = WSX.create(SRCH.site);
     }
-    if (SRCH.full || SRCH.loading) return;
+    if (SRCH.full || SRCH.loading || (SRCH.failed && !retry)) return;
     if (window.WINE_INDEX) { buildFull(); return; }
     if (window.__GAS__) return;
     SRCH.loading = true;
     var s = document.createElement('script');
     s.src = 'js/wine-index.js';
-    s.onload = function () { SRCH.loading = false; buildFull(); };
-    s.onerror = function () { SRCH.loading = false; }; // offline przy pierwszym użyciu: zostają wina ze strony
+    s.onload = function () { SRCH.loading = false; SRCH.failed = false; buildFull(); };
+    s.onerror = function () { // offline przy pierwszym użyciu: zostają wina ze strony
+      SRCH.loading = false; SRCH.failed = true;
+      if (s.parentNode) s.parentNode.removeChild(s);
+      if (SRCH.view === 'list' && SRCH.list) refreshList();
+    };
     document.head.appendChild(s);
   }
   function buildFull() {
@@ -557,6 +572,8 @@
       var sal = WSX.fromSalon(window.WINE_INDEX, SRCH.site, SRCH.site.length);
       WSX.createAsync(SRCH.site.concat(sal)).then(function (eng) {
         SRCH.engine = eng; SRCH.full = true; SRCH.loading = false;
+        var sc = $('#wsearch-scope');
+        if (sc) sc.textContent = scopeText(sal.length);
         if (SRCH.view === 'sug' && SRCH.q) renderSuggest();
         else if (SRCH.view === 'list' && SRCH.list) refreshList();
       });
@@ -578,9 +595,12 @@
       '<text x="150" y="335" text-anchor="middle" font-family="Georgia,serif" font-size="17" fill="#4a0014">' + attr(label) + '</text>' +
       '<text x="150" y="362" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#6b5a5d">' + attr(r.r) + '</text></svg>';
   }
-  function medalTxt(m) { return (m[1] === 'G' ? 'Złoto' : 'Srebro') + (m[2] ? ' · ' + fmt(m[2]) + ' pkt' : '') + ' · Salon ' + m[0]; }
+  // Najlepszy medal (najwięcej punktów): ten sam, według którego sortujemy listę wyników.
+  function bestMedal(r) {
+    return r.m.reduce(function (a, m) { return (m[2] || 0) > (a[2] || 0) ? m : a; }, r.m[0]);
+  }
   function salonPts(r) {
-    var m = r.m[0];
+    var m = bestMedal(r);
     return '<span class="wtile__pts wtile__pts--salon">' + LEVEL_ICON.salon + (m[2] ? fmt(m[2]) + ' pkt · ' : '') + (m[1] === 'G' ? 'złoto' : 'srebro') + ' Salon ' + m[0] + '</span>';
   }
   function salonTile(r) {
@@ -596,7 +616,7 @@
       var r = SALON_BY_ID[id];
       if (!r) return '';
       img = salonBottle(r); prod = r.p; name = hl(r.w || r.n, terms) + ' ' + attr(r.r);
-      side = '<span class="wsug__badge">' + (r.m[0][1] === 'G' ? 'złoto' : 'srebro') + ' Salon</span>';
+      side = '<span class="wsug__badge">' + (bestMedal(r)[1] === 'G' ? 'złoto' : 'srebro') + ' Salon</span>';
     } else {
       var w = wine(id);
       img = bottleImg(id); prod = producer(w).name; name = hl(w.name, terms) + ' ' + w.year;
@@ -644,7 +664,7 @@
         cats.map(function (c) { return sugCat(c, i++); }).join('') +
         wines.map(function (w) { return sugWine(w, i++); }).join('') + '</ul>' +
         (r.total > wines.length ? '<button type="button" class="wsug__all" data-wsearch-all>Pokaż wszystkie wina (' + r.total + ')</button>' : '');
-      announce(r.total + ' ' + plural(r.total) + (cats.length ? ', ' + cats.length + ' kategorie' : ''));
+      announce(r.total + ' ' + plural(r.total) + (cats.length ? ', ' + cats.length + (cats.length === 1 ? ' kategoria' : ' kategorie') : ''));
     }
     out.innerHTML = html;
     out.hidden = false;
@@ -665,7 +685,7 @@
       .sort(function (a, b) { return b.p - a.p || a.i - b.i; }).map(function (x) { return x.id; });
   }
   function showList(list) {
-    SRCH.view = 'list'; SRCH.list = list; SRCH.page = 1;
+    SRCH.view = 'list'; SRCH.list = list; SRCH.pages = { site: 0, salon: 0 };
     state.searchQ = list.q || ''; writeHash();
     setExpanded(false);
     var inp = $('#wsearch-q');
@@ -680,26 +700,28 @@
     L.ids = ids;
     var site = byBest(ids.filter(function (id) { return !/^salon:/.test(id); }));
     var sal = byBest(ids.filter(function (id) { return /^salon:/.test(id) && SALON_BY_ID[id]; }));
-    var all = site.concat(sal), shown = all.slice(0, SRCH.page * PAGE);
+    var total = site.length + sal.length;
     var head = L.cat ? attr(L.label) : 'Wyniki dla „' + attr(L.q) + '”';
-    var html = '<div class="wres__head"><p class="wres__title">' + head + ' <span class="wres__n">· ' + all.length + ' ' + plural(all.length) + '</span></p>' +
-      '<button type="button" class="wres__close" data-wsearch-clear aria-label="Wyczyść wyszukiwanie">✕</button></div>' +
-      '<p class="wres__sort">Od najwyżej ocenionych. Najpierw wina z naszego przewodnika, potem z Salonu vín.</p>';
-    var siteShown = shown.filter(function (id) { return site.indexOf(id) >= 0; });
-    var salShown = shown.filter(function (id) { return sal.indexOf(id) >= 0; });
-    if (siteShown.length) html += '<h3 class="wres__group">Z naszego przewodnika <span class="wres__n">· ' + site.length + '</span></h3>' +
-      '<div class="wtiles">' + siteShown.map(function (id) { return wineTile(id); }).join('') + '</div>';
-    if (salShown.length) html += '<h3 class="wres__group">Z Salonu vín 2024–2026 <span class="wres__n">· ' + sal.length + '</span></h3>' +
-      '<p class="wres__note">Złote wina finału i srebrne ze Znojemska. Opisy po czesku, z katalogu Salonu.</p>' +
-      '<div class="wtiles">' + salShown.map(function (id) { return salonTile(SALON_BY_ID[id]); }).join('') + '</div>';
-    if (!SRCH.full && SRCH.loading) html += '<p class="wres__note">Wczytuję wina z Salonu vín…</p>';
-    if (all.length > shown.length) {
-      var next = Math.min(PAGE, all.length - shown.length);
-      html += '<button type="button" class="btn wres__more" data-wsearch-more>Pokaż kolejne ' + next + ' <span class="wres__n">(z ' + (all.length - shown.length) + ')</span></button>';
+    function limit(g) { return PAGE_FIRST + SRCH.pages[g] * PAGE; }
+    function more(g, list) {
+      var rest = list.length - limit(g);
+      return rest > 0 ? '<button type="button" class="btn wres__more" data-wsearch-more="' + g + '">Pokaż kolejne ' + Math.min(PAGE, rest) +
+        ' <span class="wres__n">(zostało ' + rest + ')</span></button>' : '';
     }
+    var html = '<div class="wres__head"><p class="wres__title">' + head + ' <span class="wres__n">· ' + total + ' ' + plural(total) + '</span></p>' +
+      '<button type="button" class="wres__close" data-wsearch-clear aria-label="Wyczyść wyszukiwanie">' + icon('close') + '</button></div>' +
+      '<p class="wres__sort">Od najwyżej ocenionych.</p>';
+    if (site.length) html += '<h3 class="wres__group">Z naszego przewodnika <span class="wres__n">· ' + site.length + '</span></h3>' +
+      '<div class="wtiles">' + site.slice(0, limit('site')).map(function (id) { return wineTile(id); }).join('') + '</div>' + more('site', site);
+    if (sal.length) html += '<h3 class="wres__group" id="wres-salon">Z Salonu vín 2024–2026 <span class="wres__n">· ' + sal.length + '</span></h3>' +
+      '<p class="wres__note">Złote wina finału i srebrne ze Znojemska. Opisy po czesku, z katalogu Salonu.</p>' +
+      '<div class="wtiles">' + sal.slice(0, limit('salon')).map(function (id) { return salonTile(SALON_BY_ID[id]); }).join('') + '</div>' + more('salon', sal);
+    if (!SRCH.full && SRCH.loading) html += '<p class="wres__note">Wczytuję wina z Salonu vín…</p>';
+    else if (!SRCH.full && SRCH.failed) html += '<p class="wres__note">Wina z Salonu vín wczytają się, gdy telefon połączy się z internetem.</p>';
+    if (!total) html += '<p class="wsout__empty">Nic nie znaleziono.</p>';
     out.innerHTML = html;
     out.hidden = false;
-    announce(all.length + ' ' + plural(all.length));
+    announce(total + ' ' + plural(total));
   }
 
   function clearSearch(keepFocus) {
@@ -732,7 +754,8 @@
       return true;
     }
     if (t.closest('[data-wsearch-all]')) { showList({ q: SRCH.q }); return true; }
-    if (t.closest('[data-wsearch-more]')) { SRCH.page++; refreshList(); return true; }
+    var moreBtn = t.closest('[data-wsearch-more]');
+    if (moreBtn) { SRCH.pages[moreBtn.dataset.wsearchMore]++; refreshList(); return true; }
     if (t.closest('[data-wsearch-clear]')) { clearSearch(t.closest('.wsearch__clear') !== null); return true; }
     return false;
   }
@@ -758,7 +781,7 @@
         e.preventDefault();
         var opts = $$('#wsug [role="option"]');
         if (listOpen && SRCH.active >= 0 && opts[SRCH.active]) opts[SRCH.active].click();
-        else if (SRCH.q.trim()) showList({ q: SRCH.q });
+        else if (WSX.cleanQuery(SRCH.q).length >= 2) showList({ q: SRCH.q }); // po 1 literze Enter nic nie robi
       } else if (e.key === 'Escape') {
         if (listOpen) { e.preventDefault(); collapseSuggest(); } else if (SRCH.q) { e.preventDefault(); clearSearch(true); }
       }
@@ -767,7 +790,7 @@
       if (e.target.id !== 'wsearch-q') return;
       clearTimeout(SRCH.blurT);
       document.body.classList.add('is-searching');
-      ensureEngine();
+      ensureEngine(true); // przy wejściu w pole można ponowić pobieranie win z Salonu
       if (SRCH.q && SRCH.view !== 'list') renderSuggest();
       if (isPhone()) setTimeout(function () { scrollToEl($('#wsearch')); }, 300); // po otwarciu klawiatury
     });
