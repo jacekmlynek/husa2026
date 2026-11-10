@@ -573,10 +573,17 @@
         SRCH.engine = eng; SRCH.full = true; SRCH.loading = false;
         var sc = $('#wsearch-scope');
         if (sc) sc.textContent = scopeText(sal.length);
-        if (SRCH.view === 'sug' && SRCH.q) renderSuggest();
-        else if (SRCH.view === 'list' && SRCH.list) refreshList();
+        // Przy otwartym oknie wina nie przerysowujemy listy pod nim: po zamknięciu fokus ma wrócić na dotknięty wiersz.
+        var sheet = document.getElementById('wine-sheet');
+        if (sheet && sheet.open) { sheet.addEventListener('close', refreshView, { once: true }); return; }
+        refreshView();
       });
     });
+  }
+
+  function refreshView() {
+    if (SRCH.view === 'sug' && SRCH.q && !$('#wsout').hidden) renderSuggest();
+    else if (SRCH.view === 'list' && SRCH.list) refreshList();
   }
 
   /* Elementy listy. */

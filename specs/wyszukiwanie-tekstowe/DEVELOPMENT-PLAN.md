@@ -27,7 +27,7 @@ Wymagania:
 | Faza | Zbiór win | Uwagi |
 |---|---|---|
 | **1** | **56 win ze strony** (`site/js/wines.js`), 25 winiarni | Pełne karty istnieją, więc wystarczy podpiąć wyniki pod `openSheet(id)`. Kategorie: region, odmiana, winiarnia |
-| **2** | + **wina z Salonu vín 2024–2026** (`docs/salon-vin/*.json`): **wszystkie złote i srebrne z podobszaru znojemskiego**, czyli 417 win (300 złotych wpisów i 137 srebrnych, bez powtórzeń między latami); 15 z nich jest już na stronie, więc w wyszukiwarce dochodzi 402 | Skrypt budujący indeks, karta wina z Salonu (punkt 8), kategoria „miejsce” z danych strukturalnych (`village`, `vineyard`) |
+| **2** | + **wina z Salonu vín 2024–2026** (`docs/salon-vin/*.json`): **wszystkie złote i srebrne z podobszaru znojemskiego**, czyli 417 win (300 złotych wpisów i 137 srebrnych, bez powtórzeń między latami); 14 z nich jest już na stronie, więc w wyszukiwarce dochodzi 403 (po poprawce z review kodu, punkt 16) | Skrypt budujący indeks, karta wina z Salonu (punkt 8), kategoria „miejsce” z danych strukturalnych (`village`, `vineyard`) |
 
 Poza zakresem: wyszukiwanie w innych zakładkach (restauracje, spacery) i wyszukiwanie po smaku, które już robi „Dobierz wino”.
 
@@ -523,7 +523,7 @@ Zrobione lokalnie, **bez commita i bez publikacji**: czeka na przegląd kodu i z
 |---|---|
 | `site/vendor/minisearch/` | MiniSearch 7.2.0 zminifikowany (18 KB, 5,9 KB po gzip), `LICENSE.txt`, `README.md` z poleceniem |
 | `site/js/wine-search.js` | moduł z punktów 5.2–5.8: normalizacja, synonimy, aliasy, kategorie, kolejne próby, sortowanie „najlepsze najpierw”, łączenie win i winiarni ze strony i z Salonu, budowa w porcjach |
-| `tools/build-wine-index.py` → `site/js/wine-index.js` | 417 win z Salonu (złote + srebrne ze Znojemska), 266 KB, 65 KB po gzip |
+| `tools/build-wine-index.py` → `site/js/wine-index.js` | 417 win z Salonu (złote + srebrne ze Znojemska), 266 KB, 65 KB po gzip; 14 z nich jest już na stronie, więc w wyszukiwarce dochodzi 403 |
 | `site/js/wines.js` | pole `grape` przy 7 winach (2 odmiany ze źródeł, 5 kupaży `null`) |
 | `site/js/app.js` | pole w karcie „Znojmo w kieliszku”, podpowiedzi, lista wyników po 20 od najlepszych, karta wina z Salonu, klawiatura, ARIA, link `#wino/szukaj/…` |
 | `site/css/style.css` | style wyszukiwarki, ukrywanie paska zakładek przy wpisywaniu na telefonie |
@@ -536,3 +536,24 @@ Zrobione lokalnie, **bez commita i bez publikacji**: czeka na przegląd kodu i z
 - wersja GAS się buduje (`node tools/build-gas.mjs`).
 
 **Niesprawdzone** (wymaga prawdziwych urządzeń, lista w punkcie 7.4): Safari na iPhonie (powiększanie przy wejściu w pole, klawiatura), Chrome na Androidzie, VoiceOver, tryb offline na GitHub Pages i wersja GAS po wdrożeniu.
+
+## 16. Review kodu przed publikacją (11 XI)
+
+Gałąź `feature/wyszukiwarka-win`, trzy rundy z perspektyw: senior frontend developer, architekt, tester i projektant responsywnych stron (rozmieszczenie, kolory, kontrast). Każdą rundę sprawdzał skrypt w przeglądarce Edge na 6 szerokościach (320, 360, 390, 768, 1024, 1440 px) i 15 scenariuszach brzegowych, plus testy z punktu 7.
+
+| Runda | Perspektywa | Ustalenie | Poprawka |
+|---|---|---|---|
+| 1 | projektant | Przy dużych kategoriach wina z Salonu były niewidoczne: „Region: Znojmo” miał na 1. stronie same 47 wina z przewodnika | stronicowanie osobno dla każdej grupy: po 8, potem po 20 |
+| 1 | architekt | Fałszywe scalenia: „Ing. František Zapletal” połączony z Zapletalem ze strony (to inna firma niż „Vinné sklepy Zapletal”), a wino Maňáka z partią 2250 brane za duplikat Oulehli (partia jest unikalna tylko u producenta) | scalanie najpierw po wspólnym winie, partia tylko przy zgodnym producencie; 3 testy regresyjne |
+| 1 | tester | Bez internetu pobieranie win z Salonu ponawiane przy każdej literze (10 nieudanych żądań) | ponowienie tylko przy wejściu w pole; komunikat w liście |
+| 1 | tester | Kafelek Salonu pokazywał medal z ostatniego roku, a lista była sortowana po najlepszym (3 wina) | kafelek pokazuje najlepszy medal |
+| 1 | tester | Enter po 1 literze dawał „Wyniki dla „z” · 0 win” | Enter po 1 literze nic nie robi |
+| 1 | projektant | Brak informacji, w ilu winach szukamy (nad polem jest tylko „ponad 50 butelek” przewodnika) | podpis „Szukasz w 56 winach z przewodnika i 403 medalistach Salonu vín 2024–2026” |
+| 1 | projektant | Znak ✕ renderowany w różnych kolorach na Windows | ikona SVG w stylu strony |
+| 1 | frontend | „1 kategorie” w komunikacie dla czytnika ekranu | odmiana |
+| 2 | projektant | Podpis o zakresie (3 linie na telefonie) zabierał miejsce nad klawiaturą | krótszy, ukryty podczas wpisywania |
+| 2 | projektant | Kafelki Salonu z dużą, identyczną butelką zastępczą | niższa butelka (104 px) |
+| 2 | projektant | Nazwy producentów z formą prawną („VINAŘSTVÍ WALDBERG S.R.O.”) obok „Waldberg” ze strony | nazwa jak na stronie albo bez formy prawnej; pełna w oknie wina |
+| 3 | frontend | Wczytanie win z Salonu przy otwartym oknie wina przerysowywało listę pod nim (fokus nie wracał na wiersz) | przerysowanie po zamknięciu okna |
+
+Runda 3 nie dała istotnych ustaleń. Stan końcowy: brak przewijania w poziomie i celów dotyku poniżej 44 px na wszystkich szerokościach, kontrast nowych kolorów od 6,47:1 (WCAG AA), pole 17 px (bez powiększania na iPhonie), testy 39/39 + 14/14 + 4/4, brak błędów w konsoli.
