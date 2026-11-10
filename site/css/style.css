@@ -849,9 +849,9 @@ button.wtile, button.wrow, button.wchamp { appearance: none; font: inherit; colo
 .nchip--min { color: #fff; background: var(--mineral); border-color: var(--mineral); }
 .nchip--soft { font-weight: 600; color: var(--ink-3); background: #fff; border-style: dashed; }
 .nchip--soft.nchip--min { color: var(--slate); border-color: var(--mineral); }
-.nquotes > summary { cursor: pointer; font-size: 14px; font-weight: 700; color: var(--wine-800); line-height: 20px; padding: 12px 0; }
-.nquote { margin: 0 0 10px; padding-left: 10px; border-left: 3px solid var(--rose-300); }
-.nquote p { font-size: 13.5px; line-height: 1.45; font-style: italic; color: var(--ink-2); }
+.nquote { margin-left: 0; margin-right: 0; margin-bottom: 0; padding-left: 10px; border-left: 3px solid var(--rose-300); }
+.nquote p { font-size: 14px; line-height: 1.5; font-style: italic; color: var(--ink-2); }
+.nquote + .nquote { margin-top: 12px; }
 .nquote footer { font-size: 11.5px; line-height: 1.3; color: var(--ink-3); margin-top: 3px; }
 
 @media (min-width: 640px) {

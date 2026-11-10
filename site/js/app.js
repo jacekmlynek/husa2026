@@ -375,7 +375,7 @@
     }).join('') + '</div>';
   }
   function nquote(q, src) {
-    return '<blockquote class="nquote"><p lang="cs">„' + q + '”</p><footer>' + src + '</footer></blockquote>';
+    return '<blockquote class="nquote"><p>„' + q + '”</p><footer>' + src + '</footer></blockquote>';
   }
   function notesBlock(id) {
     var N = WNOTES[id] || { groups: [], quotes: [] };
@@ -390,7 +390,7 @@
     if (N.other && N.other.groups.length) h += '<p class="aroma__h">Z opisu rocznika ' + N.other.year + '</p>' + nchips(N.other.groups, ' nchip--soft');
     if (N.est) h += '<p class="aroma__h">Tylko w szacunku sklepu, nie z degustacji</p>' + nchips(N.est, ' nchip--soft') +
       '<p class="credit-line">' + ext(N.estUrl, 'Vínovín', 'credit') + ' sam pisze, że opis to „odhad” z analizy, położenia i poprzednich roczników.</p>';
-    if (quotes.length) h += '<details class="nquotes"><summary>Opisy po czesku (' + quotes.length + ')</summary>' + quotes.join('') + '</details>';
+    if (quotes.length) h += '<p class="aroma__h">' + (quotes.length > 1 ? 'Opisy' : 'Opis') + ' w tłumaczeniu z czeskiego</p>' + quotes.join('');
     return h + '<p class="credit-line">Grupy aromatów jak w arkuszu Salonu, ale oznaczają tylko, że słowo pada w opisie, a nie jego natężenie. ' + noChart + '</p></section>';
   }
   function aromaBlock(id) {
@@ -576,6 +576,7 @@
       '<p class="section-sub">Siedem win ze Znojemska i siedem najwyżej ocenionych z reszty Moraw. Przy każdym winie są punkty z konkursu. Dotknij wina, żeby zobaczyć szczegóły.</p>' +
       (SC ? acc(SC.title, SC.sub, SC.items.map(function (t) { return '<p class="small">' + t + '</p>'; }).join('') + actions(SC.links), false, 'w-punkty') : '') +
       '<h3 class="sub-h" id="w-top-znojmo">Ze Znojemska: do spróbowania w vinotékach w mieście</h3>' +
+      '<p class="small muted">Najpierw złote wina krajowego Salonu vín 2026, potem medale konkursu regionalnego. Na końcu Znovín Šobes: bez oceny w konkursie, ale z udokumentowanej parceli Šobes.</p>' +
       '<div class="wrows">' + WN.topZnojmo.map(function (id, i) { return wineRow(id, i + 1, false); }).join('') + '</div>' +
       '<h3 class="sub-h" id="w-top-morava">Z reszty Moraw: najlepsze w Salonie vín 2026</h3>' +
       '<p class="small muted">Nie ma ich w karcie Enotéki, więc pytaj w innych vinotékach w Znojmie. Ceny pochodzą z e-sklepu Salonu vín.</p>' +

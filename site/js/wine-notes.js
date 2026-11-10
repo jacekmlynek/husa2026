@@ -13,7 +13,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://www.znovin.cz/e-shop/ryzlink-rynsky-pozdni-sber-2025-z-5390",
-    "q": "Víno zaujme svou podmanivou vůní, ve které najdete zralé ryngle, sušené meruňky nebo lipový květ. V chuti je víno plné, šťavnaté a harmonické, s příjemnou kyselinkou. Chuť připomíná vyzrálé nektarinky, kompotované broskve nebo sušený ananas."
+    "q": "Wino urzeka uwodzicielskim zapachem, w którym znajdziesz dojrzałe renklody, suszone morele albo kwiat lipy. W smaku pełne, soczyste i harmonijne, z przyjemną kwasowością. Smak przypomina dojrzałe nektarynki, brzoskwinie z kompotu albo suszonego ananasa."
    }
   ]
  },
@@ -35,7 +35,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://e-shop.pialek.cz/sauvignon-voc-2025/",
-    "q": "Krásný ovocný styl Sauvignonu s dominantními tóny zralých broskví. Zaujme především svojí jemností, příjemnou kyselinkou v kombinaci s menším zbytkovým cukrem."
+    "q": "Piękny, owocowy styl Sauvignon z dominującymi nutami dojrzałych brzoskwiń. Ujmuje przede wszystkim delikatnością i przyjemną kwasowością w połączeniu z niewielkim cukrem resztkowym."
    }
   ],
   "est": [
@@ -53,7 +53,7 @@ window.WINE_NOTES = {
    {
     "src": "Vinotéka u zámku (degustacja sklepu, czerwiec 2026)",
     "url": "https://www.vinotekauzamku.cz/veritas-2/",
-    "q": "Víno je ovocité, vyvážené, dekladováno ještě jako suché, ale zbytkovým cukrem je spíše v kategorii polosuché.",
+    "q": "Wino owocowe, zrównoważone, deklarowane jeszcze jako wytrawne, ale cukrem resztkowym bliżej mu raczej do półwytrawnego.",
     "remark": "na stronie dwie partie: 2419 w nagłówku, 2523 w opisie"
    }
   ]
@@ -70,7 +70,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://eshop.oulehlavinarstvi.cz/frankovka-2022-pozdni-sber/",
-    "q": "Frankovka granátové barvy a vůně vyzrálých višní se v chuti prolíná do likéru z aronie, třešňové pecky a perníku. Hebké vrstevnaté víno s kořenitě minerálním závěrem s odrazem terroir Dolních Kounic."
+    "q": "Frankovka o granatowej barwie i zapachu dojrzałych wiśni, który w smaku przechodzi w likier z aronii, pestkę czereśni i piernik. Aksamitne, wielowarstwowe wino z korzenno-mineralnym finiszem, w którym odbija się terroir Dolních Kounic."
    }
   ]
  },
@@ -84,7 +84,7 @@ window.WINE_NOTES = {
    {
     "src": "E-sklep DAVINUS",
     "url": "https://www.eshop.davinus.cz/ryzlink-rynsky-2022-kabinetni-vino-davinus/",
-    "q": "Vůně nektarinky a sušených plátků meruněk. Chuť je plná, šťavnatá s dlouhou dochutí na patře s výraznou stopou tropického ovoce."
+    "q": "Zapach nektarynki i suszonych plasterków moreli. Smak pełny, soczysty, z długim posmakiem i wyraźnym śladem owoców tropikalnych."
    }
   ]
  },
@@ -96,8 +96,8 @@ window.WINE_NOTES = {
    {
     "src": "MojeLahve.sk, recenzja użytkownika (14.02.2026, degustacja w Bořeticích)",
     "url": "https://mojelahve.sk/vino/frankovka-na-nivach-2023-zemske-vino-vinarstvi-oulehla-cervene-74852",
-    "q": "Měkké, subtilní, nasládlé, krásně svěží a ovocitě navinulé víno z čipernou kyselinku bez nakyslostí a výrazným tříslem. Hebká minerální textura.",
-    "remark": "partia 2350; „nasládlé” to wrażenie recenzenta, wino jest suche (0,3 g/l)"
+    "q": "Miękkie, subtelne, lekko słodkawe, pięknie świeże i owocowo-kwaskowe wino o żwawej, ale nie kwaśnej kwasowości i wyraźnej taninie. Aksamitna, mineralna tekstura.",
+    "remark": "partia 2350; „lekko słodkawe” to wrażenie recenzenta, wino jest wytrawne (0,3 g/l)"
    }
   ]
  },
@@ -113,12 +113,12 @@ window.WINE_NOTES = {
    {
     "src": "Ocena Koudeli",
     "url": "https://www.vocznojmo.cz/cs/aktualita/ryzlink-rynsky-od-vino-hort-v-kralovske-rade-voc-znojmo-405/",
-    "q": "Typický charakter vyzrálého ryzlinku, to jsou jemné petrolejové tóny ve vůni, doplněné o nádech meruněk a medových tónů. Chuť je plná, harmonická, s dlouhou medově-citrusovou dochutí, která podtrhuje eleganci a výjimečnost vína."
+    "q": "Typowy charakter dojrzałego Rieslinga: delikatne nuty petrolu w zapachu, a do tego morela i miód. Smak pełny, harmonijny, z długim miodowo-cytrusowym finiszem, który podkreśla elegancję i wyjątkowość wina."
    },
    {
     "src": "producent",
     "url": "https://www.vinotrh.cz/kralovsky-ryzlink-rynsky/",
-    "q": "Víno má žlutavou barvu, ve vůni se objevují meruňky a pomerančová kůra v náznaku už s petrolejovými tóny , v chuti přechází do kořenité vyzrálosti."
+    "q": "Wino ma żółtawą barwę. W zapachu morele i skórka pomarańczy, już z pierwszymi nutami petrolu. W smaku przechodzi w korzenną dojrzałość."
    }
   ]
  },
@@ -133,7 +133,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://www.vinotrh.cz/rotgipfler-volne-pole-2025-p-s-/",
-    "q": "Jeho vůně vám připomene bílé květy jarního rozkvetlého sadu. V chuti ucítíte dozrávající mirabelky s medovou stopou, kterou víno získalo částečným zráním na akátovém sudu. Plnou chuť vína skvěle balancuje vyšší kyselinka a pikantnost mu dodává lehce kořenitá stopa v závěru."
+    "q": "Zapach przypomina białe kwiaty sadu w wiosennym rozkwicie. W smaku dojrzewające mirabelki z miodowym akcentem, który wino zyskało, dojrzewając częściowo w beczce z akacji. Pełny smak dobrze równoważy wyższa kwasowość, a pikanterii dodaje lekko korzenny ślad na finiszu."
    }
   ]
  },
@@ -148,7 +148,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://www.znovin.cz/e-shop/neuburske-pozdni-sber-2025-z5355",
-    "q": "Těšte se na atraktivní vůni připomínající pražené mandle v medu a kandované ovoce. V ústech oceníte dokonalou harmonii jemného zbytkového cukru a svěží kyselinky. Chuť připomíná kompotovaný ananas, tropické liči nebo vyzrálé nektarinky."
+    "q": "Atrakcyjny zapach przypomina prażone migdały w miodzie i kandyzowane owoce. W ustach delikatny cukier resztkowy dobrze współgra ze świeżą kwasowością. Smak przypomina ananasa z kompotu, tropikalne liczi albo dojrzałe nektarynki."
    }
   ]
  },
@@ -164,7 +164,7 @@ window.WINE_NOTES = {
    {
     "src": "Vinotrh (Enotéka #10, kod ZNO.0484)",
     "url": "https://www.vinotrh.cz/ryzlink-rynsky-ze-sobesu/",
-    "q": "Ve vůni objevíte sušené meruňky nebo lipový květ. Chuť je bohatá, plná a krásně vyvážená díky příjemné kyselince a jemnému zbytkovému cukru. V ústech ucítíte zralé broskve, nektarinky nebo šťavnaté mango a vše je podtrženo lehkým minerální závěrem."
+    "q": "W zapachu suszone morele albo kwiat lipy. Smak bogaty, pełny i pięknie zrównoważony dzięki przyjemnej kwasowości i delikatnemu cukrowi resztkowemu. W ustach dojrzałe brzoskwinie, nektarynki albo soczyste mango, a całość podkreśla lekko mineralny finisz."
    }
   ]
  },
@@ -198,7 +198,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://www.znovin.cz/e-shop/sauvignon-voc-znojmo-2025-z5334",
-    "q": "Chuť je svěží, lehce nasládlá a bohatá. Objevíte širokou škálu tropických tónu jako mango, kompotovaný ananas nebo limetka."
+    "q": "Smak świeży, lekko słodkawy i bogaty. Szeroka gama nut tropikalnych: mango, ananas z kompotu albo limonka."
    }
   ],
   "est": [
@@ -219,7 +219,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://www.znovin.cz/e-shop/veltlinske-zelene-voc-znojmo-2025-z5337",
-    "q": "Ve vůni dominuje bílý pepř a květinové tóny, které připomínají rozkvetlou jarní louku. V ústech vás potěší svěžest a výrazný ovocný projev. Hledejte broskve, zelené jablka nebo máslové hrušky."
+    "q": "W zapachu dominuje biały pieprz i nuty kwiatowe, które przypominają rozkwitłą wiosenną łąkę. W ustach świeżość i wyraźna owocowość. Szukaj brzoskwiń, zielonych jabłek albo maślanych gruszek."
    }
   ],
   "est": [
@@ -238,12 +238,12 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://e-shop.pialek.cz/veltlinske-zelene-extra-2024/",
-    "q": "Plné, dlouhé a minerální víno, s intenzivním ovocným aroma i v chuti s jemnými sladkými tóny a příjemnou kyselinkou."
+    "q": "Pełne, długie i mineralne wino, z intensywnym owocowym aromatem także w smaku, z delikatnymi słodkimi nutami i przyjemną kwasowością."
    },
    {
     "src": "Vínovín",
     "url": "https://www.vinovin.cz/veltlinske-zelene--pozdni-sber--suche-vino--2024---pialek-jager/",
-    "q": "Suchý projev podtrhuje čistý odrůdový charakter, jemnou kořenitost a svěží kyselinu typickou pro tuto vinařskou oblast."
+    "q": "Wytrawny styl podkreśla czysty charakter odmiany, delikatną korzenność i świeżą kwasowość typową dla tego regionu."
    }
   ]
  },
@@ -260,12 +260,12 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://e-shop.pialek.cz/hibernal-2025/",
-    "q": "Ve vůni a v chuti Vás zaujmou úžasné květinové tóny, hladce přecházející k ovocným, jenž poté dominují, ale pořád v úžasné harmonii. Budete cítit broskve, mango, limetkové tóny a mnoho dalších sladkých vjemů a vše s medovým základem. […]"
+    "q": "W zapachu i smaku piękne nuty kwiatowe płynnie przechodzą w owocowe, które potem dominują, ale wciąż w harmonii. Brzoskwinie, mango, limonka i wiele innych słodkich wrażeń, wszystko na miodowej bazie."
    },
    {
     "src": "Vinotrh (Enotéka #41, kod PAJ.0156)",
     "url": "https://www.vinotrh.cz/hibernal-63/",
-    "q": "Víno je šťavnaté s úžasnou dochutí a milovníci lehkého zbytkového cukru nebudou moci přestat."
+    "q": "Wino jest soczyste, z bardzo dobrym posmakiem, a miłośnicy lekkiego cukru resztkowego nie będą mogli przestać."
    }
   ]
  },
@@ -279,13 +279,13 @@ window.WINE_NOTES = {
    {
     "src": "Moravský Hrozen",
     "url": "https://www.moravskyhrozen.cz/vinarstvi-spalek-veltlinske-zelene-2025-voc-znojmo--kravi-hora--suche/",
-    "q": "Chuť je suchá, přesná a šťavnatá, s pevnou kyselinou a velmi čistým minerálním projevem. Dochuť je středně dlouhá, lehce slaná a příjemně kamenitá.",
+    "q": "Smak wytrawny, precyzyjny i soczysty, z mocną kwasowością i bardzo czystym, mineralnym wyrazem. Posmak średnio długi, lekko słony i przyjemnie kamienisty.",
     "remark": "partia 1825; bez podpisu degustatora, możliwy tekst marketingowy"
    },
    {
     "src": "JustWine",
     "url": "https://www.justwine.cz/spalek-veltlinske-zelene-voc-2025/",
-    "q": "Ve vůni se objevují typické tóny zeleného pepře, mandlových slupek a jemné muškátové nuance charakteristické pro moravský Veltlín.",
+    "q": "W zapachu typowe nuty zielonego pieprzu, skórki migdałów i delikatne muszkatowe niuanse, charakterystyczne dla morawskiego Veltlína.",
     "remark": "bez podpisu degustatora, częściowo zbieżny z Moravským Hrozenem"
    }
   ],
@@ -308,13 +308,13 @@ window.WINE_NOTES = {
    {
     "src": "Vinshop",
     "url": "https://www.vinshop.cz/gryllus-bily-2025-bio-voc-spalek-bile-vino-suche/",
-    "q": "Vůně ovocná, připomínající žlutý meloun a kdoule. Chuť plná, spíše však minerální než ovocná, se středně dlouhou, slanou dochutí.",
+    "q": "Zapach owocowy, przypomina żółty melon i pigwę. Smak pełny, ale raczej mineralny niż owocowy, ze średnio długim, słonym posmakiem.",
     "remark": "partia 1625; bez podpisu degustatora"
    },
    {
     "src": "Moravský Hrozen",
     "url": "https://www.moravskyhrozen.cz/vinarstvi-spalek-gryllus-bily-bio-2025-voc-znojmo--kravi-hora--cuvee--suche/",
-    "q": "Chuť je suchá, živá a krásně vyvážená. Dominují citrusy, zelené jablko a šťavnatá ovocnost, kterou doprovází typická znojemská kyselina.",
+    "q": "Smak wytrawny, żywy i pięknie zrównoważony. Dominują cytrusy, zielone jabłko i soczysta owocowość, której towarzyszy typowa znojemska kwasowość.",
     "remark": "partia 1625; bez podpisu degustatora, możliwy tekst marketingowy"
    }
   ],
@@ -335,7 +335,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://eshop.vinarstvithaya.cz/apri-chardonnay-2024/",
-    "q": "Aromatika je velice komplexní a sofistikovaná. Najdeme zde charakter kandovaného ananasu, lučních květin a fialky. V chuti dominují především tóny zralého žlutého ovoce a výrazná mineralita."
+    "q": "Aromat bardzo złożony i wyrafinowany: kandyzowany ananas, kwiaty łąkowe i fiołek. W smaku dominują przede wszystkim dojrzałe żółte owoce i wyraźna mineralność."
    }
   ]
  },
@@ -348,7 +348,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://eshop.vinarstvithaya.cz/veltlinske-zelene-2025/",
-    "q": "V aromatice můžeme najít komplexní veltlínské zelené se znaky citrusů, žlutého ovoce a bílého pepře. Chuť je středně plná převážně se znaky vyzrálého zahradního ovoce."
+    "q": "W aromacie złożony Veltlín z nutami cytrusów, żółtych owoców i białego pieprzu. Smak średnio pełny, głównie z nutami dojrzałych owoców z sadu."
    }
   ]
  },
@@ -361,7 +361,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://eshop.vinarstvithaya.cz/zweigeltrebe-2023/",
-    "q": "Robustní víno vyráběné z hroznů s vysokou vyzrálostí v dubových sudech 16 měsíců o objemu 400l. Aromatika je příjemně ovocná i kořenitá, přechází do tónů lékořice, s lehkým náznakem živočišnosti. Chuť je ovocná, plná a dlouhá. Na konci dominují tóny dubových sudů."
+    "q": "Mocne wino z bardzo dojrzałych gron, 16 miesięcy w dębowych beczkach 400 l. Aromat przyjemnie owocowy i korzenny, przechodzi w lukrecję, z lekką nutą zwierzęcą. Smak owocowy, pełny i długi. Na finiszu dominuje dębowa beczka."
    }
   ]
  },
@@ -376,12 +376,7 @@ window.WINE_NOTES = {
    {
     "src": "Vinotrh (Enotéka #11, kod WAL.0443)",
     "url": "https://www.vinotrh.cz/ryzlink-vlassky-waldberg-2024-p-s-/",
-    "q": "Víno zelenkavě zlatavé barvy, s jemnou vůní sušených bylinek, slaměnky a nádechem vyzrálých rynglí. Chuť je vyvážená, bylinno-ovocitá a minerální, s lehce slaným závěrem."
-   },
-   {
-    "src": "Vínovín",
-    "url": "https://www.vinovin.cz/ryzlink-vlassky--pozdni-sber--suche-vino--2024---waldberg/",
-    "q": "Chuť vína je harmonická, s bylinně-ovocným charakterem, minerálním podtónem a lehce slaným závěrem. Elegantní Ryzlink vlašský ze Znojemské podoblasti má jemně zlatavou barvu a vůni sušených bylinek, slámy a vyzrálých rynglí."
+    "q": "Wino o zielonkawo-złotej barwie, z delikatnym zapachem suszonych ziół, kocanek i nutą dojrzałych renklod. Smak zrównoważony, ziołowo-owocowy i mineralny, z lekko słonym finiszem."
    }
   ]
  },
@@ -395,7 +390,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://www.vinotrh.cz/rulandske-modre-volne-pole-2021-v-h--3/",
-    "q": "Víno tmavé cihlově červené barvy, s vůní sladké mleté papriky a sušeného tabákového listu. Vysoce extraktivní chuť odkazuje na vyzrálost hroznů a částečné ležení v dubovém sudu. Je robustní, jemně kořenitá, s dlouhou perzistencí a lehce nasládlou vanilkovou stopou v jejím závěru."
+    "q": "Wino o ciemnej, ceglastoczerwonej barwie, z zapachem słodkiej mielonej papryki i suszonego liścia tytoniu. Bardzo ekstraktywny smak zdradza dojrzałe grona i częściowe dojrzewanie w dębowej beczce. Mocne, delikatnie korzenne, długie, z lekko słodkawym waniliowym śladem na finiszu."
    }
   ]
  },
@@ -412,7 +407,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://eshop.oulehlavinarstvi.cz/chardonnay-karlov-2023-moravske-zemske-stare-kere/",
-    "q": "Buket s tóny kvetoucích citrusů, na patře upoutá aroma vyzrálých bělomasých broskví, hrušek máslovek a typický minerální podtón."
+    "q": "Bukiet z nutami kwitnących cytrusów. Na podniebieniu przyciąga aromat dojrzałych białych brzoskwiń, maślanych gruszek i typowy mineralny podton."
    }
   ]
  },
@@ -426,7 +421,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://eshop.oulehlavinarstvi.cz/merlot-grand-reserva-2022/",
-    "q": "Vůni lesního ovoce a sušených švestek doplňuje v chuti vyzrálá třešeň, kakao a káva. Hebké taniny a hebká dubová kůra v závěru."
+    "q": "Zapach owoców leśnych i suszonych śliwek uzupełnia w smaku dojrzała czereśnia, kakao i kawa. Aksamitne taniny i delikatna nuta dębowej kory na finiszu."
    }
   ]
  },
@@ -440,7 +435,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://www.vinotrh.cz/veltlinske-cervene-rane-volne-pole-2024-kab-/",
-    "q": "Víno zbarvené do třpytivých zelenkavě-stříbřitých odstínů zaujme jemně kořenitou vůní čerstvě řezaných květin. Plná a extraktivní chuť je svěží a šťavnatá, lehce kořenitá, se stopou červeného pomeranče v jejím závěru."
+    "q": "Wino w lśniących, zielonkawo-srebrzystych odcieniach ujmuje delikatnie korzennym zapachem świeżo ciętych kwiatów. Pełny, ekstraktywny smak jest świeży i soczysty, lekko korzenny, z nutą czerwonej pomarańczy na finiszu."
    }
   ]
  },
@@ -454,12 +449,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://www.vinotrh.cz/cuvee-rajska-rajska-vinice-2025-voc/",
-    "q": "Z veltlínu v něm najdete jemné kořenité tóny, angreštové nuance přidal zejména do vůně Sauvignon a ve šťavnaté ovocité chuti s delikátním nádechem minerality objevíte Ryzlink rýnský."
-   },
-   {
-    "src": "Vínovín",
-    "url": "https://www.vinovin.cz/cuvee-rajska--voc--suche-vino--2025-lahofer/",
-    "q": "Do harmonického profilu se snoubí tři odrůdy – Veltlínské zelené přináší jemné kořenité tóny, Sauvignon dodává výraznou angreštovou vůni a Ryzlink rýnský obohacuje chuť o šťavnaté ovoce a delikátní minerální nádech."
+    "q": "Veltlín wnosi delikatne korzenne nuty, Sauvignon dodaje, zwłaszcza w zapachu, niuanse agrestu, a w soczystym, owocowym smaku z delikatną nutą mineralności odnajdziesz Rieslinga."
    }
   ]
  },
@@ -474,12 +464,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://www.vinotrh.cz/veltlinske-zelene-volne-pole-2025-voc/",
-    "q": "Víno zlatavě-zelenkavé barvy, jehož vůni vévodí šťavnatost letního jablíčka se stopami bílého pepře doplněná o jemný mandlový nádech. V plné chuti vystupují do popředí především pikantní pepřnaté tóny. Dlouhý příjemně minerální závěr."
-   },
-   {
-    "src": "Vínovín",
-    "url": "https://www.vinovin.cz/veltlinske-zelene-voc-suche-vino-2025-lahofer/",
-    "q": "Plná chuť s pikantní pepřností a dlouhým minerálním závěrem. Víno s přívlastkem VOC Znojmo pochází z viniční trati Volné pole u Hostěradic ve Znojemské podoblasti, kde sprašové a písčité půdy spolu s teplými dny a chladnými nocemi dávají vínům svěžest a výraznou kořenitost. […]"
+    "q": "Wino o złocisto-zielonkawej barwie. W zapachu króluje soczyste letnie jabłko ze śladami białego pieprzu i delikatną nutą migdałów. W pełnym smaku na pierwszy plan wychodzą pikantne, pieprzne nuty. Długi, przyjemnie mineralny finisz."
    }
   ]
  },
@@ -491,14 +476,9 @@ window.WINE_NOTES = {
   ],
   "quotes": [
    {
-    "src": "producent",
-    "url": "https://vinarstvihalkoci.cz/produkt/ryzlink-typik-2025/",
-    "q": "V typickém Ryzlinku Rýnském chceme cítit peckoviny, meruňky, ovocnost. V chuti hledáme šťavnatost a celkově krásnou ryzí energii. Dochuť by pak měla být příjemně dlouhá a lákat k dalšímu doušku. […]"
-   },
-   {
     "src": "Vinotrh (Enotéka #12, kod HAL.0023)",
     "url": "https://www.vinotrh.cz/ryzlink-typik/",
-    "q": "Dochuť je dlouhá, čistá a s každým douškem láká k dalšímu a dalšímu. V aromatice hraje prim peckové ovoce, meruňky a jemná citrusová linka. V chuti pak přichází ryzí energie – živá, svěží, přesto vyzrálá a vyvážená."
+    "q": "Posmak długi, czysty i z każdym łykiem zachęca do następnego. W aromacie prym wiodą owoce pestkowe, morele i delikatna cytrusowa linia. W smaku czysta energia: żywa, świeża, a przy tym dojrzała i zrównoważona."
    }
   ]
  },
@@ -511,7 +491,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://vinarstvihalkoci.cz/produkt/veltlin%C2%B2-2024/",
-    "q": "Zaujme zlatavou až sytě žlutou barvou a výraznou vůní žlutého ovoce, pepře a elegantního tónu dřeva. V chuti je dlouhý, široký a komplexní – opravdové velké víno. Intenzivní odrůdová vůně plná nektarů, žlutého ovoce a především pepře. Chuť je komplexní a čistá, s příjemnou kyselinkou a delším závěrem."
+    "q": "Złocista do intensywnie żółtej barwa i wyraźny zapach żółtych owoców, pieprzu i eleganckiej nuty drewna. W smaku długi, szeroki i złożony, naprawdę wielkie wino. Intensywny odmianowy zapach pełen nektaru, żółtych owoców, a przede wszystkim pieprzu. Smak złożony i czysty, z przyjemną kwasowością i dłuższym finiszem."
    }
   ]
  },
@@ -525,7 +505,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://vinarstvihalkoci.cz/produkt/supa-25/",
-    "q": "Tady se odrůda ukazuje v suché, ryzí podobě – s krásnou aromatikou květin, jemného koření a zralého ovoce, ale s čistou, suchou chutí a svěží kyselinkou. Vyzrálé kořeny, elegantní zpracování a vysoká pitelnost."
+    "q": "Tu odmiana pokazuje się w wytrawnej, czystej postaci: piękny aromat kwiatów, delikatnych przypraw i dojrzałych owoców, ale czysty, wytrawny smak i świeża kwasowość. Dojrzałe korzenie winorośli, eleganckie wykonanie i wysoka pijalność."
    }
   ]
  },
@@ -546,7 +526,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://www.vinovin.cz/muskat-moravsky-fresh-zemske-polosuche-vino-2026-korinek/",
-    "q": "Mladý Muškát moravský s typickou muškátovou aromatikou, polosuchým stylem a lehkou, snadno pitelnou chutí. Ve vůni najdeme typické muškátové tóny, bezový květ a jemné citrusy. Chuť je svěží, ovocná a lehká."
+    "q": "Młody Muszkat morawski z typowym muszkatowym aromatem, w stylu półwytrawnym, lekki i łatwy do picia. W zapachu typowe nuty muszkatu, kwiat czarnego bzu i delikatne cytrusy. Smak świeży, owocowy i lekki."
    }
   ]
  },
@@ -561,7 +541,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://shop.vinarstvisimenon.cz/veltlinske-zelene-voc-2025/",
-    "q": "Veltlínské zelené je svěží bílé víno s výraznějším minerálním charakterem a jemně slanějším projevem. V chuti se snoubí tóny zeleného jablka, citrusů a lehká kořenitost, které dohromady vytvářejí harmonický a osvěžující zážitek."
+    "q": "Świeże białe wino o wyraźnie mineralnym charakterze i delikatnie słonawym wyrazie. W smaku łączą się zielone jabłko, cytrusy i lekka korzenność, razem harmonijne i orzeźwiające."
    }
   ]
  },
@@ -574,7 +554,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://shop.vinarstvisimenon.cz/ryzlink-rynsky-voc-2025/",
-    "q": "Ryzlink rýnský je elegantní bílé víno s výraznou mineralitou a ovocným profilem připomínajícím zralé meruňky. V chuti je svěží, harmonický a dlouhotrvající, s příjemnou kyselinkou, která podtrhuje jeho charakter."
+    "q": "Eleganckie białe wino o wyraźnej mineralności i owocowym profilu przypominającym dojrzałe morele. W smaku świeże, harmonijne i długie, z przyjemną kwasowością, która podkreśla jego charakter."
    }
   ],
   "est": [
@@ -598,7 +578,7 @@ window.WINE_NOTES = {
    "year": 2024,
    "src": "Vinshop",
    "url": "https://www.vinshop.cz/sauvignon-blanc-2024-voc-simenon-bile-vino-suche/",
-   "q": "Vůně černého bezu a zralého angreštu, chuť šťavnatá, lehká, s živou kyselinou a harmonickým ovocným projevem.",
+   "q": "Zapach czarnego bzu i dojrzałego agrestu, smak soczysty, lekki, z żywą kwasowością i harmonijną owocowością.",
    "groups": [
     "drobne owoce"
    ]
@@ -613,7 +593,7 @@ window.WINE_NOTES = {
    {
     "src": "MojeLahve, recenzja użytkowniczki JanaP (28.09.2025)",
     "url": "https://mojelahve.cz/vino/trio-2024-pozdni-sber-vinarstvi-ampelos-bile-65470",
-    "q": "V chuti je plné, vyrovnané s jemnou ovocnou sladkostí a výraznou kořenitostí. Dochuť je dlouhá minerální.",
+    "q": "W smaku pełne, zrównoważone, z delikatną owocową słodyczą i wyraźną korzennością. Posmak długi, mineralny.",
     "remark": "partia 2444"
    }
   ]
@@ -632,7 +612,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://www.dobravinice.cz/p/creme-de-kambrium-2022",
-    "q": "Vůně je chlebově-minerální, chuť je příjemná a plná s dominantním minerálním projevem."
+    "q": "Zapach chlebowo-mineralny, smak przyjemny i pełny, z dominującą mineralnością."
    }
   ]
  },
@@ -646,7 +626,7 @@ window.WINE_NOTES = {
    {
     "src": "producent",
     "url": "https://www.dobravinice.cz/p/kambrium-cuvee-2022",
-    "q": "Víno kvasilo a zrálo ve starších francouzských dubových sudech. Víno světle zeleno-žluté barvy je květinově minerální. Chuť je příjemná a plná s dominantním minerálním projevem."
+    "q": "Wino fermentowało i dojrzewało w starszych beczkach z francuskiego dębu. Ma jasną, zielonkawożółtą barwę, jest kwiatowo-mineralne. Smak przyjemny i pełny, z dominującą mineralnością."
    }
   ]
  },
@@ -661,12 +641,12 @@ window.WINE_NOTES = {
    {
     "src": "Jižní svah, Jan Čeřovský (26.05.2025)",
     "url": "https://www.jizni-svah.cz/2025/05/dobra-vinice-novinky-archivy-navrat.html",
-    "q": "Suché, čisté, s výraznější kyselinou, svíravé, florální a citrusová kůra, krémová linka, koncentrace, hodně dlouhé."
+    "q": "Wytrawne, czyste, z wyraźniejszą kwasowością, ściągające; kwiaty i skórka cytrusów, kremowa linia, koncentracja, bardzo długie."
    },
    {
     "src": "MojeLahve, recenzja TomCh w artykule V. Hausknotza (20.12.2025)",
     "url": "https://mojelahve.cz/clanek/dobra-vina-ktera-stoji-za-ochutnani-moravske-veltliny-ruznych-stylu-2060",
-    "q": "Vůni dokresluje jakási noblesní forma zemitosti, medovost. Vliv kvevri cítím spíš až na jazyku a dodává původní noblese živost, jiskru."
+    "q": "Zapach dopełnia swego rodzaju szlachetna ziemistość i miodowość. Wpływ qvevri czuję raczej dopiero na języku: dodaje pierwotnej szlachetności żywości i iskry."
    }
   ]
  }

@@ -4,8 +4,8 @@ Wejście: docs/wina-opisy/opisy-win.json (tworzy go tools/wina-opisy/build.py, o
 Na stronę trafiają tylko wina bez wykresu Salonu (has_salon_profile = false):
   - groups: grupy aromatów ze słów w opisach własnego rocznika (obecność, nie natężenie),
   - est:    grupy tylko z szacunkowego opisu Vínovín (sklep sam pisze, że to „odhad”, nie degustacja),
-  - quotes: zdania o smaku i zapachu, dosłownie po czesku; bez zdań-szablonów sklepu, bez podawania i potraw,
-            bez niepotwierdzonych cytatów; szacunki Vínovín oznaczone,
+  - quotes: zdania o smaku i zapachu w polskim tłumaczeniu (tools/wine-notes-pl.json, klucz: wino + czeski tekst);
+            bez zdań-szablonów sklepu, bez podawania i potraw, bez niepotwierdzonych cytatów i szacunków Vínovín,
   - other:  opis tego samego wina z innego rocznika (tylko gdy brak własnego).
 Tylko biblioteka standardowa:  python tools/build-wine-notes.py
 """
@@ -17,6 +17,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / 'docs' / 'wina-opisy' / 'opisy-win.json'
 OUT = ROOT / 'site' / 'js' / 'wine-notes.js'
+# Tłumaczenia cytatów na polski, przejrzane ręcznie. "pl": null = cytat pominięty (powtórzenie, opis gleby zamiast smaku…).
+# Gdy zmieni się opis w źródle albo dojdzie nowe źródło, skrypt wypisze brakujące tłumaczenia i przerwie pracę.
+PL_FILE = ROOT / 'tools' / 'wine-notes-pl.json'
 
 # Grupy z metodyki Salonu vín, nazwy jak w site/js/aroma.js (kolejność jak na wykresie Salonu).
 GROUPS = [
@@ -80,7 +83,16 @@ def quote_text(s, generic, shown):
 
 def main():
     data = json.loads(SRC.read_text(encoding='utf-8'))
-    res = {}
+    tr = json.loads(PL_FILE.read_text(encoding='utf-8'))
+    res, missing = {}, []
+
+    def polish(key, cs):
+        hit = [x for x in tr.get(key, []) if x['cs'] == cs]
+        if not hit:
+            missing.append({'key': key, 'cs': cs})
+            return None
+        return hit[0]
+
     for wid, w in data['wines'].items():
         if w['has_salon_profile']:
             continue
@@ -96,9 +108,12 @@ def main():
             q = quote_text(s, set(s.get('generic_sentences', [])), shown)
             if len(q) < 25:             # nic nowego względem wcześniejszego źródła
                 continue
-            e = {'src': source_label(s), 'url': s['url'], 'q': q}
-            if s.get('remark'):
-                e['remark'] = s['remark']
+            t = polish(wid, q)
+            if not t or not t['pl']:    # brak tłumaczenia albo pominięty przy przeglądzie
+                continue
+            e = {'src': source_label(s), 'url': s['url'], 'q': t['pl']}
+            if t.get('remark') or s.get('remark'):  # uwaga może odwoływać się do słowa z tłumaczenia
+                e['remark'] = t.get('remark') or s['remark']
             quotes.append(e)
         r = {'groups': groups(w.get('aroma_groups_from_text')), 'quotes': quotes}
         est = [g for g in groups(w.get('aroma_groups_estimated_only')) if g not in r['groups']]
@@ -106,17 +121,21 @@ def main():
             r['est'] = est
             r['estUrl'] = est_src
         o = w.get('other_vintage')
-        if o and o.get('notes'):
-            r['other'] = {'year': o['vintage'], 'src': o['source'], 'url': o['url'],
-                          'q': ' '.join(o['notes']), 'groups': groups(o.get('aroma_groups'))}
+        t = o and o.get('notes') and polish(wid + '#other', ' '.join(o['notes']))
+        if t and t['pl']:
+            r['other'] = {'year': o['vintage'], 'src': o['source'], 'url': o['url'], 'q': t['pl'], 'groups': groups(o.get('aroma_groups'))}
         res[wid] = r
+    if missing:
+        print('Brak tłumaczeń w', PL_FILE.relative_to(ROOT), '(dopisz {"cs": …, "pl": …} pod kluczem wina):', file=sys.stderr)
+        print(json.dumps(missing, ensure_ascii=False, indent=1), file=sys.stderr)
+        return 1
     body = json.dumps(res, ensure_ascii=False, indent=1)
     OUT.write_text('/* Wygenerowane przez tools/build-wine-notes.py z docs/wina-opisy/opisy-win.json (' + data['generated'] +
                    ') — nie edytuj ręcznie.\n   Słowne opisy win bez profilu Salonu vín: grupy aromatów oznaczają obecność słowa, nie natężenie. */\n'
                    'window.WINE_NOTES = ' + body + ';\n', encoding='utf-8', newline='\n')
     n_g = sum(1 for r in res.values() if r['groups'])
     n_q = sum(1 for r in res.values() if r['quotes'] or r.get('other'))
-    print(f'{len(res)} win bez profilu; z grupami: {n_g}; z jakimkolwiek cytatem: {n_q} -> {OUT.relative_to(ROOT)}')
+    print(f'cytatów po polsku: {sum(len(r["quotes"]) + bool(r.get("other")) for r in res.values())}; ' + f'{len(res)} win bez profilu; z grupami: {n_g}; z jakimkolwiek cytatem: {n_q} -> {OUT.relative_to(ROOT)}')
 
 
 if __name__ == '__main__':

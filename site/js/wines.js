@@ -272,7 +272,7 @@
     wines: wines,
     champions: ['davinus-rr-2022', 'oulehla-fr-2023'],
     // Top 14 (listopad 2026): 7 ze Znojemska do spróbowania w znojemskich vinotékach + 7 najwyżej ocenionych z reszty Moraw
-    topZnojmo: ['hnanice-rr-2025', 'pialek-vz-extra-2023', 'spalek-velky-sud-2023', 'placek-fr-2023', 'waldberg-ch-2022', 'hnanice-vz-2025', 'znovin-sobes-2025'],
+    topZnojmo: ['pialek-vz-extra-2023', 'spalek-velky-sud-2023', 'placek-fr-2023', 'waldberg-ch-2022', 'hnanice-rr-2025', 'hnanice-vz-2025', 'znovin-sobes-2025'],  // najpierw złoto Salonu vín, potem konkurs regionalny
     alsoSalon: ['cervinka-rv-2022', 'valtice-fr-2023'],
     topMorava: ['skrobak-tc-2023', 'kubik-fr-2023', 'stepanek-sz-2023', 'bv-merlot-2018', 'davinus-sommelier-2022', 'zapletal-vz-2024', 'gotberg-palava-2024'],
     bonus: 'vinohort-kralovsky-2023',
