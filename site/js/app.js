@@ -533,10 +533,17 @@
       '</div><p class="wsearch__scope" id="wsearch-scope">' + scopeText() + '</p>' +
       '<p class="sr-only" id="wsearch-live" aria-live="polite"></p></div>';
   }
-  // Zakres wyszukiwania pod polem: liczba win z Salonu dopiero po wczytaniu indeksu (bez duplikatów ze strony).
+  // Liczby nad polem liczone z danych, żeby nie zestarzały się przy dodawaniu win (wcześniej: „ponad 50 butelek” na sztywno).
+  function guideCounts() {
+    var ids = Object.keys(WN.wines), prods = {};
+    ids.forEach(function (id) { prods[WN.wines[id].p] = 1; });
+    var np = Object.keys(prods).length;
+    return ids.length + ' ' + plural(ids.length) + ' z ' + np + ' winiarni w przewodniku';
+  }
+  // Pod polem: to, czego nie ma w napisie nad nim. Dokładna liczba win z Salonu (bez duplikatów ze strony) jest znana
+  // dopiero po wczytaniu indeksu; wcześniej „ponad 400” (pilnuje tego test w specs/wyszukiwanie-tekstowe/testy.js).
   function scopeText(salonCount) {
-    var n = Object.keys(WN.wines).length;
-    return 'Szukasz w ' + n + ' winach z przewodnika i ' + (salonCount ? salonCount + ' ' : '') + 'medalistach Salonu vín 2024–2026.';
+    return 'Wyszukiwarka obejmuje też ' + (salonCount || 'ponad 400') + ' medalistów Salonu vín 2024–2026.';
   }
   function isPhone() { return window.innerWidth < 900; }
   function plural(n) { return n === 1 ? 'wino' : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'wina' : 'win'); }
@@ -935,7 +942,7 @@
     var jump = [['w-sciaga', 'Etykieta i regiony'], ['w-czempioni', 'Czempioni'], ['w-top', 'Top 14'], ['w-dobierz', 'Dobierz wino'], ['w-degustacja', 'Degustacja'],
       ['w-enoteka', 'Enotéka'], ['w-katalog', 'Katalog'], ['w-odmiany', 'Odmiany']];
     var html = '';
-    html += '<div class="card wine-hero"><h2>Znojmo w kieliszku</h2><p>' + V.stats + '</p>' + searchBox() + '</div>' +
+    html += '<div class="card wine-hero"><h2>Znojmo w kieliszku</h2><p>' + V.stats + ' · ' + guideCounts() + '</p>' + searchBox() + '</div>' +
       '<div class="wsout" id="wsout" hidden></div>';
     html += '<nav class="jump" aria-label="Na tej stronie">' + jump.map(function (j) {
       return '<a href="#' + j[0] + '" data-jump="' + j[0] + '">' + j[1] + '</a>';

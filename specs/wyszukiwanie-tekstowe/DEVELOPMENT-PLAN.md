@@ -548,7 +548,7 @@ Gałąź `feature/wyszukiwarka-win`, trzy rundy z perspektyw: senior frontend de
 | 1 | tester | Bez internetu pobieranie win z Salonu ponawiane przy każdej literze (10 nieudanych żądań) | ponowienie tylko przy wejściu w pole; komunikat w liście |
 | 1 | tester | Kafelek Salonu pokazywał medal z ostatniego roku, a lista była sortowana po najlepszym (3 wina) | kafelek pokazuje najlepszy medal |
 | 1 | tester | Enter po 1 literze dawał „Wyniki dla „z” · 0 win” | Enter po 1 literze nic nie robi |
-| 1 | projektant | Brak informacji, w ilu winach szukamy (nad polem jest tylko „ponad 50 butelek” przewodnika) | podpis „Szukasz w 56 winach z przewodnika i 403 medalistach Salonu vín 2024–2026” |
+| 1 | projektant | Brak informacji, w ilu winach szukamy; napis nad polem miał na sztywno „25 winiarni · ponad 50 butelek”, choć w przewodniku jest 56 win, a w wyszukiwarce dodatkowo 403 z Salonu | napis nad polem liczy wina i winiarnie z danych („56 win z 25 winiarni w przewodniku”), pod polem „Wyszukiwarka obejmuje też 403 medalistów Salonu vín 2024–2026” (przed wczytaniem „ponad 400”, pilnowane testem) |
 | 1 | projektant | Znak ✕ renderowany w różnych kolorach na Windows | ikona SVG w stylu strony |
 | 1 | frontend | „1 kategorie” w komunikacie dla czytnika ekranu | odmiana |
 | 2 | projektant | Podpis o zakresie (3 linie na telefonie) zabierał miejsce nad klawiaturą | krótszy, ukryty podczas wpisywania |

@@ -443,7 +443,7 @@
 
     /* ------------------------------------------------------------------ */
     wine: {
-      stats: 'Top 14: 7 ze Znojemska i 7 z reszty Moraw · 25 winiarni · ponad 50 butelek',
+      stats: 'Top 14: 7 ze Znojemska i 7 z reszty Moraw', // liczbę win i winiarni dopisuje app.js z wines.js
 
       /* „Skąd te punkty?” pod nagłówkiem Top 14. Źródła: statut Salonu vín 2025 (pkt 8, 11–12),
          statut Národní soutěž vín – Velkopavlovická podoblast 2024 (pkt 14), narodnisoutezvin.cz/o-soutezi. */
