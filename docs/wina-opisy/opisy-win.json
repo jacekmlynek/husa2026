@@ -1,0 +1,2517 @@
+{
+ "generated": "2026-11-10",
+ "method": "notes = opisy degustacyjne ze źródeł (po czesku, bez zmian); aroma_groups_from_text = słowa z tych opisów przypisane do grup aromatów z metodyki Salonu vín (obecność, nie natężenie); values = parametry podane przez źródło; winemaking = akapity o produkcji (nie trafiają do grup aromatów); estimated = opis sklepu Vínovín, który sam podaje, że jest odhadem (szacunkiem z analityki, położenia i poprzednich roczników), nie degustacją: nie trafia do aroma_groups_from_text, grupy występujące tylko tam są w aroma_groups_estimated_only; generic_sentences = zdania-szablony sklepu użyte dla win różnych producentów (nie trafiają do grup); rejected_sources = strony odrzucone, bo opisują inne wino (inna trasa lub rocznik); other_vintage = opis tego samego wina z innego rocznika, tylko gdy brak opisu własnego rocznika (orientacyjnie)",
+ "wines": {
+  "znovin-sobes-2025": {
+   "producer": "Znovín Znojmo",
+   "wine": "Ryzlink rýnský Šobes",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.znovin.cz/e-shop/ryzlink-rynsky-pozdni-sber-2025-z-5390",
+     "notes": [
+      "Víno zaujme svou podmanivou vůní, ve které najdete zralé ryngle, sušené meruňky nebo lipový květ. V chuti je víno plné, šťavnaté a harmonické, s příjemnou kyselinkou. Chuť připomíná vyzrálé nektarinky, kompotované broskve nebo sušený ananas.",
+      "Ryzlink rýnský z ikonické vinice Šobes zaujme svou podmanivou vůní, ve které najdete ovocné a jemné květinové tóny, jako jsou zralé ryngle, sušené meruňky nebo lipový květ. V chuti je víno plné, šťavnaté a harmonické, s příjemnou kyselinkou. Chuť připomíná vyzrálé nektarinky, kompotované broskve nebo sušený ananas a celkový dojem podtrhuje typická mineralita. Výborně se hodí k pokrmům z vepřového masa nebo k těstovinám s krémovými omáčkami. Má velmi dobrý potenciál k archivaci."
+     ],
+     "values": {
+      "sugar": "6,2 g/l",
+      "acid": "7,2 g/l",
+      "alcohol": "12,5 % obj.",
+      "extract": "28,4 g/l",
+      "serving_temp": "10–12 °C",
+      "aging": "6 až 8 roků od roku lahvování",
+      "vineyard": "Šobes",
+      "village": "Podmolí",
+      "batch": "5390",
+      "vintage": "2025",
+      "food": [
+       "drůbežímu",
+       "vepřovému"
+      ]
+     }
+    }
+   ],
+   "rejected_sources": [
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/ryzlink-rynsky--voc--suche-vino--2025-znovin/",
+     "reason": "inna trasa (Dívčí vrch) niż wino na stronie"
+    }
+   ],
+   "aroma_groups_from_text": {
+    "květnaté": [
+     "lipový",
+     "květ",
+     "květinové"
+    ],
+    "tropické ovoce": [
+     "ananas"
+    ],
+    "peckové ovoce": [
+     "ryngle",
+     "meruňky",
+     "nektarinky",
+     "broskve"
+    ],
+    "sušené a vařené ovoce": [
+     "sušené",
+     "kompotované",
+     "sušený"
+    ],
+    "mineralne": [
+     "mineralita"
+    ]
+   }
+  },
+  "hnanice-rr-2025": {
+   "producer": "Vinice Hnanice",
+   "wine": "Ryzlink rýnský VOC",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina",
+     "url": "https://www.vinice-hnanice.cz/produkt/ryzlink-rynsky-voc-znojmo-2025/",
+     "notes": [],
+     "values": {
+      "sugar": "7,2 g/l",
+      "acid": "7,1 g/l",
+      "alcohol": "12,0 % objemových",
+      "extract": "21,7 g/l",
+      "vineyard": "STARÉ VINICE",
+      "village": "HAVRANÍKY",
+      "batch": "3394/2"
+     }
+    },
+    {
+     "source": "strona: Vínovín · 3394/25",
+     "url": "https://www.vinovin.cz/ryzlink-rynsky--voc--suche-vino--2025-vinice-hnanice/",
+     "notes": [
+      "Ovocné a květinové aroma vína se krásně přenáší i do chuti, kde víno působí svěže, čistě a velmi harmonicky.",
+      "Ryzlink rýnský VOC 2025 z viniční tratě Staré vinice v obci Havraníky je elegantní suché bílé víno typického znojemského charakteru, které spojuje výraznou aromatiku, minerální svěžest a harmonickou strukturu. Ve vůni se objevují tóny kvetoucí lípy, meruněk a citrusů, které doplňuje jemný minerální podtón. Vyšší kyselina 7,1 g/l dodává vínu energii a dlouhý svěží závěr, zatímco zbytkový cukr 7,2 g/l elegantně zakulacuje celkový projev. Bezcukerný extrakt 21,7 g/l podporuje plnější strukturu a příjemně minerální charakter vína. Alkohol 12 % obj. zachovává eleganci a výbornou pitelnost. Ryzlink působí moderně, šťavnatě a díky své vyváženosti nabízí také potenciál k dalšímu zrání na lahvi. Doporučená teplota podávání je 10–12 °C. Výborně doplní ryby, mořské plody, jemné sýry, asijskou kuchyni nebo lehké dezerty s citrusovým ovocem."
+     ],
+     "values": {
+      "vineyard": "Staré vinice",
+      "village": "Havraníky",
+      "batch": "3394/25",
+      "vintage": "2025",
+      "serving_temp": "10–12 °C"
+     },
+     "estimated": true
+    }
+   ],
+   "aroma_groups_from_text": {},
+   "aroma_groups_estimated_only": {
+    "květnaté": [
+     "květinové",
+     "kvetoucí"
+    ],
+    "citrusové ovoce": [
+     "citrusů",
+     "citrusovým"
+    ],
+    "mineralne": [
+     "minerální"
+    ]
+   }
+  },
+  "pialek-sb-2025": {
+   "producer": "Piálek & Jäger",
+   "wine": "Sauvignon VOC",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://e-shop.pialek.cz/sauvignon-voc-2025/",
+     "notes": [
+      "Krásný ovocný styl Sauvignonu s dominantními tóny zralých broskví. Zaujme především svojí jemností, příjemnou kyselinkou v kombinaci s menším zbytkovým cukrem. Ideální společník pro milovníky polosuchých vín plných ovoce."
+     ],
+     "values": {
+      "vintage": "2025"
+     }
+    },
+    {
+     "source": "Vinotrh (Enotéka #81, kod PAJ.0163)",
+     "url": "https://www.vinotrh.cz/sauvignon-voc-128/",
+     "notes": [
+      "Suché bílé víno odrůdy Sauvignon, 2025, VOC z vinařství Pijálek&Jäger. Aromatické víno s výrazným projevem angreštu, rybízu, broskví a černého bezu. Víno se vyznačuje vysokou kvalitou, mineralitou a typickým terroirem, často s ovocným profilem a svěží kyselinkou."
+     ],
+     "values": {
+      "sugar": "7,4 g/l",
+      "acid": "6,1 g/l",
+      "alcohol": "12 %",
+      "batch": "2505",
+      "vintage": "2025"
+     },
+     "generic_sentences": [
+      "Aromatické víno s výrazným projevem angreštu, rybízu, broskví a černého bezu.",
+      "Suché bílé víno odrůdy Sauvignon, 2025, VOC z vinařství Pijálek&Jäger.",
+      "Víno se vyznačuje vysokou kvalitou, mineralitou a typickým terroirem, často s ovocným profilem a svěží kyselinkou."
+     ]
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/sauvignon--voc--suche-vino--2025-pialek-jager/",
+     "notes": [
+      "Tento Sauvignon z Moravy skvěle vystihuje styl vín ze Znojemska – aromatický, čistý a osvěžující.",
+      "Sauvignon VOC 2025 ze znojemské podoblasti je elegantní suché bílé víno s hezkým projevem a typickou odrůdovou svěžestí. Ve vůni vína dominují tóny černého rybízu, angreštu a čerstvě posečené trávy, které doplňuje jemný citrusový nádech. Chuť je svěží, šťavnatá a lehce minerální, s příjemnou kyselinkou a delším ovocným závěrem. Postupně se rozvíjejí tóny tropického ovoce, limetky a zralého ananasu, které vínu dodávají atraktivní a moderní charakter. Víno se výborně se hodí k lehkým salátům, rybám, kozím sýrům, mořským plodům nebo jako příjemné aperitivní víno pro letní posezení. Doporučená teplota podávání je 10–12 °C. Víno potěší milovníky svěžích, aromatických a ovocných bílých vín s výraznou vůní a živou kyselinkou."
+     ],
+     "values": {
+      "batch": "2505",
+      "vintage": "2025",
+      "serving_temp": "10–12 °C"
+     },
+     "estimated": true
+    }
+   ],
+   "aroma_groups_from_text": {
+    "peckové ovoce": [
+     "broskví"
+    ]
+   },
+   "aroma_groups_estimated_only": {
+    "tropické ovoce": [
+     "tropického",
+     "ananasu"
+    ],
+    "citrusové ovoce": [
+     "citrusový",
+     "limetky"
+    ],
+    "drobné ovoce": [
+     "rybízu",
+     "angreštu"
+    ],
+    "bylinné": [
+     "trávy"
+    ],
+    "mineralne": [
+     "minerální"
+    ]
+   }
+  },
+  "spalek-velky-sud-2023": {
+   "producer": "Špalek",
+   "wine": "Ryzlink rýnský Velký Sud BIO",
+   "year": 2023,
+   "has_salon_profile": true,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.spalek.bio/product-page/ryzlink-r%C3%BDnsk%C3%BD-velk%C3%BD-sud",
+     "notes": [
+      "Jestliže se podaří, že hrozny Rýňáku ve vinohradu přezrají a vínu pak dopřejete jeden rok v kvalitním dubovém sudu, čeká Vás velmi nevšední zážitek v podobě opulentního a velmi výrazného Ryzlinku s malým zbytkem cukru a příjemnou kyselinou v dochuti. Vůně medu a kandovaného citrusového ovoce a meruněk. Slaný nádech v chuti odkazuje na rulové podloží Kraví hory."
+     ],
+     "values": {
+      "sugar": "4,0 g/l",
+      "alcohol": "13 % obj.",
+      "vineyard": "Kraví hora",
+      "batch": "1723"
+     }
+    },
+    {
+     "source": "strona: Salon vín 2026",
+     "url": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26033",
+     "notes": [
+      "Naše hrozny jsme spontánně kvasili po dobu 1 roku ve 2000l dubovém sudu a odkud pramení i jeho název Velký sud BIO. Expresivní ryzlink s jemným zbytkovým cukrem a příjemnou kyselinou v závěru. Ve vůni se objevují tóny medu, kandovaného citrusového ovoce a sušených meruněk. Slaná stopa v chuti odráží podloží viniční trati Kraví hora."
+     ],
+     "values": {}
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/ryzlink-rynsky--pozdni-sber--suche-vino--2023-spalek/",
+     "notes": [
+      "Víno se vyznačuje typickým ryzlinkovým charakterem s osvěžující kyselinou, harmonickou chutí a minerální stopou. Elegantní víno vhodné k archivaci i k párování s gastronomií."
+     ],
+     "values": {
+      "vineyard": "Kraví hora",
+      "village": "Nový Šaldorf",
+      "batch": "1723",
+      "vintage": "2023"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "citrusové ovoce": [
+     "citrusového"
+    ],
+    "sušené a vařené ovoce": [
+     "kandovaného",
+     "sušených"
+    ],
+    "karamelizované": [
+     "medu"
+    ],
+    "dřevo / barrique": [
+     "dubovém"
+    ],
+    "mineralne": [
+     "Slaný",
+     "Slaná",
+     "minerální"
+    ]
+   }
+  },
+  "waldberg-ch-2022": {
+   "producer": "Waldberg",
+   "wine": "Chardonnay Lampelberg",
+   "year": 2022,
+   "has_salon_profile": true,
+   "sources": [
+    {
+     "source": "strona: Vínovín · 231 Kč",
+     "url": "https://www.vinovin.cz/chardonnay--vyber-z-hroznu--suche-vino--2022---waldberg/",
+     "notes": [
+      "V aroma i chuti se objevují tóny vanilky, sladkého dřeva a sušeného tabákového listu, doplněné jemnou mineralitou a náznakem kandovaného ananasu. Vinný projev je plný, strukturovaný a dlouhý."
+     ],
+     "values": {
+      "vineyard": "Lampelberg",
+      "village": "Vrbovec",
+      "batch": "22/152",
+      "vintage": "2022"
+     }
+    },
+    {
+     "source": "strona: Salon vín 2026",
+     "url": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26016",
+     "notes": [
+      "Víno zrálo 15 měsíců v dubovém sudu, což ovlivnilo intenzivní barvu starého zlata, vůni i chuť. V aroma dominují tóny vanilky, sladkého dřeva a sušeného tabákového listu, chuť je doplněná o minerální nádech a stopu kandovaného ananasu."
+     ],
+     "values": {}
+    },
+    {
+     "source": "Vinotrh (Enotéka #4, kod WAL.0414)",
+     "url": "https://www.vinotrh.cz/chardonnay-lampelberg-2022-v-h-/",
+     "notes": [
+      "Víno zrálo 15 měsíců v dubovém sudu. Ten mu vtisknul intenzivní barvu starého zlata, vůni i chuti dominují tóny vanilky, sladkého dřeva a sušeného tabákového listu, doplněné o minerální nádech a stopu kandovaného ananasu."
+     ],
+     "values": {
+      "sugar": "0.6 g/l",
+      "acid": "6.0 g/l",
+      "alcohol": "14.0 %",
+      "extract": "25.5 g/l",
+      "vineyard": "Lampelberg",
+      "batch": "22/152WA",
+      "vintage": "2022"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "tropické ovoce": [
+     "ananasu"
+    ],
+    "sušené a vařené ovoce": [
+     "sušeného",
+     "kandovaného"
+    ],
+    "dřevo / barrique": [
+     "vanilky",
+     "dřeva",
+     "tabákového",
+     "dubovém"
+    ],
+    "mineralne": [
+     "mineralitou",
+     "minerální"
+    ]
+   }
+  },
+  "ampelos-veritas-2024": {
+   "producer": "Ampelos",
+   "wine": "Veritas",
+   "year": 2024,
+   "has_salon_profile": false,
+   "sources": [],
+   "aroma_groups_from_text": {}
+  },
+  "oulehla-fr-2022": {
+   "producer": "Oulehla",
+   "wine": "Frankovka Na Nivách",
+   "year": 2022,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://eshop.oulehlavinarstvi.cz/frankovka-2022-pozdni-sber/",
+     "notes": [
+      "Frankovka granátové barvy a vůně vyzrálých višní se v chuti prolíná do likéru z aronie, třešňové pecky a perníku. Hebké vrstevnaté víno s kořenitě minerálním závěrem s odrazem terroir Dolních Kounic."
+     ],
+     "values": {
+      "batch": "2250",
+      "vintage": "2022"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "peckové ovoce": [
+     "višní"
+    ],
+    "drobné ovoce": [
+     "aronie"
+    ],
+    "karamelizované": [
+     "perníku"
+    ],
+    "kořenité": [
+     "kořenitě"
+    ],
+    "mineralne": [
+     "minerálním"
+    ]
+   }
+  },
+  "gotberg-palava-2024": {
+   "producer": "Gotberg",
+   "wine": "Pálava",
+   "year": 2024,
+   "has_salon_profile": true,
+   "sources": [
+    {
+     "source": "strona: Salon vín 2026",
+     "url": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26048",
+     "notes": [
+      "Tato Pálava byla vyrobena z krásně vyzrálých hroznů, díky čemuž si zachovala své typické odrůdové charakteristiky. Vyznačuje se květinovo-ovocnou vůní, ve které dominují tóny lékořice a liči. V chuti je víno plné, ovocné a odrůdové, s krásně harmonickou kyselinou v závěru, která mu dodává svěžest."
+     ],
+     "values": {}
+    }
+   ],
+   "rejected_sources": [
+    {
+     "source": "strona: Gotberg: Pálava 2025",
+     "url": "https://gotberg.cz/cs/eshop/palava-pozdni-sber-2025:514/",
+     "reason": "inny rocznik (2025) niż wino na stronie (2024)"
+    }
+   ],
+   "aroma_groups_from_text": {
+    "květnaté": [
+     "květinovo"
+    ],
+    "tropické ovoce": [
+     "liči"
+    ],
+    "kořenité": [
+     "lékořice"
+    ]
+   }
+  },
+  "cervinka-rv-2022": {
+   "producer": "Vinařství Červinka",
+   "wine": "Ryzlink vlašský VOC Pálava",
+   "year": 2022,
+   "has_salon_profile": true,
+   "sources": [
+    {
+     "source": "strona: Salon vín 2026",
+     "url": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26024",
+     "notes": [
+      "Víno z hroznů, které pochází z našich nejstarších a nejvýjimečnějších vinic. Při jeho tvorbě jsme kladli důraz na zachování pálavského terroir. Ve víně tak můžeme cítit pálavskou květenu v kombinaci s ovocnými složkami v podobě citrusů a teplomilných peckovin. V chuti je strukturní a minerální."
+     ],
+     "values": {}
+    }
+   ],
+   "aroma_groups_from_text": {
+    "květnaté": [
+     "květenu"
+    ],
+    "citrusové ovoce": [
+     "citrusů"
+    ],
+    "peckové ovoce": [
+     "peckovin"
+    ],
+    "mineralne": [
+     "minerální"
+    ]
+   }
+  },
+  "valtice-fr-2023": {
+   "producer": "Château Valtice",
+   "wine": "Frankovka barrique",
+   "year": 2023,
+   "has_salon_profile": true,
+   "sources": [
+    {
+     "source": "strona: Salon vín 2026",
+     "url": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26085",
+     "notes": [
+      "Víno má nádhernou temně červenou barvu a velmi plnou, extraktivní chuť s příjemnou tříslovinou. Díky ležení na barikových sudech získalo ve vůni nádech ostružin, vanilky, zralých višní a brusinkové marmelády."
+     ],
+     "values": {}
+    }
+   ],
+   "aroma_groups_from_text": {
+    "peckové ovoce": [
+     "višní"
+    ],
+    "drobné ovoce": [
+     "ostružin",
+     "brusinkové"
+    ],
+    "sušené a vařené ovoce": [
+     "marmelády"
+    ],
+    "dřevo / barrique": [
+     "barikových",
+     "vanilky"
+    ]
+   }
+  },
+  "pialek-vz-extra-2023": {
+   "producer": "Piálek & Jäger",
+   "wine": "Veltlínské zelené Extra",
+   "year": 2023,
+   "has_salon_profile": true,
+   "sources": [
+    {
+     "source": "strona: Salon vín 2026",
+     "url": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26002",
+     "notes": [
+      "Víno jemně slámově žluté barvy s jiskrnými odlesky a velmi dobrou viskozitou. Vůně je intenzivní, ovocná, čistá a vyzrálá, chuť plná, čistá, harmonická, šťavnatá a kořenitá s tóny zralých hrušek a tropického ovoce. Dlouhý závěr je typický pro naši řadu Extra."
+     ],
+     "values": {}
+    },
+    {
+     "source": "strona: E-sklep Salonu vín",
+     "url": "https://www.vinarskecentrum.cz/e-shop/produkt/2810-veltlinske-zelene-gruener-veltliner-2023-pozdni-sber-vinarstvi-pialek-jaeger-s-r-o",
+     "notes": [
+      "Charakteristika: Víno jemně slámově žluté barvy s jiskrnými odlesky a velmi dobrou viskozitou. Vůně je intenzivní, ovocná, čistá a vyzrálá, chuť plná, čistá, harmonická, šťavnatá a kořenitá s tóny zralých hrušek a tropického ovoce. Dlouhý závěr je typický pro naši řadu Extra."
+     ],
+     "values": {
+      "aging": "2026–2029",
+      "vineyard": "Načeratický kopec, Weinperky",
+      "village": "Znojmo, Miroslav",
+      "batch": "2307"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "tropické ovoce": [
+     "tropického"
+    ],
+    "jádrové ovoce": [
+     "hrušek"
+    ],
+    "kořenité": [
+     "kořenitá"
+    ]
+   }
+  },
+  "placek-fr-2023": {
+   "producer": "Plaček",
+   "wine": "Frankovka",
+   "year": 2023,
+   "has_salon_profile": true,
+   "sources": [
+    {
+     "source": "strona: Salon vín 2026",
+     "url": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26081",
+     "notes": [
+      "Tato Frankovka ve výběru z hroznů pochází z tradičního terroiru Dolních Kounic. Víno s mimořádnou hloubkou, elegancí a charakterem. Ve vůni se rozvíjí tóny zralých třešní, sušených švestek, jemného koření. Chuť je komplexní, s pevnou strukturou, hebkou tříslovinou a dlouhým sametovým závěrem. Frankovka, která si zaslouží vaši pozornost!"
+     ],
+     "values": {}
+    },
+    {
+     "source": "strona: E-sklep Salonu vín",
+     "url": "https://www.vinarskecentrum.cz/e-shop/produkt/2889-frankovka-blaufraenkisch-2023-vyber-z-hroznu-vinarstvi-jan-placek-ing-jan-placek",
+     "notes": [
+      "Charakteristika: Tato Frankovka ve výběru z hroznů pochází z tradičního terroiru Dolních Kounic. Víno s mimořádnou hloubkou, elegancí a charakterem. Ve vůni se rozvíjí tóny zralých třešní, sušených švestek, jemného koření. Chuť je komplexní, s pevnou strukturou, hebkou tříslovinou a dlouhým sametovým závěrem. Frankovka, která si zaslouží vaši pozornost!"
+     ],
+     "values": {
+      "aging": "2026–2035",
+      "vineyard": "Veselá hora",
+      "village": "Mělčany",
+      "batch": "2342"
+     }
+    },
+    {
+     "source": "Vinotrh (Enotéka #69, kod PLA.0148)",
+     "url": "https://www.vinotrh.cz/frankovka-37/",
+     "notes": [
+      "Komplexní Frankovka z tradičního terroiru Dolních Kounic s mimořádnou hloubkou a elegancí. Ve vůni zralé třešně, sušené švestky a jemné koření. Pevná struktura v chuti s hebkou tříslovinou a dlouhým sametovým závěrem. Víno je zařazeno mezi 100 nejlepších vín Salonu vín České republiky pro rok 2026."
+     ],
+     "values": {
+      "sugar": "0,8 g/l",
+      "acid": "5,1 g/l",
+      "alcohol": "13,5 %",
+      "extract": "28 g/l",
+      "vineyard": "Veselá hora",
+      "batch": "2342",
+      "vintage": "2023"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "peckové ovoce": [
+     "třešní",
+     "třešně",
+     "švestky"
+    ],
+    "sušené a vařené ovoce": [
+     "sušených",
+     "sušené"
+    ],
+    "kořenité": [
+     "koření"
+    ]
+   }
+  },
+  "skrobak-tc-2023": {
+   "producer": "Škrobák",
+   "wine": "Tramín červený Scarabeus",
+   "year": 2023,
+   "has_salon_profile": true,
+   "sources": [
+    {
+     "source": "strona: Salon vín 2026",
+     "url": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26049",
+     "notes": [
+      "Tramín z nejvyšší řady Scarabeus pochází z viniční tratě Niva hrbatá, kde vinařství pěstuje klony vybrané ze starých čejkovických vinic. Vinice stáří 21 let dává pravidelně velmi nízké výnosy, zato hrozny vynikající kvality. Víno fermentovalo a zrálo 12 měsíců ve velkém dubovém sudu ze Ždánického lesa, díky čemuž mělo dostatek času dokonale rozvinout své aroma. Vůně je krásná a elegantní, s tóny pomerančového likéru, červeného grepu, mandarinkové kůry a liči. Chuť je velmi mohutná, s velmi dlouhým dozníváním."
+     ],
+     "values": {}
+    }
+   ],
+   "aroma_groups_from_text": {
+    "tropické ovoce": [
+     "liči"
+    ],
+    "citrusové ovoce": [
+     "pomerančového",
+     "grepu",
+     "mandarinkové"
+    ],
+    "dřevo / barrique": [
+     "dubovém"
+    ]
+   }
+  },
+  "kubik-fr-2023": {
+   "producer": "Kubík",
+   "wine": "Frankovka",
+   "year": 2023,
+   "has_salon_profile": true,
+   "sources": [
+    {
+     "source": "strona: Salon vín 2026",
+     "url": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26082",
+     "notes": [
+      "Toto víno pochází z více než 40 let starých keřů a zrálo 18 měsíců v sudech barrique. Víno je temně rubínové barvy ve vůni s tóny ostružin, červeného peckového ovoce a stopou ušlechtilého dřeva. Chuť je ovlivněná vůní, je plná, strukturovaná a hřejivá, s jemnými ovocnými tříslovinami."
+     ],
+     "values": {}
+    },
+    {
+     "source": "strona: E-sklep Salonu vín",
+     "url": "https://www.vinarskecentrum.cz/e-shop/produkt/2890-frankovka-blaufraenkisch-2023-vyber-z-hroznu-vinarstvi-kubik",
+     "notes": [
+      "Charakteristika: Toto víno pochází z více než 40 let starých keřů a zrálo 18 měsíců v sudech barrique. Víno je temně rubínové barvy ve vůni s tóny ostružin, červeného peckového ovoce a stopou ušlechtilého dřeva. Chuť je ovlivněná vůní, je plná, strukturovaná a hřejivá, s jemnými ovocnými tříslovinami."
+     ],
+     "values": {
+      "aging": "2026–2035",
+      "vineyard": "Přední hora",
+      "village": "Velké Bílovice",
+      "batch": "OP2/23"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "peckové ovoce": [
+     "peckového"
+    ],
+    "drobné ovoce": [
+     "ostružin"
+    ],
+    "dřevo / barrique": [
+     "barrique",
+     "dřeva"
+    ]
+   }
+  },
+  "stepanek-sz-2023": {
+   "producer": "Štěpánek",
+   "wine": "Sylvánské zelené",
+   "year": 2023,
+   "has_salon_profile": true,
+   "sources": [
+    {
+     "source": "strona: Salon vín 2026",
+     "url": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26011",
+     "notes": [
+      "Průzračná, světle zlatavá barva vína se zářivými slámovými odlesky zaujme stejně jako jeho viskozita. Ve vůni dominují květinové tóny s jemným dotekem ušlechtilého dřeva. Chuť je čistá a šťavnatá, s ovocnými tóny zakončenými elegantním nádechem vanilkového lusku."
+     ],
+     "values": {}
+    }
+   ],
+   "aroma_groups_from_text": {
+    "květnaté": [
+     "květinové"
+    ],
+    "dřevo / barrique": [
+     "dřeva",
+     "vanilkového"
+    ]
+   }
+  },
+  "bv-merlot-2018": {
+   "producer": "B\\V vinařství",
+   "wine": "Merlot Rezerva",
+   "year": 2018,
+   "has_salon_profile": true,
+   "sources": [
+    {
+     "source": "strona: Salon vín 2026",
+     "url": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26072",
+     "notes": [
+      "Víno barvy tmavého granátu. Komplexní vůně borůvek je doplněna tóny černých třešní. V chuti je mohutné, harmonické, se sametovým koncem a nesmírně dlouhou dochutí. Elegantní velké víno vhodné ke zrání v láhvi."
+     ],
+     "values": {}
+    },
+    {
+     "source": "strona: E-sklep Salonu vín",
+     "url": "https://www.vinarskecentrum.cz/e-shop/produkt/2880-merlot-rezerva-2018-vyber-z-hroznu-b-v-vinarstvi-a-s",
+     "notes": [
+      "Charakteristika: Víno barvy tmavého granátu. Komplexní vůně borůvek je doplněna tóny černých třešní. V chuti je mohutné, harmonické, se sametovým koncem a nesmírně dlouhou dochutí. Elegantní velké víno vhodné ke zrání v láhvi."
+     ],
+     "values": {
+      "aging": "2026–2035",
+      "vineyard": "Unédy",
+      "village": "Popice",
+      "batch": "1845"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "peckové ovoce": [
+     "třešní"
+    ]
+   }
+  },
+  "davinus-sommelier-2022": {
+   "producer": "DAVINUS",
+   "wine": "Ryzlink rýnský Sommelier Collection BIO",
+   "year": 2022,
+   "has_salon_profile": true,
+   "sources": [
+    {
+     "source": "strona: Salon vín 2026",
+     "url": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26055",
+     "notes": [
+      "Šetrný a zodpovědný přístup k vinicím dal vzniknout zajímavému Ryzlinku rýnskému pro řadu Sommelier Collection Bio. Víno je plné a extraktivní, s vůní exotického ovoce, melounového cukru a přezrálého manga. V chuti je nasládlé, s převahou kompotovaného ovoce a vyváženou kyselinou, typickou pro tuto odrůdu. V dochuti přetrvává vjem meruňkového kompotu. Díky zbytkovému cukru skvěle doplní pikantní thajskou kuchyni, například krevety v ostrém kari s ananasem."
+     ],
+     "values": {}
+    }
+   ],
+   "aroma_groups_from_text": {
+    "tropické ovoce": [
+     "exotického",
+     "melounového",
+     "manga",
+     "ananasem"
+    ],
+    "peckové ovoce": [
+     "meruňkového"
+    ],
+    "sušené a vařené ovoce": [
+     "kompotovaného",
+     "kompotu"
+    ]
+   }
+  },
+  "zapletal-vz-2024": {
+   "producer": "Zapletal",
+   "wine": "Veltlínské zelené",
+   "year": 2024,
+   "has_salon_profile": true,
+   "sources": [
+    {
+     "source": "strona: Salon vín 2026",
+     "url": "https://www.vinarskecentrum.cz/salon-vin/vina-v-salonu/26001",
+     "notes": [
+      "Víno pochází ze starých keřů z vinice Úlehle. Má vyzrále žlutou barvu se zelenkavými odlesky. Ve vůni je projev vína spíše ovocnější. Chuť je plná, extraktivní a harmonická, s dlouhou kořenitou až minerální dochutí, typickou pro vyzrálé velkobílovické veltlíny."
+     ],
+     "values": {}
+    },
+    {
+     "source": "strona: E-sklep Salonu vín",
+     "url": "https://www.vinarskecentrum.cz/e-shop/produkt/2809-veltlinske-zelene-gruener-veltliner-2024-pozdni-sber-vinne-sklepy-zapletal",
+     "notes": [
+      "Charakteristika: Víno pochází ze starých keřů z vinice Úlehle. Má vyzrále žlutou barvu se zelenkavými odlesky. Ve vůni je projev vína spíše ovocnější. Chuť je plná, extraktivní a harmonická, s dlouhou kořenitou až minerální dochutí, typickou pro vyzrálé velkobílovické veltlíny."
+     ],
+     "values": {
+      "aging": "2026–2030",
+      "vineyard": "Úlehle",
+      "village": "Velké Bílovice",
+      "batch": "1124"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "kořenité": [
+     "kořenitou"
+    ],
+    "mineralne": [
+     "minerální"
+    ]
+   }
+  },
+  "davinus-rr-2022": {
+   "producer": "DAVINUS",
+   "wine": "Ryzlink rýnský, kabinet",
+   "year": 2022,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: E-sklep DAVINUS",
+     "url": "https://www.eshop.davinus.cz/ryzlink-rynsky-2022-kabinetni-vino-davinus/",
+     "notes": [
+      "Vůně nektarinky a sušených plátků meruněk. Chuť je plná, šťavnatá s dlouhou dochutí na patře s výraznou stopou tropického ovoce."
+     ],
+     "values": {
+      "alcohol": "13,0 %",
+      "vintage": "2022"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "tropické ovoce": [
+     "tropického"
+    ],
+    "peckové ovoce": [
+     "nektarinky"
+    ],
+    "sušené a vařené ovoce": [
+     "sušených"
+    ]
+   }
+  },
+  "oulehla-fr-2023": {
+   "producer": "Oulehla",
+   "wine": "Frankovka Na Nivách",
+   "year": 2023,
+   "has_salon_profile": false,
+   "sources": [],
+   "aroma_groups_from_text": {},
+   "other_vintage": {
+    "vintage": 2022,
+    "source": "strona producenta",
+    "url": "https://eshop.oulehlavinarstvi.cz/frankovka-2022-pozdni-sber/",
+    "why": "ta sama Frankovka z trasy Na Nivách (Dolní Kounice), rocznik 2022 jest na naszej stronie",
+    "notes": [
+     "Frankovka granátové barvy a vůně vyzrálých višní se v chuti prolíná do likéru z aronie, třešňové pecky a perníku. Hebké vrstevnaté víno s kořenitě minerálním závěrem s odrazem terroir Dolních Kounic."
+    ],
+    "aroma_groups": {
+     "peckové ovoce": [
+      "višní"
+     ],
+     "drobné ovoce": [
+      "aronie"
+     ],
+     "karamelizované": [
+      "perníku"
+     ],
+     "kořenité": [
+      "kořenitě"
+     ],
+     "mineralne": [
+      "minerálním"
+     ]
+    }
+   }
+  },
+  "vinohort-kralovsky-2023": {
+   "producer": "VINO HORT",
+   "wine": "Královský Ryzlink rýnský VOC",
+   "year": 2023,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Ocena Koudeli",
+     "url": "https://www.vocznojmo.cz/cs/aktualita/ryzlink-rynsky-od-vino-hort-v-kralovske-rade-voc-znojmo-405/",
+     "notes": [
+      "Typický charakter vyzrálého ryzlinku, to jsou jemné petrolejové tóny ve vůni, doplněné o nádech meruněk a medových tónů. Chuť je plná, harmonická, s dlouhou medově-citrusovou dochutí, která podtrhuje eleganci a výjimečnost vína."
+     ],
+     "values": {},
+     "winemaking": [
+      "Ročník 2023 byl ve Znojemské vinařské podoblasti pro pěstitele odrůdy Ryzlink rýnský obzvláště vydařený. Příznivé klimatické podmínky během vegetace podpořily růst hroznů s výbornou vyzrálostí, zachováním typické svěžesti i bohatou aromatikou. Právě proto se vinařství VINO HORT rozhodlo zařadit celou šarži ryzlinku do nejvyšší Královské řady, jejíž vína díky zrání v lahvi získávají další rozměr. Jsou určena především příznivcům vyzrálých vín, kteří ocení jejich komplexitu, mineralitu a jedinečný senzorický projev."
+     ]
+    },
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.vinotrh.cz/kralovsky-ryzlink-rynsky/",
+     "notes": [
+      "Ryzlink rýnský ročníku 2023 z vinařství VINO HORT Jiřího Horta je novým přírůstkem do nejvyšší řady vín VOC Znojmo. Do Královské řady byl zařazen letos a na trh tradičně vstoupil 28. září, na svátek svatého Václava . Víno má žlutavou barvu, ve vůni se objevují meruňky a pomerančová kůra v náznaku už s petrolejovými tóny , v chuti přechází do kořenité vyzrálosti. Víno působí plným a dlouhým dojmem."
+     ],
+     "values": {
+      "sugar": "4,6 g/l",
+      "acid": "6,8 g/l",
+      "alcohol": "13,5 %",
+      "batch": "11/23",
+      "vintage": "2023"
+     }
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/ryzlink-rynsky-kralovsky-voc-kralovsky-suche-vino-2023-vino-hort/",
+     "notes": [
+      "Zralá meruňka a pomerančová kůra s prvními náznaky petrolejových tónů. Plné, dlouhé víno, které v chuti přechází do kořenité vyzrálosti.",
+      "Víno pochází z viniční trati U Tří dubů u Stošíkovic na Louce ve Znojemské podoblasti a vyrobilo ho Víno Hort. Nese označení VOC Znojmo, první apelační systém v Česku, který sdružuje vybraná vína z odrůd typických pro Znojemsko a klade důraz na jejich originalitu a původ. Ve skle má žlutavou barvu, ve vůni se objevují meruňky a pomerančová kůra, doplněné jemným náznakem petrolejových tónů, které prozrazují postupné zrání. Chuť je plná a přechází do kořenité vyzrálosti s dlouhým, výrazným dozvukem. Skvěle se hodí k rybím pokrmům, pečenému pstruhovi nebo candátovi a k tvrdým zrajícím sýrům. Podávejte vychlazené na 10–12 °C. Energetická hodnota ve 100 ml: 334 kJ / 80 kcal."
+     ],
+     "values": {
+      "vineyard": "U tří dubů",
+      "village": "Stošíkovice na Louce",
+      "batch": "11/23",
+      "vintage": "2023"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "citrusové ovoce": [
+     "medově-citrusovou",
+     "pomerančová"
+    ],
+    "peckové ovoce": [
+     "meruňky",
+     "meruňka"
+    ],
+    "karamelizované": [
+     "medových",
+     "medově"
+    ],
+    "kořenité": [
+     "kořenité"
+    ],
+    "mineralne": [
+     "petrolejové",
+     "petrolejovými",
+     "petrolejových"
+    ]
+   }
+  },
+  "hanzel-rotgipfler-2025": {
+   "producer": "Hanzel",
+   "wine": "Rotgipfler Volné pole",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina",
+     "url": "https://www.vinotrh.cz/rotgipfler-volne-pole-2025-p-s-/",
+     "notes": [
+      "Víno málo vídané odrůdy překvapí atraktivní kombinací vysokého extraktu a nižšího alkoholu. Jeho vůně vám připomene bílé květy jarního rozkvetlého sadu. V chuti ucítíte dozrávající mirabelky s medovou stopou, kterou víno získalo částečným zráním na akátovém sudu. Plnou chuť vína skvěle balancuje vyšší kyselinka a pikantnost mu dodává lehce kořenitá stopa v závěru."
+     ],
+     "values": {
+      "sugar": "6.0 g/l",
+      "acid": "7.2 g/l",
+      "alcohol": "11.0 %",
+      "extract": "28.4 g/l",
+      "vineyard": "Volné pole",
+      "batch": "5925HA",
+      "vintage": "2025"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "květnaté": [
+     "květy",
+     "rozkvetlého",
+     "akátovém"
+    ],
+    "peckové ovoce": [
+     "mirabelky"
+    ],
+    "karamelizované": [
+     "medovou"
+    ],
+    "kořenité": [
+     "kořenitá"
+    ]
+   }
+  },
+  "znovin-neuburske-2025": {
+   "producer": "Znovín Znojmo",
+   "wine": "Neuburské z Pekla",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina",
+     "url": "https://www.znovin.cz/e-shop/neuburske-pozdni-sber-2025-z5355",
+     "notes": [
+      "Těšte se na atraktivní vůni připomínající pražené mandle v medu a kandované ovoce. V ústech oceníte dokonalou harmonii jemného zbytkového cukru a svěží kyselinky. Chuť připomíná kompotovaný ananas, tropické liči nebo vyzrálé nektarinky.",
+      "Neuburské z ročníku 2025 z vyhlášené viniční trati Peklo je typickým zástupcem své odrůdy a potěší všechny, kteří si chtějí užít příjemné chvíle při posezení s blízkými. Těšte se na atraktivní vůni připomínající pražené mandle v medu a kandované ovoce. V ústech ucítíte skvělý balanc zbytkového cukru a kyselinky. Chuť připomíná kompotovaný ananas, tropické liči nebo vyzrálé nektarinky. Výborně se hodí k těstovinám a k lehkým úpravám vepřového masa. Má výborný archivační potenciál."
+     ],
+     "values": {
+      "sugar": "5,3 g/l",
+      "acid": "6,4 g/l",
+      "alcohol": "12,0 % obj.",
+      "extract": "21,5 g/l",
+      "serving_temp": "10–12 °C",
+      "aging": "6 až 8 roků od roku lahvování",
+      "vineyard": "Peklo",
+      "village": "Šatov",
+      "batch": "5355",
+      "vintage": "2025",
+      "food": [
+       "sýrům",
+       "vepřovému"
+      ]
+     }
+    },
+    {
+     "source": "Vinotrh (Enotéka #24, kod ZNO.0503)",
+     "url": "https://www.vinotrh.cz/neuburske-z-pekla-2/",
+     "notes": [
+      "Těšte se na atraktivní vůni připomínající pražené mandle v medu a kandované ovoce. V ústech oceníte dokonalou harmonii jemného zbytkového cukru a svěží kyselinky. Chuť připomíná kompotovaný ananas, tropické liči nebo vyzrálé nektarinky."
+     ],
+     "values": {
+      "sugar": "5,3 g/l",
+      "acid": "6,4 g/l",
+      "alcohol": "12,0 %",
+      "extract": "21,5 g/l",
+      "vineyard": "Peklo",
+      "batch": "5355",
+      "vintage": "2025"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "tropické ovoce": [
+     "ananas",
+     "tropické",
+     "liči"
+    ],
+    "peckové ovoce": [
+     "nektarinky"
+    ],
+    "sušené a vařené ovoce": [
+     "kandované",
+     "kompotovaný"
+    ],
+    "karamelizované": [
+     "mandle",
+     "medu"
+    ]
+   }
+  },
+  "znovin-sobes-2024": {
+   "producer": "Znovín Znojmo",
+   "wine": "Ryzlink rýnský Šobes",
+   "year": 2024,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "Vinotrh (Enotéka #10, kod ZNO.0484)",
+     "url": "https://www.vinotrh.cz/ryzlink-rynsky-ze-sobesu/",
+     "notes": [
+      "Suchý Ryzlink rýnský ze Šobesu, ročník 2024 ze ZNOVÍNU. Ve vůni objevíte sušené meruňky nebo lipový květ. Chuť je bohatá, plná a krásně vyvážená díky příjemné kyselince a jemnému zbytkovému cukru. V ústech ucítíte zralé broskve, nektarinky nebo šťavnaté mango a vše je podtrženo lehkým minerální závěrem."
+     ],
+     "values": {
+      "sugar": "2,5 g/l",
+      "acid": "6,6 g/l",
+      "alcohol": "12,0 %",
+      "batch": "4367",
+      "vintage": "2024"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "květnaté": [
+     "lipový",
+     "květ"
+    ],
+    "tropické ovoce": [
+     "mango"
+    ],
+    "peckové ovoce": [
+     "meruňky",
+     "broskve",
+     "nektarinky"
+    ],
+    "sušené a vařené ovoce": [
+     "sušené"
+    ],
+    "mineralne": [
+     "minerální"
+    ]
+   }
+  },
+  "hnanice-vz-2025": {
+   "producer": "Vinice Hnanice",
+   "wine": "Veltlínské zelené VOC",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.vinice-hnanice.cz/produkt/veltlinske-zelene-voc-znojmo-2025/",
+     "notes": [],
+     "values": {
+      "sugar": "0,4 g/l",
+      "acid": "5,8 g/l",
+      "alcohol": "11,5 % objemových",
+      "extract": "20,5 g/l",
+      "vineyard": "STARÉ VINICE",
+      "village": "HAVRANÍKY",
+      "batch": "5432/25"
+     }
+    },
+    {
+     "source": "Vinotrh (Enotéka #3, kod VIH.0262)",
+     "url": "https://www.vinotrh.cz/veltlinske-zelene-voc-125/",
+     "notes": [
+      "Suché bílé víno odrůdy Veltlínské zelené, 2025, VOC z vinařství VINICE-HNANICE. Pepřnaté víno s výraznou kořenitostí, mandlovými tóny a vyšší svěží kyselinkou, která mu dodává šťavnatost. Charakteristická je pro něj mineralita, tóny žlutého melounu či akátového medu."
+     ],
+     "values": {
+      "sugar": "0,4 g/l",
+      "acid": "5,8 g/l",
+      "alcohol": "12 %",
+      "vineyard": "Staré vinice",
+      "batch": "5432/25",
+      "vintage": "2025"
+     },
+     "generic_sentences": [
+      "Charakteristická je pro něj mineralita, tóny žlutého melounu či akátového medu.",
+      "Pepřnaté víno s výraznou kořenitostí, mandlovými tóny a vyšší svěží kyselinkou, která mu dodává šťavnatost.",
+      "Suché bílé víno odrůdy Veltlínské zelené, 2025, VOC z vinařství VINICE-HNANICE."
+     ]
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/veltlinske-zelene--voc--suche-vino--2025-vinice-hnanice/",
+     "notes": [
+      "Nízký zbytkový cukr 0,4 g/l podtrhuje výrazně suchý charakter vína, zatímco kyselina 5,8 g/l dodává příjemnou svěžest a šťavnatý závěr.",
+      "Veltlínské zelené VOC 2025 z viniční tratě Staré vinice v obci Havraníky je elegantní suché bílé víno typického znojemského stylu. Víno krásně odráží charakter odrůdy i terroir znojemské podoblasti. Ve vůni se objevuje jemná aromatika červeného pepře doplněná o tóny citrusů a kůry červeného grepu. Nízký zbytkový cukr 0,4 g/l podtrhuje výrazně suchý charakter vína, zatímco kyselina 5,8 g/l dodává příjemnou svěžest a šťavnatý závěr. Bezcukerný extrakt 20,5 g/l přispívá k plnější chuti a jemně minerálnímu projevu. Alkohol 11,5 % obj. zachovává lehkost a výbornou pitelnost. Veltlínské zelené působí elegantně, svěže a díky jemné pepřnatosti velmi gastronomicky. Doporučená teplota podávání je 10–12 °C. Výborně se hodí k rybám, lehkým krémovým omáčkám, tradiční české kuchyni, drůbeži nebo jemným sýrům. Skvěle doplní také lehčí zeleninová jídla."
+     ],
+     "values": {
+      "vineyard": "Staré vinice",
+      "village": "Havraníky",
+      "batch": "5432/25",
+      "vintage": "2025",
+      "serving_temp": "10–12 °C"
+     },
+     "estimated": true
+    }
+   ],
+   "aroma_groups_from_text": {},
+   "aroma_groups_estimated_only": {
+    "citrusové ovoce": [
+     "citrusů",
+     "grepu"
+    ],
+    "kořenité": [
+     "pepře",
+     "pepřnatosti"
+    ],
+    "mineralne": [
+     "minerálnímu"
+    ]
+   }
+  },
+  "hnanice-sb-2025": {
+   "producer": "Vinice Hnanice",
+   "wine": "Sauvignon VOC",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.vinice-hnanice.cz/produkt/sauvignon-voc-znojmo-2025/",
+     "notes": [],
+     "values": {
+      "sugar": "4,8 g/l",
+      "acid": "6,9 g/l",
+      "alcohol": "11,00 % objemových",
+      "extract": "20,2 g/l",
+      "vineyard": "U Kapličky",
+      "village": "HNANICE",
+      "batch": "3426/25"
+     }
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/sauvignon--voc--suche-vino--2025-vinice-hnanice/",
+     "notes": [
+      "Ovocný charakter se elegantně přenáší i do chuti, kde víno působí živě, čistě a velmi harmonicky.",
+      "Pikantní kyselina 6,9 g/l dodává vínu výraznou svěžest a dlouhou šťavnatou dochuť. Zbytkový cukr 4,8 g/l zachovává suchý charakter vína, zároveň však příjemně zakulacuje celkový projev. Bezcukerný extrakt 20,2 g/l podporuje plnější strukturu a elegantní minerální linku. Nižší alkohol 11 % obj. podtrhuje lehkost a snadnou :) pitelnost vína. Sauvignon je ideální jako svěží aperitiv i jako doprovod ke gastronomii. Výborně se hodí ke kozím a měkkým sýrům, rybám, lehkým salátům nebo drůbeži. Doporučená teplota podávání je 10–12 °C."
+     ],
+     "values": {
+      "vineyard": "U Kapličky",
+      "village": "Hnanice",
+      "batch": "3426/25",
+      "vintage": "2025",
+      "serving_temp": "10–12 °C"
+     },
+     "estimated": true
+    }
+   ],
+   "rejected_sources": [
+    {
+     "source": "Vinotrh (Enotéka #80, kod VIH.0260)",
+     "url": "https://www.vinotrh.cz/sauvignon-voc-126/",
+     "reason": "inna trasa (Staré vinice) niż wino na stronie"
+    }
+   ],
+   "aroma_groups_from_text": {},
+   "aroma_groups_estimated_only": {
+    "mineralne": [
+     "minerální"
+    ]
+   }
+  },
+  "znovin-sb-2025": {
+   "producer": "Znovín Znojmo",
+   "wine": "Sauvignon VOC Znojmo",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.znovin.cz/e-shop/sauvignon-voc-znojmo-2025-z5334",
+     "notes": [
+      "Ve vůni dominuje klasický projev černého rybízu, angreštu a čerstvě posekané trávy. Chuť je svěží, lehce nasládlá a bohatá. Objevíte širokou škálu tropických tónu jako mango, kompotovaný ananas nebo limetka."
+     ],
+     "values": {
+      "sugar": "7,2 g/l",
+      "acid": "6,8 g/l",
+      "alcohol": "12,0 % obj.",
+      "extract": "21,5 g/l",
+      "serving_temp": "10–12 °C",
+      "aging": "4 až 6 roků od roku lahvování",
+      "vineyard": "Kokusové hory",
+      "village": "Dobelice",
+      "batch": "5334",
+      "vintage": "2025",
+      "food": [
+       "asijské kuchyni",
+       "dezertům"
+      ]
+     }
+    },
+    {
+     "source": "Vinotrh (Enotéka #29, kod ZNO.0475)",
+     "url": "https://www.vinotrh.cz/sauvignon-voc-124/",
+     "notes": [
+      "Suché bílé víno odrůdy Sauvignon, 2025, VOC z vinařství ZNOVÍN ZNOJMO. Aromatické víno s výrazným projevem angreštu, rybízu, broskví a černého bezu. Víno se vyznačuje vysokou kvalitou, mineralitou a typickým terroirem. často s ovocným profilem a svěží kyselinkou."
+     ],
+     "values": {
+      "sugar": "7,2 g/l",
+      "acid": "6,8 g/l",
+      "alcohol": "12 %",
+      "vineyard": "Kokusové hory",
+      "batch": "5334",
+      "vintage": "2025"
+     },
+     "generic_sentences": [
+      "Aromatické víno s výrazným projevem angreštu, rybízu, broskví a černého bezu.",
+      "Suché bílé víno odrůdy Sauvignon, 2025, VOC z vinařství ZNOVÍN ZNOJMO.",
+      "Víno se vyznačuje vysokou kvalitou, mineralitou a typickým terroirem.",
+      "často s ovocným profilem a svěží kyselinkou."
+     ]
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/sauvignon--voc--suche-vino--2025-znovin/",
+     "notes": [
+      "Chuť vína je svěží, šťavnatá a ovocně bohatá, s výraznou kyselinkou 6,8 g/l, která vínu propůjčuje živost a dlouhý osvěžující závěr.",
+      "Sauvignon 2025 z viniční tratě Kokusové hory ve znojemské podoblasti představuje elegantní a aromatické bílé víno s typickým odrůdovým charakterem. Suché provedení s lehce vyšším zbytkovým cukrem 7,2 g/l dodává vínu příjemnou kulatost a velmi harmonický projev. Ve vůni dominují intenzivní tóny černého rybízu, angreštu a čerstvě posečené trávy, které jsou pro Sauvignon typické. Postupně se rozvíjí i atraktivní tropické aroma manga, limetky a kompotovaného ananasu. Chuť je svěží, šťavnatá a ovocně bohatá, s výraznou kyselinkou 6,8 g/l, která vínu propůjčuje živost a dlouhý osvěžující závěr. Bezcukerný extrakt 21,5 g/l dodává vínu plnější strukturu a příjemnou dochuť. Toto moravské bílé víno je ideální volbou pro milovníky aromatických Sauvignonů se svěžím ovocným profilem. Výborně se hodí k lehkým předkrmům, kozím sýrům, asijské kuchyni, rybám nebo ovocným dezertům. Díky své šťavnatosti a ovocnosti je skvělé také pro letní posezení. Doporučená teplota podávání je 10–12 °C. Víno má potenciál zrání 4–6 let, během kterých se jeho aromatika může dále rozvíjet do jemnějších medových a minerálních tónů."
+     ],
+     "values": {
+      "vineyard": "Kokusové hory",
+      "village": "Dobelice",
+      "batch": "5334",
+      "vintage": "2025",
+      "serving_temp": "10–12 °C"
+     },
+     "estimated": true
+    }
+   ],
+   "aroma_groups_from_text": {
+    "tropické ovoce": [
+     "tropických",
+     "mango",
+     "ananas"
+    ],
+    "citrusové ovoce": [
+     "limetka"
+    ],
+    "drobné ovoce": [
+     "rybízu",
+     "angreštu"
+    ],
+    "sušené a vařené ovoce": [
+     "kompotovaný"
+    ],
+    "bylinné": [
+     "trávy"
+    ]
+   },
+   "aroma_groups_estimated_only": {
+    "karamelizované": [
+     "medových"
+    ],
+    "mineralne": [
+     "minerálních"
+    ]
+   }
+  },
+  "znovin-vz-2025": {
+   "producer": "Znovín Znojmo",
+   "wine": "Veltlínské zelené VOC Znojmo",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.znovin.cz/e-shop/veltlinske-zelene-voc-znojmo-2025-z5337",
+     "notes": [
+      "Ve vůni dominuje bílý pepř a květinové tóny, které připomínají rozkvetlou jarní louku. V ústech vás potěší svěžest a výrazný ovocný projev. Hledejte broskve, zelené jablka nebo máslové hrušky."
+     ],
+     "values": {
+      "sugar": "0,6 g/l",
+      "acid": "6,1 g/l",
+      "alcohol": "11,5 % obj.",
+      "extract": "20,5 g/l",
+      "serving_temp": "10–12 °C",
+      "aging": "4 až 6 roků od roku lahvování",
+      "vineyard": "Kokusové hory",
+      "village": "Dobelice",
+      "batch": "5337",
+      "vintage": "2025",
+      "food": [
+       "drůbežímu",
+       "ovocným salátům",
+       "rybám",
+       "těstovinovým pokrmům"
+      ]
+     }
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/veltlinske-zelene--voc--suche-vino--2025-znovin/",
+     "notes": [
+      "Ve vůni se otevírají jemné tóny bílého pepře, lučních květů a svěžího zeleného ovoce.",
+      "Veltlínské zelené 2025 z viniční tratě Kokusové hory je svěží suché bílé víno ze znojemské podoblasti, které potěší především typickým odrůdovým charakterem, který je daný polohou vinice. Díky nízkému zbytkovému cukru 0,6 g/l působí čistě, elegantně a harmonicky. Ve vůni se otevírají jemné tóny bílého pepře, lučních květů a svěžího zeleného ovoce. Postupně se přidávají nuance broskví, zelených jablek a máslových hrušek, které vínu dodávají příjemnou ovocnou šťavnatost. Chuť je svěží, lehká a minerální, s příjemnou kyselinkou 6,1 g/l a čistým, delším závěrem. Bezcukerný extrakt 20,5 g/l přináší vínu pěknou plnost a vyváženost. Toto moravské bílé víno je ideální volbou pro každodenní pití i lehkou gastronomii. Skvěle doplní drůbeží maso, sladkovodní ryby, těstoviny nebo čerstvé sýry. Díky své svěžesti se výborně hodí také k letnímu posezení. Doporučená teplota podávání je 10–12 °C. Potenciál archivace 4–6 let umožní vínu postupně rozvinout jemnější medové a kořenité tóny."
+     ],
+     "values": {
+      "vineyard": "Kokusové hory",
+      "village": "Dobelice",
+      "batch": "5337",
+      "vintage": "2025",
+      "serving_temp": "10–12 °C"
+     },
+     "estimated": true
+    }
+   ],
+   "aroma_groups_from_text": {
+    "květnaté": [
+     "květinové",
+     "rozkvetlou"
+    ],
+    "jádrové ovoce": [
+     "jablka",
+     "hrušky"
+    ],
+    "peckové ovoce": [
+     "broskve"
+    ],
+    "kořenité": [
+     "pepř"
+    ],
+    "autolyzátové / mléčne": [
+     "máslové"
+    ]
+   },
+   "aroma_groups_estimated_only": {
+    "karamelizované": [
+     "medové"
+    ],
+    "mineralne": [
+     "minerální"
+    ]
+   }
+  },
+  "pialek-vz-extra-2024": {
+   "producer": "Piálek & Jäger",
+   "wine": "Veltlínské zelené Extra",
+   "year": 2024,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://e-shop.pialek.cz/veltlinske-zelene-extra-2024/",
+     "notes": [
+      "Prémiový veltlín ze starších vinic. Víno kvasí a zraje částečně na velkých akátových sudech v kombinaci s nerezovými tanky. Plné, dlouhé a minerální víno, s intenzivním ovocným aroma i v chuti s jemnými sladkými tóny a příjemnou kyselinkou. Víno je díky své plnosti a harmoničnosti ideální do gastronomie, nebo prostě jen tak."
+     ],
+     "values": {
+      "vintage": "2024"
+     }
+    },
+    {
+     "source": "Vinotrh (Enotéka #18, kod PAJ.0155)",
+     "url": "https://www.vinotrh.cz/veltlinske-zelene-extra-11/",
+     "notes": [
+      "Prémiový veltlín ze starších vinic. Víno kvasí a zraje částečně na velkých akátových sudech v kombinaci s nerezovými tanky. Plné, dlouhé a minerální víno, s intenzivním ovocným aroma i v chuti s jemnými sladkými tóny a příjemnou kyselinkou. Víno je díky své plnosti a harmoničnosti ideální do gastronomie, nebo prostě jen tak."
+     ],
+     "values": {
+      "sugar": "4,5 g/l",
+      "acid": "4,3 g/l",
+      "alcohol": "12,5 %",
+      "batch": "ročník 2024",
+      "vintage": "2024"
+     }
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/veltlinske-zelene--pozdni-sber--suche-vino--2024---pialek-jager/",
+     "notes": [
+      "Vinařské bílé víno z odrůdy Veltlínské zelené pocházející ze Znojemské podoblasti. Suchý projev podtrhuje čistý odrůdový charakter, jemnou kořenitost a svěží kyselinu typickou pro tuto vinařskou oblast."
+     ],
+     "values": {
+      "batch": "2407",
+      "vintage": "2024"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "květnaté": [
+     "akátových"
+    ],
+    "kořenité": [
+     "kořenitost"
+    ],
+    "mineralne": [
+     "minerální"
+    ]
+   }
+  },
+  "pialek-hibernal-2025": {
+   "producer": "Piálek & Jäger",
+   "wine": "Hibernal",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://e-shop.pialek.cz/hibernal-2025/",
+     "notes": [
+      "Ve vůni a v chuti Vás zaujmou úžasné květinové tóny, hladce přecházející k ovocným, jenž poté dominují, ale pořád v úžasné harmonii. Budete cítit broskve, mango, limetkové tóny a mnoho dalších sladkých vjemů a vše s medovým základem. Neskutečná kyselinka, kde Hibernal nezapře svůj původ z ryzlinku rýnského z tohoto vína dělá naprostou bombu. Víno je šťavnaté s úžasnou dochutí a milovníci lehkého zbytkového cukru nebudou moci přestat."
+     ],
+     "values": {
+      "vintage": "2025"
+     }
+    },
+    {
+     "source": "Vinotrh (Enotéka #41, kod PAJ.0156)",
+     "url": "https://www.vinotrh.cz/hibernal-63/",
+     "notes": [
+      "Další ročník nejprodávanějšího Hibernalu od Piálka & Jägera z naší nabídky.Ve vůni a v chuti tohoto vína vás zaujmou úžasné květinové tóny, hladce přecházející k ovocným, jenž poté dominují, ale pořád v úžasné harmonii. Budete cítit broskve, mango, limetkové tóny a mnoho dalších sladkých vjemů a vše s medovým základem. Neskutečná kyselinka, kde Hibernal nezapře svůj původ z ryzlinku rýnského z tohoto vína dělá naprostou bombu. Víno je šťavnaté s úžasnou dochutí a milovníci lehkého zbytkového cukru nebudou moci přestat."
+     ],
+     "values": {
+      "sugar": "12,4 g/l",
+      "acid": "6,8 g/l",
+      "alcohol": "13 %",
+      "extract": "26,1 g/l",
+      "vineyard": "Šác",
+      "batch": "ročník 2025",
+      "vintage": "2025"
+     }
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/hibernal--pozdni-sber--polosuche-vino--2025-pialek-jager/",
+     "notes": [
+      "Víno s tóny tropického ovoce, citrusů a jemného koření."
+     ],
+     "values": {
+      "batch": "2511",
+      "vintage": "2025"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "květnaté": [
+     "květinové"
+    ],
+    "tropické ovoce": [
+     "mango",
+     "tropického"
+    ],
+    "citrusové ovoce": [
+     "limetkové",
+     "citrusů"
+    ],
+    "peckové ovoce": [
+     "broskve"
+    ],
+    "karamelizované": [
+     "medovým"
+    ],
+    "kořenité": [
+     "koření"
+    ]
+   }
+  },
+  "spalek-vz-2025": {
+   "producer": "Špalek",
+   "wine": "Veltlínské zelené VOC Znojmo BIO",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.spalek.bio/product-page/veltl%C3%ADnsk%C3%A9-zelen%C3%A9-bio-voc-znojmo-2024",
+     "notes": [],
+     "values": {
+      "sugar": "1,4 g/l",
+      "alcohol": "11,5 % obj.",
+      "vineyard": "Kraví hora",
+      "batch": "1825",
+      "vintage": "2025"
+     }
+    },
+    {
+     "source": "Vinotrh (Enotéka #73, kod SPA.0198)",
+     "url": "https://www.vinotrh.cz/veltlinske-zelene-voc-127/",
+     "notes": [
+      "Suché bílé víno odrůdy Veltlínské zelené, 2025, VOC z Vinařství rodiny Špalkovy. Aromatické víno s vůní po pepři a mandlích i s lehce kouřovými tóny, v chuti minerální."
+     ],
+     "values": {
+      "sugar": "1,4 g/l",
+      "acid": "5,5 g/l",
+      "alcohol": "11,5 %",
+      "vineyard": "Kraví hora",
+      "batch": "1825",
+      "vintage": "2025"
+     },
+     "generic_sentences": [
+      "Aromatické víno s vůní po pepři a mandlích i s lehce kouřovými tóny, v chuti minerální.",
+      "Suché bílé víno odrůdy Veltlínské zelené, 2025, VOC z Vinařství rodiny Špalkovy."
+     ]
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/veltlinske-zelene--voc--suche-vino--2025-spalek/",
+     "notes": [
+      "Ve vůni vína najdete jemné tóny zeleného jablka, citrusů a bílé broskve doplněné typickou pepřnatostí a lehce bylinným nádechem.",
+      "Veltlínské zelené 2025 z tratě Kraví hora je BIO suché bílé víno ze znojemské podoblasti, které zaujme čistým odrůdovým projevem, svěžestí a elegantní mineralitou. Díky ekologickému způsobu pěstování působí víno autenticky a velmi přírodním dojmem, s důrazem na terroir a odrůdový charakter. Ve vůni vína najdete jemné tóny zeleného jablka, citrusů a bílé broskve doplněné typickou pepřnatostí a lehce bylinným nádechem. Chuť je svěží, čistá a harmonická, s příjemnou šťavnatostí a jemně minerálním závěrem. Nízký zbytkový cukr 1,4 g/l podtrhuje výrazně suchý charakter vína, zatímco nižší alkohol 11,5 % obj. zachovává lehkost a výbornou pitelnost. Víno působí elegantně a přirozeně, s typickým projevem kvalitního moravského Veltlínu. Díky své svěžesti a jemné kořenitosti je ideální jak pro běžné popíjení, tak i pro gastronomii. Doporučená teplota podávání je 10–12 °C. Výborně se hodí k rybám, zeleninovým pokrmům, lehkým těstovinám, drůbeži nebo jemným sýrům."
+     ],
+     "values": {
+      "vineyard": "Kraví hora",
+      "batch": "1825",
+      "vintage": "2025",
+      "serving_temp": "10–12 °C"
+     },
+     "estimated": true
+    }
+   ],
+   "aroma_groups_from_text": {},
+   "aroma_groups_estimated_only": {
+    "citrusové ovoce": [
+     "citrusů"
+    ],
+    "jádrové ovoce": [
+     "jablka"
+    ],
+    "peckové ovoce": [
+     "broskve"
+    ],
+    "bylinné": [
+     "bylinným"
+    ],
+    "kořenité": [
+     "pepřnatostí",
+     "kořenitosti"
+    ],
+    "mineralne": [
+     "mineralitou",
+     "minerálním"
+    ]
+   }
+  },
+  "spalek-gryllus-2025": {
+   "producer": "Špalek",
+   "wine": "Gryllus bílý VOC BIO",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.spalek.bio/product-page/cuv%C3%A9e-gryllus-voc-znojmo",
+     "notes": [],
+     "values": {
+      "sugar": "5,22 g/l",
+      "alcohol": "12,5 % obj.",
+      "vineyard": "Kraví hora",
+      "batch": "1625"
+     }
+    },
+    {
+     "source": "Vinotrh (Enotéka #22, kod SPA.0200)",
+     "url": "https://www.vinotrh.cz/cuvee-gryllus-bily/",
+     "notes": [
+      "Suché bílé víno Cuveé Gryllus, 2025, VOC z vinařství Špalek. Víno je směsí odrůd Ryzlink rýnský, Sauvignon a Veltlínské zelené v bio kvalitě. Je výrazně ovocné s příjemnou svěží kyselinkou a lehkým náznakem minerálního závěru."
+     ],
+     "values": {
+      "sugar": "5,2 g/l",
+      "acid": "6,5 g/l",
+      "alcohol": "12,5 %",
+      "vineyard": "Kraví hora",
+      "batch": "1625",
+      "vintage": "2025"
+     },
+     "generic_sentences": [
+      "Je výrazně ovocné s příjemnou svěží kyselinkou a lehkým náznakem minerálního závěru.",
+      "Suché bílé víno Cuveé Gryllus, 2025, VOC z vinařství Špalek.",
+      "Víno je směsí odrůd Ryzlink rýnský, Sauvignon a Veltlínské zelené v bio kvalitě."
+     ]
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/cuvee-gryllus--voc--suche-vino--2025-spalek/",
+     "notes": [
+      "Toto cuvée působí elegantně, svěže a díky pečlivému zpracování nabízí velmi příjemnou pitelnost i zajímavou aromatickou komplexitu.",
+      "Cuvée Gryllus 2025 z tratě Kraví hora je BIO suché bílé víno ze znojemské podoblasti, které zaujme moderním a harmonickým projevem. Ve vůni se prolínají tóny zralého žlutého ovoce, citrusů a jemných květinových nuancí, které doplňuje lehký bylinný podtón a decentní mineralita typická pro vína z Kraví hory. Chuť je suchá, čistá a vyvážená, s příjemnou šťavnatostí, jemnou ovocností a delším svěžím závěrem. Alkohol 12,5 % obj. dodává vínu plnější charakter, zatímco nízký obsah zbytkového cukru 5,2 g/l zachovává elegantní suchý styl. Víno je ideální pro milovníky moderních moravských cuvée s důrazem na přírodní charakter a čistotu projevu. Díky BIO produkci a vegan provedení osloví i zákazníky hledající autentická a ekologicky šetrná vína. Doporučená teplota podávání je 10–12 °C. Skvěle se hodí k lehkým úpravám ryb, drůbeži, těstovinám, zeleninovým pokrmům nebo jemným sýrům."
+     ],
+     "values": {
+      "vineyard": "Kraví hora",
+      "batch": "1625",
+      "vintage": "2025",
+      "serving_temp": "10–12 °C"
+     },
+     "estimated": true
+    }
+   ],
+   "aroma_groups_from_text": {},
+   "aroma_groups_estimated_only": {
+    "květnaté": [
+     "květinových"
+    ],
+    "citrusové ovoce": [
+     "citrusů"
+    ],
+    "bylinné": [
+     "bylinný"
+    ],
+    "mineralne": [
+     "mineralita"
+    ]
+   }
+  },
+  "thaya-apri-2024": {
+   "producer": "Thaya",
+   "wine": "Apri Chardonnay",
+   "year": 2024,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://eshop.vinarstvithaya.cz/apri-chardonnay-2024/",
+     "notes": [
+      "Víno kvasilo a zrálo v sudech o objemu 400L. Nejvyšší řada vín v našem vinařství. Víno má jemně zlatavou barvu. Aromatika je velice komplexní a sofistikovaná. Najdeme zde charakter kandovaného ananasu, lučních květin a fialky. V chuti dominují především tóny zralého žlutého ovoce a výrazná mineralita. Víno má dlouhý a elegantní závěr."
+     ],
+     "values": {
+      "acid": "6,2 g/l",
+      "alcohol": "13,5 %",
+      "batch": "CH/2419",
+      "vintage": "2024"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "květnaté": [
+     "lučních",
+     "květin",
+     "fialky"
+    ],
+    "tropické ovoce": [
+     "ananasu"
+    ],
+    "sušené a vařené ovoce": [
+     "kandovaného"
+    ],
+    "mineralne": [
+     "mineralita"
+    ]
+   }
+  },
+  "thaya-vz-2025": {
+   "producer": "Thaya",
+   "wine": "Veltlínské zelené · Pozdravy z Národního parku",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina",
+     "url": "https://eshop.vinarstvithaya.cz/veltlinske-zelene-2025/",
+     "notes": [
+      "Barva je sytá, zlatavá. Velmi dobrá viskozita. V aromatice můžeme najít komplexní veltlínské zelené se znaky citrusů, žlutého ovoce a bílého pepře. Chuť je středně plná převážně se znaky vyzrálého zahradního ovoce. Delší perzistence."
+     ],
+     "values": {
+      "acid": "6,3 g/l",
+      "alcohol": "12,5 %",
+      "batch": "VZ/2548",
+      "vintage": "2025"
+     }
+    },
+    {
+     "source": "Vinotrh (Enotéka #74, kod KOR.0223)",
+     "url": "https://www.vinotrh.cz/veltlinske-zelene-pozdravy-z-np-podyji-6/",
+     "notes": [
+      "Barva je sytá, zlatavá. Velmi dobrá viskozita. V aromatice můžeme najít komplexní veltlínské zelené se znaky citrusů, žlutého ovoce a bílého pepře. Chuť je středně plná převážně se znaky vyzrálého zahradního ovoce. Delší perzistence."
+     ],
+     "values": {
+      "sugar": "2,3 g/l",
+      "acid": "6,3 g/l",
+      "alcohol": "12,5 %",
+      "batch": "VZ/2548",
+      "vintage": "2025"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "citrusové ovoce": [
+     "citrusů"
+    ],
+    "kořenité": [
+     "pepře"
+    ]
+   }
+  },
+  "thaya-zw-2023": {
+   "producer": "Thaya",
+   "wine": "Zweigeltrebe",
+   "year": 2023,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://eshop.vinarstvithaya.cz/zweigeltrebe-2023/",
+     "notes": [
+      "Robustní víno vyráběné z hroznů s vysokou vyzrálostí v dubových sudech 16 měsíců o objemu 400l. Barva je temnější s rubínovými odlesky. Aromatika je příjemně ovocná i kořenitá, přechází do tónů lékořice, s lehkým náznakem živočišnosti. Chuť je ovocná, plná a dlouhá. Na konci dominují tóny dubových sudů."
+     ],
+     "values": {
+      "acid": "6,5 g/l",
+      "alcohol": "13,0 %",
+      "vineyard": "Hnanice - Fládnická",
+      "batch": "ZW/2341",
+      "vintage": "2023"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "kořenité": [
+     "kořenitá",
+     "lékořice"
+    ],
+    "dřevo / barrique": [
+     "dubových"
+    ]
+   }
+  },
+  "waldberg-rv-2024": {
+   "producer": "Waldberg",
+   "wine": "Ryzlink vlašský",
+   "year": 2024,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "Vinotrh (Enotéka #11, kod WAL.0443)",
+     "url": "https://www.vinotrh.cz/ryzlink-vlassky-waldberg-2024-p-s-/",
+     "notes": [
+      "Víno zelenkavě zlatavé barvy, s jemnou vůní sušených bylinek, slaměnky a nádechem vyzrálých rynglí. Chuť je vyvážená, bylinno-ovocitá a minerální, s lehce slaným závěrem."
+     ],
+     "values": {
+      "sugar": "2.9 g/l",
+      "acid": "6.2 g/l",
+      "alcohol": "13.0 %",
+      "extract": "22.3 g/l",
+      "vineyard": "Waldberg",
+      "batch": "8324WA",
+      "vintage": "2024"
+     }
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/ryzlink-vlassky--pozdni-sber--suche-vino--2024---waldberg/",
+     "notes": [
+      "Chuť vína je harmonická, s bylinně-ovocným charakterem, minerálním podtónem a lehce slaným závěrem.",
+      "Elegantní Ryzlink vlašský ze Znojemské podoblasti má jemně zlatavou barvu a vůni sušených bylinek, slámy a vyzrálých rynglí. Chuť je harmonická, s bylinně-ovocným charakterem, minerálním podtónem a lehce slaným závěrem."
+     ],
+     "values": {
+      "vineyard": "Waldberg",
+      "village": "Vrbovec",
+      "batch": "8324",
+      "vintage": "2024"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "peckové ovoce": [
+     "rynglí"
+    ],
+    "sušené a vařené ovoce": [
+     "sušených"
+    ],
+    "bylinné": [
+     "bylinek",
+     "bylinno",
+     "bylinně"
+    ],
+    "mineralne": [
+     "minerální",
+     "slaným",
+     "minerálním"
+    ]
+   }
+  },
+  "waldberg-rm-2021": {
+   "producer": "Waldberg",
+   "wine": "Rulandské modré Volné pole",
+   "year": 2021,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.vinotrh.cz/rulandske-modre-volne-pole-2021-v-h--3/",
+     "notes": [
+      "Víno tmavé cihlově červené barvy, s vůní sladké mleté papriky a sušeného tabákového listu. Vysoce extraktivní chuť odkazuje na vyzrálost hroznů a částečné ležení v dubovém sudu. Je robustní, jemně kořenitá, s dlouhou perzistencí a lehce nasládlou vanilkovou stopou v jejím závěru. Víno má velmi dobré předpoklady k další archivaci a nazrávání na lahvi."
+     ],
+     "values": {
+      "sugar": "0.6 g/l",
+      "acid": "5.2 g/l",
+      "alcohol": "14.0 %",
+      "extract": "35.9 g/l",
+      "vineyard": "Volné pole",
+      "batch": "21/139WA",
+      "vintage": "2021"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "sušené a vařené ovoce": [
+     "sušeného"
+    ],
+    "kořenité": [
+     "kořenitá"
+    ],
+    "dřevo / barrique": [
+     "tabákového",
+     "dubovém",
+     "vanilkovou"
+    ]
+   }
+  },
+  "oulehla-ch-2023": {
+   "producer": "Oulehla",
+   "wine": "Chardonnay Karlov Staré keře",
+   "year": 2023,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://eshop.oulehlavinarstvi.cz/chardonnay-karlov-2023-moravske-zemske-stare-kere/",
+     "notes": [
+      "Elegantní víno zelenožluté barvy. Buket s tóny kvetoucích citrusů, na patře upoutá aroma vyzrálých bělomasých broskví, hrušek máslovek a typický minerální podtón."
+     ],
+     "values": {
+      "batch": "2345",
+      "vintage": "2023"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "květnaté": [
+     "kvetoucích"
+    ],
+    "citrusové ovoce": [
+     "citrusů"
+    ],
+    "jádrové ovoce": [
+     "hrušek"
+    ],
+    "peckové ovoce": [
+     "broskví"
+    ],
+    "autolyzátové / mléčne": [
+     "máslovek"
+    ],
+    "mineralne": [
+     "minerální"
+    ]
+   }
+  },
+  "oulehla-merlot-2022": {
+   "producer": "Oulehla",
+   "wine": "Merlot Grand Reserva",
+   "year": 2022,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://eshop.oulehlavinarstvi.cz/merlot-grand-reserva-2022/",
+     "notes": [
+      "Vůni lesního ovoce a sušených švestek doplňuje v chuti vyzrálá třešeň, kakao a káva. Hebké taniny a hebká dubová kůra v závěru."
+     ],
+     "values": {
+      "batch": "2258",
+      "vintage": "2022",
+      "food": [
+       "archivaci."
+      ]
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "sušené a vařené ovoce": [
+     "sušených"
+    ],
+    "karamelizované": [
+     "kakao"
+    ],
+    "dřevo / barrique": [
+     "káva",
+     "dubová"
+    ]
+   }
+  },
+  "lahofer-vcr-2024": {
+   "producer": "Lahofer",
+   "wine": "Veltlínské červené rané Volné pole",
+   "year": 2024,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.vinotrh.cz/veltlinske-cervene-rane-volne-pole-2024-kab-/",
+     "notes": [
+      "Víno zbarvené do třpytivých zelenkavě-stříbřitých odstínů zaujme jemně kořenitou vůní čerstvě řezaných květin. Plná a extraktivní chuť je svěží a šťavnatá, lehce kořenitá, se stopou červeného pomeranče v jejím závěru."
+     ],
+     "values": {
+      "sugar": "10.5 g/l",
+      "acid": "6.9 g/l",
+      "alcohol": "11.0 %",
+      "extract": "26.1 g/l",
+      "vineyard": "Volné pole",
+      "batch": "1824LA",
+      "vintage": "2024"
+     }
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/veltlinske-cervene-rane--kabinet--polosuche-vino--2024---lahofer/",
+     "notes": [],
+     "values": {
+      "vineyard": "Volné pole",
+      "village": "Hostěradice",
+      "batch": "1824",
+      "vintage": "2024"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "květnaté": [
+     "květin"
+    ],
+    "citrusové ovoce": [
+     "pomeranče"
+    ],
+    "kořenité": [
+     "kořenitou",
+     "kořenitá"
+    ]
+   }
+  },
+  "lahofer-rajska-2025": {
+   "producer": "Lahofer",
+   "wine": "Cuvée Rajská VOC",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.vinotrh.cz/cuvee-rajska-rajska-vinice-2025-voc/",
+     "notes": [
+      "Jedinečné cuvée z odrůd Sauvignon, Veltlínské zelené a Ryzlink rýnský pěstovaných na mimořádné viniční trati – Rajské vinici ve Znojmě. Do harmonického, komplexního profilu tohoto vína se promítly všechny tři odrůdy. Z veltlínu v něm najdete jemné kořenité tóny, angreštové nuance přidal zejména do vůně Sauvignon a ve šťavnaté ovocité chuti s delikátním nádechem minerality objevíte Ryzlink rýnský."
+     ],
+     "values": {
+      "sugar": "4.5 g/l",
+      "acid": "6.3 g/l",
+      "alcohol": "12.0 %",
+      "extract": "21.6 g/l",
+      "vineyard": "Rajská zahrada",
+      "batch": "4725LA",
+      "vintage": "2025"
+     }
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/cuvee-rajska--voc--suche-vino--2025-lahofer/",
+     "notes": [
+      "Cuvée Rajská z jedinečné znojemské tratě spojuje odrůdy Sauvignon, Veltlínské zelené a Ryzlink rýnský do harmonického, komplexního celku. Vůni dotváří kořenité a angreštové tóny, chuť je šťavnatá s jemným nádechem minerality.",
+      "Toto suché cuvée vzniká z hroznů pěstovaných na Rajské vinici ve Znojmě, jedné z nejvýznamnějších tratí Znojemské vinařské podoblasti, kterou vinařství Lahofer obhospodařuje od roku 2010 jako jediný producent vín z této unikátní lokality. Do harmonického profilu se snoubí tři odrůdy – Veltlínské zelené přináší jemné kořenité tóny, Sauvignon dodává výraznou angreštovou vůni a Ryzlink rýnský obohacuje chuť o šťavnaté ovoce a delikátní minerální nádech."
+     ],
+     "values": {
+      "vineyard": "Rajská",
+      "village": "Znojmo",
+      "batch": "4725",
+      "vintage": "2025"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "drobné ovoce": [
+     "angreštové",
+     "angreštovou"
+    ],
+    "kořenité": [
+     "kořenité"
+    ],
+    "mineralne": [
+     "minerality",
+     "minerální"
+    ]
+   }
+  },
+  "lahofer-vz-2025": {
+   "producer": "Lahofer",
+   "wine": "Veltlínské zelené Volné pole VOC",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.vinotrh.cz/veltlinske-zelene-volne-pole-2025-voc/",
+     "notes": [
+      "Víno zlatavě-zelenkavé barvy, jehož vůni vévodí šťavnatost letního jablíčka se stopami bílého pepře doplněná o jemný mandlový nádech. V plné chuti vystupují do popředí především pikantní pepřnaté tóny. Dlouhý příjemně minerální závěr."
+     ],
+     "values": {
+      "sugar": "3.7 g/l",
+      "acid": "6.4 g/l",
+      "alcohol": "12.0 %",
+      "extract": "21.3 g/l",
+      "vineyard": "Volné pole",
+      "batch": "9225LA",
+      "vintage": "2025"
+     }
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/veltlinske-zelene-voc-suche-vino-2025-lahofer/",
+     "notes": [
+      "Šťavnaté letní jablko, stopy bílého pepře a jemný mandlový nádech. Plná chuť s pikantní pepřností a dlouhým minerálním závěrem.",
+      "Víno s přívlastkem VOC Znojmo pochází z viniční trati Volné pole u Hostěradic ve Znojemské podoblasti, kde sprašové a písčité půdy spolu s teplými dny a chladnými nocemi dávají vínům svěžest a výraznou kořenitost. Vyrobilo ho vinařství Lahofer z hroznů sklizených v polovině října. Ve skle má zlatavě-zelenkavou barvu, vůni vévodí šťavnaté letní jablíčko s jemnými stopami bílého pepře a mandlí. V plné chuti vystupují do popředí pikantní pepřnaté tóny, které přecházejí do dlouhého, příjemně minerálního závěru. Výborně se hodí k řízku, pečenému kuřeti, vepřové panence, rybám nebo jídlům s bylinkami a čerstvou zeleninou. Podávejte vychlazené na 8–10 °C. Energetická hodnota ve 100 ml: 294,8 kJ / 70,4 kcal."
+     ],
+     "values": {
+      "vineyard": "Volné pole",
+      "village": "Hostěradice",
+      "batch": "9225",
+      "vintage": "2025"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "jádrové ovoce": [
+     "jablíčka",
+     "jablko",
+     "jablíčko"
+    ],
+    "karamelizované": [
+     "mandlový",
+     "mandlí"
+    ],
+    "kořenité": [
+     "pepře",
+     "pepřnaté",
+     "pepřností",
+     "kořenitost"
+    ],
+    "mineralne": [
+     "minerální",
+     "minerálním",
+     "minerálního"
+    ]
+   }
+  },
+  "halkoci-typik-2025": {
+   "producer": "Halkoci",
+   "wine": "Ryzlink TYPIK",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://vinarstvihalkoci.cz/produkt/ryzlink-typik-2025/",
+     "notes": [
+      "V typickém Ryzlinku Rýnském chceme cítit peckoviny, meruňky, ovocnost. V chuti hledáme šťavnatost a celkově krásnou ryzí energii. Dochuť by pak měla být příjemně dlouhá a lákat k dalšímu doušku. A přesně to je Ryzlink TYPIK.",
+      "V chuti je živý a přitom krásně vyvážený – nechybí mu šťavnatost, výraznější kyselinka ani typická mineralita, která mu dodává eleganci a tah. Dochuť je dlouhá, čistá a s každým douškem láká k dalšímu a dalšímu. V aromatice hraje prim peckové ovoce, meruňky a jemná citrusová linka. V chuti pak přichází ryzí energie – živá, svěží, přesto vyzrálá a vyvážená. Stylově jde o typický, přesně vybalancovaný ryzlink s jemnou mineralitou, který stylistikou navazuje na ročník 2022. A stejně jako tehdy i letos platí: pije se to krásně.",
+      "Kdo má chuť na víc svěžesti a elektrizující kyselinku, najde ji v našem Ryzlinku Fresh – energickém, živém a pěkně hravém. Naopak pro milovníky hlubších, vrstevnatějších stylů je tu Ryzlink ze sudu – intenzivnější, zralejší, houževnatější, vyrovnanější, s delší dochutí a větší komplexností."
+     ],
+     "values": {}
+    },
+    {
+     "source": "Vinotrh (Enotéka #12, kod HAL.0023)",
+     "url": "https://www.vinotrh.cz/ryzlink-typik/",
+     "notes": [
+      "V chuti je živý a přitom krásně vyvážený – nechybí mu šťavnatost, výraznější kyselinka ani typická mineralita, která mu dodává eleganci a tah. Dochuť je dlouhá, čistá a s každým douškem láká k dalšímu a dalšímu.",
+      "V aromatice hraje prim peckové ovoce, meruňky a jemná citrusová linka. V chuti pak přichází ryzí energie – živá, svěží, přesto vyzrálá a vyvážená. Stylově jde o typický, přesně vybalancovaný ryzlink s jemnou mineralitou, který stylistikou navazuje na ročník 2022. A stejně jako tehdy i letos platí: pije se to krásně."
+     ],
+     "values": {
+      "sugar": "2,9 g/l",
+      "acid": "6,7 g/l",
+      "alcohol": "13,0 %",
+      "batch": "2025",
+      "vintage": "2025"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "citrusové ovoce": [
+     "citrusová"
+    ],
+    "peckové ovoce": [
+     "peckoviny",
+     "meruňky",
+     "peckové"
+    ],
+    "mineralne": [
+     "mineralita",
+     "mineralitou"
+    ]
+   }
+  },
+  "halkoci-vz2-2024": {
+   "producer": "Halkoci",
+   "wine": "Veltlín²",
+   "year": 2024,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://vinarstvihalkoci.cz/produkt/veltlin%C2%B2-2024/",
+     "notes": [
+      "Zaujme zlatavou až sytě žlutou barvou a výraznou vůní žlutého ovoce, pepře a elegantního tónu dřeva. V chuti je dlouhý, široký a komplexní – opravdové velké víno. Kvasil a zrál v 1000 l sudu. Skvělý hned teď, ale určitě stojí za to pár lahví schovat do archivu. zbytkový cukr: 1,5 g/l obsah kyselin: 7,2 g/l alkohol: 13,5 % obj.",
+      "Sytě žlutá až zlatavá barva. Intenzivní odrůdová vůně plná nektarů, žlutého ovoce a především pepře. Chuť je komplexní a čistá, s příjemnou kyselinkou a delším závěrem."
+     ],
+     "values": {},
+     "winemaking": [
+      "Vrstvy, hloubka, komplexnost. Vinice, ve kterých vidím potenciál a chuť stát se velkými víny. Starší keře, poloha a charakter vinice, potenciál ke zrání a pozitivní náhled do budoucna. Velké sudy nebo betonová vejce a skvělý hrozen. Říkám jim NA DRUHOU, zážitek umocněný na druhou ."
+     ]
+    }
+   ],
+   "aroma_groups_from_text": {
+    "kořenité": [
+     "pepře"
+    ],
+    "dřevo / barrique": [
+     "dřeva"
+    ]
+   }
+  },
+  "halkoci-supa-2025": {
+   "producer": "Halkoci",
+   "wine": "SUPA · suchá Pálava",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://vinarstvihalkoci.cz/produkt/supa-25/",
+     "notes": [
+      "SUPA 2025. Víno, které si vezme to nejlepší z Pálavy, ale nechává ji zazářit ve své svěžejší roli. Supa není typická sladká Pálava, na kterou jste možná zvyklí. Tady se odrůda ukazuje v suché, ryzí podobě – s krásnou aromatikou květin, jemného koření a zralého ovoce, ale s čistou, suchou chutí a svěží kyselinkou. Díky lehké mineralitě a precizní práci působí elegantně, uhlazeně a přitom výrazně. Po svém boku má Předehru a spolu s ní je řadíme tzv. do Suchých voňavek . Tam, kde se střetnou milovníci suchých vín s pocitovými lehkými cukry. V řadě TYPIK najdeme i klasickou znojemskou trojku - Veltlín , Ryzlink a Sauvignon ! Vyzrálé kořeny, elegantní zpracování a vysoká pitelnost."
+     ],
+     "values": {}
+    },
+    {
+     "source": "Vinotrh (Enotéka #31, kod HAL.0019)",
+     "url": "https://www.vinotrh.cz/supa-sucha-palava-2/",
+     "notes": [
+      "A co o této své Pálavě říká sám vinař Lukáš Halkoci? \"Je to víno, které si vezme to nejlepší z Pálavy, ale nechává ji zazářit ve své svěžejší roli. Supa není typická sladká Pálava, na kterou jste možná zvyklí. Tady se odrůda ukazuje v suché, ryzí podobě – s krásnou aromatikou květin, jemného koření a zralého ovoce, ale s čistou, suchou chutí a svěží kyselinkou. Díky lehké mineralitě a precizní práci působí elegantně, uhlazeně a přitom výrazně.\""
+     ],
+     "values": {
+      "sugar": "7,9 g/l",
+      "acid": "7,2 g/l",
+      "alcohol": "12,5 %",
+      "batch": "ročník 2025",
+      "vintage": "2025"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "květnaté": [
+     "květin"
+    ],
+    "kořenité": [
+     "koření",
+     "kořeny"
+    ],
+    "mineralne": [
+     "mineralitě"
+    ]
+   }
+  },
+  "korinek-vz-2023": {
+   "producer": "Josef Kořínek",
+   "wine": "Veltlínské zelené VOC",
+   "year": 2023,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.vinovin.cz/veltlinske-zelene--voc--suche-vino--2023-josef-korinek/",
+     "notes": [],
+     "values": {
+      "vineyard": "Knížecí vrch",
+      "village": "Hnanice",
+      "batch": "VZ21/23",
+      "vintage": "2023"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {}
+  },
+  "korinek-petnat-2025": {
+   "producer": "Josef Kořínek",
+   "wine": "PET NAT Ryzlink rýnský",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [],
+   "aroma_groups_from_text": {}
+  },
+  "korinek-muskat-2026": {
+   "producer": "Josef Kořínek",
+   "wine": "Muškát moravský Fresh",
+   "year": 2026,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.vinovin.cz/muskat-moravsky-fresh-zemske-polosuche-vino-2026-korinek/",
+     "notes": [
+      "Mladý Muškát moravský s typickou muškátovou aromatikou, polosuchým stylem a lehkou, snadno pitelnou chutí.",
+      "Bílé moravské zemské víno z odrůdy Muškát moravský, ročník 2026, pochází z tratě Kraví hora u obce Konice ve znojemské vinařské podoblasti. Hrozny byly sklizeny s cukernatostí 19,8 °CNM. Ve vůni najdeme typické muškátové tóny, bezový květ a jemné citrusy. Chuť je svěží, ovocná a lehká. Alkohol 11,5 % obj. dělá z vína příjemného společníka i k delšímu posezení. Hodí se jako aperitiv, k ovocným salátům, lehkým dezertům, jemným sýrům nebo asijské kuchyni, ale i samotné na letní terasu. Doporučujeme podávat dobře vychlazené na 8–10 °C."
+     ],
+     "values": {
+      "vineyard": "Kraví hora",
+      "village": "Konice",
+      "batch": "MM02/26",
+      "vintage": "2026"
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "květnaté": [
+     "bezový",
+     "květ"
+    ],
+    "citrusové ovoce": [
+     "citrusy"
+    ]
+   }
+  },
+  "simenon-vz-2025": {
+   "producer": "Simenon",
+   "wine": "Veltlínské zelené VOC",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://shop.vinarstvisimenon.cz/veltlinske-zelene-voc-2025/",
+     "notes": [
+      "Veltlínské zelené je svěží bílé víno s výraznějším minerálním charakterem a jemně slanějším projevem. V chuti se snoubí tóny zeleného jablka, citrusů a lehká kořenitost, které dohromady vytvářejí harmonický a osvěžující zážitek."
+     ],
+     "values": {
+      "sugar": "2,3g/l",
+      "alcohol": "12% obj."
+     }
+    },
+    {
+     "source": "Vinotrh (Enotéka #8, kod SIM.0087)",
+     "url": "https://www.vinotrh.cz/veltlinske-zelene-voc-121/",
+     "notes": [
+      "suché bílé víno odrůdy Veltlínské zelené, 2025, VOC z vinařství SIMENON. Typicky suché, pepřnaté víno s výraznou kořenitostí, mandlovými tóny a vyšší svěží kyselinkou, která mu dodává šťavnatost. Charakteristická je pro něj mineralita, tóny žlutého melounu či akátového medu."
+     ],
+     "values": {
+      "sugar": "2,3 g/l",
+      "acid": "5,4 g/l",
+      "alcohol": "12 %",
+      "vineyard": "Nad Sklepy",
+      "batch": "2025-09",
+      "vintage": "2025"
+     },
+     "generic_sentences": [
+      "Charakteristická je pro něj mineralita, tóny žlutého melounu či akátového medu.",
+      "Typicky suché, pepřnaté víno s výraznou kořenitostí, mandlovými tóny a vyšší svěží kyselinkou, která mu dodává šťavnatost.",
+      "suché bílé víno odrůdy Veltlínské zelené, 2025, VOC z vinařství SIMENON."
+     ]
+    }
+   ],
+   "rejected_sources": [
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/veltlinske-zelene--voc--suche-vino--2025-simenon/",
+     "reason": "inna trasa (Dívčí hora) niż wino z Enotéki"
+    }
+   ],
+   "aroma_groups_from_text": {
+    "citrusové ovoce": [
+     "citrusů"
+    ],
+    "jádrové ovoce": [
+     "jablka"
+    ],
+    "kořenité": [
+     "kořenitost"
+    ],
+    "mineralne": [
+     "minerálním",
+     "slanějším"
+    ]
+   }
+  },
+  "simenon-rr-2025": {
+   "producer": "Simenon",
+   "wine": "Ryzlink rýnský VOC",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://shop.vinarstvisimenon.cz/ryzlink-rynsky-voc-2025/",
+     "notes": [
+      "Ryzlink rýnský je elegantní bílé víno s výraznou mineralitou a ovocným profilem připomínajícím zralé meruňky. V chuti je svěží, harmonický a dlouhotrvající, s příjemnou kyselinkou, která podtrhuje jeho charakter."
+     ],
+     "values": {
+      "sugar": "5,8g/l",
+      "alcohol": "12% obj."
+     }
+    },
+    {
+     "source": "Vínovín",
+     "url": "https://www.vinovin.cz/ryzlink-rynsky--voc--suche-vino--2025-simenon/",
+     "notes": [
+      "Víno působí svěže a zároveň plněji díky vyzrálému projevu a harmonickému alkoholu 12 % obj. Typický charakter Ryzlinku rýnského se zde projevuje v kombinaci ovocnosti, minerality a jemné citrusové svěžesti. Díky své struktuře má víno také potenciál k dalšímu zrání v lahvi.",
+      "Ve vůni vína se prolínají tóny citrusů, limetkové kůry a zeleného jablka s jemnými květinovými nuancemi a nádechem meruněk. Postupně se objevuje také lehká minerální linka, která podtrhuje původ vína ze znojemské podoblasti. Chuť je čistá, živá a elegantně strukturovaná, s osvěžující kyselinou a dlouhou dochutí. Doporučená teplota podávání je 10–12 °C. Výborně se hodí k rybám, mořským plodům, drůbeži, asijské kuchyni nebo jemným sýrům. Skvěle doplní i lehčí gastronomii a slavnostní příležitosti."
+     ],
+     "values": {
+      "vineyard": "Dívčí hora",
+      "village": "Chvalovice",
+      "batch": "2025-06",
+      "vintage": "2025",
+      "serving_temp": "10–12 °C"
+     },
+     "estimated": true
+    }
+   ],
+   "aroma_groups_from_text": {
+    "peckové ovoce": [
+     "meruňky"
+    ],
+    "mineralne": [
+     "mineralitou"
+    ]
+   },
+   "aroma_groups_estimated_only": {
+    "květnaté": [
+     "květinovými"
+    ],
+    "citrusové ovoce": [
+     "citrusové",
+     "citrusů",
+     "limetkové"
+    ],
+    "jádrové ovoce": [
+     "jablka"
+    ]
+   }
+  },
+  "simenon-sb-2025": {
+   "producer": "Simenon",
+   "wine": "Sauvignon VOC",
+   "year": 2025,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Vínovín",
+     "url": "https://www.vinovin.cz/sauvignon--voc--suche-vino--2025-simenon/",
+     "notes": [
+      "Ve vůni se otevírají intenzivní tóny angreštu, citrusů a černého rybízu doplněné jemnými bylinnými nuancemi a svěžím nádechem čerstvě posečené trávy.",
+      "Sauvignon blanc VOC 2025 z viniční tratě Divčí hora ve znojemské podoblasti představuje elegantní suché bílé víno s moderním stylem a výrazným odrůdovým charakterem. Sauvignon z této oblasti je typický svou aromatičností, svěžestí a minerálním projevem, který odráží terroir znojemských vinic. Chuť je živá, čistá a harmonická, s příjemnou mineralitou a delší ovocnou dochutí. Vyšší kyselina dodává vínu energii a svěžest, zatímco lehčí alkohol 12 % obj. zachovává elegantní a velmi dobře pitelný charakter. Víno působí moderně, svěže a šťavnatě, s typickým znojemským rukopisem. Díky své aromatice a harmonii je ideální jak pro samostatné vychutnání, tak i pro párování s gastronomií. Doporučená teplota podávání je 10–12 °C. Skvěle doplní ryby, mořské plody, kozí sýry, lehké saláty nebo drůbeží speciality."
+     ],
+     "values": {
+      "vineyard": "Dívčí hora",
+      "village": "Chvalovice",
+      "batch": "2025-04",
+      "vintage": "2025",
+      "serving_temp": "10–12 °C"
+     },
+     "estimated": true
+    }
+   ],
+   "aroma_groups_from_text": {},
+   "aroma_groups_estimated_only": {
+    "citrusové ovoce": [
+     "citrusů"
+    ],
+    "drobné ovoce": [
+     "angreštu",
+     "rybízu"
+    ],
+    "bylinné": [
+     "bylinnými",
+     "trávy"
+    ],
+    "mineralne": [
+     "minerálním",
+     "mineralitou"
+    ]
+   },
+   "other_vintage": {
+    "vintage": 2024,
+    "source": "Vinotrh",
+    "url": "https://www.vinotrh.cz/sauvignon-voc-112/",
+    "why": "Sauvignon VOC Znojmo Simenonu z poprzedniego rocznika; strona sklepu nie podaje trasy",
+    "notes": [
+     "Typický znojemský Sauvignon má výrazný aromatický profil plný opulentních tónů černého rybízu, angreštu a broskví. Ovocné tóny přecházejí také do chuti, kde jsou doplněny tóny citrusů, které přecházejí v příjemně minerální závěr. Nezbytností je svěží kyselinka, která je pevnou páteří vína."
+    ],
+    "aroma_groups": {
+     "citrusové ovoce": [
+      "citrusů"
+     ],
+     "peckové ovoce": [
+      "broskví"
+     ],
+     "drobné ovoce": [
+      "rybízu",
+      "angreštu"
+     ],
+     "mineralne": [
+      "minerální"
+     ]
+    }
+   }
+  },
+  "ampelos-trio-2024": {
+   "producer": "Ampelos",
+   "wine": "Trio",
+   "year": 2024,
+   "has_salon_profile": false,
+   "sources": [],
+   "aroma_groups_from_text": {}
+  },
+  "ampelos-at-2024": {
+   "producer": "Ampelos",
+   "wine": "Veltlínské zelené AT klony",
+   "year": 2024,
+   "has_salon_profile": false,
+   "sources": [],
+   "aroma_groups_from_text": {}
+  },
+  "dobra-creme-2022": {
+   "producer": "Dobrá Vinice",
+   "wine": "Crème de Kambrium",
+   "year": 2022,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.dobravinice.cz/p/creme-de-kambrium-2022",
+     "notes": [
+      "Přírodní perlivé víno z odrůd Veltlínské zelené, Ryzlink rýnský a Sauvignon. Víno dokváší a zraje na vlastních kvasnicích v lahvi. Vůně je chlebově-minerální, chuť je příjemná a plná s dominantním minerálním projevem. Více"
+     ],
+     "values": {
+      "sugar": "1,9 g/l",
+      "acid": "7 g/l",
+      "alcohol": "13,5 %",
+      "aging": "5-10 let",
+      "vintage": "2022",
+      "food": [
+       "Mořské plody (obzvláště ústřice)"
+      ]
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "karamelizované": [
+     "chlebově"
+    ],
+    "autolyzátové / mléčne": [
+     "kvasnicích"
+    ],
+    "mineralne": [
+     "chlebově-minerální",
+     "minerálním"
+    ]
+   }
+  },
+  "dobra-kambrium-2022": {
+   "producer": "Dobrá Vinice",
+   "wine": "Kambrium cuvée",
+   "year": 2022,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.dobravinice.cz/p/kambrium-cuvee-2022",
+     "notes": [
+      "Cuvée z odrůd Veltlínské zelené, Ryzlink rýnský a Sauvignon blanc. Víno kvasilo a zrálo ve starších francouzských dubových sudech. Víno světle zeleno-žluté barvy je květinově minerální. Chuť je příjemná a plná s dominantním minerálním projevem. Více"
+     ],
+     "values": {
+      "sugar": "0 g/l",
+      "acid": "6,3 g/l",
+      "alcohol": "13,5 %",
+      "aging": "7 a více let",
+      "vintage": "2022",
+      "food": [
+       "České pokrmy"
+      ]
+     }
+    }
+   ],
+   "aroma_groups_from_text": {
+    "květnaté": [
+     "květinově"
+    ],
+    "dřevo / barrique": [
+     "dubových"
+    ],
+    "mineralne": [
+     "minerální",
+     "minerálním"
+    ]
+   }
+  },
+  "dobra-qvevri-2019": {
+   "producer": "Dobrá Vinice",
+   "wine": "Veltlínské zelené Qvevri",
+   "year": 2019,
+   "has_salon_profile": false,
+   "sources": [
+    {
+     "source": "strona: Karta wina / zakup",
+     "url": "https://www.dobravinice.cz/p/veltlinske-zelene-qvevri-2019",
+     "notes": [],
+     "values": {
+      "sugar": "0 g/l",
+      "acid": "7,3 g/l",
+      "alcohol": "12,5 %",
+      "aging": "18 a více let",
+      "vintage": "2019",
+      "food": [
+       "Zralé sýry",
+       "Asijská kuchyně",
+       "Tmavá drůbež",
+       "Reduktivní omáčky"
+      ]
+     },
+     "winemaking": [
+      "Víno kvasilo a zrálo v Qvevri Georgia - hliněných neglazovaných nádobách z červené terakotové hlíny o objemu 1 000 litrů.",
+      "Nádoby jsou zakopané v zemi v našich pískovcových sklepích v Novém Šaldorfu. Macerace na slupkách v qvevri - 9 měsíců, následné zrání v dubových sudech 500 l po dobu 12 měsíců."
+     ]
+    }
+   ],
+   "aroma_groups_from_text": {}
+  }
+ }
+}

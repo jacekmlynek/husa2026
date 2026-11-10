@@ -13,9 +13,11 @@ site/            ← gotowa strona (to publikujemy)
 gas/             ← wersja dla Google Apps Script (jeden plik)
 tools/build-gas.mjs
 tools/salon-vin/ ← skrypty danych Salon vín (pobieranie, parsowanie, scalanie, audyt)
+tools/wina-opisy/ ← zbieranie opisów smakowych win ze stron producentów i sklepów
 tools/build-wine-map.py, tools/read-aroma-charts.py ← mapa regionów i profile aromatów (opis niżej)
 docs/            ← materiały źródłowe i makieta
   salon-vin/     ← wyniki Salon vín ČR 2024–2026 jako JSON (+ README z opisem pól)
+  wina-opisy/    ← opisy smakowe win ze strony bez profilu Salonu (+ README z metodą i pokryciem)
 ```
 
 ## Podgląd lokalny
@@ -36,6 +38,8 @@ Dane Salon vín ČR (krajowy konkurs win, Národní vinařské centrum, Valtice)
 - **Top 14 i punkty** (`topZnojmo`, `topMorava` w `wines.js`). Siedem win ze Znojemska do spróbowania w vinotékach w mieście i siedem najwyżej ocenionych wytrawnych i półwytrawnych win Salonu 2026 z reszty Moraw. Przy winie: `pts` (punkty), `comp` (konkurs), `award` (medal). Wyniki regionalne pochodzą z przewodnika i protokołu konkursu, wyniki Salonu z arkusza medali. Wyjaśnienie punktacji jest w `wine.scoring` w `data.js` i opiera się na statucie Salonu vín 2025, statucie konkursu regionalnego oraz stronie narodnisoutezvin.cz. Ceny w Enotéce pochodzą z jej karty (enoteka.vinotrh.cz, stan z 10.11.2026), pozostałe z e-sklepu Salonu vín.
 
 Odtworzenie i kontrola jakości (`audit.py`, `audit2.py`, `audit3.py`): `tools/salon-vin/README.md`. Źródłowe PDF/XLSX (ok. 12 MB na rok) nie są w repozytorium, ich adresy są w polu `sources` każdego pliku.
+
+Opisy smakowe dla win bez profilu degustatorów Salonu: `docs/wina-opisy/opisy-win.json` (skrypt `tools/wina-opisy/build.py`). Zawiera dosłowne opisy producentów i sklepów (Vinotrh/Enotéka, Vínovín) z linkami, a słowa z opisów są przypisane do grup aromatów Salonu. Grupy oznaczają tylko obecność słowa, nie natężenie 0–10. Szacunki Vínovín i szablony Vinotrh są oznaczone i nie liczą się do grup. Metoda, pokrycie i odrzucone dopasowania: `docs/wina-opisy/README.md`.
 
 Podglądy map tras: `python tools/build-route-maps.py` składa kafelki OpenStreetMap ze śladem GPX w `site/img/trasy/<id>.webp` (+ `site/js/route-maps.js`). Kafelki są w pamięci podręcznej `docs/trasy-kafelki/`, więc ponowne uruchomienie ich nie pobiera.
 
