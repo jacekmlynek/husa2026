@@ -249,10 +249,30 @@
   // Punkty konkursowe: regionalne z dwoma miejscami po przecinku (średnia z trzech ocen), Salon z jednym.
   function ptsTxt(w) { return fmt(w.pts.toFixed(/regionalny/.test(w.comp) ? 2 : 1)); }
   var COMP_SHORT = { 'konkurs regionalny 2026': 'regionalny 2026', 'Salon vín 2026': 'Salon 2026', 'Salon vín 2025': 'Salon 2025' };
+  // Poziom konkursu: Salon vín (krajowy finał) = złota etykieta z pucharem, konkurs regionalny = brązowa z medalem.
+  var LEVEL_ICON = {
+    salon: '<svg class="score__i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4a5 5 0 0 1-10 0V4ZM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M12 13v3M8.5 20h7M10 16h4l.5 4h-5l.5-4Z"/></svg>',
+    reg: '<svg class="score__i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3l3 7M16 3l-3 7"/><circle cx="12" cy="15.5" r="5"/><path d="M12 13.2v4.6"/></svg>'
+  };
+  var LEVEL_WHY = {
+    salon: '<strong>Salon vín</strong> to krajowy finał. Wino przeszło konkurs regionalny i dwie kolejne rundy, a złoto dostaje tylko 100 win z całych Czech.',
+    reg: '<strong>Konkurs regionalny</strong> to pierwszy etap: oceniane są tylko wina z jednego podobszaru. Tych punktów nie porównuj wprost z punktami Salonu vín.'
+  };
+  function level(w) {
+    var s = (w.comp || '') + ' ' + (w.award || '');
+    return /Salon/.test(s) ? 'salon' : /regionaln/.test(s) ? 'reg' : '';
+  }
   function scoreEl(w) {
-    if (w.pts) return '<span class="score"><b class="score__n">' + ptsTxt(w) + ' pkt</b><span class="score__t">' + w.award + ' · ' + (COMP_SHORT[w.comp] || w.comp) + '</span></span>';
-    if (w.award) return '<span class="score"><span class="score__t">' + w.award + '</span></span>';
+    var lv = level(w), cls = 'score' + (lv ? ' score--' + lv : ''), ic = LEVEL_ICON[lv] || '';
+    if (w.pts) return '<span class="' + cls + '">' + ic + '<b class="score__n">' + ptsTxt(w) + ' pkt</b><span class="score__t">' + w.award + ' · ' + (COMP_SHORT[w.comp] || w.comp) + '</span></span>';
+    if (w.award) return '<span class="' + cls + '">' + ic + '<span class="score__t">' + w.award + '</span></span>';
     return w.pick ? '<span class="pick">' + w.pick + '</span>' : '';
+  }
+  function scoreLegend() {
+    return '<div class="score-legend">' + ['salon', 'reg'].map(function (lv) {
+      return '<p><span class="score score--' + lv + '">' + LEVEL_ICON[lv] + '<span class="score__t">' + (lv === 'salon' ? 'Salon vín' : 'regionalny') + '</span></span> ' +
+        LEVEL_WHY[lv].replace(/^<strong>[^<]*<\/strong> to /, '') + '</p>';
+    }).join('') + '</div>';
   }
   // Na liście sam kolor i słodycz; kategoria z nawiasu („výběr z hroznů”) jest w oknie wina.
   function plainStyle(w) { return w.style.replace(/\s*\([^)]*\)/, ''); }
@@ -311,7 +331,7 @@
       '<span class="wtile__img">' + bottleImg(id) + '</span>' +
       '<span class="wtile__body"><span class="wtile__prod">' + producer(w).name + '</span>' +
       '<span class="wtile__name">' + w.name + ' ' + w.year + '</span>' +
-      (w.pts ? '<span class="wtile__pts">' + ptsTxt(w) + ' pkt</span>' : '') + (extra || '') +
+      (w.pts ? '<span class="wtile__pts wtile__pts--' + level(w) + '">' + (LEVEL_ICON[level(w)] || '') + ptsTxt(w) + ' pkt</span>' : '') + (extra || '') +
       (w.price ? '<span class="wtile__price">' + w.price + '</span>' : '') + '</span></button>';
   }
   function wineRow(id, rank, showRegion) {
@@ -349,6 +369,7 @@
         '<h3 class="sheet__title" id="sheet-title">' + w.name + ' ' + w.year + '</h3>' +
         '<p class="muted small">' + p.name + (p.place ? ' · ' + p.place : '') + '</p>' +
         '<div class="sheet__badges">' + regionChip(p, w) + '<span class="tag">' + w.style + '</span>' + scoreEl(w) + '</div>' +
+        (LEVEL_WHY[level(w)] ? '<p class="score-why">' + LEVEL_WHY[level(w)] + '</p>' : '') +
         (w.price ? '<p class="sheet__price">' + w.price + '</p>' : '') +
         meters(w) + (w.alc ? '<p class="small muted">Alkohol ' + fmt(w.alc) + '% obj.</p>' : '') +
         (w.tags && w.tags.length ? '<div class="fchips">' + flavorChips(w) + '</div>' : '') +
@@ -574,9 +595,9 @@
     var SC = V.scoring;
     html += '<h2 class="section-title" id="w-top">Top 14: co warto spróbować</h2>' +
       '<p class="section-sub">Siedem win ze Znojemska i siedem najwyżej ocenionych z reszty Moraw. Przy każdym winie są punkty z konkursu. Dotknij wina, żeby zobaczyć szczegóły.</p>' +
-      (SC ? acc(SC.title, SC.sub, SC.items.map(function (t) { return '<p class="small">' + t + '</p>'; }).join('') + actions(SC.links), false, 'w-punkty') : '') +
+      scoreLegend() + (SC ? acc(SC.title, SC.sub, SC.items.map(function (t) { return '<p class="small">' + t + '</p>'; }).join('') + actions(SC.links), false, 'w-punkty') : '') +
       '<h3 class="sub-h" id="w-top-znojmo">Ze Znojemska: do spróbowania w vinotékach w mieście</h3>' +
-      '<p class="small muted">Najpierw złote wina krajowego Salonu vín 2026, potem medale konkursu regionalnego. Na końcu Znovín Šobes: bez oceny w konkursie, ale z udokumentowanej parceli Šobes.</p>' +
+      '<p class="small muted">Najpierw złote wina krajowego Salonu vín 2026 (złota etykieta), potem medale konkursu regionalnego (brązowa). Na końcu Znovín Šobes: bez oceny w konkursie, ale z udokumentowanej parceli Šobes.</p>' +
       '<div class="wrows">' + WN.topZnojmo.map(function (id, i) { return wineRow(id, i + 1, false); }).join('') + '</div>' +
       '<h3 class="sub-h" id="w-top-morava">Z reszty Moraw: najlepsze w Salonie vín 2026</h3>' +
       '<p class="small muted">Nie ma ich w karcie Enotéki, więc pytaj w innych vinotékach w Znojmie. Ceny pochodzą z e-sklepu Salonu vín.</p>' +

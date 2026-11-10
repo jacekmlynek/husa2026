@@ -32,6 +32,9 @@
   --reg-pavlovice: #b04a6e;
   --reg-slovacko: #96680c;
   --mineral: #6b7f8e;
+  /* poziom konkursu przy punktach: Salon vín jak złoty medal, konkurs regionalny jak brązowy */
+  --gold-bg: #fcf5d8; --gold-line: #e2c25a; --gold-ink: #6e5200; --gold-icon: #b08a12;
+  --bronze-bg: #f8ebe0; --bronze-line: #d3a07a; --bronze-ink: #82461d; --bronze-icon: #a5602e;
 
   --radius-xl: 20px;
   --radius-lg: 12px;
@@ -870,6 +873,18 @@ button.wtile, button.wrow, button.wchamp { appearance: none; font: inherit; colo
 .score__n { font-size: 16px; font-weight: 800; color: var(--wine-900); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .score__t { font-size: 12.5px; font-weight: 700; color: var(--amber); }
 .pick { display: inline-block; align-self: flex-start; font-size: 12.5px; font-weight: 600; color: var(--ink-3); }
-.wtile__pts { display: block; font-size: 12.5px; font-weight: 700; color: var(--ink-2); margin-top: 2px; }
+.wtile__pts { display: flex; align-items: center; gap: 4px; font-size: 12.5px; font-weight: 700; color: var(--ink-2); margin-top: 2px; }
+.score__i { flex: none; align-self: center; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.score--salon { background: var(--gold-bg); border-color: var(--gold-line); column-gap: 6px; }
+.score--salon .score__t, .wtile__pts--salon { color: var(--gold-ink); }
+.score--salon .score__i, .wtile__pts--salon .score__i { color: var(--gold-icon); }
+.score--reg { background: var(--bronze-bg); border-color: var(--bronze-line); column-gap: 6px; }
+.score--reg .score__t, .wtile__pts--reg { color: var(--bronze-ink); }
+.score--reg .score__i, .wtile__pts--reg .score__i { color: var(--bronze-icon); }
+.wtile__pts .score__i { width: 14px; height: 14px; }
+.score-legend { display: grid; gap: 8px; margin: 10px 0 6px; }
+.score-legend p { font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+.score-legend .score { vertical-align: middle; margin-right: 4px; padding: 1px 9px; }
+.score-why { font-size: 12.5px; line-height: 1.4; color: var(--ink-3); margin-top: 6px; }
 .wrow__sugar { font-size: 12.5px; color: var(--ink-3); }
 #w-punkty { margin: 8px 0 4px; }
