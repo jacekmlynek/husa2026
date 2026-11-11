@@ -99,3 +99,20 @@ Perspektywy: architekt, frontend developer, tester, projektant interfejsu, meteo
 | 2 | tester | Przy awarii jednego źródła wymieszany stan „świeże + zapisane” bez opisu | osobny zapis i godzina pobrania dla każdego źródła, komunikat wprost |
 | 2 | projektant | Podsumowanie dzisiejszego dnia z części godzin wyglądało jak całodzienne | „od teraz”; zasada wyboru ikony dnia |
 | 3 | wszystkie | bez istotnych ustaleń | — |
+
+## 9. Review kodu (11 XI)
+
+Gałąź `feature/pogoda`, trzy rundy z perspektyw: frontend developer, architekt, tester, projektant responsywnych stron, meteorolog. Każdą rundę sprawdzał skrypt w Edge na 6 szerokościach (320–1440 px) i scenariuszach: pierwsze wejście bez internetu, bez internetu z zapisem, GeoSphere nie odpowiada, GeoSphere wolny, odświeżanie przyciskiem, liczba zapytań; do tego `specs/pogoda/testy.js --live`.
+
+| Runda | Perspektywa | Ustalenie | Poprawka |
+|---|---|---|---|
+| 0 | tester | Przy kilku modelach Open-Meteo dodaje przyrostek modelu także do pól dziennych (`sunrise_<model>`); odczyt się wysypywał, a `try/catch` ukrywał błąd, więc strona pokazywała tylko AROME i kończyła prognozę na 13 XI | odczyt pól z przyrostkiem; błąd odczytu zgłaszany jako niedziałające źródło; test na danych o prawdziwym kształcie |
+| 1 | projektant, meteorolog | Żółte wiersze w co czwartej godzinie (27 ze 119), także przy różnicach niewidocznych po zaokrągleniu i samej mżawce | wyższe progi (3 °C, opad przez proporcję) |
+| 1 | projektant | Zapis wiatru „9/14” nieczytelny po zniknięciu nagłówka; znacznik w legendzie wyglądał jak pole wyboru; „Nový Šaldorf” w dwóch liniach | „9 (14)”, przyklejony nagłówek godzin, objaśnienie jednostek, znacznik jak żółty wiersz, „Šaldorf” do 430 px |
+| 1 | tester | Scenariusze „pierwszy raz bez internetu” i „GeoSphere nie odpowiada” korzystały z zapisu innych kart | czyszczenie zapisu w teście; oba zachowania potwierdzone |
+| 2 | tester | Reguła „drugi < 0,1 mm” przepuszczała 0,1 mm wobec 3,1 mm | proporcja: większy ≥ 0,5 mm i co najmniej 4 razy większy |
+| 2 | architekt | GeoSphere odpowiada w 1–16 s (Open-Meteo ok. 50 ms); przy limicie 12 s co trzecie odświeżenie kończyłoby się błędem, a szybkie źródło czekało na wolne | każde źródło rysuje się po nadejściu, GeoSphere z limitem 30 s, status „AROME jeszcze się wczytuje…” |
+| 2 | projektant | Nagłówek wiatru w 3 liniach na telefonie, na komputerze za szeroka kolumna opadu | krótki nagłówek, nowy podział kolumn |
+| 3 | wszystkie | bez istotnych ustaleń | — |
+
+Stan końcowy: brak przewijania w poziomie, ucinania podpisów 7 zakładek i celów dotyku poniżej 44 px na 320–1440 px; 4 zapytania przy wejściu w zakładkę, 0 w innych zakładkach; 32 testy (w tym na żywo) przechodzą.
