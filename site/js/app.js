@@ -30,7 +30,9 @@
     photo: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="10.5" r="1.8"/><path d="M21 16l-5-5-8 8"/>',
     search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5l5 5"/>',
     house: '<path d="M3.5 11L12 4l8.5 7"/><path d="M6 9.5v10h12v-10M10 19.5v-5h4v5"/>',
-    close: '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>'
+    close: '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>',
+    weather: '<circle cx="8.5" cy="8.5" r="3"/><path d="M8.5 2.5v1.2M3.7 4.7l.9.9M2.5 8.5h1.2M13.3 4.7l-.9.9"/><path d="M7.5 19.5h10a3.5 3.5 0 0 0 .4-7 5 5 0 0 0-9.4 1A3 3 0 0 0 7.5 19.5z"/>',
+    refresh: '<path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3"/><path d="M19.5 4.5v4h-4"/>'
   };
   function icon(name, cls) {
     return '<svg class="icon' + (cls ? ' ' + cls : '') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[name] || '') + '</svg>';
@@ -1188,13 +1190,181 @@
   }
 
   /* ---------------- Zakładki i stan ---------------- */
+  /* ---------------- Pogoda (spec: specs/pogoda/DEVELOPMENT-PLAN.md) ----------------
+   * Prognoza pobierana na żywo przez telefon: przy pierwszym wejściu w zakładkę po otwarciu strony, po przycisku
+   * „Sprawdź nową prognozę” i po ponad 60 min (powrót do zakładki albo karty). Ostatnia prognoza zostaje w telefonie. */
+  var WX = window.Weather;
+  var WXS = { place: 'znojmo', loading: false, fetchedThisLoad: false, cache: null, status: {}, at: 0 };
+  var WX_STALE = 60 * 60 * 1000;
+  function wxStorage() {
+    try { return window.localStorage || null; } catch (e) { return null; } // tryb prywatny / zablokowany dostęp
+  }
+  // Ikony pogody w stylu ICONS (linia 1,8 px); kolor z klasy wx-ic--<rodzaj>.
+  var CLOUD = '<path d="M7 18.5h10.5a3.7 3.7 0 0 0 .4-7.4 5.3 5.3 0 0 0-10.1 1.2A3.1 3.1 0 0 0 7 18.5z"/>';
+  var CLOUD_UP = '<path d="M7 15h10.5a3.7 3.7 0 0 0 .4-7.4A5.3 5.3 0 0 0 7.8 8.8 3.1 3.1 0 0 0 7 15z"/>';
+  var SMALL_CLOUD = '<path d="M9 20h9a3.2 3.2 0 0 0 .3-6.4 4.6 4.6 0 0 0-8.8 1A2.7 2.7 0 0 0 9 20z"/>';
+  var WX_ICONS = {
+    'clear-day': '<circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M5.3 18.7l1.5-1.5M17.2 6.8l1.5-1.5"/>',
+    'clear-night': '<path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/>',
+    'partly-day': '<circle cx="8" cy="8" r="3.2"/><path d="M8 2v1.3M2 8h1.3M3.8 3.8l.9.9M12.2 3.8l-.9.9"/>' + SMALL_CLOUD,
+    'partly-night': '<path d="M12 6.5A4.7 4.7 0 0 1 6 2.6a4.7 4.7 0 1 0 6 3.9z"/>' + SMALL_CLOUD,
+    cloudy: CLOUD,
+    fog: CLOUD_UP + '<path d="M4 18.5h16M6 21.5h12"/>',
+    drizzle: CLOUD_UP + '<path d="M9 18.5v.5M13 18.5v.5M11 21v.5M15 21v.5"/>',
+    rain: CLOUD_UP + '<path d="M9 17.5l-1 3M13 17.5l-1 3M17 17.5l-1 3"/>',
+    sleet: CLOUD_UP + '<path d="M9 17.5l-1 3M16 18v3M14.5 19.5h3"/>',
+    snow: CLOUD_UP + '<path d="M9 17.5v3M7.5 19h3M15 17.5v3M13.5 19h3"/>',
+    storm: CLOUD_UP + '<path d="M12.5 15.5l-2 3.5h3l-2 3.5"/>'
+  };
+  function wxIcon(type, night) {
+    var k = (type === 'clear' || type === 'partly') ? type + (night ? '-night' : '-day') : type;
+    return '<svg class="wx-ic wx-ic--' + type + (night ? ' wx-ic--night' : '') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="' +
+      WX.TYPE_LABEL[type] + '">' + WX_ICONS[k] + '</svg>';
+  }
+
+  function renderWeather() {
+    if (!WX) return '<p class="card">Prognoza pogody jest niedostępna.</p>';
+    return '<div class="panel-head"><h2>Pogoda na wyjazd</h2>' +
+      '<p>Prognoza godzina po godzinie z modeli krajowych służb meteorologicznych: czeskiej ČHMÚ i austriackiej GeoSphere, a gdy ich prognoza się kończy, z europejskiego ECMWF.</p></div>' +
+      '<div class="card wx-bar"><p class="wx-bar__status" id="wx-status" aria-live="polite">Pobieram prognozę…</p>' +
+        '<button type="button" class="btn btn--map wx-bar__btn" data-wx-refresh>' + icon('refresh') + '<span>Sprawdź nową prognozę</span></button></div>' +
+      '<div class="seg seg--wx" role="group" aria-label="Miejsce">' + WX.PLACES.map(function (p) {
+        return '<button type="button" class="seg__b" data-wx-place="' + p.id + '" aria-pressed="' + (p.id === WXS.place) + '">' +
+          (p.short ? '<span class="wx-full">' + p.name + '</span><span class="wx-short">' + p.short + '</span>' : p.name) + '</button>';
+      }).join('') + '</div>' +
+      '<p class="wx-plan" id="wx-plan"></p>' +
+      '<div id="wx-days" class="wx-days"></div>' +
+      '<details class="acc wx-about"><summary><span class="acc__title">Skąd jest ta prognoza</span>' + icon('chev', 'chev') + '</summary><div class="acc__body">' +
+        '<p class="small"><strong>ČHMÚ ALADIN 1 km</strong>: model numeryczny czeskiej służby meteorologicznej (odpowiednik IMGW), liczy ok. 3 dni do przodu, nowy przebieg co 6 godzin. Dane przez Open-Meteo.</p>' +
+        '<p class="small"><strong>GeoSphere AROME 1 km</strong>: model austriackiej służby GeoSphere (dawniej ZAMG), ok. 2,5 dnia, nowy przebieg co 3 godziny.</p>' +
+        '<p class="small"><strong>ECMWF IFS 9 km</strong>: model Europejskiego Centrum Prognoz Średnioterminowych, najlepszy model globalny w prognozach na kilka dni. Używamy go tam, gdzie modele 1 km już nie liczą.</p>' +
+        '<p class="small">Modele regionalne 1 km zwykle lepiej przewidują pogodę przy ziemi na najbliższe 1–2 dni na swoim terenie, dlatego w Czechach pierwszy jest ALADIN, a w Hardeggu AROME. Drugi model pokazujemy obok jako drugą opinię. Gdy modele się wyraźnie różnią, wiersz jest zaznaczony na żółto: wtedy prognoza jest mniej pewna.</p>' +
+        '<p class="small" id="wx-runs"></p>' +
+        actions([{ label: 'Open-Meteo (dane ČHMÚ i ECMWF, CC BY 4.0)', url: 'https://open-meteo.com/', kind: 'web' },
+          { label: 'GeoSphere Austria Data Hub (CC BY 4.0)', url: 'https://data.hub.geosphere.at/', kind: 'web' },
+          { label: 'ČHMÚ', url: 'https://www.chmi.cz/', kind: 'web' }]) +
+      '</div></details>';
+  }
+
+  function weatherEnter() {
+    if (!WX) return;
+    if (!WXS.cache) {
+      var st = wxStorage();
+      WXS.cache = st ? WX.loadCache(st) : {};
+      paintWeather(); // od razu ostatnia zapisana prognoza, zanim przyjdzie nowa
+    }
+    var stale = !WXS.at || Date.now() - WXS.at > WX_STALE;
+    if (!WXS.fetchedThisLoad || stale) fetchWeather();
+  }
+  function fetchWeather() {
+    if (WXS.loading || !window.fetch) return;
+    WXS.loading = true;
+    setRefreshBtn(true);
+    paintWeather();
+    var nowMs = Date.now();
+    WX.fetchAll(window.fetch.bind(window), WX.pragueKey(new Date(nowMs)).slice(0, 10), 12000).then(function (res) {
+      var m = WX.merge(WXS.cache || {}, res, nowMs);
+      WXS.cache = m.cache; WXS.status = m.status; WXS.fetchedThisLoad = true;
+      if (m.status.om === 'fresh' || m.status.gs === 'fresh') WXS.at = nowMs;
+      var st = wxStorage();
+      if (st) WX.saveCache(st, m.cache);
+    }).then(function () {
+      WXS.loading = false;
+      setRefreshBtn(false);
+      paintWeather();
+    });
+  }
+  function setRefreshBtn(busy) {
+    var btn = $('[data-wx-refresh]');
+    if (!btn) return;
+    btn.disabled = busy;
+    btn.querySelector('span').textContent = busy ? 'Pobieram…' : 'Sprawdź nową prognozę';
+  }
+
+  function wxStatus(errors) {
+    var C = WXS.cache || {}, S = WXS.status || {}, parts = [];
+    var newest = Math.max(C.om ? C.om.at : 0, C.gs ? C.gs.at : 0);
+    if (!newest) return WXS.loading ? 'Pobieram prognozę…' : (WXS.fetchedThisLoad ? 'Nie udało się pobrać prognozy.' : 'Pobieram prognozę…');
+    if (S.om === 'fresh' || S.gs === 'fresh') parts.push('Pobrano ' + WX.stampLabel(newest) + '.');
+    else parts.push((WXS.fetchedThisLoad ? 'Bez połączenia. ' : '') + 'Prognoza z ' + WX.stampLabel(newest) + '.');
+    if ((S.om === 'cached' && (S.gs === 'fresh')) || errors.om) parts.push(C.om ? 'Open-Meteo (ALADIN, ECMWF) teraz nie odpowiada, te dane są z ' + WX.stampLabel(C.om.at) + '.' : '');
+    if ((S.gs === 'cached' && (S.om === 'fresh')) || errors.gs) parts.push(C.gs ? 'GeoSphere (AROME) teraz nie odpowiada, te dane są z ' + WX.stampLabel(C.gs.at) + '.' : '');
+    if (S.om === 'missing' && WXS.fetchedThisLoad) parts.push('Open-Meteo (ALADIN, ECMWF) nie odpowiada.');
+    if (S.gs === 'missing' && WXS.fetchedThisLoad) parts.push('GeoSphere (AROME) nie odpowiada.');
+    if (WXS.loading) parts.push('Sprawdzam nową…');
+    return parts.filter(Boolean).join(' ');
+  }
+  function srcLabel(m) { return WX.MODELS[m].name + ' (' + WX.MODELS[m].desc + ')'; }
+  function hourRow(h) {
+    var deg = function (t) { return WX.fmtTemp(t).replace('°', ' stopni'); };
+    var say = h.hour + ', ' + WX.TYPE_LABEL[h.type] + ', ' + deg(h.t) + ', opad ' + WX.fmtPrecip(h.p).replace('—', 'brak') +
+      (h.pp !== null ? ' (szansa ' + h.pp + '%)' : '') + ', wiatr ' + WX.fmtWind(h.w) + ' km/h, porywy ' + WX.fmtWind(h.g) +
+      (h.alt ? '. ' + WX.MODELS[h.alt.src].short + ': ' + deg(h.alt.t) + ', opad ' + WX.fmtPrecip(h.alt.p).replace('—', 'brak') : '') +
+      (h.diff ? '. Modele się różnią' : '');
+    return '<li class="wx-h' + (h.diff ? ' wx-h--diff' : '') + '" aria-label="' + attr(say) + '"><span class="wx-h__in" aria-hidden="true">' +
+      '<span class="wx-h__time">' + h.hour + '</span>' +
+      '<span class="wx-h__ic">' + wxIcon(h.type, h.night) + '</span>' +
+      '<span class="wx-h__t">' + WX.fmtTemp(h.t) + '</span>' +
+      '<span class="wx-h__p' + (h.p >= 0.05 ? ' wx-h__p--wet' : '') + '">' + WX.fmtPrecip(h.p) + (h.pp !== null && h.pp > 0 ? ' <small>' + h.pp + '%</small>' : '') + '</span>' +
+      '<span class="wx-h__w">' + WX.fmtWind(h.w) + ' <small>(' + WX.fmtWind(h.g) + ')</small></span>' +
+      '<span class="wx-h__alt">' + (h.alt ? WX.MODELS[h.alt.src].short + ': ' + WX.fmtTemp(h.alt.t) + ', ' + WX.fmtPrecip(h.alt.p) : '') + '</span>' +
+      '</span></li>';
+  }
+  function paintWeather() {
+    var box = $('#wx-days');
+    if (!box || !WX) return;
+    var data = WX.parsed(WXS.cache || {});
+    $('#wx-status').textContent = wxStatus(data.errors);
+    var place = WX.PLACES.filter(function (p) { return p.id === WXS.place; })[0];
+    $('#wx-plan').innerHTML = place.plan + ' <span class="wx-plan__m">Najpierw ' + WX.MODELS[place.chain[0]].name + ', potem ' + WX.MODELS[place.chain[1]].name + ', dalej ECMWF.</span>';
+    var runs = (WXS.cache && WXS.cache.runs) || {}, gsRun = data.gs && data.gs.run;
+    var runTxt = [runs.aladin ? 'ALADIN ' + WX.stampLabel(runs.aladin) : '', gsRun ? 'AROME ' + WX.stampLabel(gsRun) : '', runs.ecmwf ? 'ECMWF ' + WX.stampLabel(runs.ecmwf) : ''].filter(Boolean);
+    $('#wx-runs').textContent = runTxt.length ? 'Start obliczeń modeli w ostatniej prognozie: ' + runTxt.join(', ') + ' (czas Pragi).' : '';
+    if (!data.om && !data.gs) {
+      box.innerHTML = '<p class="wx-empty">' + (WXS.loading || !WXS.fetchedThisLoad ? 'Pobieram prognozę…' : 'Nie udało się pobrać prognozy. Sprawdź połączenie z internetem i dotknij „Sprawdź nową prognozę”.') + '</p>';
+      return;
+    }
+    var fc = WX.build(WXS.place, data, WX.pragueKey(new Date()));
+    if (fc.ended) { box.innerHTML = '<p class="wx-empty">Wyjazd się skończył, prognoza na jego czas nie jest już potrzebna.</p>'; return; }
+    if (!fc.days.length) { box.innerHTML = '<p class="wx-empty">Brak prognozy na najbliższe godziny w zapisanych danych. Dotknij „Sprawdź nową prognozę”.</p>'; return; }
+    var hasDiff = fc.days.some(function (d) { return d.hours.some(function (h) { return h.diff; }); });
+    box.innerHTML = (hasDiff ? '<p class="wx-legend"><span class="wx-legend__sw" aria-hidden="true"></span><span>Żółte wiersze: modele wyraźnie się różnią (temperatura o 3° lub więcej albo jeden przewiduje wyraźny opad, a drugi prawie żaden). Tam prognoza jest mniej pewna.</span></p>' : '') +
+      fc.days.map(function (d, i) {
+        var s = d.summary;
+        var rows = d.hours.map(function (h, k) {
+          return (h.change ? '<li class="wx-src">' + (k === 0 ? 'Źródło: ' : 'Od ' + h.hour + ': ') + srcLabel(h.src) + '</li>' : '') + hourRow(h);
+        }).join('');
+        return '<details class="wx-day"' + (i === 0 ? ' open' : '') + '><summary class="wx-day__sum">' +
+          '<span class="wx-day__name">' + d.label + (d.partial ? ' <small>od teraz</small>' : '') + '</span>' +
+          '<span class="wx-day__ic">' + wxIcon(s.type, false) + '</span>' +
+          '<span class="wx-day__t">' + WX.fmtTemp(s.tmin) + ' / <b>' + WX.fmtTemp(s.tmax) + '</b></span>' +
+          '<span class="wx-day__p">' + (s.p < 0.05 ? 'bez opadu' : WX.fmtPrecip(s.p)) + '</span>' +
+          icon('chev', 'chev') + '</summary>' +
+          '<div class="wx-day__body"><p class="wx-day__extra">' + (s.g !== null ? 'Najsilniejsze porywy wiatru: ' + WX.fmtWind(s.g) + ' km/h.' : '') + '</p>' +
+          '<div class="wx-head" aria-hidden="true"><span>Godz.</span><span></span><span>Temp.</span><span>Opad</span><span>Wiatr (porywy) km/h</span><span class="wx-head__alt">Druga opinia</span></div>' +
+          '<ol class="wx-hours">' + rows + '</ol></div></details>';
+      }).join('');
+  }
+  function weatherClick(e) {
+    var pl = e.target.closest('[data-wx-place]');
+    if (pl) {
+      WXS.place = pl.dataset.wxPlace;
+      $$('[data-wx-place]').forEach(function (b) { b.setAttribute('aria-pressed', String(b === pl)); });
+      paintWeather();
+      return true;
+    }
+    if (e.target.closest('[data-wx-refresh]')) { fetchWeather(); return true; }
+    return false;
+  }
+
   var TABS = [
     { id: 'plan', label: 'Plan', icon: 'calendar' },
     { id: 'wino', label: 'Wino', icon: 'wine', render: renderWine },
     { id: 'jedzenie', label: 'Jedzenie', icon: 'food', render: renderFood },
     { id: 'spacery', label: 'Spacery', icon: 'walk', render: renderWalks },
     { id: 'ciekawostki', label: 'Ciekawostki', short: 'Ciekawe', icon: 'book', render: renderFacts },
-    { id: 'dzieci', label: 'Dzieci', icon: 'kid', render: renderKids }
+    { id: 'dzieci', label: 'Dzieci', icon: 'kid', render: renderKids },
+    { id: 'pogoda', label: 'Pogoda', icon: 'weather', render: renderWeather }
   ];
   var state = { tab: 'plan', day: TODAY || 'sr' };
 
@@ -1227,6 +1397,7 @@
     });
     $$('.panel').forEach(function (p) { p.hidden = p.id !== 'panel-' + id; });
     closeMaps(); // otwarta mapa Mapy.com nie musi działać w tle
+    if (id === 'pogoda') weatherEnter();
     writeHash();
     if (scroll) {
       var content = $('#content');
@@ -1307,6 +1478,7 @@
         return;
       }
       if (searchClick(e)) return;
+      if (weatherClick(e)) return;
       var wineBtn = e.target.closest('[data-wine]');
       if (wineBtn) { openSheet(wineBtn.dataset.wine); return; }
       var flavor = e.target.closest('[data-flavor]');
@@ -1334,6 +1506,7 @@
     // Strona otwarta na długo (np. od rana): odśwież „dziś” i „Następne”.
     document.addEventListener('visibilitychange', function () {
       if (document.visibilityState !== 'visible') return;
+      if (state.tab === 'pogoda') weatherEnter(); // po ponad 60 min od pobrania prognoza odświeża się sama
       var now = pragueNow();
       var changed = now.date !== NOW.date || Math.floor(now.minutes / 15) !== Math.floor(NOW.minutes / 15);
       NOW = now;

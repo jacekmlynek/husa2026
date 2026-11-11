@@ -45,6 +45,9 @@ ${inlineImages(read('js/route-maps.js'))}
 // Wyszukiwarka win: biblioteka, moduł i wina z Salonu vín (w GAS od razu w pliku, bo nie ma dociągania plików).
 html = html.replace('<script src="vendor/minisearch/minisearch.min.js"></script>', () => `<script>\n${read('vendor/minisearch/minisearch.min.js')}\n</script>`);
 html = html.replace('<script src="js/wine-search.js"></script>', () => `<script>\n${read('js/wine-search.js')}\n</script>\n<script>\n${read('js/wine-index.js')}\n</script>`);
+html = html.replace('<script src="js/weather.js"></script>', () => `<script>
+${read('js/weather.js')}
+</script>`);
 html = html.replace('<script src="js/app.js"></script>', () => `<script>\n${read('js/app.js')}\n</script>`);
 
 if (/(src|href)="(css|js|img|trasy|vendor)\//.test(html) || /["']trasy\/[\w.-]+\.gpx["']/.test(html)) throw new Error('Zostały względne ścieżki do plików — GAS ich nie obsłuży.');
