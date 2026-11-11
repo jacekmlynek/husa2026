@@ -987,6 +987,7 @@ button.wtile, button.wrow, button.wchamp { appearance: none; font: inherit; colo
 .wx-legend { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: var(--ink-2); line-height: 1.4; }
 .wx-legend__sw { flex: none; width: 22px; height: 16px; margin-top: 1px; border-radius: 3px; background: var(--amber-bg); box-shadow: inset 3px 0 0 var(--amber); }
 .wx-days > * + * { margin-top: 10px; }
+.wx-note { font-size: 13px; color: var(--ink-3); line-height: 1.4; }
 
 /* dzień */
 .wx-day { background: #fff; border: 1px solid var(--rose-200); border-radius: 16px; box-shadow: var(--shadow-1); overflow: clip; } /* clip, nie hidden: nagłówek godzin ma być przyklejony */
@@ -1031,7 +1032,8 @@ button.wtile, button.wrow, button.wchamp { appearance: none; font: inherit; colo
 .wx-h--diff .wx-h__alt { color: var(--amber); font-weight: 700; }
 .wx-src { padding: 6px 12px; font-size: 12.5px; font-weight: 700; color: var(--wine-700); background: var(--rose-50); border-top: 1px solid var(--rose-100); }
 @media (min-width: 640px) {
-  .wx-head, .wx-h__in { grid-template-columns: 54px 28px 44px minmax(90px, 1fr) 90px minmax(120px, 1.2fr); }
+  .wx-head, .wx-h__in { grid-template-columns: 56px 28px 48px 110px 90px minmax(140px, 1fr); }
+  .wx-h__w { text-align: left; }
   .wx-head__alt { display: block; }
   .wx-h__alt { grid-column: auto; }
   .wx-h__alt:empty { display: block; }

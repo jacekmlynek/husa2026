@@ -1256,20 +1256,23 @@
     var stale = !WXS.at || Date.now() - WXS.at > WX_STALE;
     if (!WXS.fetchedThisLoad || stale) fetchWeather();
   }
+  // Każde źródło rysuje się od razu po nadejściu: Open-Meteo (ALADIN, ECMWF) po ułamku sekundy, GeoSphere (AROME) po 1–16 s.
   function fetchWeather() {
     if (WXS.loading || !window.fetch) return;
     WXS.loading = true;
+    WXS.status = { om: 'pending', gs: 'pending' };
     setRefreshBtn(true);
     paintWeather();
-    var nowMs = Date.now();
-    WX.fetchAll(window.fetch.bind(window), WX.pragueKey(new Date(nowMs)).slice(0, 10), 12000).then(function (res) {
-      var m = WX.merge(WXS.cache || {}, res, nowMs);
-      WXS.cache = m.cache; WXS.status = m.status; WXS.fetchedThisLoad = true;
-      if (m.status.om === 'fresh' || m.status.gs === 'fresh') WXS.at = nowMs;
-      var st = wxStorage();
-      if (st) WX.saveCache(st, m.cache);
+    var nowMs = Date.now(), st = wxStorage();
+    WX.fetchAll(window.fetch.bind(window), WX.pragueKey(new Date(nowMs)).slice(0, 10), function (name, result) {
+      var m = WX.mergePart(WXS.cache || {}, name, result, nowMs);
+      WXS.cache = m.cache;
+      if (m.status) WXS.status[name] = m.status;
+      if (m.status === 'fresh') WXS.at = nowMs;
+      if (st) WX.saveCache(st, WXS.cache);
+      paintWeather();
     }).then(function () {
-      WXS.loading = false;
+      WXS.loading = false; WXS.fetchedThisLoad = true;
       setRefreshBtn(false);
       paintWeather();
     });
@@ -1289,9 +1292,11 @@
     else parts.push((WXS.fetchedThisLoad ? 'Bez połączenia. ' : '') + 'Prognoza z ' + WX.stampLabel(newest) + '.');
     if ((S.om === 'cached' && (S.gs === 'fresh')) || errors.om) parts.push(C.om ? 'Open-Meteo (ALADIN, ECMWF) teraz nie odpowiada, te dane są z ' + WX.stampLabel(C.om.at) + '.' : '');
     if ((S.gs === 'cached' && (S.om === 'fresh')) || errors.gs) parts.push(C.gs ? 'GeoSphere (AROME) teraz nie odpowiada, te dane są z ' + WX.stampLabel(C.gs.at) + '.' : '');
-    if (S.om === 'missing' && WXS.fetchedThisLoad) parts.push('Open-Meteo (ALADIN, ECMWF) nie odpowiada.');
-    if (S.gs === 'missing' && WXS.fetchedThisLoad) parts.push('GeoSphere (AROME) nie odpowiada.');
-    if (WXS.loading) parts.push('Sprawdzam nową…');
+    if (S.om === 'missing') parts.push('Open-Meteo (ALADIN, ECMWF) nie odpowiada.');
+    if (S.gs === 'missing') parts.push('GeoSphere (AROME) nie odpowiada.');
+    if (S.om === 'pending' && S.gs !== 'pending') parts.push('ALADIN i ECMWF jeszcze się wczytują…');
+    else if (S.gs === 'pending' && S.om !== 'pending') parts.push('AROME (GeoSphere) jeszcze się wczytuje…');
+    else if (WXS.loading) parts.push('Sprawdzam nową…');
     return parts.filter(Boolean).join(' ');
   }
   function srcLabel(m) { return WX.MODELS[m].name + ' (' + WX.MODELS[m].desc + ')'; }
@@ -1328,7 +1333,8 @@
     if (fc.ended) { box.innerHTML = '<p class="wx-empty">Wyjazd się skończył, prognoza na jego czas nie jest już potrzebna.</p>'; return; }
     if (!fc.days.length) { box.innerHTML = '<p class="wx-empty">Brak prognozy na najbliższe godziny w zapisanych danych. Dotknij „Sprawdź nową prognozę”.</p>'; return; }
     var hasDiff = fc.days.some(function (d) { return d.hours.some(function (h) { return h.diff; }); });
-    box.innerHTML = (hasDiff ? '<p class="wx-legend"><span class="wx-legend__sw" aria-hidden="true"></span><span>Żółte wiersze: modele wyraźnie się różnią (temperatura o 3° lub więcej albo jeden przewiduje wyraźny opad, a drugi prawie żaden). Tam prognoza jest mniej pewna.</span></p>' : '') +
+    box.innerHTML = '<p class="wx-note">Wiatr średni w km/h, w nawiasie porywy. Opad w mm za godzinę, przy ECMWF także szansa opadu.</p>' +
+      (hasDiff ? '<p class="wx-legend"><span class="wx-legend__sw" aria-hidden="true"></span><span>Żółte wiersze: modele wyraźnie się różnią (temperatura o 3° lub więcej albo jeden przewiduje kilka razy większy opad). Tam prognoza jest mniej pewna.</span></p>' : '') +
       fc.days.map(function (d, i) {
         var s = d.summary;
         var rows = d.hours.map(function (h, k) {
@@ -1341,7 +1347,7 @@
           '<span class="wx-day__p">' + (s.p < 0.05 ? 'bez opadu' : WX.fmtPrecip(s.p)) + '</span>' +
           icon('chev', 'chev') + '</summary>' +
           '<div class="wx-day__body"><p class="wx-day__extra">' + (s.g !== null ? 'Najsilniejsze porywy wiatru: ' + WX.fmtWind(s.g) + ' km/h.' : '') + '</p>' +
-          '<div class="wx-head" aria-hidden="true"><span>Godz.</span><span></span><span>Temp.</span><span>Opad</span><span>Wiatr (porywy) km/h</span><span class="wx-head__alt">Druga opinia</span></div>' +
+          '<div class="wx-head" aria-hidden="true"><span>Godz.</span><span></span><span>Temp.</span><span>Opad</span><span>Wiatr km/h</span><span class="wx-head__alt">Druga opinia</span></div>' +
           '<ol class="wx-hours">' + rows + '</ol></div></details>';
       }).join('');
   }

@@ -104,11 +104,12 @@ test('druga opinia i rozbieżność: temperatura o 3° lub więcej', function ()
   // 18:00 ALADIN 5° vs AROME 8° → 3° → rozbieżność; 19:00 4,6° vs 7,5° (2,9°) i oba pada (0,4 vs 1,0 mm) → nie
   return eq([h[0].alt.src, h[0].diff, h[1].diff, h[2].alt, h[2].diff], ['arome', true, false, null, false]);
 });
-test('rozbieżność opadu: wyraźny opad w jednym modelu, prawie żaden w drugim', function () {
+test('rozbieżność opadu: większy ≥ 0,5 mm i co najmniej 4 razy większy', function () {
   return eq([
     W.differs({ t: 5, p: 0.6 }, { t: 5, p: 0.05 }), W.differs({ t: 5, p: 0.6 }, { t: 5, p: 0.2 }),
-    W.differs({ t: 5, p: 0.13 }, { t: 5, p: 0.06 }), W.differs({ t: 5, p: 0 }, { t: 7.9, p: 0 })
-  ], [true, false, false, false]);
+    W.differs({ t: 5, p: 0.13 }, { t: 5, p: 0.06 }), W.differs({ t: 5, p: 0 }, { t: 7.9, p: 0 }),
+    W.differs({ t: 4, p: 0.1 }, { t: 2, p: 3.1 }), W.differs({ t: 5, p: 1.0 }, { t: 5, p: 0.4 })
+  ], [true, false, false, false, true, false]);
 });
 test('prawdopodobieństwo opadu tylko dla godzin ECMWF', function () {
   var h = W.build('znojmo', data(), '2026-11-13T18').days[0].hours;
@@ -138,6 +139,13 @@ test('zapis i odczyt, osobno dla każdego źródła', function () {
   var b = W.merge(W.loadCache(st), { om: { ok: true, value: omFixture() }, gs: { ok: false, error: 'timeout' }, runs: {} }, 2000);
   return eq([b.status, b.cache.om.at, b.cache.gs.at, b.cache.runs.aladin], [{ om: 'fresh', gs: 'cached' }, 2000, 1000, 1]);
 });
+test('mergePart: jedno źródło naraz, drugie zostaje przy zapisie', function () {
+  var a = W.merge({}, { om: { ok: true, value: omFixture() }, gs: { ok: true, value: gsFixture() }, runs: {} }, 1000).cache;
+  var b = W.mergePart(a, 'om', { ok: true, value: omFixture() }, 5000);
+  var c = W.mergePart(b.cache, 'gs', { ok: false, error: 'timeout' }, 5000);
+  var d = W.mergePart({}, 'gs', { ok: false, error: 'timeout' }, 5000);
+  return eq([b.status, b.cache.om.at, b.cache.gs.at, c.status, c.cache.gs.at, d.status], ['fresh', 5000, 1000, 'cached', 1000, 'missing']);
+});
 test('uszkodzony zapis i brak localStorage nie psują strony', function () {
   var bad = { getItem: function () { return '{nie json'; }, setItem: function () { throw new Error('QuotaExceeded'); } };
   return eq([W.loadCache(bad), W.saveCache(bad, {})], [{}, false]);
@@ -153,7 +161,11 @@ test('formatowanie: polski przecinek, „—” poniżej 0,05 mm, bez „-0°”
 /* ---------- na żywo ---------- */
 function live() {
   var key = W.pragueKey(new Date());
-  return W.fetchAll(fetch, key.slice(0, 10), 20000).then(function (res) {
+  var parts = [];
+  return W.fetchAll(fetch, key.slice(0, 10), function (name) { parts.push(name); }).then(function (res) {
+    test('na żywo: źródła zgłaszają się osobno (om, gs, godziny przebiegów)', function () {
+      return ['om', 'gs', 'runs'].every(function (n) { return parts.indexOf(n) >= 0; }) || 'zgłoszone: ' + parts.join(', ');
+    });
     test('na żywo: Open-Meteo odpowiada', function () { return res.om.ok || res.om.error; });
     test('na żywo: GeoSphere odpowiada', function () { return res.gs.ok || res.gs.error; });
     test('na żywo: godziny przebiegów ALADIN i ECMWF', function () { return !!(res.runs.aladin && res.runs.ecmwf) || 'brak'; });

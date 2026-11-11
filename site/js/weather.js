@@ -163,12 +163,15 @@
     var set = s && s.set ? +s.set.slice(0, 2) + (+s.set.slice(3, 5) >= 30 ? 1 : 0) : 16;
     return hour < rise || hour > set;
   }
-  // Rozbieżność modeli (review 11 XI: próg 2 °C / 0,1 mm zaznaczał co czwartą godzinę, także różnice niewidoczne po
-  // zaokrągleniu i samą mżawkę): temperatura różni się o 3 °C lub więcej albo jeden model daje wyraźny opad (≥ 0,5 mm),
-  // a drugi prawie żaden (< 0,1 mm).
+  // Rozbieżność modeli. Review 11 XI:
+  //   runda 1: próg 2 °C / 0,1 mm zaznaczał co czwartą godzinę, także różnice niewidoczne po zaokrągleniu i samą mżawkę;
+  //   runda 2: reguła „drugi < 0,1 mm” przepuszczała 0,1 mm wobec 3,1 mm.
+  // Teraz: temperatura różni się o 3 °C lub więcej albo większy opad ma co najmniej 0,5 mm i jest co najmniej 4 razy
+  // większy od mniejszego.
   function differs(a, b) {
     if (!a || !b) return false;
-    return Math.abs(a.t - b.t) >= 3 || (Math.max(a.p, b.p) >= 0.5 && Math.min(a.p, b.p) < 0.1);
+    var hi = Math.max(a.p, b.p), lo = Math.min(a.p, b.p);
+    return Math.abs(a.t - b.t) >= 3 || (hi >= 0.5 && lo * 4 <= hi);
   }
 
   /* ---------- prognoza dla miejsca ---------- */
@@ -233,16 +236,23 @@
     });
   }
   function settle(p) { return p.then(function (v) { return { ok: true, value: v }; }, function (e) { return { ok: false, error: String(e && e.message || e) }; }); }
-  // Zwraca { om, gs, meta } z polami { ok, value | error }. Nigdy nie odrzuca.
-  function fetchAll(fetchFn, today, ms) {
-    var u = urls(today), t = ms || 12000;
+  // Limity czasu: Open-Meteo odpowiada w ok. 50 ms, GeoSphere w 1–16 s (pomiar 11 XI), więc dla niego 30 s.
+  var TIMEOUT = { om: 12000, gs: 30000, meta: 12000 };
+  // Każde źródło zgłasza się osobno (onPart), żeby szybkie Open-Meteo nie czekało na wolniejsze GeoSphere.
+  // Zwraca { om, gs, runs } z polami { ok, value | error }. Nigdy nie odrzuca.
+  function fetchAll(fetchFn, today, onPart, timeouts) {
+    var u = urls(today), T = timeouts || TIMEOUT, out = { runs: {} };
+    var run = function (x) { return x.ok && x.value && x.value.last_run_initialisation_time ? x.value.last_run_initialisation_time * 1000 : null; };
+    function part(name, p) {
+      return settle(p).then(function (r) {
+        if (name === 'aladin' || name === 'ecmwf') { out.runs[name] = run(r); if (onPart) onPart('runs', out.runs); }
+        else { out[name] = r; if (onPart) onPart(name, r); }
+      });
+    }
     return Promise.all([
-      settle(getJSON(fetchFn, u.om, t)), settle(getJSON(fetchFn, u.gs, t)),
-      settle(getJSON(fetchFn, u.meta.aladin, t)), settle(getJSON(fetchFn, u.meta.ecmwf, t))
-    ]).then(function (r) {
-      var run = function (x) { return x.ok && x.value && x.value.last_run_initialisation_time ? x.value.last_run_initialisation_time * 1000 : null; };
-      return { om: r[0], gs: r[1], runs: { aladin: run(r[2]), ecmwf: run(r[3]) } };
-    });
+      part('om', getJSON(fetchFn, u.om, T.om)), part('gs', getJSON(fetchFn, u.gs, T.gs)),
+      part('aladin', getJSON(fetchFn, u.meta.aladin, T.meta)), part('ecmwf', getJSON(fetchFn, u.meta.ecmwf, T.meta))
+    ]).then(function () { return out; });
   }
 
   /* ---------- zapis w telefonie: osobno dla każdego źródła, z godziną pobrania ---------- */
@@ -252,15 +262,22 @@
   function saveCache(storage, cache) {
     try { storage.setItem(CACHE_KEY, JSON.stringify(cache)); return true; } catch (e) { return false; }
   }
-  // Łączy świeży wynik z zapisem: źródło, które nie odpowiedziało, bierze ostatni zapis (z jego godziną).
+  // Łączy wynik jednego źródła z zapisem. Źródło, które nie odpowiedziało, zostaje przy ostatnim zapisie (z jego godziną).
+  // Zwraca nowy zapis i stan źródła: 'fresh' | 'cached' | 'missing'.
+  function mergePart(cache, name, result, nowMs) {
+    var next = { om: cache.om || null, gs: cache.gs || null, runs: {} }, st;
+    Object.keys(cache.runs || {}).forEach(function (k) { next.runs[k] = cache.runs[k]; });
+    if (name === 'runs') { Object.keys(result || {}).forEach(function (k) { if (result[k]) next.runs[k] = result[k]; }); return { cache: next, status: null }; }
+    if (result && result.ok) { next[name] = { at: nowMs, data: result.value }; st = 'fresh'; }
+    else st = next[name] ? 'cached' : 'missing';
+    return { cache: next, status: st };
+  }
+  // Wszystkie źródła naraz (testy, pierwsze wczytanie).
   function merge(cache, res, nowMs) {
-    var next = { om: cache.om || null, gs: cache.gs || null, runs: cache.runs || {} }, status = {};
-    ['om', 'gs'].forEach(function (s) {
-      if (res[s] && res[s].ok) { next[s] = { at: nowMs, data: res[s].value }; status[s] = 'fresh'; }
-      else status[s] = next[s] ? 'cached' : 'missing';
-    });
-    ['aladin', 'ecmwf'].forEach(function (m) { if (res.runs && res.runs[m]) next.runs[m] = res.runs[m]; });
-    return { cache: next, status: status };
+    var c = cache, status = {};
+    ['om', 'gs'].forEach(function (s) { var m = mergePart(c, s, res[s], nowMs); c = m.cache; status[s] = m.status; });
+    c = mergePart(c, 'runs', res.runs, nowMs).cache;
+    return { cache: c, status: status };
   }
   // Błąd odczytu nie może udawać braku danych: trafia do out.errors i jest pokazywany jako niedziałające źródło.
   function parsed(cache) {
@@ -280,7 +297,7 @@
     TZ: TZ, TRIP: TRIP, MODELS: MODELS, PLACES: PLACES, TYPE_LABEL: TYPE_LABEL, WET: WET, CACHE_KEY: CACHE_KEY,
     pragueKey: pragueKey, utcToKey: utcToKey, pragueTime: pragueTime, dayLabel: dayLabel, stampLabel: stampLabel,
     urls: urls, parseOM: parseOM, parseGS: parseGS, classify: classify, isNight: isNight, differs: differs,
-    build: build, summarize: summarize, fetchAll: fetchAll, loadCache: loadCache, saveCache: saveCache, merge: merge, parsed: parsed,
+    build: build, summarize: summarize, fetchAll: fetchAll, loadCache: loadCache, saveCache: saveCache, merge: merge, mergePart: mergePart, parsed: parsed,
     fmtTemp: fmtTemp, fmtPrecip: fmtPrecip, fmtWind: fmtWind, fmtNum: fmtNum
   };
   root.Weather = api;
